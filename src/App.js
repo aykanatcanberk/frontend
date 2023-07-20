@@ -1,12 +1,11 @@
+import React from 'react';
 import "./App.css";
-import Button from "@mui/material/Button";
-
+import Advert from './components/Advert/Advert';
 function App() {
   return (
-    <>
-      <Button variant="contained"> Vizyoner Genc</Button>
-    </>
+    <div>
+      <Advert></Advert>
+    </div>
   );
 }
-
 export default App;
