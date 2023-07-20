@@ -1,8 +1,10 @@
 import "./App.css";
+import Button from "@mui/material/Button";
+
 function App() {
   return (
     <>
-      <h1>Vizyoner Genç</h1>
+      <Button variant="contained"> Vizyoner Genc</Button>
     </>
   );
 }
