@@ -1,10 +1,10 @@
 import "./App.css";
-import Button from "@mui/material/Button";
+import Navbar from "./components/navbar/Navbar";
 
 function App() {
   return (
     <>
-      <Button variant="contained"> Vizyoner Genc</Button>
+      <Navbar />
     </>
   );
 }
