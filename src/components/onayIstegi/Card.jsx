@@ -31,7 +31,7 @@ const Card = ({ props }) => {
         </Typography>
       </CardContent>
       <CardActions
-        style={{ justifyContent: "flex-start" }}
+        style={{ justifyContent: "flex-end" }}
         classes="onayIstegiButon"
       >
         {/* Buton yerine direk icon koyulabilir */}
