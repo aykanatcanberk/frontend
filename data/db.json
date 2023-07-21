@@ -1,0 +1,22 @@
+{
+  "profile": [
+    {
+      "id": 1,
+      "name": "Ahmet",
+      "role": "worker",
+      "task": "Doing Jobs."
+    },
+    {
+      "name": "Hasan",
+      "role": "worker",
+      "task": "doing jobs",
+      "id": 2
+    },
+    {
+      "name": "Hasan",
+      "role": "Çalışan",
+      "task": "Başarmak",
+      "id": 3
+    }
+  ]
+}
