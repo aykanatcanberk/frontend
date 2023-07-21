@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../components/navbar/Navbar";
 
-const LoginLayout = ({ element }) => {
+const CompanyLayout = ({ element }) => {
   return (
     <div>
       <Navbar />
@@ -10,4 +10,4 @@ const LoginLayout = ({ element }) => {
   );
 };
 
-export default LoginLayout;
+export default CompanyLayout;
