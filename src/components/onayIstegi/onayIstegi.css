@@ -1,0 +1,8 @@
+.onayIstegi {
+  border: 0px solid red;
+  width: 30%;
+}
+.onayIstegi .onayIstegiCard {
+  margin: 10px;
+  border: 3px outset rgb(212, 212, 255);
+}
