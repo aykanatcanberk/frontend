@@ -1,10 +1,9 @@
-import "./App.css";
-import Button from "@mui/material/Button";
+import Router from "./routes/Router";
 
 function App() {
   return (
     <>
-      <Button variant="contained"> Vizyoner Genc</Button>
+      <Router />
     </>
   );
 }
