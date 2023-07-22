@@ -1,10 +1,10 @@
 import React from "react";
-import Navbar from "../components/navbar/Navbar";
+import BireyselNavbar from "../components/navbar/bireysel_navbar/BireyselNavbar";
 
 const UserLayout = ({ element }) => {
   return (
     <div>
-      <Navbar />
+      <BireyselNavbar />
       {element}
     </div>
   );

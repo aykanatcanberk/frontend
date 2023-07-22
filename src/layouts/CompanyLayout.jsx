@@ -1,10 +1,10 @@
 import React from "react";
-import Navbar from "../components/navbar/Navbar";
+import KurumsalNavbar from "../components/navbar/kurumsal_navbar/KurumsalNavbar";
 
 const CompanyLayout = ({ element }) => {
   return (
     <div>
-      <Navbar />
+      <KurumsalNavbar />
       {element}
     </div>
   );
