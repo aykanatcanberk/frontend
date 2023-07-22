@@ -5,7 +5,7 @@ body {
 }
 
 .Slider {
-  width: 50%;
+  width: 60%;
   margin: 2rem auto;
   height: 200px;
 }
@@ -16,9 +16,9 @@ body {
 }
 
 .slide {
-  transform: scale(0.2);
+  transform: scale(0.8);
   transition: transform 300ms;
-  opacity: 0.5;
+  opacity: 1;
 }
 
 .activeSlide {

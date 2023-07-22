@@ -8,6 +8,7 @@ import haber5 from "./images/haber-5.png";
 import haber6 from "./images/haber-6.png";
 import haber7 from "./images/haber-7.png";
 import haber8 from "./images/haber-8.png";
+import aslimg from "./images/aselsan logo.png"
 import Paper from '@mui/material/Paper';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
@@ -35,6 +36,7 @@ const avatarStyle = {
   width: '100px',
   height: '100px',
   marginLeft: '200px',
+  border: '1px solid #ccc',
 };
 
 function ProfileCard() {
@@ -72,14 +74,15 @@ function ProfileCard() {
   return (
     <><Paper sx={paperStyle} elevation={1}>
       <Avatar 
-      sx={avatarStyle} 
+      sx={avatarStyle}
+      elevation={1} 
       alt="Aselsan" 
-      src="./images/aselsan-logo.jpg"/>
+      src={aslimg}/>
       <div>
         <Typography variant="h5" component="div" sx={{marginLeft: "16px", marginTop: "50px"}}>
           Aselsan
         </Typography>
-        <Typography variant="body1" fontSize={"12px"} color="text.secondary" sx={{marginLeft: "-85px", marginTop: "20px"}}>
+        <Typography variant="body1" fontSize={"14px"} color="text.secondary" sx={{marginLeft: "-85px", marginTop: "20px"}}>
           <TurnedInNotIcon sx={{marginLeft: "100px", alignItems: "centered", fontSize: "15px"}}/>Savunma Sanayii    
           <BusinessIcon sx={{marginLeft: "100px", alignItems: "centered", fontSize: "15px"}}/>Halka Açık Şirket
           <CalendarMonthIcon sx={{marginLeft: "100px", alignItems: "centered", fontSize: "15px"}}/>1975
