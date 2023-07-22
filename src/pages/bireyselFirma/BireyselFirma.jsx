@@ -1,3 +1,4 @@
+import "./BireyselFirma.css"
 import * as React from 'react';
 import { useState } from 'react';
 import haber1 from "./images/haber-1.png";
