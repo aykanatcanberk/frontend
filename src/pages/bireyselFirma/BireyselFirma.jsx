@@ -30,6 +30,7 @@ const paperStyle = {
   marginTop: '-45px',
   width: '100%',
   height: '200px',
+  marginTop: "0px",
   backgroundColor: '#f0f0f0'
 };
 
