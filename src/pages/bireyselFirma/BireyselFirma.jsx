@@ -73,7 +73,7 @@ function ProfileCard() {
     }
 
   return (
-    <><Paper sx={paperStyle} elevation={1}>
+    <><Paper sx={paperStyle} elevation={0}>
       <Avatar 
       sx={avatarStyle}
       elevation={1} 
