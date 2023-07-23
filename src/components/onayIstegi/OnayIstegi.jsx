@@ -40,6 +40,7 @@ const OnayIstegi = ({ props }) => {
         classes="onayIstegiButon"
       >
         {/* Buton yerine direk icon koyulabilir */}
+
         <Button onClick={handleAccept} sx={{ color: "green" }} size="small">
           <DoneIcon />
         </Button>
