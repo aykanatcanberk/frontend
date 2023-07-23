@@ -87,13 +87,13 @@ function ProfileCard() {
         <Typography variant="h5" component="div" fontFamily={"sans-serif"} sx={{marginLeft: "20px", marginTop: "60px", '@media (max-width: 768px)': {alignItems: "center", verticalAlign: 'center', textAlign: "center", marginTop: "20px"}}}>
           Aselsan
         </Typography>
-        <Typography variant="body1" fontSize="14px" fontFamily={"sans-serif"} color="text.secondary" sx={{ marginTop: "10px", marginBottom: "30px", '@media (max-width: 768px)': { textAlign: 'center' } }}>
+        <Typography variant="body1" fontSize="10px" fontFamily={"sans-serif"} color="text.secondary" sx={{ marginTop: "10px", marginBottom: "30px", '@media (max-width: 768px)': { textAlign: 'center' } }}>
             <TurnedInNotIcon sx={{ fontSize: "15px", verticalAlign: 'middle', marginLeft: '20px' }} />Savunma Sanayii    
             <BusinessIcon sx={{ fontSize: "15px", verticalAlign: 'middle', marginLeft: '20px' }} />Halka Açık Şirket
             <CalendarMonthIcon sx={{ fontSize: "15px", verticalAlign: 'middle', marginLeft: '20px' }} />1975
             <span />
             <br />
-        <Typography variant="body1" fontSize="14px" fontFamily={"sans-serif"} color="text.secondary" sx={{ marginTop: "10px", marginBottom: "30px", '@media (max-width: 768px)': { textAlign: 'center' } }} >
+        <Typography variant="body1" fontSize="10px" fontFamily={"sans-serif"} color="text.secondary" sx={{ marginTop: "10px", marginBottom: "30px", '@media (max-width: 768px)': { textAlign: 'center' } }} >
             <LocationSearchingIcon sx={{ fontSize: "15px", verticalAlign: 'middle', marginLeft: '20px' }} />Ankara, Yenimahalle
             <PeopleIcon sx={{ fontSize: "15px", verticalAlign: 'middle', marginLeft: '20px' }} />5.001-10.000
             </Typography>
