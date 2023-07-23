@@ -19,12 +19,11 @@ function Navbar() {
         <Link to="/kurumsal-ilan">İlanlar</Link>
         <Link to="/kurumsal-onay-kutusu">Onay Kutusu</Link>
         <Link to="/kurumsal-profil">Profilim</Link>
-        
       </div>
       </div>
       <div className="rightSide">
         <Link to="/kurumsal-anasayfa">Anasayfa</Link>
-        <Link to="/kurumsal-ilan">İlanlar</Link>
+        <Link to="/kurumsal-ilanlar">İlanlar</Link>
         <Link to="/kurumsal-onay-kutusu">Onay Kutusu</Link>
         <Link to="/kurumsal-profil">Profilim</Link>
         <button onClick={toggleNavbar}> 

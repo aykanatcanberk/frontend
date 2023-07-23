@@ -17,6 +17,7 @@ import KurumsalOnayKutusu from "../pages/kurumsalOnayKutusu/KurumsalOnayKutusu";
 import KurumsalProfil from "../pages/kurumsalProfil/KurumsalProfil";
 import NotFoundError from "./NotFoundError";
 
+
 const Router = () => {
   return (
     <BrowserRouter>
