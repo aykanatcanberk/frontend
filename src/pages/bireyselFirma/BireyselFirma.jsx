@@ -1,6 +1,6 @@
 import "./BireyselFirma.css"
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import haber1 from "./images/haber-1.png";
 import haber2 from "./images/haber-2.png";
 import haber3 from "./images/haber-3.png";
@@ -44,6 +44,26 @@ const avatarStyle = {
 
 function ProfileCard() {
 
+    const [windowSize, setWindowSize] = useState({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    });
+
+    const handleResize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+
+    useEffect(() => {
+      window.addEventListener("resize", handleResize);
+
+      return() => {
+        window.removeEventListener("resize", handleResize);
+      }
+    }, []);
+
     const NextArrow = ({onClick}) => {
       return (
         <div className='arrow next' onClick={onClick}>
@@ -62,7 +82,7 @@ function ProfileCard() {
 
     const [ImageIndex, setImageIndex] = useState(0)
 
-    const isMobileView = window.innerWidth <= 768;
+    const isMobileView = window.innerWidth <= 1280;
 
     const settings = {
       infinite: true,
@@ -77,23 +97,23 @@ function ProfileCard() {
     }
 
   return (
-    <><Paper sx={{ ...paperStyle, '@media (max-width: 768px)': { flexDirection: 'column', alignItems: 'center' } }} elevation={0}>
+    <><Paper sx={{ ...paperStyle, '@media (max-width: 1280px)': { flexDirection: 'column', alignItems: 'center' } }} elevation={0}>
       <Avatar 
-      sx={{...avatarStyle, '@media (max-width: 768px)': { marginLeft: "20px", marginBottom: '10px', alignItems: "center", marginTop: "20px" }}}
+      sx={{...avatarStyle, '@media (max-width: 1280px)': { marginLeft: "20px", marginBottom: '10px', alignItems: "center", marginTop: "20px" }}}
       elevation={1} 
       alt="Aselsan" 
       src={aslimg}/>
       <div>
-        <Typography variant="h5" component="div" fontFamily={"sans-serif"} sx={{marginLeft: "20px", marginTop: "60px", '@media (max-width: 768px)': {alignItems: "center", verticalAlign: 'center', textAlign: "center", marginTop: "20px"}}}>
+        <Typography variant="h5" component="div" fontFamily={"sans-serif"} sx={{marginLeft: "20px", marginTop: "60px", '@media (max-width: 1280px)': {alignItems: "center", verticalAlign: 'center', textAlign: "center", marginTop: "20px"}}}>
           Aselsan
         </Typography>
-        <Typography variant="body1" fontSize="10px" fontFamily={"sans-serif"} color="text.secondary" sx={{ marginTop: "10px", marginBottom: "30px", '@media (max-width: 768px)': { textAlign: 'center' } }}>
+        <Typography variant="body1" fontSize="10px" fontFamily={"sans-serif"} color="text.secondary" sx={{ marginTop: "10px", marginBottom: "30px", '@media (max-width: 1280px)': { textAlign: 'center' } }}>
             <TurnedInNotIcon sx={{ fontSize: "15px", verticalAlign: 'middle', marginLeft: '20px' }} />Savunma Sanayii    
             <BusinessIcon sx={{ fontSize: "15px", verticalAlign: 'middle', marginLeft: '20px' }} />Halka Açık Şirket
             <CalendarMonthIcon sx={{ fontSize: "15px", verticalAlign: 'middle', marginLeft: '20px' }} />1975
             <span />
             <br />
-        <Typography variant="body1" fontSize="10px" fontFamily={"sans-serif"} color="text.secondary" sx={{ marginTop: "10px", marginBottom: "30px", '@media (max-width: 768px)': { textAlign: 'center' } }} >
+        <Typography variant="body1" fontSize="10px" fontFamily={"sans-serif"} color="text.secondary" sx={{ marginTop: "10px", marginBottom: "30px", '@media (max-width: 1280px)': { textAlign: 'center' } }} >
             <LocationSearchingIcon sx={{ fontSize: "15px", verticalAlign: 'middle', marginLeft: '20px' }} />Ankara, Yenimahalle
             <PeopleIcon sx={{ fontSize: "15px", verticalAlign: 'middle', marginLeft: '20px' }} />5.001-10.000
             </Typography>
@@ -111,7 +131,7 @@ function ProfileCard() {
     </div>
     <>
     <Grid container spacing={0} sx={{ marginTop: '20px' }}>
-        <Grid item lg={8} md={12} sx={{paddingRight: '10px', paddingLeft: '300px', '@media (max-width: 768px)': { textAlign: 'center', paddingLeft: "10px" }}}>
+        <Grid item lg={8} md={12} sx={{paddingRight: '10px', paddingLeft: '300px', '@media (max-width: 1280px)': { textAlign: 'center', paddingLeft: "10px" }}}>
           <Paper elevation={0} style={{ padding: '20px', height: 'auto' }}>
           <h4>Firma Hakkında</h4>
           <Typography variant="body1" color="text.secondary" fontFamily={"sans-serif"} fontSize={"12px"} textAlign={"justify"}>
@@ -121,11 +141,11 @@ Bu başarının kilit faktörlerinden olan 6.000'i aşkın çalışanı bünyesi
             </Typography>
           </Paper>
         </Grid>
-        <Grid item lg={4} md={12} sx={{paddingRight: '300px', '@media (max-width: 768px)': { textAlign: 'center', paddingRight: "10px" }}}>
+        <Grid item lg={4} md={12} sx={{paddingRight: '300px', '@media (max-width: 1280px)': { textAlign: 'center', paddingRight: "10px" }}}>
           <Paper elevation={0} style={{
               padding: '10px',
               height: 'auto',
-              '@media (min-width: 768px)': {
+              '@media (min-width: 1280px)': {
                 padding: '20px',
               },
             }}>
