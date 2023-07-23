@@ -29,16 +29,17 @@ const paperStyle = {
   alignItems: 'center',
   marginTop: '-45px',
   width: '100%',
-  height: 'auto',
+  height: 'auto' + "10px",
   marginTop: "0px",
   backgroundColor: '#f0f0f0'
 };
 
 const avatarStyle = {
-  width: '100px',
-  height: '100px',
-  marginLeft: '200px',
+  width: '80px',
+  height: '80px',
+  marginLeft: '320px',
   border: '1px solid #ccc',
+  borderRadius: '20%',
 };
 
 function ProfileCard() {
@@ -78,20 +79,24 @@ function ProfileCard() {
   return (
     <><Paper sx={{ ...paperStyle, '@media (max-width: 768px)': { flexDirection: 'column', alignItems: 'center' } }} elevation={0}>
       <Avatar 
-      sx={{...avatarStyle, '@media (max-width: 768px)': { marginLeft: 0, marginBottom: '10px', alignItems: "center" }}}
+      sx={{...avatarStyle, '@media (max-width: 768px)': { marginLeft: "20px", marginBottom: '10px', alignItems: "center", marginTop: "20px" }}}
       elevation={1} 
       alt="Aselsan" 
       src={aslimg}/>
       <div>
-        <Typography variant="h5" component="div" sx={{marginLeft: "16px", marginTop: "50px", '@media (max-width: 768px)': {alignItems: "center", verticalAlign: 'center', textAlign: "center"}}}>
+        <Typography variant="h5" component="div" fontFamily={"sans-serif"} sx={{marginLeft: "20px", marginTop: "60px", '@media (max-width: 768px)': {alignItems: "center", verticalAlign: 'center', textAlign: "center", marginTop: "20px"}}}>
           Aselsan
         </Typography>
-        <Typography variant="body1" fontSize="14px" color="text.secondary" sx={{ marginTop: "20px", '@media (max-width: 768px)': { textAlign: 'center' } }}>
-            <TurnedInNotIcon sx={{ fontSize: "15px", verticalAlign: 'middle', marginLeft: '40px' }} />Savunma Sanayii    
-            <BusinessIcon sx={{ fontSize: "15px", verticalAlign: 'middle', marginLeft: '40px' }} />Halka Açık Şirket
-            <CalendarMonthIcon sx={{ fontSize: "15px", verticalAlign: 'middle', marginLeft: '40px' }} />1975
-            <LocationSearchingIcon sx={{ fontSize: "15px", verticalAlign: 'middle', marginLeft: '40px' }} />Ankara, Yenimahalle
-            <PeopleIcon sx={{ fontSize: "15px", verticalAlign: 'middle', marginLeft: '40px' }} />5.001-10.000
+        <Typography variant="body1" fontSize="14px" fontFamily={"sans-serif"} color="text.secondary" sx={{ marginTop: "10px", marginBottom: "30px", '@media (max-width: 768px)': { textAlign: 'center' } }}>
+            <TurnedInNotIcon sx={{ fontSize: "15px", verticalAlign: 'middle', marginLeft: '20px' }} />Savunma Sanayii    
+            <BusinessIcon sx={{ fontSize: "15px", verticalAlign: 'middle', marginLeft: '20px' }} />Halka Açık Şirket
+            <CalendarMonthIcon sx={{ fontSize: "15px", verticalAlign: 'middle', marginLeft: '20px' }} />1975
+            <span />
+            <br />
+        <Typography variant="body1" fontSize="14px" fontFamily={"sans-serif"} color="text.secondary" sx={{ marginTop: "10px", marginBottom: "30px", '@media (max-width: 768px)': { textAlign: 'center' } }} >
+            <LocationSearchingIcon sx={{ fontSize: "15px", verticalAlign: 'middle', marginLeft: '20px' }} />Ankara, Yenimahalle
+            <PeopleIcon sx={{ fontSize: "15px", verticalAlign: 'middle', marginLeft: '20px' }} />5.001-10.000
+            </Typography>
           </Typography>
       </div>
     </Paper>
@@ -106,17 +111,17 @@ function ProfileCard() {
     </div>
     <>
     <Grid container spacing={0} sx={{ marginTop: '20px' }}>
-        <Grid item lg={8} md={12} sx={{paddingRight: '10px', paddingLeft: '200px', '@media (max-width: 768px)': { textAlign: 'center', paddingLeft: "10px" }}}>
+        <Grid item lg={8} md={12} sx={{paddingRight: '10px', paddingLeft: '300px', '@media (max-width: 768px)': { textAlign: 'center', paddingLeft: "10px" }}}>
           <Paper elevation={0} style={{ padding: '20px', height: 'auto' }}>
           <h4>Firma Hakkında</h4>
-          <Typography variant="body1" color="text.secondary" fontSize={"12px"} textAlign={"justify"}>
+          <Typography variant="body1" color="text.secondary" fontFamily={"sans-serif"} fontSize={"12px"} textAlign={"justify"}>
             Türk Silahlı Kuvvetleri'nin haberleşme ihtiyaçlarının milli imkanlarla karşılanması için 1975 yılında kurulan ASELSAN; Türk Silahlı Kuvvetlerini Güçlendirme Vakfı'na (TSKGV) bağlı bir anonim şirkettir. ASELSAN hisselerinin %74,20'si TSKGV'ye aittir, %25,70'lik kısım ise Borsa İstanbul'da (BİST) işlem görmektedir. Türkiye'nin en büyük savunma elektroniği kuruluşu olan ASELSAN; başta Türk Silahlı Kuvvetleri olmak üzere yurtiçi ve yurtdışı ihtiyaç makamlarının, haberleşme ve bilgi teknolojileri, radar ve elektronik harp, elektro-optik, aviyonik, insansız sistemler, kara, deniz ve silah sistemleri, hava savunma ve füze sistemleri, komuta kontrol sistemleri, ulaştırma, güvenlik, trafik, otomasyon ve sağlık teknolojilerine yönelik ihtiyaçlarını karşılayabilecek çok geniş bir ürün yelpazesine sahip bulunmaktadır. ASELSAN bugün, özgün ürünlerini ihraç eden, dünyanın ilk 100 savunma sanayi şirketi (Defense News Top 100) listesinde yer alan, yerel kuruluşlar ile işbirliği modelleri kurgulayarak uluslararası pazarlarda ortaklıklar kuran, yatırım yapan bir marka haline gelmiştir.
 ASELSAN, vizyonundaki teknoloji vurgusu ile "Küresel pazarda yarattığı değerler ile sürdürülebilir büyümesini koruyan, rekabet gücü ile tercih edilen, stratejik bir ortak gibi güven duyulan, çevreye ve insana duyarlı bir milli teknoloji firması olmak" hedefini benimsemiştir.
 Bu başarının kilit faktörlerinden olan 6.000'i aşkın çalışanı bünyesinde yer alan nitelikli mühendislik kadrosu ile ASELSAN, yıllık cirosunun ortalama %7'sini, kendi özkaynakları ile finanse edilen AR-GE faaliyetlerine ayırmaktadır.
             </Typography>
           </Paper>
         </Grid>
-        <Grid item lg={4} md={12} sx={{paddingRight: '200px', '@media (max-width: 768px)': { textAlign: 'center', paddingRight: "10px" }}}>
+        <Grid item lg={4} md={12} sx={{paddingRight: '300px', '@media (max-width: 768px)': { textAlign: 'center', paddingRight: "10px" }}}>
           <Paper elevation={0} style={{
               padding: '10px',
               height: 'auto',
@@ -125,11 +130,11 @@ Bu başarının kilit faktörlerinden olan 6.000'i aşkın çalışanı bünyesi
               },
             }}>
             <h5>Uzmanlık</h5>
-            <Typography variant="body1" color="text.secondary" fontSize={"10px"} textAlign={"justify"}>
+            <Typography variant="body1" color="text.secondary"  fontFamily={"sans-serif"} fontSize={"12px"} textAlign={"justify"}>
             Savunma Sistemleri, Teknolojileri Radar ve Elektronik Harp Sistemleri, Mikroelektronik Elektro-Optik, İşletme ve Taşımacılık, Güvenlik, Enerji ve Otomasyon Sistemleri            
             </Typography>
             <h5>İletişim</h5>
-            <Typography variant="body1" color="text.secondary" fontSize={"10px"}>
+            <Typography variant="body1" color="text.secondary" fontFamily={"sans-serif"} fontSize={"10px"}>
             <p>http://www.aselsan.com.tr</p> 
             <span />
             <p>Mehmet Akif Ersoy Mahallesi 296. Cadde No: 16, 06370 Yenimahalle-Ankara, Türkiye</p>
