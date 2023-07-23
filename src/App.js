@@ -1,11 +1,14 @@
 import "./App.css";
-import Button from "@mui/material/Button";
+import React from "react";
+// import SignInOutContainer from "./containers";
+import Signup from "./components/signup";
 
 function App() {
   return (
-    <>
-      <Button variant="contained"> Vizyoner Genc</Button>
-    </>
+    <div className="App">
+      {/*<SignInOutContainer/>*/}
+      <Signup />
+    </div>
   );
 }
 

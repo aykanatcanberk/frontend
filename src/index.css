@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Babylonica&family=Comfortaa:wght@300;400;500;600;700&family=Shantell+Sans:wght@300&display=swap');
+
+body{
+    margin:0;
+    font-family:'Comfortaa',cursive;;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+}
+
+code{
+    font-family:'Comfortaa',cursive;
+}
