@@ -13,7 +13,7 @@
   }
   
   .slide {
-    transform: scale(0.8);
+    transform: scale(0.6);
     transition: transform 300ms;
     opacity: 1;
   }
