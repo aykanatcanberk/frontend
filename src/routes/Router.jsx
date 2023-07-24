@@ -3,7 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginLayout from "../layouts/LoginLayout";
 import CompanyLayout from "../layouts/CompanyLayout";
 import UserLayout from "../layouts/UserLayout";
-import Giris from "../pages/giris/Giris";
+//import Giris from "../pages/giris/Giris";
+//import KayitOl from "../pages/giris/KayitOl";
 import BireyselAnasayfa from "../pages/bireyselAnasayfa/BireyselAnasayfa";
 import BireyselDeneyimler from "../pages/bireyselDeneyimler/BireyselDeneyimler";
 import BirseyselFirma from "../pages/bireyselFirma/BireyselFirma";
@@ -16,12 +17,16 @@ import KurumsalIlanlar from "../pages/kurumsalIlanlar/KurumsalIlanlar";
 import KurumsalOnayKutusu from "../pages/kurumsalOnayKutusu/KurumsalOnayKutusu";
 import KurumsalProfil from "../pages/kurumsalProfil/KurumsalProfil";
 import NotFoundError from "./NotFoundError";
+import SignInOutContainer from "../containers";
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LoginLayout element={<Giris />} />} />
+        <Route
+          path="/"
+          element={<LoginLayout element={<SignInOutContainer />} />}
+        />
         <Route
           path="/bireysel-anasayfa"
           element={
