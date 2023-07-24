@@ -6,11 +6,11 @@ import Typography from '@mui/material/Typography';
 import { blue } from '@mui/material/colors';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import Box from '@mui/material/Box';
-import PlaceIcon from '@mui/icons-material/Place';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import TextareaAutosize from '@mui/base/TextareaAutosize';
 import { grey } from '@mui/material/colors';
 import BusinessIcon from '@mui/icons-material/Business';
+
 const StyledTextarea = styled(TextareaAutosize)(
   ({ theme }) => `
   width: 310px;
@@ -25,11 +25,11 @@ const StyledTextarea = styled(TextareaAutosize)(
   background: ${theme.palette.mode === 'dark' ? grey[900] : '#fff'};
   border: 1px solid ${theme.palette.mode === 'dark' ? grey[700] : grey[200]};
   box-shadow: 0px 2px 2px ${theme.palette.mode === 'dark' ? grey[900] : grey[50]};
-
 `,
 );
 
 export default function Advert({advert}){
+
   return (
     <Card sx={{ maxWidth: 380 }}>
       <CardHeader

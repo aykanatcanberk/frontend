@@ -18,11 +18,13 @@ import TextareaAutosize from '@mui/base/TextareaAutosize';
 import "./KurumsalIlanlar.css";
 import { Link } from 'react-router-dom';
 import Advert from '../../components/Advert/Advert';
-import advertData from '../../data/db.json';
+import db from '../../data/db.json';
+
+
 function KurumsalIlanlar() {
   return (
-    <>
-         <Grid container direction="column" marginTop={2} paddingLeft={80} alignItems="center" spacing={2}>  
+    <> 
+      <Grid container direction="column" marginTop={2} paddingLeft={80} alignItems="center" spacing={2}>  
       <Grid item container alignItems="center" spacing={2}>
         <Grid item>
         <Avatar style={{ width:55, height:55, backgroundColor: blue[500] }}>
@@ -40,7 +42,9 @@ function KurumsalIlanlar() {
     </Grid>
     <Grid container spacing={0} sx={{ marginTop: '20px' }}>
         <Grid item lg={8} md={12} sx={{paddingRight: '10px', paddingLeft: '40px'}}>
+
         <Typography level="h6" className="Typography" style={{ marginLeft:120, marginTop: 10 }}>
+
           İlan Paylaş
         </Typography>
       <Card
@@ -115,11 +119,12 @@ function KurumsalIlanlar() {
       </Card> 
       </Grid>
         <Grid item lg={4} md={12} sx={{ paddingRight: '150px', '@media (max-width: 1280px)': { textAlign: 'center', paddingRight: "5px" } }}>
+
         <Typography level="h6" className="Typography" style={{ marginLeft: 4, marginTop: 10 }}>
             Yayımlanmış İlanlar
           </Typography>
           <div style={{ marginTop: 20, marginRight: 20 }}>
-          {advertData.advert.map((advert) => (
+          {db.advert.map((advert) => (
             <Advert key={advert.id} advert={advert} />
           ))}
         </div>
