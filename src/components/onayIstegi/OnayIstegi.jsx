@@ -7,7 +7,12 @@ import DoneIcon from "@mui/icons-material/Done";
 import ClearIcon from "@mui/icons-material/Clear";
 
 const OnayIstegi = ({ props }) => {
-  console.log(props);
+  const handleAccept = () => {
+    console.log("Accepted");
+  };
+  const handleReject = () => {
+    console.log("Rejected");
+  };
 
   return (
     <div className="onayIstegiCard">
@@ -35,10 +40,10 @@ const OnayIstegi = ({ props }) => {
         classes="onayIstegiButon"
       >
         {/* Buton yerine direk icon koyulabilir */}
-        <Button sx={{ color: "green" }} size="small">
+        <Button onClick={handleAccept} sx={{ color: "green" }} size="small">
           <DoneIcon />
         </Button>
-        <Button sx={{ color: "red" }} size="small">
+        <Button onClick={handleReject} sx={{ color: "red" }} size="small">
           <ClearIcon />
         </Button>
       </CardActions>
