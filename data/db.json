@@ -1,0 +1,16 @@
+{"advert": [{
+    "id" : 1,
+    "ilan_adi":"Yazılım Geliştirme Uzmanı",
+    "ilan_date": "14.06.2023",
+    "ilan_tipi":"İş",
+    "desc":"Daha önce Java kullanmış en az 2 yıl tecrübeli, lisans diplomalı yazılım geliştirme uzmanı arıyoruz"
+    },
+    {
+      "id" : 2,
+      "ilan_adi":"Veritabanı Stajyeri",
+      "ilan_date": "18.06.2023",
+      "ilan_tipi":"Staj",
+      "desc":"SQL,MySQL,PostgreSQL,Microsoft SQL Server içinden en az biri hakkında bilgi sahibi ve zorunlu stajı 3. veya 4.sınıf öğrencisi arıyoruz."
+      }
+]
+}
