@@ -1,11 +1,14 @@
 import React from 'react';
 import "./App.css";
-import Advert from './components/Advert/Advert';
+import Router from "./routes/Router";
+
+
 function App() {
   return (
-    <div>
-      <Advert></Advert>
-    </div>
+    <>
+      <Router />
+      
+    </>
   );
 }
 export default App;
