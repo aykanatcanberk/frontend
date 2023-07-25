@@ -5,114 +5,42 @@ import SearchIcon from "@mui/icons-material/Search";
 import { useState } from "react";
 import "./BireyselFirmalar.css";
 
+const bireyselfirmalardata = [
+  {
+    name: "Aselsan",
+    kurulustarihi: 1975,
+    calisansayisi: 450,
+    konum: "Ankara",
+  },
+  {
+    name: "Havelsan",
+    kurulustarihi: 2000,
+    calisansayisi: 4050,
+    konum: "Ankara",
+  },
+  {
+    name: "TUSAŞ",
+    kurulustarihi: 1998,
+    calisansayisi: 4050,
+    konum: "Ankara",
+  },
+  {
+    name: "Vizyoner Genç",
+    kurulustarihi: 2019,
+    calisansayisi: 4050,
+    konum: "Ankara",
+  },
+];
+
 export default function ComplexGrid() {
   const [searchTerm, setSearchTerm] = useState("");
-
-  const data = [
-    {
-      name: "Aselsan",
-      kuruluştarihi: 2000,
-      calisansayisi: 450,
-      konum: "Ankara",
-    },
-    {
-      name: "Aselsan",
-      kuruluştarihi: 2000,
-      calisansayisi: 450,
-      konum: "Ankara",
-    },
-    {
-      name: "Aselsan",
-      kuruluştarihi: 2000,
-      calisansayisi: 450,
-      konum: "Ankara",
-    },
-    {
-      name: "Aselsan",
-      kuruluştarihi: 2000,
-      calisansayisi: 450,
-      konum: "Ankara",
-    },
-    {
-      name: "Aselsan",
-      kuruluştarihi: 2000,
-      calisansayisi: 450,
-      konum: "Ankara",
-    },
-    {
-      name: "Aselsan",
-      kuruluştarihi: 2000,
-      calisansayisi: 450,
-      konum: "Ankara",
-    },
-    {
-      name: "Aselsan",
-      kuruluştarihi: 2000,
-      calisansayisi: 450,
-      konum: "Ankara",
-    },
-    {
-      name: "Aselsan",
-      kuruluştarihi: 2000,
-      calisansayisi: 450,
-      konum: "Ankara",
-    },
-    {
-      name: "Aselsan",
-      kuruluştarihi: 2000,
-      calisansayisi: 450,
-      konum: "Ankara",
-    },
-    {
-      name: "Aselsan",
-      kuruluştarihi: 2000,
-      calisansayisi: 450,
-      konum: "Ankara",
-    },
-    {
-      name: "Aselsan",
-      kuruluştarihi: 2000,
-      calisansayisi: 450,
-      konum: "Ankara",
-    },
-    {
-      name: "Aselsan",
-      kuruluştarihi: 2000,
-      calisansayisi: 450,
-      konum: "Ankara",
-    },
-    {
-      name: "Aselsan",
-      kuruluştarihi: 2000,
-      calisansayisi: 450,
-      konum: "Ankara",
-    },
-    {
-      name: "Aselsan",
-      kuruluştarihi: 2000,
-      calisansayisi: 450,
-      konum: "Ankara",
-    },
-    {
-      name: "Aselsan",
-      kuruluştarihi: 2000,
-      calisansayisi: 450,
-      konum: "Ankara",
-    },
-    {
-      name: "Aselsan",
-      kuruluştarihi: 2000,
-      calisansayisi: 450,
-      konum: "Ankara",
-    },
-  ];
 
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
   };
   return (
     <>
-      <Container maxWidth="md" sx={{ mt: 5 }}>
+      <Container maxWidth="md" sx={{ mt: 8 }}>
         <TextField
           id="search"
           type="search"
@@ -129,8 +57,9 @@ export default function ComplexGrid() {
           }}
         />
       </Container>
+      <div className="searchFilter">{}</div>
       <div className="firmaContainer">
-        {data.map((firma) => (
+        {bireyselfirmalardata.map((firma) => (
           <FirmaKartvizit props={firma} />
         ))}
       </div>
