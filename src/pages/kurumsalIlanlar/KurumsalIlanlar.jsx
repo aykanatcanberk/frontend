@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Avatar from '@mui/material/Avatar';
 import BusinessIcon from '@mui/icons-material/Business';
 import { blue } from '@mui/material/colors';
@@ -22,6 +22,56 @@ import db from '../../data/db.json';
 
 
 function KurumsalIlanlar() {
+  const [formData, setFormData] = useState({
+    ilan_adi: "",
+    çalışma_şekli: [],
+    çalışma_tercihi: [],
+    ilan_tipi: [],
+    bölüm: [],
+    desc: ""
+  });
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  };
+
+  const handleCheckboxChange = (event) => {
+    const { name, value } = event.target;
+    if (event.target.checked) {
+      setFormData({
+        ...formData,
+        [name]: [...formData[name], value]
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: formData[name].filter((item) => item !== value)
+      });
+    }
+  };
+
+  const handleSubmit = () => {
+
+    const newAdvert = {
+      id: db.advert.length + 1, 
+      ...formData,
+      ilan_date: new Date().toLocaleDateString() 
+    };
+
+    db.advert.push(newAdvert);
+
+    setFormData({
+      ilan_adi: "",
+      çalışma_şekli: [],
+      çalışma_tercihi: [],
+      ilan_tipi: [],
+      bölüm: [],
+      desc: ""
+    });
+  };
   return (
     <> 
       <Grid container direction="column" marginTop={2} paddingLeft={80} alignItems="center" spacing={2}>  
@@ -60,7 +110,7 @@ function KurumsalIlanlar() {
       >
         <Typography level="h1" fontSize="xl">
           İlan Adı
-          <Input />
+          <Input name="ilan_adi" value={formData.ilan_adi} onChange={handleInputChange} />
         </Typography>
         <Divider inset="none" />
         <CardContent
@@ -72,28 +122,28 @@ function KurumsalIlanlar() {
         >
           <FormControl>
           <FormLabel>Çalışma Şekli</FormLabel>
-          <Checkbox label="Yüz Yüze" sx={{ gridColumn: '1/-1', my: 1 }}/>
-          <Checkbox label="Uzaktan" sx={{ gridColumn: '1/-1', my: 1 }} />
-          <Checkbox label="Hibrit" sx={{ gridColumn: '1/-1', my: 1 }} />
+          <Checkbox label="Yüz Yüze" name="çalışma_şekli" value="Yüz Yüze" checked={formData.çalışma_şekli.includes("Yüz Yüze")} onChange={handleCheckboxChange} sx={{ gridColumn: '1/-1', my: 1 }}/>
+          <Checkbox label="Uzaktan" name="çalışma_şekli" value="Uzaktan" checked={formData.çalışma_şekli.includes("Uzaktan")} onChange={handleCheckboxChange} sx={{ gridColumn: '1/-1', my: 1 }} />
+          <Checkbox label="Hibrit" name="çalışma_şekli" value="Hibrit" checked={formData.çalışma_şekli.includes("Hibrit")} onChange={handleCheckboxChange} sx={{ gridColumn: '1/-1', my: 1 }} />
           </FormControl>
           <FormControl>
           <FormLabel>Çalışma Tercihi</FormLabel>
-          <Checkbox label="Tam Zamanlı" sx={{ gridColumn: '1/-1', my: 1 }}/>
-          <Checkbox label="Yarı Zamanlı" sx={{ gridColumn: '1/-1', my: 1 }} />
-          <Checkbox label="Proje Bazlı" sx={{ gridColumn: '1/-1', my: 1 }} />
-          <Checkbox label="Serbest Zamanlı" sx={{ gridColumn: '1/-1', my: 1 }}/>
+          <Checkbox label="Tam Zamanlı" name="çalışma_tercihi" value="Tam Zamanlı" checked={formData.çalışma_tercihi.includes("Tam Zamanlı")} onChange={handleCheckboxChange} sx={{ gridColumn: '1/-1', my: 1 }}/>
+          <Checkbox label="Yarı Zamanlı"  name="çalışma_tercihi" value="Yarı Zamanlı" checked={formData.çalışma_tercihi.includes("Yarı Zamanlı")} onChange={handleCheckboxChange} sx={{ gridColumn: '1/-1', my: 1 }} />
+          <Checkbox label="Proje Bazlı" name="çalışma_tercihi" value="Proje Bazlı" checked={formData.çalışma_tercihi.includes("Proje Bazlı")} onChange={handleCheckboxChange} sx={{ gridColumn: '1/-1', my: 1 }} />
+          <Checkbox label="Serbest Zamanlı" name="çalışma_tercihi" value="Serbest Zamanlı" checked={formData.çalışma_tercihi.includes("Serbest Zamanlı")} onChange={handleCheckboxChange} sx={{ gridColumn: '1/-1', my: 1 }}/>
           </FormControl>
           <FormControl>
           <FormLabel>İlan Tipi</FormLabel>
-          <Checkbox label="Staj İlanı" sx={{ gridColumn: '1/-1', my: 1 }}/>
-          <Checkbox label="İş İlanı" sx={{ gridColumn: '1/-1', my: 1 }} />
+          <Checkbox label="Staj İlanı" name="ilan_tipi" value="Staj İlanı" checked={formData.ilan_tipi.includes("Staj İlanı")} onChange={handleCheckboxChange} sx={{ gridColumn: '1/-1', my: 1 }}/>
+          <Checkbox label="İş İlanı"  name="ilan_tipi" value="İş İlanı" checked={formData.ilan_tipi.includes("İş İlanı")} onChange={handleCheckboxChange} sx={{ gridColumn: '1/-1', my: 1 }} />
           </FormControl>
           <FormControl>
           <FormLabel>Bölüm</FormLabel>
-          <Checkbox label="Bilgisayar Mühendisliği" sx={{ gridColumn: '1/-1', my: 1 }}/>
-          <Checkbox label="Elektrik-Elektronik Mühendisliği" sx={{ gridColumn: '1/-1', my: 1 }} />
-          <Checkbox label="Endüstri Mühendisliği" sx={{ gridColumn: '1/-1', my: 1 }} />
-          <Checkbox label="Makine Mühendisliği" sx={{ gridColumn: '1/-1', my: 1 }}/>
+          <Checkbox label="Bilgisayar Mühendisliği" name="bölüm" value="Bilgisayar Mühendisliği" checked={formData.bölüm.includes("Bilgisayar Mühendisliği")} onChange={handleCheckboxChange} sx={{ gridColumn: '1/-1', my: 1 }}/>
+          <Checkbox label="Elektrik-Elektronik Mühendisliği" name="bölüm" value="Elektrik-Elektronik Mühendisliği" checked={formData.bölüm.includes("Elektrik-Elektronik Mühendisliği")} onChange={handleCheckboxChange} sx={{ gridColumn: '1/-1', my: 1 }} />
+          <Checkbox label="Endüstri Mühendisliği" name="bölüm" value="Endüstri Mühendisliği" checked={formData.bölüm.includes("Endüstri Mühendisliği")} onChange={handleCheckboxChange} sx={{ gridColumn: '1/-1', my: 1 }} />
+          <Checkbox label="Makine Mühendisliği" name="bölüm" value="Makine Mühendisliği" checked={formData.bölüm.includes("Makine Mühendisliği")} onChange={handleCheckboxChange} sx={{ gridColumn: '1/-1', my: 1 }}/>
           </FormControl>
           <CardActions
             sx={{
@@ -104,17 +154,20 @@ function KurumsalIlanlar() {
             }}
           >
             <FormLabel>Gereklilikler</FormLabel>
-            <TextareaAutosize
-              className="styled-textarea"
-              maxRows={20}
-              aria-label="maximum height"
-              placeholder=""
-              defaultValue=""
-            />
-            <Button variant="solid" color="primary">
-              Paylaş
-            </Button>
-          </CardActions>
+          <TextareaAutosize
+            className="styled-textarea"
+            maxRows={20}
+            aria-label="maximum height"
+            placeholder=""
+            defaultValue=""
+            name="desc"
+            value={formData.desc}
+            onChange={handleInputChange}
+          />
+          <Button variant="solid" color="primary" onClick={handleSubmit}>
+            Paylaş
+          </Button>
+        </CardActions>
         </CardContent>
       </Card> 
       </Grid>
