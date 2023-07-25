@@ -1,8 +1,11 @@
-import "./App.css";
+import "./app.css";
+import Router from "./routes/Router"
+
 function App() {
   return (
     <>
-      <h1>Vizyoner Genç</h1>
+      <Router />
+      
     </>
   );
 }
