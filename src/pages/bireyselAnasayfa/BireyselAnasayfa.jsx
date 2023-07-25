@@ -1,111 +1,341 @@
 import React from "react";
-import { Paper, Grid, Avatar, Typography } from "@mui/material";
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
+import { Grid, Paper, Typography, Link } from "@mui/material";
+import Avatar from "@mui/material/Avatar";
+import { styled } from "@mui/material/styles";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import SendIcon from "@mui/icons-material/Send";
 
-const avatarPStyle = {
-  width: '80px',
-  height: '80px',
-  borderRadius: '50%',
-  overflow: 'hidden',
-};
+const PageWrapper = styled(Grid)({
+  padding: "2rem",
+  margin: "0 auto",
+  maxWidth: "1200px",
+  marginTop: "-20px",
+});
 
-const avatarFStyle = {
-  width: '40px',
-  height: '40px',
-  marginLeft: '10px',
-  borderRadius: '20%',
-  overflow: 'hidden',
-};
+const CardWrapper = styled(Paper)({
+  padding: "1rem",
+  textAlign: "center",
+  marginBottom: "10px",
+  borderRadius: "20px",
+});
 
-function BireyselAnasayfa() {
-  const firmalar = [
-    { name: "Aselsan", avatarUrl: "url_for_firma_1_avatar" },
-    { name: "Tusaş", avatarUrl: "url_for_firma_2_avatar" },
-    { name: "Havelsan", avatarUrl: "url_for_firma_3_avatar" },
-    { name: "Baykar", avatarUrl: "url_for_firma_4_avatar" },
-    { name: "STM", avatarUrl: "url_for_firma_5_avatar" },
-    { name: "FNSS", avatarUrl: "url_for_firma_6_avatar" },
-  ];
+const AvatarWrapper = styled(Avatar)({
+  width: "100px",
+  height: "100px",
+  margin: "auto",
+  borderRadius: "50%",
+});
 
+const SmallAvatarWrapper = styled(Avatar)({
+  width: "30px",
+  height: "30px",
+  margin: "0.3rem auto",
+  borderRadius: "50%",
+});
+
+const SharePostCardWrapper = styled(Paper)({
+  padding: "1rem",
+  height: "auto",
+  textAlign: "center",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-between",
+  borderRadius: "20px",
+});
+
+const PostInputWrapper = styled(TextField)({
+  margin: "10px 0",
+  borderRadius: "10px",
+  "& .MuiOutlinedInput-root": {
+    borderRadius: "10px",
+  },
+});
+
+const ButtonsWrapper = styled("div")({
+  display: "flex",
+  justifyContent: "space-between",
+  marginTop: "10px",
+});
+
+const PostCardWrapper = styled(Paper)({
+  padding: "1rem",
+  textAlign: "left",
+  marginBottom: "10px",
+  marginTop: "10px",
+  borderRadius: "20px",
+});
+const RoundButton = styled(Button)({
+  borderRadius: "20px",
+  padding: "5px 10px",
+});
+
+const App = () => {
   return (
-    <Grid container spacing={2}>
-      <Grid item xs={2}>
-        <Paper elevation={0} style={{ paddingRight: 20 }} sx={{ height: "100%" }}>
-          <Grid container justifyContent="center" alignItems="center" direction="column">
-            <Avatar
-              sx={avatarPStyle}
-              elevation={1}
-              alt="Profil"
-              style={{ marginTop: 20 }}
-            />
-            <Typography variant="h6" style={{ marginTop: "10px" }}>
-              Hasan Basri BİLGE
+    <PageWrapper container spacing={4} justifyContent="center">
+      <Grid item xs={12} sm={4} md={3}>
+        <CardWrapper>
+          <AvatarWrapper src="url_profil_avatar" alt="Profil Avatarı" />
+          <Typography
+            variant="h6"
+            style={{
+              fontFamily: "Arial",
+              fontSize: "14px",
+              fontWeight: "normal",
+            }}
+          >
+            Kullanıcı Adı
+          </Typography>
+          <Grid item xs={12} sm={12} md={12}>
+            <Typography
+              variant="subtitle1"
+              style={{
+                fontFamily: "Arial",
+                fontSize: "12px",
+                fontWeight: "normal",
+                color: "secondary",
+                textAlign: "center",
+              }}
+            >
+              Öğrenci
             </Typography>
-            <Typography variant="h6" style={{ marginTop: "150px", marginRight: "1px" }}>
-              Firmalar
-            </Typography>
-            <Grid container spacing={1} justifyContent="center" alignItems="center" style={{ marginTop: "20px" }}>
-              {firmalar.map((firma, index) => (
-                <Grid key={index} item xs={5}>
-                  <Paper elevation={0} justifyContent="center" alignItems="center" style={{ paddingLeft: 10, textAlign: 'center' }}>
-                    <Avatar
-                      sx={avatarFStyle}
-                      elevation={1}
-                      alt={firma.name}
-                      src={firma.avatarUrl}
-                    />
-                    <Typography variant="body2" justifyContent="center" alignItems="center" style={{ marginTop: "10px", textAlign: 'center', marginLeft: "-10px" }}>
-                      {firma.name}
-                    </Typography>
-                  </Paper>
-                </Grid>
-              ))}
+          </Grid>
+        </CardWrapper>
+        <CardWrapper>
+          <Typography
+            variant="h6"
+            style={{
+              fontFamily: "Arial",
+              fontSize: "14px",
+              fontWeight: "normal",
+            }}
+          >
+            Takip Edilen Firmalar
+          </Typography>
+          <Grid container spacing={1}>
+            <Grid item xs={6} sm={4} md={4}>
+              <SmallAvatarWrapper src="url_firma_avatar_1" alt="Firma 1" />
+              <Typography
+                style={{
+                  fontFamily: "Arial",
+                  fontSize: "12px",
+                  fontWeight: "normal",
+                }}
+              >
+                Firma 1
+              </Typography>
+            </Grid>
+            <Grid item xs={6} sm={4} md={4}>
+              <SmallAvatarWrapper src="url_firma_avatar_2" alt="Firma 2" />
+              <Typography
+                style={{
+                  fontFamily: "Arial",
+                  fontSize: "12px",
+                  fontWeight: "normal",
+                }}
+              >
+                Firma 2
+              </Typography>
+            </Grid>
+            <Grid item xs={6} sm={4} md={4}>
+              <SmallAvatarWrapper src="url_firma_avatar_3" alt="Firma 3" />
+              <Typography
+                style={{
+                  fontFamily: "Arial",
+                  fontSize: "12px",
+                  fontWeight: "normal",
+                }}
+              >
+                Firma 3
+              </Typography>
+            </Grid>
+            <Grid item xs={6} sm={4} md={4}>
+              <SmallAvatarWrapper src="url_firma_avatar_4" alt="Firma 4" />
+              <Typography
+                style={{
+                  fontFamily: "Arial",
+                  fontSize: "12px",
+                  fontWeight: "normal",
+                }}
+              >
+                Firma 4
+              </Typography>
+            </Grid>
+            <Grid item xs={6} sm={4} md={4}>
+              <SmallAvatarWrapper src="url_firma_avatar_5" alt="Firma 5" />
+              <Typography
+                style={{
+                  fontFamily: "Arial",
+                  fontSize: "12px",
+                  fontWeight: "normal",
+                }}
+              >
+                Firma 5
+              </Typography>
+            </Grid>
+            <Grid item xs={6} sm={4} md={4}>
+              <SmallAvatarWrapper src="url_firma_avatar_6" alt="Firma 6" />
+              <Typography
+                style={{
+                  fontFamily: "Arial",
+                  fontSize: "12px",
+                  fontWeight: "normal",
+                }}
+              >
+                Firma 6
+              </Typography>
             </Grid>
           </Grid>
-        </Paper>
+          <Link
+            href="#"
+            style={{
+              fontFamily: "Arial",
+              fontSize: "12px",
+              fontWeight: "normal",
+            }}
+          >
+            Tüm Firmaları Görüntüle
+          </Link>
+        </CardWrapper>
       </Grid>
-      <Grid item xs={7}>
-        <Paper elevation={1} style={{ padding: 20 }} sx={{ height: "100%" }}>
-          <Typography style={{ padding: 20 }} textAlign='center'>
-            Gönderiler
-          </Typography >
-        </Paper>
-      </Grid>
-      <Grid item xs={3}>
-        <Typography style={{ padding: 20 }} textAlign='center'>
-          İlanlar
-        </Typography>
-        <List
-          sx={{
-            width: '100%',
-            bgcolor: 'background.paper',
-            position: 'relative',
-            overflow: 'auto',
-            maxHeight: 580,
-            '& ul': { padding: 0 },
-          }}
-          subheader={<li />}
-        >
-          {[0, 1, 2, 3, 4].map((sectionId) => (
-            <li key={`section-${sectionId}`}>
-                {[0, 1, 2].map((item) => (
-                  <ListItem key={`item-${sectionId}-${item}`}>
-                    <Card sx={{ width: '100%' }} style={{ padding: 100}}>
-                      <CardContent>
-                        <Typography variant="body2">{`Item ${item}`}</Typography>
-                      </CardContent>
-                    </Card>
-                  </ListItem>
-                ))}
-            </li>
-          ))}
-        </List>
-      </Grid>
-    </Grid>
-  );
-}
 
-export default BireyselAnasayfa;
+      <Grid item xs={12} sm={6} md={6}>
+        <SharePostCardWrapper>
+          <Typography
+            variant="h6"
+            style={{
+              fontFamily: "Arial",
+              fontSize: "14px",
+              fontWeight: "normal",
+            }}
+          >
+            Gönderi Paylaş
+          </Typography>
+          <PostInputWrapper
+            label="Gönderinizi buraya yazın"
+            variant="outlined"
+            multiline
+            rows={4}
+          />
+          <ButtonsWrapper>
+            <Button
+              variant="contained"
+              color="primary"
+              sx={{ height: "30px", width: "auto" }}
+            >
+              Resim Yükle
+            </Button>
+            <Button
+              variant="contained"
+              color="primary"
+              sx={{ height: "30px", width: "auto" }}
+            >
+              Paylaş
+            </Button>
+          </ButtonsWrapper>
+        </SharePostCardWrapper>
+        
+        <PostCardWrapper>
+          <Grid container alignItems="center">
+            <Grid item xs={2} sm={2} md={2}>
+              <Avatar src="url_profil_avatar" alt="Profil Avatarı" />
+            </Grid>
+            <Grid item xs={10} sm={10} md={10}>
+              <Typography
+                variant="subtitle1"
+                style={{
+                  fontFamily: "Arial",
+                  fontSize: "14px",
+                  fontWeight: "bold",
+                }}
+              >
+                Kullanıcı Adı
+              </Typography>
+              <Typography
+                variant="subtitle2"
+                style={{
+                  fontFamily: "Arial",
+                  fontSize: "12px",
+                  fontWeight: "normal",
+                  color: "textSecondary",
+                }}
+              >
+                25 Temmuz 2023, 10:30
+              </Typography>
+            </Grid>
+          </Grid>
+          {/* Post Content */}
+          <Typography
+            variant="body1"
+            style={{
+              fontFamily: "Arial",
+              fontSize: "14px",
+              fontWeight: "normal",
+            }}
+          >
+            Bu bir örnek gönderi içeriğidir. Lorem ipsum dolor sit amet,
+            consectetur adipiscing elit. Nulla consectetur nulla sit amet nisi
+            sodales, in eleifend quam lacinia.
+          </Typography>
+          {/* Like, Comment, and Likes Count */}
+          <ButtonsWrapper>
+            <RoundButton variant="contained" color="primary" size="small">
+              Beğen
+            </RoundButton>
+            <RoundButton variant="contained" color="primary" size="small">
+              <SendIcon />
+            </RoundButton>
+            <Typography
+              variant="body2"
+              style={{
+                fontFamily: "Arial",
+                fontSize: "12px",
+                fontWeight: "normal",
+                color: "textSecondary",
+              }}
+            >
+              10 Beğeni
+            </Typography>
+          </ButtonsWrapper>
+          <TextField
+            label="Yorum yaz..."
+            variant="outlined"
+            margin="normal"
+            fullWidth
+            size="small"
+          />
+        </PostCardWrapper>
+      </Grid>
+
+      {/* Üçüncü Kolon */}
+      <Grid item xs={12} sm={4} md={3}>
+        <CardWrapper>
+          <Typography
+            variant="h6"
+            style={{
+              fontFamily: "Arial",
+              fontSize: "14px",
+              fontWeight: "normal",
+            }}
+          >
+            İlgini Çekebilecek İlanlar
+          </Typography>
+        </CardWrapper>
+        <CardWrapper>
+          <Typography
+            variant="h6"
+            style={{
+              fontFamily: "Arial",
+              fontSize: "14px",
+              fontWeight: "normal",
+            }}
+          >
+            Popüler İçerikler
+          </Typography>
+        </CardWrapper>
+      </Grid>
+    </PageWrapper>
+  );
+};
+
+export default App;
