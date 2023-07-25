@@ -1,0 +1,18 @@
+{
+    "bireysel-firma": [{
+        "id" : 1,
+        "name": "Aselsan",
+        "category": "Savunma Sanayii",
+        "type": "Halka Açık Şirket",
+        "founded": "1975",
+        "location": "Ankara, Yenimahalle",
+        "employeeCount": "5.001-10.000",
+        "about": "Türk Silahlı Kuvvetleri'nin haberleşme ihtiyaçlarının milli imkanlarla karşılanması için 1975 yılında kurulan ASELSAN; Türk Silahlı Kuvvetlerini Güçlendirme Vakfı'na (TSKGV) bağlı bir anonim şirkettir. ASELSAN hisselerinin %74,20'si TSKGV'ye aittir, %25,70'lik kısım ise Borsa İstanbul'da (BİST) işlem görmektedir. Türkiye'nin en büyük savunma elektroniği kuruluşu olan ASELSAN; başta Türk Silahlı Kuvvetleri olmak üzere yurtiçi ve yurtdışı ihtiyaç makamlarının, haberleşme ve bilgi teknolojileri, radar ve elektronik harp, elektro-optik, aviyonik, insansız sistemler, kara, deniz ve silah sistemleri, hava savunma ve füze sistemleri, komuta kontrol sistemleri, ulaştırma, güvenlik, trafik, otomasyon ve sağlık teknolojilerine yönelik ihtiyaçlarını karşılayabilecek çok geniş bir ürün yelpazesine sahip bulunmaktadır. ASELSAN bugün, özgün ürünlerini ihraç eden, dünyanın ilk 100 savunma sanayi şirketi (Defense News Top 100) listesinde yer alan, yerel kuruluşlar ile işbirliği modelleri kurgulayarak uluslararası pazarlarda ortaklıklar kuran, yatırım yapan bir marka haline gelmiştir. ASELSAN, vizyonundaki teknoloji vurgusu ile \"Küresel pazarda yarattığı değerler ile sürdürülebilir büyümesini koruyan, rekabet gücü ile tercih edilen, stratejik bir ortak gibi güven duyulan, çevreye ve insana duyarlı bir milli teknoloji firması olmak\" hedefini benimsemiştir. Bu başarının kilit faktörlerinden olan 6.000'i aşkın çalışanı bünyesinde yer alan nitelikli mühendislik kadrosu ile ASELSAN, yıllık cirosunun ortalama %7'sini, kendi özkaynakları ile finanse edilen AR-GE faaliyetlerine ayırmaktadır.",
+        "expertise": "Savunma Sistemleri Teknolojileri, Radar ve Elektronik Harp Sistemleri, Mikroelektronik, Elektro-Optik, İşletme ve Taşımacılık, Güvenlik Enerji ve Otomasyon Sistemleri",
+        "website": "http://www.aselsan.com.tr",
+        "address": "Mehmet Akif Ersoy Mahallesi 296. Cadde No: 16, 06370 Yenimahalle-Ankara, Türkiye",
+        "phone": "+90 284 123 45 67",
+        "contact": "+90 (312) 354 13 02 / +90 (312) 354 26 69"
+        }        
+    ]
+}
