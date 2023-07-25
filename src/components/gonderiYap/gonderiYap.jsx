@@ -1,3 +1,6 @@
+/* Author: Hasan Basri BİLGE
+Last Update: 25.07.2023 */
+
 import React from 'react';
 import { Paper, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
