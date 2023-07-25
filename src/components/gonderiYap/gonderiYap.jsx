@@ -35,7 +35,7 @@ const BlueButton = styled(Button)({
   borderColor: "blue",
   backgroundColor: "transparent",
   "&:hover": {
-    backgroundColor: "transparent", // Keep the background color transparent on hover
+    backgroundColor: "transparent",
   },
 });
 
@@ -44,7 +44,7 @@ const GreenButton = styled(Button)({
   color: "white",
   backgroundColor: "green",
   "&:hover": {
-    backgroundColor: "black", // Keep the background color transparent on hover
+    backgroundColor: "black",
   },
 });
 

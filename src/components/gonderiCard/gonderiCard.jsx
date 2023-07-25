@@ -54,7 +54,6 @@ function GonderiCard() {
               </Typography>
             </Grid>
           </Grid>
-          {/* Post Content */}
           <Typography
             variant="body1"
             style={{
@@ -79,12 +78,10 @@ function GonderiCard() {
           >
             10 Beğeni
           </Typography>
-          {/* Like, Comment, and Likes Count */}
           <ButtonsWrapper>
             <RoundButton variant="contained" color="primary" size="small">
               Beğen
             </RoundButton>
-            {/* Move the SendIcon button outside of the TextField */}
             <TextField
               label="Yorum yaz..."
               variant="outlined"
