@@ -3,8 +3,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginLayout from "../layouts/LoginLayout";
 import CompanyLayout from "../layouts/CompanyLayout";
 import UserLayout from "../layouts/UserLayout";
-//import Giris from "../pages/giris/Giris";
-//import KayitOl from "../pages/giris/KayitOl";
+import GirisBireysel from "../pages/giris/GirisBireysel";
+import GirisKurumsal from "../pages/giris/GirisKurumsal";
+import KayitOlBireysel from "../pages/giris/KayitOlBireysel";
+import KayitOlKurumsal from "../pages/giris/KayitOlKurumsal";
 import BireyselAnasayfa from "../pages/bireyselAnasayfa/BireyselAnasayfa";
 import BireyselDeneyimler from "../pages/bireyselDeneyimler/BireyselDeneyimler";
 import BirseyselFirma from "../pages/bireyselFirma/BireyselFirma";
@@ -27,6 +29,8 @@ const Router = () => {
           path="/"
           element={<LoginLayout element={<SignInOutContainer />} />}
         />
+        <Route path="/kayit-ol-bireysel" element={<KayitOlBireysel />} />
+        <Route path="/kayit-ol-kurumsal" element={<KayitOlKurumsal />} />
         <Route
           path="/bireysel-anasayfa"
           element={
@@ -39,6 +43,7 @@ const Router = () => {
             />
           }
         />
+
         <Route
           path="/bireysel-deneyimler"
           element={<UserLayout element={<BireyselDeneyimler />} />}

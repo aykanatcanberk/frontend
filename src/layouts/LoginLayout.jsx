@@ -1,13 +1,8 @@
 import React from "react";
-import BireyselNavbar from "../components/navbar/bireysel_navbar/BireyselNavbar";
+//import BireyselNavbar from "../components/navbar/bireysel_navbar/BireyselNavbar";
 
 const LoginLayout = ({ element }) => {
-  return (
-    <div>
-      <BireyselNavbar />
-      {element}
-    </div>
-  );
+  return <div>{element}</div>;
 };
 
 export default LoginLayout;
