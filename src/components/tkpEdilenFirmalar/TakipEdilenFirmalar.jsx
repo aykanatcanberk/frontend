@@ -2,6 +2,11 @@ import React from "react";
 import { Grid, Paper, Typography, Button, Card, CardActionArea, CardContent } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import { styled } from "@mui/material/styles";
+import aselsanlogo from "./images/aselsanlogo.png";
+import havelsanlogo from "./images/havelsanlogo.png";
+import roketsan from "./images/roketsan.png";
+import tusas from "./images/tusas.png";
+import tet from "./images/tr-egitim-ve-teknoloji-as.png";
 
 const CardWrapper = styled(Paper)({
   padding: "1rem",
@@ -11,9 +16,11 @@ const CardWrapper = styled(Paper)({
 });
 
 const SmallAvatarWrapper = styled(Avatar)({
-  width: "30px",
-  height: "30px",
-  margin: "0.3rem auto",
+  width: "40px",
+  height: "40px",
+  margin: "0 auto",
+  marginTop: "5px",
+  marginBottom: "0px",
   borderRadius: "50%",
 });
 
@@ -36,10 +43,10 @@ function TakipEdilenFirmalar() {
       </Typography>
       <Grid container spacing={1}>
       <Grid item xs={6} sm={6} md={6}>
-      <Card>
+      <Card elevation={0} style={{borderRadius: "50%"}}>
         <CardActionArea onClick={handleClick}>
           {/* Karta eklemek istediğiniz içerik burada olacak */}
-          <SmallAvatarWrapper src="url_firma_avatar_1" alt="Firma 1" />
+          <SmallAvatarWrapper src={roketsan} alt="Roketsan" />
           <CardContent>
             <Typography
               style={{
@@ -55,10 +62,10 @@ function TakipEdilenFirmalar() {
       </Card>
     </Grid>
     <Grid item xs={6} sm={6} md={6}>
-      <Card>
+      <Card elevation={0} style={{borderRadius: "50%"}}>
         <CardActionArea onClick={handleClick}>
           {/* Karta eklemek istediğiniz içerik burada olacak */}
-          <SmallAvatarWrapper src="url_firma_avatar_1" alt="Firma 1" />
+          <SmallAvatarWrapper src={havelsanlogo} alt="Havelsan" />
           <CardContent>
             <Typography
               style={{
@@ -74,10 +81,10 @@ function TakipEdilenFirmalar() {
       </Card>
     </Grid>
     <Grid item xs={6} sm={6} md={6}>
-      <Card>
+      <Card elevation={0} style={{borderRadius: "50%"}}>
         <CardActionArea onClick={handleClick}>
           {/* Karta eklemek istediğiniz içerik burada olacak */}
-          <SmallAvatarWrapper src="url_firma_avatar_1" alt="Firma 1" />
+          <SmallAvatarWrapper src={aselsanlogo} alt="Aselsan" />
           <CardContent>
             <Typography
               style={{
@@ -93,10 +100,10 @@ function TakipEdilenFirmalar() {
       </Card>
     </Grid>
     <Grid item xs={6} sm={6} md={6}>
-      <Card>
+      <Card elevation={0} style={{borderRadius: "50%"}}>
         <CardActionArea onClick={handleClick}>
           {/* Karta eklemek istediğiniz içerik burada olacak */}
-          <SmallAvatarWrapper src="url_firma_avatar_1" alt="Firma 1" />
+          <SmallAvatarWrapper src={tusas} alt="TUSAŞ" />
           <CardContent>
             <Typography
               style={{
@@ -114,10 +121,10 @@ function TakipEdilenFirmalar() {
         <Grid item xs={12} sm={12} md={12}>
           <Grid container justifyContent="center" spacing={1}>
           <Grid item xs={6} sm={6} md={6}>
-      <Card>
+      <Card elevation={0} style={{borderRadius: "50%"}}>
         <CardActionArea onClick={handleClick}>
           {/* Karta eklemek istediğiniz içerik burada olacak */}
-          <SmallAvatarWrapper src="url_firma_avatar_1" alt="Firma 1" />
+          <SmallAvatarWrapper src={tet} alt="TET A.Ş." />
           <CardContent>
             <Typography
               style={{

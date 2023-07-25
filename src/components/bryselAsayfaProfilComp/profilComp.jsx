@@ -2,6 +2,7 @@ import React from "react";
 import { Grid, Paper, Typography } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import { styled } from "@mui/material/styles";
+import pp from "./images/pp";
 
 const CardWrapper = styled(Paper)({
   padding: "1rem",
@@ -20,7 +21,7 @@ const AvatarWrapper = styled(Avatar)({
 function ProfilComp() {
   return (
     <CardWrapper>
-          <AvatarWrapper src="url_profil_avatar" alt="Profil Avatarı" />
+          <AvatarWrapper src={pp} alt="Profil Avatarı" />
           <Typography
             variant="h6"
             style={{
@@ -29,7 +30,7 @@ function ProfilComp() {
               fontWeight: "normal",
             }}
           >
-            Kullanıcı Adı
+            Patrick Bateman
           </Typography>
           <Grid item xs={12} sm={12} md={12}>
             <Typography

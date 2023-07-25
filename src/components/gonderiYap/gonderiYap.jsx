@@ -3,6 +3,7 @@ import { Paper, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import Divider from '@mui/material/Divider';
 
 
 const SharePostCardWrapper = styled(Paper)({
@@ -61,6 +62,7 @@ function GonderiYap() {
       >
         Gönderi Paylaş
       </Typography>
+      <Divider />
       <PostInputWrapper
         label="Gönderinizi buraya yazın"
         variant="outlined"

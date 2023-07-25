@@ -17,6 +17,7 @@ const PostCardWrapper = styled(Paper)({
     marginBottom: "10px",
     marginTop: "10px",
     borderRadius: "20px",
+    marginLeft: "0px"
 });
 const RoundButton = styled(Button)({
     borderRadius: "20px",
@@ -79,7 +80,7 @@ function GonderiCard() {
             10 Beğeni
           </Typography>
           <ButtonsWrapper>
-            <RoundButton variant="contained" color="primary" size="small">
+            <RoundButton variant="contained" color="primary" size="small" sx={{marginRight: "5px"}}>
               Beğen
             </RoundButton>
             <TextField
@@ -90,7 +91,7 @@ function GonderiCard() {
               size="small"
               style={{ flexGrow: 1 }}
             />
-            <RoundButton variant="contained" color="primary" size="small">
+            <RoundButton variant="contained" color="primary" size="small" sx={{marginLeft: "5px"}}>
               <SendIcon />
             </RoundButton>
           </ButtonsWrapper>
