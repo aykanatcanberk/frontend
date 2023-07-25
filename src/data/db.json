@@ -20,14 +20,40 @@
         "ilan_adi":"Yazılım Geliştirme Uzmanı",
         "ilan_date": "14.06.2023",
         "ilan_tipi":"İş",
-        "desc":"Daha önce Java kullanmış en az 2 yıl tecrübeli, lisans diplomalı yazılım geliştirme uzmanı arıyoruz"
+        "desc":"Daha önce Java kullanmış en az 2 yıl tecrübeli, lisans diplomalı yazılım geliştirme uzmanı arıyoruz",
+        "çalışma_şekli":"Yüz Yüze",
+        "çalışma_tercihi":"Tam Zamanlı",
+        "bölüm":"Bilgisayar Mühendisliği"
         },
         {
-          "id" : 2,
-          "ilan_adi":"Veritabanı Stajyeri",
-          "ilan_date": "18.06.2023",
-          "ilan_tipi":"Staj",
-          "desc":"SQL,MySQL,PostgreSQL,Microsoft SQL Server içinden en az biri hakkında bilgi sahibi ve zorunlu stajı 3. veya 4.sınıf öğrencisi arıyoruz."
-          }
+        "id" : 2,
+        "ilan_adi":"Veritabanı Stajyeri",
+        "ilan_date": "18.06.2023",
+        "ilan_tipi":"Staj",
+        "desc":"SQL,MySQL,PostgreSQL en az biri hakkında bilgi sahibi ve zorunlu stajı 4.sınıf öğrencisi arıyoruz.",
+        "çalışma_şekli":"Yüz Yüze",
+        "çalışma_tercihi":"Tam Zamanlı",
+        "bölüm":"Bilgisayar Mühendisliği"
+        },
+        {
+        "id" : 3,
+        "ilan_adi":"Veritabanı Uzmanı",
+        "ilan_date": "20.06.2023",
+        "ilan_tipi":"İş",
+        "desc":"SQL,MySQL,PostgreSQL en az biri hakkında tecrübesi olan uzman arıyoruz.",
+        "çalışma_şekli":"Hibrit",
+        "çalışma_tercihi":"Tam Zamanlı",
+        "bölüm":"Bilgisayar Mühendisliği"
+         },
+         {
+        "id" : 4,
+        "ilan_adi":"Makine Mühendisi/Teknikeri",
+        "ilan_date": "12.06.2023",
+        "ilan_tipi":"İş",
+        "desc":"TS EN ISO IEC 17020 kalite sistemleri hakkında eğitimi veya tecrübesi olan makine mühendisi arıyoruz.",
+        "çalışma_şekli":"Yüz Yüze",
+        "çalışma_tercihi":"Serbest Zamanlı",
+        "bölüm":"Makine Mühendisliği"
+         }
     ]
 }
