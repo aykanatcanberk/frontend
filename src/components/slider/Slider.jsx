@@ -9,7 +9,7 @@ function Slider(props) {
         border: "2px solid blue",
         height: "40vh",
         margin: "20px",
-        width: "40%",
+        width: "100%",
         minWidth: "600px",
       }}
     >

@@ -21,11 +21,10 @@ function BireyselDeneyimler() {
     },
     {
       name: "Ayşe Fatma",
-      description: `
-      Bu beş aylık staj dönemim boyunca, ABC Teknoloji Şirketi'nde yazılım geliştirme ekibiyle birlikte çalıştım ve değerli bir deneyim kazandım. Şirket, öncü teknolojiler üzerinde çalışan bir endüstri lideridir ve kendilerine özgü ürünler geliştirmektedir.
+      description: `Bu beş aylık staj dönemim boyunca, ABC Teknoloji Şirketi'nde yazılım geliştirme ekibiyle birlikte çalıştım ve değerli bir deneyim kazandım. Şirket, öncü teknolojiler üzerinde çalışan bir endüstri lideridir ve kendilerine özgü ürünler geliştirmektedir.
       
       Stajım süresince, gerçek dünya yazılım projelerine katılarak, yazılım geliştirme süreçleri hakkında derinlemesine bir anlayış elde ettim. Projeler, takım çalışmasını vurgulayan ve benim sorumluluklarımı alarak öğrenme fırsatı sağlayan çeşitli endüstriyel uygulamaları kapsıyordu.
-      
+   
       Proje ekiplerimiz, yazılım yaşam döngüsünün her aşamasında yer aldığımız ve kendi becerilerimi geliştirmek için önemli bir fırsat sağlayan gerçek müşteri projeleriydi. İşbirliği içinde çalışarak, analiz etme, tasarım yapma, kodlama ve test etme aşamalarında yer aldım. Bu süreçler, yazılımın nasıl başarılı bir şekilde geliştirileceği ve sunulacağı konusunda sağlam bir kavrayış elde etmeme yardımcı oldu.
       `,
       firma: "Havelsan",
@@ -68,7 +67,7 @@ function BireyselDeneyimler() {
   return (
     <div className="bireyselDeneyimler">
       <div className="slider">
-        <Carousel>
+        <Carousel sx={{ width: "700px", height: "400px" }}>
           {items.map((item, i) => (
             <Slider key={i} item={item} />
           ))}
