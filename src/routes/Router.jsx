@@ -3,8 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginLayout from "../layouts/LoginLayout";
 import CompanyLayout from "../layouts/CompanyLayout";
 import UserLayout from "../layouts/UserLayout";
-import GirisBireysel from "../pages/giris/GirisBireysel";
-import GirisKurumsal from "../pages/giris/GirisKurumsal";
 import KayitOlBireysel from "../pages/giris/KayitOlBireysel";
 import KayitOlKurumsal from "../pages/giris/KayitOlKurumsal";
 import BireyselAnasayfa from "../pages/bireyselAnasayfa/BireyselAnasayfa";
