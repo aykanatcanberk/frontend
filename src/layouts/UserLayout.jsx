@@ -1,7 +1,7 @@
 import React from "react";
 import BireyselNavbar from "../components/navbar/bireysel_navbar/BireyselNavbar";
 
-const LoginLayout = ({ element }) => {
+const UserLayout = ({ element }) => {
   return (
     <div>
       <BireyselNavbar />
@@ -10,4 +10,4 @@ const LoginLayout = ({ element }) => {
   );
 };
 
-export default LoginLayout;
+export default UserLayout;
