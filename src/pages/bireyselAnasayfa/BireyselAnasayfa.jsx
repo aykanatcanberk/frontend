@@ -19,7 +19,7 @@ const PageWrapper = styled(Grid)({
   width: "100%",
 });
 
-const App = () => {
+const BireyselAnasayfa = () => {
   return (
     <PageWrapper container spacing={3} justifyContent="center">
       <Grid item xs={10} sm={5} md={2.5} sx={{ display: "none", "@media (min-width: 960px)": { display: "block" } }}>
@@ -48,4 +48,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default BireyselAnasayfa;
