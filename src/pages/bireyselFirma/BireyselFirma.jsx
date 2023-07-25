@@ -1,3 +1,5 @@
+/* Author: Hasan Basri BİLGE
+Last Update: 25.07.2023 */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ProfileCardComp from "../../components/bireyselFirmaLayoutComp/bireyselFirmaLay";
