@@ -1,3 +1,5 @@
+/* Author: Hasan Basri BİLGE
+Last Update: 25.07.2023 */
 import "./BireyselFirma.css"
 import * as React from 'react';
 import { useState, useEffect } from 'react';
