@@ -1,5 +1,5 @@
 /* Author: Hasan Basri BİLGE
-Last Update: 25.07.2023 */
+Last Update: 26.07.2023 */
 
 import React from 'react';
 import { Paper, Typography } from "@mui/material";
@@ -33,16 +33,6 @@ const ButtonsWrapper = styled("div")({
   marginTop: "10px",
 });
 
-const BlueButton = styled(Button)({
-  borderRadius: "15px",
-  color: "blue",
-  borderColor: "blue",
-  backgroundColor: "transparent",
-  "&:hover": {
-    backgroundColor: "transparent",
-  },
-});
-
 const GreenButton = styled(Button)({
   borderRadius: "15px",
   color: "white",
@@ -73,9 +63,6 @@ function GonderiYap() {
         rows={4}
       />
       <ButtonsWrapper>
-        <BlueButton variant="contained" color="primary" sx={{ height: "30px", width: "auto" }}>
-          Resim Yükle
-        </BlueButton>
         <GreenButton variant="contained" color="primary" sx={{ height: "30px", width: "auto" }}>
           Paylaş
         </GreenButton>

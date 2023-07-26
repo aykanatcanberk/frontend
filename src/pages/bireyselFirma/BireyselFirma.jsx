@@ -4,11 +4,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ProfileCardComp from "../../components/bireyselFirmaLayoutComp/bireyselFirmaLay";
 
-function ProfileCard() {
+function BireyselFirma({id}) {
   const [companyDataList, setCompanyDataList] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/bireysel-firma`)
+    axios.get(`http://localhost:3000/info-firma${id}`)
       .then((response) => {
         setCompanyDataList(response.data);
       })
@@ -26,4 +26,4 @@ function ProfileCard() {
   );
 }
 
-export default ProfileCard;
+export default BireyselFirma;
