@@ -25,7 +25,7 @@ const RoundButton = styled(Button)({
   padding: "5px 10px",
 });
 
-function Gonderi() {
+function Gonderi({ postcard }) {
   return (
     <PostCardWrapper>
       <Grid container alignItems="center">
@@ -46,7 +46,7 @@ function Gonderi() {
               marginLeft: "3px",
             }}
           >
-            Kullanıcı Adı
+            {postcard.companyname}
           </Typography>
 
           <Typography
@@ -58,7 +58,7 @@ function Gonderi() {
               color: "textSecondary",
             }}
           >
-            25 Temmuz 2023, 18.30
+            {postcard.companydate}
           </Typography>
         </Grid>
       </Grid>
@@ -71,17 +71,10 @@ function Gonderi() {
           fontWeight: "normal",
         }}
       >
-        (GÖNDERİ İÇERİĞİ) Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Excepturi est ad aspernatur illo dolore voluptatibus
-        exercitationem natus eligendi, qui inventore laboriosam consequuntur
-        reiciendis quasi reprehenderit! Nisi eos dignissimos voluptatem quam.
-        Optio expedita quis dolorem quam corrupti eaque voluptate placeat
-        voluptatum quas fugiat sapiente, nostrum a fugit asperiores illum ipsam
-        cupiditate qui laborum nemo, sed, ad veniam soluta nihil. Quam,
-        sapiente.
+        {postcard.postdesc}
       </Typography>
 
-      <Typography
+      {/* <Typography
         variant="body2"
         style={{
           fontFamily: "Arial",
@@ -92,7 +85,7 @@ function Gonderi() {
         }}
       >
         32 Beğeni
-      </Typography>
+      </Typography> */}
       <ButtonsWrapper>
         <RoundButton
           variant="contained"
