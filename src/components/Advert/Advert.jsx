@@ -10,6 +10,10 @@ import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import TextareaAutosize from '@mui/base/TextareaAutosize';
 import { grey } from '@mui/material/colors';
 import BusinessIcon from '@mui/icons-material/Business';
+import CardActions from '@mui/joy/CardActions';
+import Button from '@mui/material/Button';
+import { Link } from 'react-router-dom';
+
 const StyledTextarea = styled(TextareaAutosize)(
   ({ theme }) => `
   width: 310px;
@@ -57,6 +61,13 @@ export default function Advert({advert}){
         defaultValue={advert.desc}
         readOnly
       />
+      <CardActions>
+      <Link to="/kurumsal-ilan">
+      <Button variant="solid" color="primary">
+            İlan Detayı 
+          </Button>
+          </Link>
+      </CardActions>
     </Card>
   );
 }
