@@ -32,7 +32,7 @@ const FirmaKartvizit = ({ companycard }) => {
           </Typography>
 
           <Typography variant="body1" fontSize={"14px"} color="text.secondary">
-            <CalendarMonthIcon sx={{ marginLeft: "115px" }} />
+            <CalendarMonthIcon sx={{ marginLeft: "5px" }} />
             {companycard.founded}
             <LocationSearchingIcon sx={{ marginLeft: "10px" }} />
             {companycard.location}
