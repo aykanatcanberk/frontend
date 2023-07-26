@@ -10,8 +10,6 @@ import FormControl from '@mui/material/FormControl';
 import Typography from '@mui/joy/Typography'
 import İlan from '../../components/İlan/İlan';
 import db from '../../data/db.json';
-import Typography from "@mui/joy/Typography";
-
 
 const jobOptions = [{ title: "Staj İlanları" }, { title: "İş İlanları" }];
 const companies = [
