@@ -33,7 +33,7 @@ export default function ComplexGrid() {
       </Container>
       <div className="searchFilter">{}</div>
       <div className="firmaContainer">
-        {db.bireyselfirmalar.map((companycard) => (
+        {db["info-firma"].map((companycard) => (
           <FirmaKartvizit key={companycard.id} companycard={companycard} />
         ))}
       </div>

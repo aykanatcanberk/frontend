@@ -118,43 +118,5 @@
       "çalışma_tercihi": "Serbest Zamanlı",
       "bölüm": "Makine Mühendisliği"
     }
-  ],
-
-  "bireyselfirmalar": [
-    {
-      "id": 1,
-      "name": "Aselsan",
-      "founded": "1975",
-      "location": "Ankara, Yenimahalle",
-      "employeeCount": "5.001-10.000"
-    },
-    {
-      "id": 2,
-      "name": "HAVELSAN",
-      "founded": "1982",
-      "location": "Ankara",
-      "employeeCount": "1.001 - 5.000"
-    },
-    {
-      "id": 3,
-      "name": "ROKETSAN",
-      "founded": "1988",
-      "location": " Ankara, Elmadağ",
-      "employeeCount": "1.001 - 5000"
-    },
-    {
-      "id": 4,
-      "name": "TR EĞİTİM VE TEKNOLOJİ A.Ş.",
-      "founded": "2019",
-      "location": "Ankara",
-      "employeeCount": "11 - 50"
-    },
-    {
-      "id": 5,
-      "name": "TUSAŞ",
-      "founded": "1973",
-      "location": "Ankara, Kahramankazan",
-      "employeeCount": "5.001-10.000"
-    }
   ]
 }
