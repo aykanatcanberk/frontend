@@ -1,6 +1,6 @@
 {
- "info-firma": [
-  {
+  "info-firma": [
+    {
       "id": 1,
       "name": "Aselsan",
       "category": "Savunma Sanayii",
@@ -76,47 +76,85 @@
       "phone": "+90 (312) 811 18 00",
       "contact": "+90 (312) 811 14 25"
     }
-    ],
-    "advert": [{
-        "id" : 1,
-        "ilan_adi":"Yazılım Geliştirme Uzmanı",
-        "ilan_date": "14.06.2023",
-        "ilan_tipi":"İş İlanı",
-        "desc":"Daha önce Java kullanmış en az 2 yıl tecrübeli, lisans diplomalı yazılım geliştirme uzmanı arıyoruz",
-        "çalışma_şekli":"Yüz Yüze",
-        "çalışma_tercihi":"Tam Zamanlı",
-        "bölüm":"Bilgisayar Mühendisliği"
-        },
-        {
-        "id" : 2,
-        "ilan_adi":"Veritabanı Stajyeri",
-        "ilan_date": "18.06.2023",
-        "ilan_tipi":"Staj İlanı",
-        "desc":"SQL,MySQL,PostgreSQL en az biri hakkında bilgi sahibi ve zorunlu stajı 4.sınıf öğrencisi arıyoruz.",
-        "çalışma_şekli":"Yüz Yüze",
-        "çalışma_tercihi":"Tam Zamanlı",
-        "bölüm":"Bilgisayar Mühendisliği"
-        },
-        {
-        "id" : 3,
-        "ilan_adi":"Veritabanı Uzmanı",
-        "ilan_date": "20.06.2023",
-        "ilan_tipi":"İş İlanı",
-        "desc":"SQL,MySQL,PostgreSQL en az biri hakkında tecrübesi olan uzman arıyoruz.",
-        "çalışma_şekli":"Hibrit",
-        "çalışma_tercihi":"Tam Zamanlı",
-        "bölüm":"Bilgisayar Mühendisliği"
-         },
-         {
-        "id" : 4,
-        "ilan_adi":"Makine Mühendisi/Teknikeri",
-        "ilan_date": "12.06.2023",
-        "ilan_tipi":"İş İlanı",
-        "desc":"TS EN ISO IEC 17020 kalite sistemleri hakkında eğitimi veya tecrübesi olan makine mühendisi arıyoruz.",
-        "çalışma_şekli":"Yüz Yüze",
-        "çalışma_tercihi":"Serbest Zamanlı",
-        "bölüm":"Makine Mühendisliği"
-         }
-    ]
-}
+  ],
+  "advert": [
+    {
+      "id": 1,
+      "ilan_adi": "Yazılım Geliştirme Uzmanı",
+      "ilan_date": "14.06.2023",
+      "ilan_tipi": "İş İlanı",
+      "desc": "Daha önce Java kullanmış en az 2 yıl tecrübeli, lisans diplomalı yazılım geliştirme uzmanı arıyoruz",
+      "çalışma_şekli": "Yüz Yüze",
+      "çalışma_tercihi": "Tam Zamanlı",
+      "bölüm": "Bilgisayar Mühendisliği"
+    },
+    {
+      "id": 2,
+      "ilan_adi": "Veritabanı Stajyeri",
+      "ilan_date": "18.06.2023",
+      "ilan_tipi": "Staj İlanı",
+      "desc": "SQL,MySQL,PostgreSQL en az biri hakkında bilgi sahibi ve zorunlu stajı 4.sınıf öğrencisi arıyoruz.",
+      "çalışma_şekli": "Yüz Yüze",
+      "çalışma_tercihi": "Tam Zamanlı",
+      "bölüm": "Bilgisayar Mühendisliği"
+    },
+    {
+      "id": 3,
+      "ilan_adi": "Veritabanı Uzmanı",
+      "ilan_date": "20.06.2023",
+      "ilan_tipi": "İş İlanı",
+      "desc": "SQL,MySQL,PostgreSQL en az biri hakkında tecrübesi olan uzman arıyoruz.",
+      "çalışma_şekli": "Hibrit",
+      "çalışma_tercihi": "Tam Zamanlı",
+      "bölüm": "Bilgisayar Mühendisliği"
+    },
+    {
+      "id": 4,
+      "ilan_adi": "Makine Mühendisi/Teknikeri",
+      "ilan_date": "12.06.2023",
+      "ilan_tipi": "İş İlanı",
+      "desc": "TS EN ISO IEC 17020 kalite sistemleri hakkında eğitimi veya tecrübesi olan makine mühendisi arıyoruz.",
+      "çalışma_şekli": "Yüz Yüze",
+      "çalışma_tercihi": "Serbest Zamanlı",
+      "bölüm": "Makine Mühendisliği"
+    }
+  ],
 
+  "bireyselfirmalar": [
+    {
+      "id": 1,
+      "name": "Aselsan",
+      "founded": "1975",
+      "location": "Ankara, Yenimahalle",
+      "employeeCount": "5.001-10.000"
+    },
+    {
+      "id": 2,
+      "name": "HAVELSAN",
+      "founded": "1982",
+      "location": "Ankara",
+      "employeeCount": "1.001 - 5.000"
+    },
+    {
+      "id": 3,
+      "name": "ROKETSAN",
+      "founded": "1988",
+      "location": " Ankara, Elmadağ",
+      "employeeCount": "1.001 - 5000"
+    },
+    {
+      "id": 4,
+      "name": "TR EĞİTİM VE TEKNOLOJİ A.Ş.",
+      "founded": "2019",
+      "location": "Ankara",
+      "employeeCount": "11 - 50"
+    },
+    {
+      "id": 5,
+      "name": "TUSAŞ",
+      "founded": "1973",
+      "location": "Ankara, Kahramankazan",
+      "employeeCount": "5.001-10.000"
+    }
+  ]
+}

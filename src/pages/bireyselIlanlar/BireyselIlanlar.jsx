@@ -2,16 +2,14 @@ import React from "react";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import Checkbox from '@mui/material/Checkbox';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import Typography from '@mui/joy/Typography'
-import İlan from '../../components/İlan/İlan';
-import db from '../../data/db.json';
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Checkbox from "@mui/material/Checkbox";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
 import Typography from "@mui/joy/Typography";
-
+import İlan from "../../components/İlan/İlan";
+import db from "../../data/db.json";
 
 const jobOptions = [{ title: "Staj İlanları" }, { title: "İş İlanları" }];
 const companies = [
