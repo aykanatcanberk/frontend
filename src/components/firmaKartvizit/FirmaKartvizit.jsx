@@ -39,7 +39,7 @@ const FirmaKartvizit = ({ props }) => {
             <PeopleIcon sx={{ marginLeft: "10px" }} />
             {props.calisansayisi}
           </Typography>
-          <Typography sx={{ marginLeft: "210px" }}>
+          <Typography sx={{ marginLeft: "270px" }}>
             <Link to="/bireysel-firma">
               <Button sx={{ color: "	#00838F" }}>Sayfaya Git</Button>
             </Link>
