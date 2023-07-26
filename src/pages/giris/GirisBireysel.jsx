@@ -72,7 +72,7 @@ function Login({ usersData, fetchUsers }) {
     setOpen(true);
     event.preventDefault();
     ProceedLogin();
-    const data = new FormData(event.currentTarget);
+    // const data = new FormData(event.currentTarget);
   };
 
   const ProceedLogin = () => {
