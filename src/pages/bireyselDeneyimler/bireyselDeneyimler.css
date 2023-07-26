@@ -1,34 +1,29 @@
-.bireyselDeneyimler {
-  background-color: #f5f5f5;
-  padding: 50px 0;
-  height: 100%;
-  border: 2px solid rgb(54, 245, 73);
-  height: 100vh;
-  gap: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.swiper {
+  width: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
-.bireyselDeneyimler .slider {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 2px solid rgb(47, 30, 173);
-  width: 100%;
-  margin-bottom: 10px;
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 500px;
+  height: 400px;
 }
-.bireyselDeneyimler .deneyimPaylas {
-  border: 2px solid red;
+
+.deneyimPaylas {
+  width: 525px;
+  height: 380px;
+
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+
   align-items: center;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-.bireyselDeneyimler .deneyimText {
+.deneyimText {
   border: 10px solid red;
   margin: 20px;
   display: flex;
@@ -41,8 +36,41 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
 }
-.bireyselDeneyimler .deneyimPaylas .deneyimFirmaButon {
+.deneyimContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
+.deneyimContainer h3 {
+  color: rgb(118, 118, 118);
+}
+
+.gecmisDeneyimler {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.deneyimBaslik {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
+}
+
+.deneyimBaslik h2 {
+  color: rgb(25, 86, 136);
+  color: linear-gradient(
+    90deg,
+    rgba(25, 86, 136, 1) 0%,
+    rgba(248, 169, 66, 1) 100%
+  );
+}
+.deneyimBaslik h4 {
+  color: rgb(255, 220, 173);
+}
+.deneyimPaylas .deneyimFirmaButon {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }

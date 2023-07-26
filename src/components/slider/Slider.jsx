@@ -1,6 +1,4 @@
 import React from "react";
-import PersonIcon from "@mui/icons-material/Person";
-import WorkHistoryIcon from "@mui/icons-material/WorkHistory";
 import { Paper } from "@mui/material";
 import TextField from "@mui/material/TextField";
 function Slider(props) {

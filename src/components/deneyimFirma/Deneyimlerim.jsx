@@ -1,5 +1,5 @@
 import React from "react";
-import { List, ListItem, Paper } from "@mui/material";
+import { Paper } from "@mui/material";
 import { SwiperSlide } from "swiper/react";
 import Slider from "../../components/slider/Slider";
 function Deneyimlerim(props) {
