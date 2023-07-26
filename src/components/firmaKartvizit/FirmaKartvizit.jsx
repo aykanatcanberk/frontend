@@ -17,7 +17,7 @@ const FirmaKartvizit = ({ props }) => {
     marginLeft: "10px",
     border: "1px solid #ccc",
   };
-  console.log(props);
+
   return (
     <div className="firmaKartvizit">
       <Paper>
