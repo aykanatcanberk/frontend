@@ -25,7 +25,13 @@ const bireyselfirmalardata = [
     konum: "Ankara",
   },
   {
-    name: "Vizyoner Genç",
+    name: "Roketsan",
+    kurulustarihi: 2000,
+    calisansayisi: 4050,
+    konum: "Ankara",
+  },
+  {
+    name: "TR EĞİTİM VE TEKNOLOJİ A.Ş.",
     kurulustarihi: 2019,
     calisansayisi: 4050,
     konum: "Ankara",
