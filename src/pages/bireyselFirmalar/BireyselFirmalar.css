@@ -12,8 +12,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  margin-top: 150px;
+  margin-top: 110px;
   padding-top: 0px;
   width: 25%;
-  height: 150px;
+  height: 140px;
+  margin-left: 62px;
+  margin-right: 61px;
 }
