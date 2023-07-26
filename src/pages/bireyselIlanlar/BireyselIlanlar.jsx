@@ -11,7 +11,7 @@ import Typography from "@mui/joy/Typography";
 import İlan from "../../components/İlan/İlan";
 import db from "../../data/db.json";
 import Button from '@mui/material/Button';
-
+import "./BireyselIlanlar.css";
 
 const jobOptions = [{ title: "Staj İlanları" }, { title: "İş İlanları" }];
 const companies = [
@@ -158,12 +158,12 @@ function BireyselIlanlar() {
               <FormControlLabel control={<Checkbox />} label="Tam Zamanlı" />
               <FormControlLabel control={<Checkbox />} label="Yarı Zamanlı" />
               <FormControlLabel control={<Checkbox />} label="Proje Bazlı" />
-              <FormControlLabel
-                control={<Checkbox />}
-                label="Serbest Zamanlı"
-              />
+              <FormControlLabel control={<Checkbox />}label="Serbest Zamanlı"/>
             </FormControl>
           </Grid>
+        </Grid>
+        <Grid item>
+        <Button className="button-style">Uygula</Button>
         </Grid>
       </Grid>
       <Grid item xs={12} lg={9}>
