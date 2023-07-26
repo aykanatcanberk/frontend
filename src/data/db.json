@@ -1,0 +1,122 @@
+{
+ "info-firma": [
+  {
+      "id": 1,
+      "name": "Aselsan",
+      "category": "Savunma Sanayii",
+      "type": "Halka Açık Şirket",
+      "founded": "1975",
+      "location": "Ankara, Yenimahalle",
+      "employeeCount": "5.001-10.000",
+      "about": "Türk Silahlı Kuvvetleri'nin haberleşme ihtiyaçlarının milli imkanlarla karşılanması için 1975 yılında kurulan ASELSAN; Türk Silahlı Kuvvetlerini Güçlendirme Vakfı'na (TSKGV) bağlı bir anonim şirkettir. ASELSAN hisselerinin %74,20'si TSKGV'ye aittir, %25,70'lik kısım ise Borsa İstanbul'da (BİST) işlem görmektedir. Türkiye'nin en büyük savunma elektroniği kuruluşu olan ASELSAN; başta Türk Silahlı Kuvvetleri olmak üzere yurtiçi ve yurtdışı ihtiyaç makamlarının, haberleşme ve bilgi teknolojileri, radar ve elektronik harp, elektro-optik, aviyonik, insansız sistemler, kara, deniz ve silah sistemleri, hava savunma ve füze sistemleri, komuta kontrol sistemleri, ulaştırma, güvenlik, trafik, otomasyon ve sağlık teknolojilerine yönelik ihtiyaçlarını karşılayabilecek çok geniş bir ürün yelpazesine sahip bulunmaktadır. ASELSAN bugün, özgün ürünlerini ihraç eden, dünyanın ilk 100 savunma sanayi şirketi (Defense News Top 100) listesinde yer alan, yerel kuruluşlar ile işbirliği modelleri kurgulayarak uluslararası pazarlarda ortaklıklar kuran, yatırım yapan bir marka haline gelmiştir. ASELSAN, vizyonundaki teknoloji vurgusu ile \"Küresel pazarda yarattığı değerler ile sürdürülebilir büyümesini koruyan, rekabet gücü ile tercih edilen, stratejik bir ortak gibi güven duyulan, çevreye ve insana duyarlı bir milli teknoloji firması olmak\" hedefini benimsemiştir. Bu başarının kilit faktörlerinden olan 6.000'i aşkın çalışanı bünyesinde yer alan nitelikli mühendislik kadrosu ile ASELSAN, yıllık cirosunun ortalama %7'sini, kendi özkaynakları ile finanse edilen AR-GE faaliyetlerine ayırmaktadır.",
+      "expertise": "Savunma Sistemleri Teknolojileri, Radar ve Elektronik Harp Sistemleri, Mikroelektronik, Elektro-Optik, İşletme ve Taşımacılık, Güvenlik Enerji ve Otomasyon Sistemleri",
+      "website": "http://www.aselsan.com.tr",
+      "address": "Mehmet Akif Ersoy Mahallesi 296. Cadde No: 16, 06370 Yenimahalle-Ankara, Türkiye",
+      "phone": "+90 284 123 45 67",
+      "contact": "+90 (312) 354 13 02 / +90 (312) 354 26 69"
+    },
+    {
+      "id": 2,
+      "name": "HAVELSAN",
+      "category": "Savunma Sanayii",
+      "type": "Özel Şirket",
+      "founded": "1982",
+      "location": "Ankara",
+      "employeeCount": "1.001 - 5.000",
+      "about": "HAVELSAN, milletimizin öz sermayesi ile 1982’de kurulmuş, lider teknoloji firmasıdır. HAVELSAN, hem yurt içinde hem yurt dışında askeri, kamu ve özel sektör için özgün sistemler geliştiren, günümüzün en son teknolojileri ile akıllı çözümler sunan Türkiye'nin entegratör şirketidir. HAVELSAN’ın dört ana faaliyet alanı; HAVELSAN, Hava ve Deniz Kuvvetlerimiz için komuta kontrol ve savunma teknolojileri üretiminin yanı sıra her türlü KARA, DENİZ, HAVA platformu için yerli katkı oranı yüksek simülatörler sağlamaktadır. Seçim sistemleri, tapu kadastro işlemleri ve Ulusal Yargı ağı gibi projeler ile HAVELSAN, ülkemizin en önemli e-devlet dönüşüm firmasıdır. Aynı zamanda HAVELSAN, tasarladığı ve ürettiği ülke ve siber güvenlik sistemleri ile kesintisiz, güvenli ve güvenilir hizmetin de çözüm ortağıdır.",
+      "expertise": "Yazılım ve Sistem Şirketi C4IRS Simülasyon ve Eğitim Sistemleri Denizcilik Yarışma Sistemleri Hava Savunma Sistemleri Yönetim Bilgi Sistemleri",
+      "website": "http://www.havelsan.com.tr",
+      "address": "Mustafa Kemal Mahallesi 2120 Cad. No:39 Çankaya / ANKARA",
+      "phone": "+90 (312) 219 57 87",
+      "contact": "+90 (312) 219 57 97"
+    },
+    {
+      "id": 3,
+      "name": "ROKETSAN",
+      "category": "Savunma Sanayii",
+      "type": "Özel Şirket",
+      "founded": "1988",
+      "location": " Ankara, Elmadağ",
+      "employeeCount": "1.001 - 5000",
+      "about": "Ülkemizin geleceği için özgün, güvenilir ve çığır açan roket ve füze çözümlerinin lideri olmak vizyonuyla çalışmalarını devam ettiren Roketsan, Savunma Sanayii İcra Komitesi kararı ile 14 Haziran 1988 tarihinde kurulmuştur. Özgün ürünleri ve tasarımlarıyla dünyanın en büyük 100 savunma sanayi şirketi (Defense News Top 100) listesinde yer alan Roketsan, başta Türk Silahlı Kuvvetleri olmak üzere dost ve müttefik ülkelere de hizmet etmek amacıyla farklı özelliklerdeki roket, füze, güdümlü mühimmat ve bunların fırlatıldığı silah sistemlerini, roket yakıtlarını, arayıcı başlıklarını, güdüm ve kontrol sistemlerini, yazılımlarını, tapalarını, harp başlıklarını, mekanik aksamlarını üretmek, bu sistemlerin kara, hava, deniz ve denizaltı platformlarına entegrasyonunu yapmak, bina, araç ve tankların korunması için balistik koruma sistemlerini üretmek, satışını gerçekleştirdiği ürünler için satış sonrası hizmetlerini vermek ve uydu fırlatma sistemleri geliştirmek çerçevesinde faaliyetlerini Ankara’da yürütmektedir. 3.000’in üzerinde çalışanı ile Türkiye’nin en büyük teknoloji ordusu olmayı hedefleyen Roketsan, 1.700’ün üzerinde mühendis ve kendi öz kaynakları ile finanse ettiği Ar-Ge çalışmalarıyla ülkemize ve milletimize özgün tasarımlar ve ürünler geliştirmeye devam etmektedir.",
+      "expertise": "Mühendislik ve Teknoloji",
+      "website": "http://www.roketsan.com.tr/",
+      "address": "Kemalpaşa Mahallesi Şehit Yüzbaşı Adem Kutlu Sokak No:21 Elmadağ, ANKARA",
+      "phone": "+9031286055",
+      "contact": "+90 (312) 863 42 08"
+    },
+
+    {
+      "id": 4,
+      "name": "TR EĞİTİM VE TEKNOLOJİ A.Ş.",
+      "category": "Savunma Sanayii",
+      "type": "Özel Şirket",
+      "founded": "2019",
+      "location": "Ankara",
+      "employeeCount": "11 - 50",
+      "about": "Türk Savunma Sanayii'ne öncülük eden T.C. Cumhurbaşkanlığı Savunma Sanayii Başkanlığının vizyonuyla uyum içerisinde, ülkemizin teknolojik gelişim hedeflerine hizmet etmek üzere, savunma sanayiimizin artan proje yükü ve teknolojik derinliğine paralel olarak kurulan TR Eğitim ve Teknoloji A.Ş., Türk Havacılık ve Uzay Sanayii A.Ş. Akademi & İnsan Kaynakları binasında çalışmalarına başladı. Sektörde hizmet verecek olan profesyonellerin eğitimlerinin yanı sıra; kamuoyunun sektörde yaşanan gelişmelerden haberdar edilmesi, savunma sanayiinde kariyer olanaklarıyla ilgili bilgilerin duyurulmasını takiben istihdam süreçlerinin düzenlenmesi ve kariyer hayatı için faydalı bilgilerin paylaşımı hedeflerine sahip olan TR Eğitim ve Teknoloji A.Ş. Türkiye’nin sınırlarını aşarak küresel bir marka olmayı amaçlıyor. Vizyoner Genç projesinin yürütücüsü olan kuruluş, çalışmalarını savunma sanayii alanında faaliyet göstermekte olan diğer firmalar ile eş güdüm içinde gerçekleştirecek. Takip eden süreçte; Türk savunma sanayiinin sürdürülebilir, rekabetçi bir ekosisteme kavuşturulması, Türkiye’nin hem kendi kendine yeten bir ülke olması hem de tüm dost ve müttefik ülkelerin ihtiyaçlarını karşılayabilecek kabiliyete kavuşması amacıyla, alanında uzman, yüksek nitelikli personeliyle projelerini hayata geçirmeye devam edecek.",
+      "expertise": "İnsan Kaynakları Eğitim Teknoloji",
+      "website": "https://vizyonergenc.com",
+      "address": "TUSAŞ AR-GE Binası ODTÜ Teknokent / Ankara",
+      "phone": "+90 312 210 18 58",
+      "contact": "+90 312 210 18 58"
+    },
+    {
+      "id": 5,
+      "name": "TUSAŞ",
+      "category": "Savunma Sanayii",
+      "type": "Özel Şirket",
+      "founded": "1973",
+      "location": "Ankara, Kahramankazan",
+      "employeeCount": "5.001-10.000",
+      "about": "Türk Uçak Sanayii Anonim Ortaklığı (TUSAŞ), 28 Haziran 1973 tarihinde Türkiye'nin savunma sanayiinde dışa bağımlılığını azaltmak amacıyla Sanayi ve Teknoloji Bakanlığı bünyesinde kurulmuştur. Türk Hava Kuvvetleri'nin savaş uçağı ihtiyacının karşılanmasına yönelik olarak F-16 uçaklarının kullanılması kararı ile birlikte; F-16 uçağının üretimi, uçak üzerindeki sistemlerin entegrasyonu ve uçuş testlerini yaparak Hava Kuvvetlerimize teslim etmek üzere TUSAŞ tarafından 1984 yılında TUSAŞ Havacılık ve Uzay Sanayii A.Ş. (TAI), Türk-ABD ortak yatırım şirketi olarak 25 yıllığına kurulmuştur. 25 yıllık süreç tamamlanmadan, 2005 yılında TAI'nin yabancı hisseleri Türk hissedarlar tarafından satın alınarak şirket yeniden yapılandırılmıştır. Bu kapsamda TAI ve TUSAŞ birleşerek, TUSAŞ – Türk Havacılık ve Uzay Sanayii A.Ş. çatısı altında faaliyetlerini genişletmiş, havacılık ve uzay sanayi sistemlerinin geliştirilmesi, modernizasyonu, üretimi, sistem entegrasyonu ve yaşam döngüsü destek süreçlerinde Türkiye'nin teknoloji merkezi konumuna gelmiştir. Havacılık ve uzay sanayisinde küresel ilk yüz oyuncu arasında yer alan TUSAŞ, proje konularına bağlı olarak; Yapısal Grubu, Uçak Grubu, Helikopter Grubu, İnsansız Hava Aracı (İHA) Sistemleri Grubu, Uzay Sistemleri Grubu, Milli Muharip Uçak (MMU) Grubu olmak üzere altı stratejik iş merkezi bünyesinde örgütlenmiştir. Ayrıca, TUSAŞ tarafından tasarlanan/üretilen tüm ürünlerle ilgili olarak entegre lojistik destek hizmeti sağlanmaktadır.",
+      "expertise": "Savunma Sistemleri Teknolojileri, Radar ve Elektronik Harp Sistemleri, Mikroelektronik, Elektro-Optik, İşletme ve Taşımacılık, Güvenlik Enerji ve Otomasyon Sistemleri",
+      "website": "https://www.tusas.com.tr/",
+      "address": "Fethiye Mahallesi, Havacılık Bulvarı No: 17 Kahramankazan/Ankara",
+      "phone": "+90 (312) 811 18 00",
+      "contact": "+90 (312) 811 14 25"
+    }
+    ],
+    "advert": [{
+        "id" : 1,
+        "ilan_adi":"Yazılım Geliştirme Uzmanı",
+        "ilan_date": "14.06.2023",
+        "ilan_tipi":"İş İlanı",
+        "desc":"Daha önce Java kullanmış en az 2 yıl tecrübeli, lisans diplomalı yazılım geliştirme uzmanı arıyoruz",
+        "çalışma_şekli":"Yüz Yüze",
+        "çalışma_tercihi":"Tam Zamanlı",
+        "bölüm":"Bilgisayar Mühendisliği"
+        },
+        {
+        "id" : 2,
+        "ilan_adi":"Veritabanı Stajyeri",
+        "ilan_date": "18.06.2023",
+        "ilan_tipi":"Staj İlanı",
+        "desc":"SQL,MySQL,PostgreSQL en az biri hakkında bilgi sahibi ve zorunlu stajı 4.sınıf öğrencisi arıyoruz.",
+        "çalışma_şekli":"Yüz Yüze",
+        "çalışma_tercihi":"Tam Zamanlı",
+        "bölüm":"Bilgisayar Mühendisliği"
+        },
+        {
+        "id" : 3,
+        "ilan_adi":"Veritabanı Uzmanı",
+        "ilan_date": "20.06.2023",
+        "ilan_tipi":"İş İlanı",
+        "desc":"SQL,MySQL,PostgreSQL en az biri hakkında tecrübesi olan uzman arıyoruz.",
+        "çalışma_şekli":"Hibrit",
+        "çalışma_tercihi":"Tam Zamanlı",
+        "bölüm":"Bilgisayar Mühendisliği"
+         },
+         {
+        "id" : 4,
+        "ilan_adi":"Makine Mühendisi/Teknikeri",
+        "ilan_date": "12.06.2023",
+        "ilan_tipi":"İş İlanı",
+        "desc":"TS EN ISO IEC 17020 kalite sistemleri hakkında eğitimi veya tecrübesi olan makine mühendisi arıyoruz.",
+        "çalışma_şekli":"Yüz Yüze",
+        "çalışma_tercihi":"Serbest Zamanlı",
+        "bölüm":"Makine Mühendisliği"
+         }
+    ]
+}
+
