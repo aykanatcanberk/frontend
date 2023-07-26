@@ -6,14 +6,10 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "./styles.css";
 import { EffectCoverflow, Autoplay } from "swiper/modules";
-import { Button } from "@mui/material";
-import DeneyimText from "../../components/deneyimFirma/DeneyimText";
-import FirmaSelect from "../../components/deneyimFirma/FirmaSelect";
-import SendIcon from "@mui/icons-material/Send";
 import Deneyimlerim from "../../components/deneyimFirma/Deneyimlerim";
-import TextField from "@mui/material/TextField";
+import DeneyimPaylas from "../../components/deneyimFirma/DeneyimPaylas";
+
 export default function App() {
-  console.log(process.env.REACT_API);
   var items = [
     {
       name: "Mehmet Ali",
@@ -89,6 +85,7 @@ export default function App() {
       companyName: "Aselsan",
     },
   ];
+
   return (
     <>
       <Swiper
@@ -128,7 +125,7 @@ export default function App() {
           ))}
         </div> */}
         <Deneyimlerim props={deneyimlerim} />
-        <div className="deneyimPaylas">
+        {/* <div className="deneyimPaylas">
           <TextField
             rows={1}
             maxRows={1}
@@ -148,7 +145,8 @@ export default function App() {
               Gonder
             </Button>
           </div>
-        </div>
+        </div> */}
+        <DeneyimPaylas />
       </div>
     </>
   );

@@ -5,11 +5,10 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-export default function FirmaSelect() {
-  const [age, setAge] = React.useState("");
-
+export default function FirmaSelect(props) {
   const handleChange = (event) => {
-    setAge(event.target.value);
+    console.log(event.target.value);
+    props?.firmaSec(event.target.value);
   };
 
   return (
@@ -19,13 +18,17 @@ export default function FirmaSelect() {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={age}
+          value={props?.firma}
           label="Firmalar"
           onChange={handleChange}
         >
-          <MenuItem value="Aselsan">Aselsan</MenuItem>
-          <MenuItem value="Havelsan">Havelsan</MenuItem>
-          <MenuItem value="Roketsan">Roketsan</MenuItem>
+          <MenuItem value="ASELSAN">ASELSAN</MenuItem>
+          <MenuItem value="HAVELSAN">HAVELSAN</MenuItem>
+          <MenuItem value="ROKETSAN">ROKETSAN</MenuItem>
+          <MenuItem value="TUSAS">TUSAS</MenuItem>
+          <MenuItem value="TR EGITIM VE TEKNOLOJI">
+            TR EGITIM VE TEKNOLOJI
+          </MenuItem>
         </Select>
       </FormControl>
     </Box>
