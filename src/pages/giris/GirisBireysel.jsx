@@ -8,12 +8,18 @@ import Container from "@mui/material/Container";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import { useState, forwardRef } from "react";
+import { useState, forwardRef, useEffect } from "react";
 import Snackbar from "@mui/material/Snackbar";
 import Stack from "@mui/material/Stack";
 import MuiAlert from "@mui/material/Alert";
 import Slide from "@mui/material/Slide";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { stringify } from "json5";
+import { connect } from "react-redux";
+import { useRadioGroup } from "@mui/material";
+import { fetchUsers } from "../../redux/users/userActions";
+import { getUserByEmail } from "../../services/services.js";
 
 const Alert = forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -42,9 +48,22 @@ const center = {
   left: "37%",
 };
 
-export default function Login() {
+function Login({ usersData, fetchUsers }) {
   const [open, setOpen] = useState(false);
   const [remember, setRemember] = useState(false);
+
+  useEffect(() => {
+    fetchUsers("http://localhost:3000/users");
+  }, []);
+
+  const initialAccount = {
+    eMail: "",
+    password: "",
+    userType: "-",
+  };
+
+  const [tryAccount, setTryAccount] = useState(initialAccount);
+
   const vertical = "top";
   const horizontal = "right";
   const navigate = useNavigate();
@@ -52,7 +71,86 @@ export default function Login() {
   const handleSubmit = async (event) => {
     setOpen(true);
     event.preventDefault();
+    ProceedLogin();
     // const data = new FormData(event.currentTarget);
+  };
+
+  const ProceedLogin = () => {
+    if (validate()) {
+      getUserByEmail(tryAccount.eMail)
+        .then((user) => {
+          if (user[0].password === tryAccount.password) {
+            console.log("Success");
+            sessionStorage.setItem("eMail", tryAccount.eMail);
+            sessionStorage.setItem("userrole", user.role);
+            console.log("go to the main page!");
+            navigate("/bireysel-anasayfa");
+          } else {
+            console.error("Please Enter valid credentials");
+          }
+        })
+        .catch((err) => {
+          console.error("Login Failed due to :" + err.message);
+        });
+    }
+  };
+
+  const ProceedLoginusingAPI = (e) => {
+    e.preventDefault();
+    if (validate()) {
+      ///implentation
+      // console.log('proceed');
+      let inputobj = { eMail: tryAccount.eMail, password: tryAccount.password };
+      fetch("https://localhost:44308/User/Authenticate", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(inputobj),
+      })
+        .then((res) => {
+          return res.json();
+        })
+        .then((resp) => {
+          console.log(resp);
+          if (Object.keys(resp).length === 0) {
+            console.error("Login failed, invalid credentials");
+          } else {
+            console.log("Success");
+            sessionStorage.setItem("eMail", tryAccount.eMail);
+            sessionStorage.setItem("jwttoken", resp.jwtToken);
+            // usenavigate("/");
+          }
+          // if (Object.keys(resp).length === 0) {
+          //     toast.error('Please Enter valid username');
+          // } else {
+          //     if (resp.password === password) {
+          //         toast.success('Success');
+          //         sessionStorage.setItem('username',username);
+          //         usenavigate('/')
+          //     }else{
+          //         toast.error('Please Enter valid credentials');
+          //     }
+          // }
+        })
+        .catch((err) => {
+          console.error("Login Failed due to :" + err.message);
+        });
+    }
+  };
+  const validate = () => {
+    let result = true;
+    if (tryAccount.eMail === "" || tryAccount.eMail === null) {
+      result = false;
+      <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+        Hata! E-posta alanı boş bırakılamaz.
+      </Alert>;
+    }
+    if (tryAccount.password === "" || tryAccount.password === null) {
+      result = false;
+      <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+        Hata! Şifre alanı boş bırakılamaz.
+      </Alert>;
+    }
+    return result;
   };
 
   const handleClose = (event, reason) => {
@@ -76,7 +174,7 @@ export default function Login() {
         anchorOrigin={{ vertical, horizontal }}
       >
         <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-          Hata! E-posta ve şifre alanı boş bırakılamaz.
+          Hata! AAAAA E-posta ve şifre alanı boş bırakılamaz.
         </Alert>
       </Snackbar>
       <div>
@@ -123,9 +221,16 @@ export default function Login() {
                           <TextField
                             required
                             fullWidth
-                            id="email"
+                            id="eMail"
                             label="E-posta"
-                            name="email"
+                            name="eMail"
+                            value={tryAccount.eMail}
+                            onChange={(e) => {
+                              setTryAccount({
+                                ...tryAccount,
+                                eMail: e.target.value,
+                              });
+                            }}
                           />
                         </Grid>
                         <Grid item xs={12} sx={{ ml: "3em", mr: "3em" }}>
@@ -136,6 +241,13 @@ export default function Login() {
                             label="Şifre"
                             type="password"
                             id="şifre"
+                            value={tryAccount.password}
+                            onChange={(e) => {
+                              setTryAccount({
+                                ...tryAccount,
+                                password: e.target.value,
+                              });
+                            }}
                           />
                         </Grid>
                         <Grid item xs={12} sx={{ ml: "3em", mr: "3em" }}>
@@ -203,3 +315,17 @@ export default function Login() {
     </>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    usersData: state.userrrrr,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchUsers: () => dispatch(fetchUsers()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

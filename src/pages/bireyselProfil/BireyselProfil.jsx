@@ -843,7 +843,7 @@ function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {
           </Grid>
 
           <Grid className="right-side" item xs={6}>
-            <CardWrapper>İLANLAR</CardWrapper>
+            <CardWrapper>DENEYİM YORUMLARI</CardWrapper>
             <CardWrapper elevation={12}>
               {comments.map((comment) => (
                 <DeneyimYorumu deneyim={comment} />
