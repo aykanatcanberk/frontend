@@ -1,6 +1,7 @@
 import React from "react";
 import PersonIcon from "@mui/icons-material/Person";
-import { Paper, Button } from "@mui/material";
+import WorkHistoryIcon from "@mui/icons-material/WorkHistory";
+import { Paper } from "@mui/material";
 import TextField from "@mui/material/TextField";
 function Slider(props) {
   return (
@@ -10,20 +11,21 @@ function Slider(props) {
         height: "40vh",
         margin: "20px",
         width: "100%",
-        minWidth: "600px",
+        minWidth: "300px",
       }}
     >
-      <PersonIcon />
-      <h2>{props.item.name}</h2>
+      <div className="deneyimBaslik">
+        <h2>{props.item.name}</h2>
+        <h4>{props.item.companyName}</h4>
+      </div>
       <TextField
         fullWidth
         multiline
         rows={8}
-        label="Deneyimim"
+        label={props.item.title}
         disabled
         defaultValue={props.item.description}
       />
-      <Button className="CheckButton">Check it out!</Button>
     </Paper>
   );
 }
