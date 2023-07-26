@@ -7,14 +7,16 @@ import Grid from '@mui/material/Grid';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
-import Divider from '@mui/material/Divider';
 import Typography from '@mui/joy/Typography'
 import İlan from '../../components/İlan/İlan';
 import db from '../../data/db.json';
+import axios from 'axios';
+import AdvertList from '../../components/AdvertList'; 
 
 const jobOptions = [{ title: "Staj İlanları" }, { title: "İş İlanları" }];
 const companies = [{ title: "Aselsan" }, { title: "Havelsan" }, { title: "Roketsan" }, { title: "TUSAŞ" }, { title: "TR EĞİTİM VE TEKNOLOJİ A.Ş." }];
 const bolumler = [{ title: "Bilgisayar Mühendisliği" }, { title: "Elektrik-Elektronik Mühendisliği" }, { title: "Endüstri Mühendisliği" }, { title: "Makine Mühendisliği" }];
+
 
 function BireyselIlanlar() {
 return (
