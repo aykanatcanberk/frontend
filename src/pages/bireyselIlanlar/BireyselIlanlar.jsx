@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
@@ -9,7 +9,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import Typography from '@mui/joy/Typography'
 import İlan from '../../components/İlan/İlan';
-import db from '../../data/db.json';
+import { getAllAdverts } from "../../services/advertService";
 
 const jobOptions = [{ title: "Staj İlanları" }, { title: "İş İlanları" }];
 const companies = [
@@ -27,6 +27,19 @@ const bolumler = [
 ];
 
 function BireyselIlanlar() {
+
+  const [adverts, setAdverts] = useState([]);
+
+  useEffect(() => {
+    getAllAdverts()
+      .then((adverts) => {
+        setAdverts(adverts);
+      })
+      .catch((err) => {
+        console.error("Coulnt fetch the all adverts data due to :" + err.message);
+      });
+  }, []);
+
   return (
     <Grid container justifyContent="left">
       <Grid item xs={10} lg={3}>
@@ -172,7 +185,7 @@ function BireyselIlanlar() {
           marginTop={3}
           spacing={2}
         >
-          {db.advert.map((advert, index) => (
+          {adverts.map((advert) => (
             <Grid item key={advert.id} xs={12} sm={6}>
               <İlan advert={advert} />
             </Grid>

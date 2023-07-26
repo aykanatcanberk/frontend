@@ -1,14 +1,74 @@
 {
   "infoCompany": [
     {
-      "id": 1,
-      "name": "Aselsan",
+      "companyId": 1,
+      "companyName": "Aselsan",
       "category": "Savunma Sanayii",
       "type": "Halka Açık Şirket",
-      "founded": "1975",
+      "foundationDate": "1972",
       "location": "Ankara, Yenimahalle",
       "employeeCount": "5.001-10.000",
-      "about": "Türk Silahlı Kuvvetleri'nin haberleşme ihtiyaçlarının milli imkanlarla karşılanması için 1975 yılında kurulan ASELSAN; Türk Silahlı Kuvvetlerini Güçlendirme Vakfı'na (TSKGV) bağlı bir anonim şirkettir. ASELSAN hisselerinin %74,20'si TSKGV'ye aittir, %25,70'lik kısım ise Borsa İstanbul'da (BİST) işlem görmektedir. Türkiye'nin en büyük savunma elektroniği kuruluşu olan ASELSAN; başta Türk Silahlı Kuvvetleri olmak üzere yurtiçi ve yurtdışı ihtiyaç makamlarının, haberleşme ve bilgi teknolojileri, radar ve elektronik harp, elektro-optik, aviyonik, insansız sistemler, kara, deniz ve silah sistemleri, hava savunma ve füze sistemleri, komuta kontrol sistemleri, ulaştırma, güvenlik, trafik, otomasyon ve sağlık teknolojilerine yönelik ihtiyaçlarını karşılayabilecek çok geniş bir ürün yelpazesine sahip bulunmaktadır. ASELSAN bugün, özgün ürünlerini ihraç eden, dünyanın ilk 100 savunma sanayi şirketi (Defense News Top 100) listesinde yer alan, yerel kuruluşlar ile işbirliği modelleri kurgulayarak uluslararası pazarlarda ortaklıklar kuran, yatırım yapan bir marka haline gelmiştir. ASELSAN, vizyonundaki teknoloji vurgusu ile \"Küresel pazarda yarattığı değerler ile sürdürülebilir büyümesini koruyan, rekabet gücü ile tercih edilen, stratejik bir ortak gibi güven duyulan, çevreye ve insana duyarlı bir milli teknoloji firması olmak\" hedefini benimsemiştir. Bu başarının kilit faktörlerinden olan 6.000'i aşkın çalışanı bünyesinde yer alan nitelikli mühendislik kadrosu ile ASELSAN, yıllık cirosunun ortalama %7'sini, kendi özkaynakları ile finanse edilen AR-GE faaliyetlerine ayırmaktadır.",
+      "about": "!ASELSAN HAKKINDA BİLGİ EKLE! Türk Silahlı Kuvvetleri'nin haberleşme ihtiyaçlarının milli imkanlarla karşılanması için 1975 yılında kurulan ASELSAN; Türk Silahlı Kuvvetlerini Güçlendirme Vakfı'na (TSKGV) bağlı bir anonim şirkettir. ASELSAN hisselerinin %74,20'si TSKGV'ye aittir, %25,70'lik kısım ise Borsa İstanbul'da (BİST) işlem görmektedir. Türkiye'nin en büyük savunma elektroniği kuruluşu olan ASELSAN; başta Türk Silahlı Kuvvetleri olmak üzere yurtiçi ve yurtdışı ihtiyaç makamlarının, haberleşme ve bilgi teknolojileri, radar ve elektronik harp, elektro-optik, aviyonik, insansız sistemler, kara, deniz ve silah sistemleri, hava savunma ve füze sistemleri, komuta kontrol sistemleri, ulaştırma, güvenlik, trafik, otomasyon ve sağlık teknolojilerine yönelik ihtiyaçlarını karşılayabilecek çok geniş bir ürün yelpazesine sahip bulunmaktadır. ASELSAN bugün, özgün ürünlerini ihraç eden, dünyanın ilk 100 savunma sanayi şirketi (Defense News Top 100) listesinde yer alan, yerel kuruluşlar ile işbirliği modelleri kurgulayarak uluslararası pazarlarda ortaklıklar kuran, yatırım yapan bir marka haline gelmiştir. ASELSAN, vizyonundaki teknoloji vurgusu ile \"Küresel pazarda yarattığı değerler ile sürdürülebilir büyümesini koruyan, rekabet gücü ile tercih edilen, stratejik bir ortak gibi güven duyulan, çevreye ve insana duyarlı bir milli teknoloji firması olmak\" hedefini benimsemiştir. Bu başarının kilit faktörlerinden olan 6.000'i aşkın çalışanı bünyesinde yer alan nitelikli mühendislik kadrosu ile ASELSAN, yıllık cirosunun ortalama %7'sini, kendi özkaynakları ile finanse edilen AR-GE faaliyetlerine ayırmaktadır.",
+      "expertise": "Savunma Sistemleri Teknolojileri, Radar ve Elektronik Harp Sistemleri, Mikroelektronik, Elektro-Optik, İşletme ve Taşımacılık, Güvenlik Enerji ve Otomasyon Sistemleri",
+      "website": "http://www.aselsan.com.tr",
+      "address": "Mehmet Akif Ersoy Mahallesi 296. Cadde No: 16, 06370 Yenimahalle-Ankara, Türkiye",
+      "phone": "+90 284 123 45 67",
+      "contact": "+90 (312) 354 13 02 / +90 (312) 354 26 69"
+    },
+    {
+      "companyId": 2,
+      "companyName": "Havelsan",
+      "category": "Savunma Sanayii",
+      "type": "Halka Açık Şirket",
+      "foundationDate": "2000",
+      "location": "Ankara, Yenimahalle",
+      "employeeCount": "4050",
+      "about": "!HAVELSAN HAKKINDA BİLGİ EKLE! Türk Silahlı Kuvvetleri'nin haberleşme ihtiyaçlarının milli imkanlarla karşılanması için 1975 yılında kurulan ASELSAN; Türk Silahlı Kuvvetlerini Güçlendirme Vakfı'na (TSKGV) bağlı bir anonim şirkettir. ASELSAN hisselerinin %74,20'si TSKGV'ye aittir, %25,70'lik kısım ise Borsa İstanbul'da (BİST) işlem görmektedir. Türkiye'nin en büyük savunma elektroniği kuruluşu olan ASELSAN; başta Türk Silahlı Kuvvetleri olmak üzere yurtiçi ve yurtdışı ihtiyaç makamlarının, haberleşme ve bilgi teknolojileri, radar ve elektronik harp, elektro-optik, aviyonik, insansız sistemler, kara, deniz ve silah sistemleri, hava savunma ve füze sistemleri, komuta kontrol sistemleri, ulaştırma, güvenlik, trafik, otomasyon ve sağlık teknolojilerine yönelik ihtiyaçlarını karşılayabilecek çok geniş bir ürün yelpazesine sahip bulunmaktadır. ASELSAN bugün, özgün ürünlerini ihraç eden, dünyanın ilk 100 savunma sanayi şirketi (Defense News Top 100) listesinde yer alan, yerel kuruluşlar ile işbirliği modelleri kurgulayarak uluslararası pazarlarda ortaklıklar kuran, yatırım yapan bir marka haline gelmiştir. ASELSAN, vizyonundaki teknoloji vurgusu ile \"Küresel pazarda yarattığı değerler ile sürdürülebilir büyümesini koruyan, rekabet gücü ile tercih edilen, stratejik bir ortak gibi güven duyulan, çevreye ve insana duyarlı bir milli teknoloji firması olmak\" hedefini benimsemiştir. Bu başarının kilit faktörlerinden olan 6.000'i aşkın çalışanı bünyesinde yer alan nitelikli mühendislik kadrosu ile ASELSAN, yıllık cirosunun ortalama %7'sini, kendi özkaynakları ile finanse edilen AR-GE faaliyetlerine ayırmaktadır.",
+      "expertise": "Savunma Sistemleri Teknolojileri, Radar ve Elektronik Harp Sistemleri, Mikroelektronik, Elektro-Optik, İşletme ve Taşımacılık, Güvenlik Enerji ve Otomasyon Sistemleri",
+      "website": "http://www.aselsan.com.tr",
+      "address": "Mehmet Akif Ersoy Mahallesi 296. Cadde No: 16, 06370 Yenimahalle-Ankara, Türkiye",
+      "phone": "+90 284 123 45 67",
+      "contact": "+90 (312) 354 13 02 / +90 (312) 354 26 69"
+    },
+    {
+      "companyId": 3,
+      "companyName": "TUSAŞ",
+      "category": "Savunma Sanayii",
+      "type": "Halka Açık Şirket",
+      "foundationDate": "1998",
+      "location": "Ankara, Yenimahalle",
+      "employeeCount": "4050",
+      "about": "!TUSAŞ HAKKINDA BİLGİ EKLE! Türk Silahlı Kuvvetleri'nin haberleşme ihtiyaçlarının milli imkanlarla karşılanması için 1975 yılında kurulan ASELSAN; Türk Silahlı Kuvvetlerini Güçlendirme Vakfı'na (TSKGV) bağlı bir anonim şirkettir. ASELSAN hisselerinin %74,20'si TSKGV'ye aittir, %25,70'lik kısım ise Borsa İstanbul'da (BİST) işlem görmektedir. Türkiye'nin en büyük savunma elektroniği kuruluşu olan ASELSAN; başta Türk Silahlı Kuvvetleri olmak üzere yurtiçi ve yurtdışı ihtiyaç makamlarının, haberleşme ve bilgi teknolojileri, radar ve elektronik harp, elektro-optik, aviyonik, insansız sistemler, kara, deniz ve silah sistemleri, hava savunma ve füze sistemleri, komuta kontrol sistemleri, ulaştırma, güvenlik, trafik, otomasyon ve sağlık teknolojilerine yönelik ihtiyaçlarını karşılayabilecek çok geniş bir ürün yelpazesine sahip bulunmaktadır. ASELSAN bugün, özgün ürünlerini ihraç eden, dünyanın ilk 100 savunma sanayi şirketi (Defense News Top 100) listesinde yer alan, yerel kuruluşlar ile işbirliği modelleri kurgulayarak uluslararası pazarlarda ortaklıklar kuran, yatırım yapan bir marka haline gelmiştir. ASELSAN, vizyonundaki teknoloji vurgusu ile \"Küresel pazarda yarattığı değerler ile sürdürülebilir büyümesini koruyan, rekabet gücü ile tercih edilen, stratejik bir ortak gibi güven duyulan, çevreye ve insana duyarlı bir milli teknoloji firması olmak\" hedefini benimsemiştir. Bu başarının kilit faktörlerinden olan 6.000'i aşkın çalışanı bünyesinde yer alan nitelikli mühendislik kadrosu ile ASELSAN, yıllık cirosunun ortalama %7'sini, kendi özkaynakları ile finanse edilen AR-GE faaliyetlerine ayırmaktadır.",
+      "expertise": "Savunma Sistemleri Teknolojileri, Radar ve Elektronik Harp Sistemleri, Mikroelektronik, Elektro-Optik, İşletme ve Taşımacılık, Güvenlik Enerji ve Otomasyon Sistemleri",
+      "website": "http://www.aselsan.com.tr",
+      "address": "Mehmet Akif Ersoy Mahallesi 296. Cadde No: 16, 06370 Yenimahalle-Ankara, Türkiye",
+      "phone": "+90 284 123 45 67",
+      "contact": "+90 (312) 354 13 02 / +90 (312) 354 26 69"
+    },
+    {
+      "companyId": 4,
+      "companyName": "Roketsan",
+      "category": "Savunma Sanayii",
+      "type": "Halka Açık Şirket",
+      "foundationDate": "2000",
+      "location": "Ankara, Yenimahalle",
+      "employeeCount": "4050",
+      "about": "!ROKETSAN HAKKINDA BİLGİ EKLE! Türk Silahlı Kuvvetleri'nin haberleşme ihtiyaçlarının milli imkanlarla karşılanması için 1975 yılında kurulan ASELSAN; Türk Silahlı Kuvvetlerini Güçlendirme Vakfı'na (TSKGV) bağlı bir anonim şirkettir. ASELSAN hisselerinin %74,20'si TSKGV'ye aittir, %25,70'lik kısım ise Borsa İstanbul'da (BİST) işlem görmektedir. Türkiye'nin en büyük savunma elektroniği kuruluşu olan ASELSAN; başta Türk Silahlı Kuvvetleri olmak üzere yurtiçi ve yurtdışı ihtiyaç makamlarının, haberleşme ve bilgi teknolojileri, radar ve elektronik harp, elektro-optik, aviyonik, insansız sistemler, kara, deniz ve silah sistemleri, hava savunma ve füze sistemleri, komuta kontrol sistemleri, ulaştırma, güvenlik, trafik, otomasyon ve sağlık teknolojilerine yönelik ihtiyaçlarını karşılayabilecek çok geniş bir ürün yelpazesine sahip bulunmaktadır. ASELSAN bugün, özgün ürünlerini ihraç eden, dünyanın ilk 100 savunma sanayi şirketi (Defense News Top 100) listesinde yer alan, yerel kuruluşlar ile işbirliği modelleri kurgulayarak uluslararası pazarlarda ortaklıklar kuran, yatırım yapan bir marka haline gelmiştir. ASELSAN, vizyonundaki teknoloji vurgusu ile \"Küresel pazarda yarattığı değerler ile sürdürülebilir büyümesini koruyan, rekabet gücü ile tercih edilen, stratejik bir ortak gibi güven duyulan, çevreye ve insana duyarlı bir milli teknoloji firması olmak\" hedefini benimsemiştir. Bu başarının kilit faktörlerinden olan 6.000'i aşkın çalışanı bünyesinde yer alan nitelikli mühendislik kadrosu ile ASELSAN, yıllık cirosunun ortalama %7'sini, kendi özkaynakları ile finanse edilen AR-GE faaliyetlerine ayırmaktadır.",
+      "expertise": "Savunma Sistemleri Teknolojileri, Radar ve Elektronik Harp Sistemleri, Mikroelektronik, Elektro-Optik, İşletme ve Taşımacılık, Güvenlik Enerji ve Otomasyon Sistemleri",
+      "website": "http://www.aselsan.com.tr",
+      "address": "Mehmet Akif Ersoy Mahallesi 296. Cadde No: 16, 06370 Yenimahalle-Ankara, Türkiye",
+      "phone": "+90 284 123 45 67",
+      "contact": "+90 (312) 354 13 02 / +90 (312) 354 26 69"
+    },
+    {
+      "companyId": 4,
+      "companyName": "TR EĞİTİM VE TEKNOLOJİ A.Ş.",
+      "category": "Savunma Sanayii",
+      "type": "Halka Açık Şirket",
+      "foundationDate": "2019",
+      "location": "Ankara, Çankaya",
+      "employeeCount": "50",
+      "about": "!TR EĞİTİM VE TEKNOLOJİ A.Ş HAKKINDA BİLGİ EKLE! Türk Silahlı Kuvvetleri'nin haberleşme ihtiyaçlarının milli imkanlarla karşılanması için 1975 yılında kurulan ASELSAN; Türk Silahlı Kuvvetlerini Güçlendirme Vakfı'na (TSKGV) bağlı bir anonim şirkettir. ASELSAN hisselerinin %74,20'si TSKGV'ye aittir, %25,70'lik kısım ise Borsa İstanbul'da (BİST) işlem görmektedir. Türkiye'nin en büyük savunma elektroniği kuruluşu olan ASELSAN; başta Türk Silahlı Kuvvetleri olmak üzere yurtiçi ve yurtdışı ihtiyaç makamlarının, haberleşme ve bilgi teknolojileri, radar ve elektronik harp, elektro-optik, aviyonik, insansız sistemler, kara, deniz ve silah sistemleri, hava savunma ve füze sistemleri, komuta kontrol sistemleri, ulaştırma, güvenlik, trafik, otomasyon ve sağlık teknolojilerine yönelik ihtiyaçlarını karşılayabilecek çok geniş bir ürün yelpazesine sahip bulunmaktadır. ASELSAN bugün, özgün ürünlerini ihraç eden, dünyanın ilk 100 savunma sanayi şirketi (Defense News Top 100) listesinde yer alan, yerel kuruluşlar ile işbirliği modelleri kurgulayarak uluslararası pazarlarda ortaklıklar kuran, yatırım yapan bir marka haline gelmiştir. ASELSAN, vizyonundaki teknoloji vurgusu ile \"Küresel pazarda yarattığı değerler ile sürdürülebilir büyümesini koruyan, rekabet gücü ile tercih edilen, stratejik bir ortak gibi güven duyulan, çevreye ve insana duyarlı bir milli teknoloji firması olmak\" hedefini benimsemiştir. Bu başarının kilit faktörlerinden olan 6.000'i aşkın çalışanı bünyesinde yer alan nitelikli mühendislik kadrosu ile ASELSAN, yıllık cirosunun ortalama %7'sini, kendi özkaynakları ile finanse edilen AR-GE faaliyetlerine ayırmaktadır.",
       "expertise": "Savunma Sistemleri Teknolojileri, Radar ve Elektronik Harp Sistemleri, Mikroelektronik, Elektro-Optik, İşletme ve Taşımacılık, Güvenlik Enerji ve Otomasyon Sistemleri",
       "website": "http://www.aselsan.com.tr",
       "address": "Mehmet Akif Ersoy Mahallesi 296. Cadde No: 16, 06370 Yenimahalle-Ankara, Türkiye",
@@ -18,92 +78,103 @@
   ],
   "adverts": [
     {
-      "id": 1,
-      "ilan_adi": "Yazılım Geliştirme Uzmanı",
-      "ilan_date": "14.06.2023",
-      "ilan_tipi": "İş",
-      "desc": "Daha önce Java kullanmış en az 2 yıl tecrübeli, lisans diplomalı yazılım geliştirme uzmanı arıyoruz"
+      "advertId": 1,
+      "advertTitle": "Yazılım Geliştirme Uzmanı",
+      "advertDate": "14.06.2023",
+      "advertType": "İş",
+      "advertDesc": "Daha önce Java kullanmış en az 2 yıl tecrübeli, lisans diplomalı yazılım geliştirme uzmanı arıyoruz"
     },
     {
-      "id": 2,
-      "ilan_adi": "Veritabanı Stajyeri",
-      "ilan_date": "18.06.2023",
-      "ilan_tipi": "Staj",
-      "desc": "SQL,MySQL,PostgreSQL,Microsoft SQL Server içinden en az biri hakkında bilgi sahibi ve zorunlu stajı 3. veya 4.sınıf öğrencisi arıyoruz."
+      "advertId": 2,
+      "advertTitle": "Veritabanı Stajyeri",
+      "advertDate": "18.06.2023",
+      "advertType": "Staj",
+      "advertDesc": "SQL,MySQL,PostgreSQL,Microsoft SQL Server içinden en az biri hakkında bilgi sahibi ve zorunlu stajı 3. veya 4.sınıf öğrencisi arıyoruz."
     }
   ],
   "posts": [
     {
-      "id": 1,
-      "userName": "ahmet",
-      "gönderi_date": "10.10.2023",
+      "postId": 1,
+      "userId": 1,
+      "userName": "Mehmet Ali",
+      "postDate": "10,10,2023",
       "content": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
     },
     {
-      "id": 2,
+      "postId": 2,
       "userId": 1,
-      "gönderi_date": "10.10.2023",
+      "userName": "Mehmet Ali",
+      "postDate": "12.12.2023",
       "content": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
     },
     {
-      "id": 3,
+      "postId": 3,
       "userId": 2,
-      "gönderi_date": "10.10.2023",
+      "userName": "Ayşe Fatma",
+      "postDate": "01.02.2023",
       "content": "ea molestias quasi exercitationem repellat qui ipsa sit aut"
     },
     {
-      "id": 4,
+      "postId": 4,
       "userId": 2,
-      "gönderi_date": "10.10.2023",
+      "userName": "Ayşe Fatma",
+      "postDate": "13.04.2022",
       "content": "eum et est occaecati"
     },
     {
-      "id": 5,
-      "userId": 2,
-      "gönderi_date": "10.10.2023",
+      "postId": 5,
+      "userId": 3,
+      "userName": "Hasan Hüseyin",
+      "postDate": "15.11.2023",
       "content": "nesciunt quas odio"
     },
     {
-      "id": 6,
-      "userId": 2,
-      "gönderi_date": "10.10.2023",
+      "postId": 6,
+      "userId": 3,
+      "userName": "Hasan Hüseyin",
+      "postDate": "08.11.2021",
       "content": "dolorem eum magni eos aperiam quia"
     },
     {
-      "id": 7,
-      "userId": 3,
-      "gönderi_date": "10.10.2023",
+      "postId": 7,
+      "userId": 4,
+      "userName": "Uğur Utku",
+      "postDate": "19.03.2022",
       "content": "magnam facilis autem"
     },
     {
-      "id": 8,
-      "userId": 3,
-      "gönderi_date": "10.10.2023",
+      "postId": 8,
+      "userId": 4,
+      "userName": "Uğur Utku",
+      "postDate": "23.10.2023",
       "content": "dolorem dolore est ipsam"
     }
   ],
   "users": [
     {
-      "id": 1,
-      "userName": "ali",
+      "userId": 1,
+      "userName": "Mehmet Ali",
       "eMail": "Sincere@april.biz",
       "password": "vSjVanZ66Y3ssm2",
       "userType": "Bireysel"
     },
     {
-      "id": 2,
+      "userId": 2,
+      "userName": "Ayşe Fatma",
       "eMail": "Shanna@melissa.tv",
       "password": "Y5M6ZOVwvb2KDE2",
       "userType": "Bireysel"
     },
     {
-      "id": 3,
+      "userId": 3,
+      "userName": "Hasan Hüseyin",
       "eMail": "Lucio_Hettinger@annie.ca",
       "password": "fGfoO2brHGxIRVr",
       "userType": "Kurumsal"
     },
     {
-      "id": 4,
+      "userId": 4,
+      "userName": "Uğur Utku",
       "eMail": "Nathan@yesenia.net",
       "password": "luyopPKSGn8y3cn",
       "userType": "Kurumsal"
@@ -111,37 +182,37 @@
   ],
   "expReview": [
     {
-      "name": "Mehmet Ali",
+      "expReviewerName": "Mehmet Ali",
       "title": "Harikaydi!!!",
-      "date" : "10.10.2023",
+      "date": "10.10.2023",
       "companyName": "Aselsan",
       "description": "Staj döneminde öğrendiklerimden bazıları şunlardır\n: - Python ve JavaScript gibi dillerde kod yazma yetkinliği."
     },
     {
       "name": "Ayşe Fatma",
       "title": "Mukemmel bir deneyimdi!!!!!!",
-      "date" : "11.10.2023",
+      "date": "11.10.2023",
       "companyName": "Havelsan",
       "description": "Bu beş aylık staj dönemim boyunca, ABC Teknoloji Şirketi'nde yazılım geliştirme ekibiyle birlikte çalıştım ve değerli bir deneyim kazandım. Şirket, öncü teknolojiler üzerinde çalışan bir endüstri lideridir ve kendilerine özgü ürünler geliştirmektedir."
     },
     {
       "name": "Hasan Hüseyin",
       "title": "Mukemmel bir deneyimdi!!!!!!",
-      "date" : "12.10.2023",
+      "date": "12.10.2023",
       "companyName": "Roketsan",
       "description": "Bu beş aylık staj dönemim boyunca, ABC Teknoloji Şirketi'nde yazılım geliştirme ekibiyle birlikte çalıştım ve değerli bir deneyim kazandım. Şirket, öncü teknolojiler üzerinde çalışan bir endüstri lideridir ve kendilerine özgü ürünler geliştirmektedir."
     },
     {
       "name": "Uğur Utku",
       "title": "Mukemmel bir deneyimdi!!!!!!",
-      "date" : "13.10.2023",
+      "date": "13.10.2023",
       "companyName": "TUSAŞ",
       "description": "Bu beş aylık staj dönemim boyunca, ABC Teknoloji Şirketi'nde yazılım geliştirme ekibiyle birlikte çalıştım ve değerli bir deneyim kazandım. Şirket, öncü teknolojiler üzerinde çalışan bir endüstri lideridir ve kendilerine özgü ürünler geliştirmektedir."
     },
     {
       "name": "Zeynep Zahra",
       "title": "Mukemmel bir deneyimdi!!!!!!",
-      "date" : "14.10.2023",
+      "date": "14.10.2023",
       "companyName": "TR EGITIM",
       "description": "Bu beş aylık staj dönemim boyunca, ABC Teknoloji Şirketi'nde yazılım geliştirme ekibiyle birlikte çalıştım ve değerli bir deneyim kazandım. Şirket, öncü teknolojiler üzerinde çalışan bir endüstri lideridir ve kendilerine özgü ürünler geliştirmektedir."
     }

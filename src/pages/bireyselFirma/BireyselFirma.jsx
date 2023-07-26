@@ -1,25 +1,25 @@
 /* Author: Hasan Basri BİLGE
 Last Update: 25.07.2023 */
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import ProfileCardComp from "../../components/bireyselFirmaLayoutComp/bireyselFirmaLay";
+import { getAllCompanies } from "../../services/companyService";
 
 function BireyselFirma({id}) {
-  const [companyDataList, setCompanyDataList] = useState([]);
+  const [companies, setCompanies] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/info-firma${id}`)
-      .then((response) => {
-        setCompanyDataList(response.data);
+    getAllCompanies()
+      .then((companies) => {
+        setCompanies(companies);
       })
-      .catch((error) => {
-        console.error("Error fetching company data:", error);
+      .catch((err) => {
+        console.error("Coulnt fetch the all posts data due to :" + err.message);
       });
-  }, []);
+  }, []); 
 
   return (
     <div>
-      {companyDataList.map((companyData, index) => (
+      {companies.map((companyData, index) => (
         <ProfileCardComp key={index} companyData={companyData} />
       ))}
     </div>

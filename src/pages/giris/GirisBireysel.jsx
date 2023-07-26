@@ -14,12 +14,11 @@ import Stack from "@mui/material/Stack";
 import MuiAlert from "@mui/material/Alert";
 import Slide from "@mui/material/Slide";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { stringify } from "json5";
 import { connect } from "react-redux";
 import { useRadioGroup } from "@mui/material";
 import { fetchUsers } from "../../redux/users/userActions";
-import { getUserByEmail } from "../../services/services.js";
+import { getUserByEmail } from "../../services/userServices.jsx";
 
 const Alert = forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -94,48 +93,7 @@ function Login({ usersData, fetchUsers }) {
         });
     }
   };
-
-  const ProceedLoginusingAPI = (e) => {
-    e.preventDefault();
-    if (validate()) {
-      ///implentation
-      // console.log('proceed');
-      let inputobj = { eMail: tryAccount.eMail, password: tryAccount.password };
-      fetch("https://localhost:44308/User/Authenticate", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(inputobj),
-      })
-        .then((res) => {
-          return res.json();
-        })
-        .then((resp) => {
-          console.log(resp);
-          if (Object.keys(resp).length === 0) {
-            console.error("Login failed, invalid credentials");
-          } else {
-            console.log("Success");
-            sessionStorage.setItem("eMail", tryAccount.eMail);
-            sessionStorage.setItem("jwttoken", resp.jwtToken);
-            // usenavigate("/");
-          }
-          // if (Object.keys(resp).length === 0) {
-          //     toast.error('Please Enter valid username');
-          // } else {
-          //     if (resp.password === password) {
-          //         toast.success('Success');
-          //         sessionStorage.setItem('username',username);
-          //         usenavigate('/')
-          //     }else{
-          //         toast.error('Please Enter valid credentials');
-          //     }
-          // }
-        })
-        .catch((err) => {
-          console.error("Login Failed due to :" + err.message);
-        });
-    }
-  };
+  
   const validate = () => {
     let result = true;
     if (tryAccount.eMail === "" || tryAccount.eMail === null) {

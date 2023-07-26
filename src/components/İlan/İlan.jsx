@@ -41,16 +41,16 @@ export default function İlan({advert}){
         }
         title={
           <Typography variant="h8" fontWeight="bold">
-             {advert.ilan_adi}
+             {advert.advertTitle}
           </Typography>
         }
         subheader={
           <Box display="flex" alignItems="center">
             <CalendarMonthIcon sx={{ fontSize: 14, marginLeft: 1 }} />
-            <Typography variant="body2" color="text.secondary">{advert.ilan_date}
+            <Typography variant="body2" color="text.secondary">{advert.advertDate}
             </Typography>
             <BusinessCenterIcon sx={{ fontSize: 14, marginLeft: 1 }} />
-            <Typography variant="body2" color="text.secondary">{advert.ilan_tipi}</Typography>
+            <Typography variant="body2" color="text.secondary">{advert.advertType}</Typography>
           </Box>
         }
       />
@@ -58,7 +58,7 @@ export default function İlan({advert}){
         maxRows={4}
         aria-label="maximum height"
         placeholder="Maximum 100 rows"
-        defaultValue={advert.desc}
+        defaultValue={advert.advertDesc}
         readOnly
       />
       <CardActions>

@@ -17,7 +17,7 @@ const FirmaKartvizit = ({ props }) => {
     marginLeft: "10px",
     border: "1px solid #ccc",
   };
-  console.log(props);
+  
   return (
     <div className="firmaKartvizit">
       <Paper>
@@ -28,16 +28,16 @@ const FirmaKartvizit = ({ props }) => {
             component="div"
             sx={{ marginTop: "5px", marginLeft: "20px", color: "	#00838F" }}
           >
-            {props.name}
+            {props.companyName}
           </Typography>
 
           <Typography variant="body1" fontSize={"14px"} color="text.secondary">
             <CalendarMonthIcon sx={{ marginLeft: "115px" }} />
-            {props.kurulustarihi}
+            {props.foundationDate}
             <LocationSearchingIcon sx={{ marginLeft: "10px" }} />
-            {props.konum}
+            {props.location}
             <PeopleIcon sx={{ marginLeft: "10px" }} />
-            {props.calisansayisi}
+            {props.employeeCount}
           </Typography>
           <Typography sx={{ marginLeft: "270px" }}>
             <Link to="/bireysel-firma">

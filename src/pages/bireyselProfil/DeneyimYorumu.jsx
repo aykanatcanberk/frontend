@@ -53,7 +53,7 @@ const RoundButton = styled(Button)({
   padding: "5px 10px",
 });
 
-export default function DeneyimYorumu({ deneyim }) {
+export default function DeneyimYorumu({ expReview }) {
   return (
     <PostCardWrapper>
       <Grid container alignItems="center">
@@ -69,7 +69,7 @@ export default function DeneyimYorumu({ deneyim }) {
               fontWeight: "bold",
             }}
           >
-            Kullanıcı Adı
+            {expReview.expReviewerName}
           </Typography>
           <Typography
             variant="subtitle2"
@@ -80,7 +80,7 @@ export default function DeneyimYorumu({ deneyim }) {
               color: "textSecondary",
             }}
           >
-            25 Temmuz 2023, 10:30
+            {expReview.date}
           </Typography>
         </Grid>
       </Grid>
@@ -93,10 +93,7 @@ export default function DeneyimYorumu({ deneyim }) {
           fontWeight: "normal",
         }}
       >
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae
-        vero animi labore unde quis, consectetur debitis pariatur maiores
-        voluptas illo quas impedit odit! Tempora, optio ipsa. Assumenda, dolor
-        blanditiis! Similique!
+        {expReview.description}
       </Typography>
       {/* Like, Comment, and Likes Count */}
       <ButtonsWrapper>
@@ -115,7 +112,7 @@ export default function DeneyimYorumu({ deneyim }) {
             color: "textSecondary",
           }}
         >
-          10 Beğeni
+          ?10 Beğeni?
         </Typography>
       </ButtonsWrapper>
       <TextField

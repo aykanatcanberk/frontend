@@ -4,39 +4,7 @@ import { Container, InputAdornment, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useState } from "react";
 import "./BireyselFirmalar.css";
-
-const bireyselfirmalardata = [
-  {
-    name: "Aselsan",
-    kurulustarihi: 1975,
-    calisansayisi: 450,
-    konum: "Ankara",
-  },
-  {
-    name: "Havelsan",
-    kurulustarihi: 2000,
-    calisansayisi: 4050,
-    konum: "Ankara",
-  },
-  {
-    name: "TUSAŞ",
-    kurulustarihi: 1998,
-    calisansayisi: 4050,
-    konum: "Ankara",
-  },
-  {
-    name: "Roketsan",
-    kurulustarihi: 2000,
-    calisansayisi: 4050,
-    konum: "Ankara",
-  },
-  {
-    name: "TR EĞİTİM VE TEKNOLOJİ A.Ş.",
-    kurulustarihi: 2019,
-    calisansayisi: 4050,
-    konum: "Ankara",
-  },
-];
+import { getAllCompanies } from "../../services/companyService";
 
 export default function ComplexGrid() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -44,6 +12,19 @@ export default function ComplexGrid() {
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
   };
+
+  const [companies, setCompanies] = useState([]);
+
+  React.useEffect(() => {
+    getAllCompanies()
+      .then((companies) => {
+        setCompanies(companies);
+      })
+      .catch((err) => {
+        console.error("Coulnt fetch the all posts data due to :" + err.message);
+      });
+  }, []);
+
   return (
     <>
       <Container maxWidth="md" sx={{ mt: 8 }}>
@@ -65,8 +46,8 @@ export default function ComplexGrid() {
       </Container>
       <div className="searchFilter">{}</div>
       <div className="firmaContainer">
-        {bireyselfirmalardata.map((firma) => (
-          <FirmaKartvizit props={firma} />
+        {companies.map((company) => (
+          <FirmaKartvizit props={company} />
         ))}
       </div>
     </>

@@ -1,13 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Grid, Paper, Typography } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import DeneyimYorumu from "./DeneyimYorumu";
-
-import comments from "./commentsDB.json";
 import "./BireyselProfil.css";
+import { getAllExperienceReviews } from "../../services/expReviewServices";
 
 const PageWrapper = styled(Grid)({
   padding: "2rem",
@@ -120,6 +119,8 @@ function PageChangeButtons({ sharedPostsActive, setSharedPostsActive }) {
 }
 
 function KimlikBilgileri({ userName, userTR_Id, userEmail }) {
+
+
   return (
     <>
       <Grid container alignItems="left">
@@ -207,7 +208,7 @@ function KimlikBilgileri({ userName, userTR_Id, userEmail }) {
   );
 }
 
-function EgitimGecmisi({ userName, userTR_Id, userEmail }) {
+function EgitimGecmisi({ degree, classYear, faculty, departmant, schoolStartDate, gradeAverage}) {
   return (
     <>
       <Grid container alignItems="left">
@@ -387,7 +388,7 @@ function EgitimGecmisi({ userName, userTR_Id, userEmail }) {
   );
 }
 
-function SahsiBilgiler({ userName, userTR_Id, userEmail }) {
+function SahsiBilgiler({ birthDate, birthPlace,  }) {
   return (
     <>
       <Grid container alignItems="left">
@@ -475,7 +476,7 @@ function SahsiBilgiler({ userName, userTR_Id, userEmail }) {
   );
 }
 
-function IsGecmisi({ userName, userTR_Id, userEmail }) {
+function IsGecmisi({ companyName, workPosition, workingDate, departmant }) {
   return (
     <>
       <Grid container alignItems="left">
@@ -586,7 +587,7 @@ function IsGecmisi({ userName, userTR_Id, userEmail }) {
   );
 }
 
-function İletisimBilgileri({ userName, userTR_Id, userEmail }) {
+function İletisimBilgileri({ country, city, district, address, zipCode, cellPhone }) {
   return (
     <>
       <Grid container alignItems="left">
@@ -746,6 +747,18 @@ function İletisimBilgileri({ userName, userTR_Id, userEmail }) {
 function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {
   const [sharedPostsActive, setSharedPostsActive] = useState(true);
 
+  const [expReviews, setexpReviews] = useState([]);
+
+  useEffect(() => {
+    getAllExperienceReviews()
+      .then((reviews) => {
+        setexpReviews(reviews);
+      })
+      .catch((err) => {
+        console.error("Coulnt fetch the all posts data due to :" + err.message);
+      });
+  }, []);
+
   function handleRendering() {
     if (sharedPostsActive) {
       return (
@@ -776,29 +789,6 @@ function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {
                 </Typography>
               </div>
             </ProfileWrapper>
-
-            {/* <CardWrapper>
-              <ButtonsWrapper>
-                <EqualWidthButton
-                  variant="contained"
-                  color="primary"
-                  sx={{ height: "30px" }}
-                  disabled={!sharedPostsActive}
-                  onClick={() => setSharedPostsActive(false)}
-                >
-                  PAYLAŞIMLARIM
-                </EqualWidthButton>
-                <EqualWidthButton
-                  variant="contained"
-                  color="primary"
-                  sx={{ height: "30px" }}
-                  disabled={sharedPostsActive}
-                  onClick={() => setSharedPostsActive(true)}
-                >
-                  ÖZGEÇMİŞİM
-                </EqualWidthButton>
-              </ButtonsWrapper>
-            </CardWrapper> */}
 
             <PageChangeButtons
               sharedPostsActive={sharedPostsActive}
@@ -845,8 +835,8 @@ function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {
           <Grid className="right-side" item xs={6}>
             <CardWrapper>DENEYİM YORUMLARI</CardWrapper>
             <CardWrapper elevation={12}>
-              {comments.map((comment) => (
-                <DeneyimYorumu deneyim={comment} />
+              {expReviews.map((expReview) => (
+                <DeneyimYorumu expReview={expReview} />
               ))}
             </CardWrapper>
           </Grid>
@@ -918,105 +908,6 @@ function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {
       justifyContent="center"
     >
       {handleRendering()}
-      {/* Payşalımlarım aktif */}
-      {/* <Grid className="left-side" item xs={6}>
-        <ProfileWrapper>
-          <AvatarWrapper src={avatarSrc} alt="Profil Avatarı" />
-          <div>
-            <Typography
-              variant="h6"
-              style={{
-                fontFamily: "Arial",
-                fontSize: "14px",
-                fontWeight: "normal",
-              }}
-            >
-              User Name
-            </Typography>
-            <Typography
-              variant="h6"
-              style={{
-                fontFamily: "Arial",
-                fontSize: "14px",
-                fontWeight: "normal",
-              }}
-            >
-              Department
-            </Typography>
-          </div>
-        </ProfileWrapper>
-
-        <CardWrapper>
-          <ButtonsWrapper>
-            <EqualWidthButton
-              variant="contained"
-              color="primary"
-              sx={{ height: "30px" }}
-              disabled={sharedPostsActive}
-              onClick={() => setSharedPostsActive(true)}
-            >
-              PAYLAŞIMLARIM
-            </EqualWidthButton>
-            <EqualWidthButton
-              variant="contained"
-              color="primary"
-              sx={{ height: "30px" }}
-              disabled={!sharedPostsActive}
-              onClick={() => setSharedPostsActive(false)}
-            >
-              ÖZGEÇMİŞİM
-            </EqualWidthButton>
-          </ButtonsWrapper>
-        </CardWrapper>
-
-        <CardWrapper>
-          <SharePostCardWrapper>
-            <Typography
-              variant="h6"
-              style={{
-                fontFamily: "Arial",
-                fontSize: "14px",
-                fontWeight: "normal",
-              }}
-            >
-              Gönderi Paylaş
-            </Typography>
-            <PostInputWrapper
-              label="Gönderinizi buraya yazın"
-              variant="outlined"
-              multiline
-              rows={4}
-            />
-            <ButtonsWrapper>
-              <Button
-                variant="contained"
-                color="primary"
-                sx={{ height: "30px", width: "auto" }}
-              >
-                Resim Yükle
-              </Button>
-              <Button
-                variant="contained"
-                color="primary"
-                sx={{ height: "30px", width: "auto" }}
-              >
-                Paylaş
-              </Button>
-            </ButtonsWrapper>
-          </SharePostCardWrapper>
-        </CardWrapper>
-      </Grid>
-
-      <Grid className="right-side" item xs={6}>
-        <CardWrapper>İLANLAR</CardWrapper>
-        <CardWrapper elevation={12}>
-          {comments.map((comment) => (
-            <DeneyimYorumu deneyim={comment} />
-          ))}
-        </CardWrapper>
-      </Grid> */}
-
-      {/* Özgeçmişim aktif */}
     </PageWrapper>
   );
 }
