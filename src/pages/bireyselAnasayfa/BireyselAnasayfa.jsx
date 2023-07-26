@@ -22,12 +22,12 @@ const PageWrapper = styled(Grid)({
 const BireyselAnasayfa = () => {
   return (
     <PageWrapper container spacing={3} justifyContent="center">
-      <Grid item xs={10} sm={5} md={2.5} sx={{ display: "none", "@media (min-width: 960px)": { display: "block" } }}>
+      <Grid item xs={12} sm={5} md={2.5} sx={{ display: "none", "@media (min-width: 960px)": { display: "block" } }}>
         {/* Birinci Kolon */}
         <ProfilComp />
         <TakipEdilenFirmalar />
       </Grid>
-      <Grid item xs={10} sm={5} md={6} sx={{ textAlign: "center", "@media (min-width: 960px)": { display: "block"}}}>
+      <Grid item xs={12} sm={5} md={6} sx={{ textAlign: "center", "@media (min-width: 960px)": { display: "block"}}}>
         {/* İkinci Kolon */}
         <GonderiYap />
         <GonderiCard />
@@ -39,7 +39,7 @@ const BireyselAnasayfa = () => {
         <GonderiCard />
       </Grid>
       
-      <Grid item xs={10} sm={5} md={3.5} sx={{ display: "none", "@media (min-width: 960px)": { display: "block" } }}>
+      <Grid item xs={12} sm={5} md={3.5} sx={{ display: "none", "@media (min-width: 960px)": { display: "block" } }}>
         {/* Üçüncü Kolon */}
         <IlgılıIlanlar />
         <PopulerIcerikler />

@@ -1,13 +1,9 @@
-/* Author: Hasan Basri BİLGE
-Last Update: 26.07.2023 */
-
-import React from 'react';
+import React from "react";
 import { Paper, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import Divider from '@mui/material/Divider';
-
+import Divider from "@mui/material/Divider";
 
 const SharePostCardWrapper = styled(Paper)({
   padding: "1rem",
@@ -33,16 +29,26 @@ const ButtonsWrapper = styled("div")({
   marginTop: "10px",
 });
 
+const BlueButton = styled(Button)({
+  borderRadius: "15px",
+  color: "blue",
+  borderColor: "blue",
+  backgroundColor: "transparent",
+  "&:hover": {
+    backgroundColor: "transparent",
+  },
+});
+
 const GreenButton = styled(Button)({
   borderRadius: "15px",
   color: "white",
   backgroundColor: "green",
   "&:hover": {
-    backgroundColor: "black",
+    backgroundColor: "	#4CAF50",
   },
 });
 
-function GonderiYap() {
+function Gonderiolustur() {
   return (
     <SharePostCardWrapper>
       <Typography
@@ -63,12 +69,23 @@ function GonderiYap() {
         rows={4}
       />
       <ButtonsWrapper>
-        <GreenButton variant="contained" color="primary" sx={{ height: "30px", width: "auto" }}>
+        <BlueButton
+          variant="contained"
+          color="primary"
+          sx={{ height: "30px", width: "auto" }}
+        >
+          Resim Yükle
+        </BlueButton>
+        <GreenButton
+          variant="contained"
+          color="primary"
+          sx={{ height: "30px", width: "auto" }}
+        >
           Paylaş
         </GreenButton>
       </ButtonsWrapper>
     </SharePostCardWrapper>
-  )
+  );
 }
 
-export default GonderiYap;
+export default Gonderiolustur;
