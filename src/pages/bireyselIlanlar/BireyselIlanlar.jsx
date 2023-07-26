@@ -11,6 +11,7 @@ import Typography from "@mui/joy/Typography";
 import İlan from "../../components/İlan/İlan";
 import db from "../../data/db.json";
 
+
 const jobOptions = [{ title: "Staj İlanları" }, { title: "İş İlanları" }];
 const companies = [
   { title: "Aselsan" },
