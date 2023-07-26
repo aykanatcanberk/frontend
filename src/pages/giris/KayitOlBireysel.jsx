@@ -144,7 +144,11 @@ export default function Register() {
                             <AccountCircle
                               sx={{ color: "action.active", mr: 1, my: 0.5 }}
                             />
-                            <TextField id="ad" label="Ad" variant="standard" />
+                            <TextField
+                              id="bireysel-ad"
+                              label="Ad"
+                              variant="standard"
+                            />
                           </Box>
                         </FormControl>
                         <FormControl variant="standard">
@@ -160,7 +164,7 @@ export default function Register() {
                               sx={{ color: "action.active", mr: 1, my: 0.5 }}
                             />
                             <TextField
-                              id="soyad"
+                              id="bireysel-soyad"
                               label="Soyad"
                               variant="standard"
                             />
@@ -207,7 +211,7 @@ export default function Register() {
                           <TextField
                             fullWidth
                             type="password"
-                            id="şifre"
+                            id="bireysel-şifre"
                             label="Şifre"
                             variant="standard"
                           />

@@ -123,7 +123,7 @@ export default function Login() {
                           <TextField
                             required
                             fullWidth
-                            id="email"
+                            id="bireysel-email"
                             label="E-posta"
                             name="email"
                           />
@@ -135,7 +135,7 @@ export default function Login() {
                             name="şifre"
                             label="Şifre"
                             type="password"
-                            id="şifre"
+                            id="bireysel-şifre"
                           />
                         </Grid>
                         <Grid item xs={12} sx={{ ml: "3em", mr: "3em" }}>

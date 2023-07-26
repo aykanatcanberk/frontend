@@ -149,7 +149,7 @@ export default function Register() {
                           />
                           <TextField
                             fullWidth
-                            id="firma-ad"
+                            id="kurumsal-ad"
                             label="Firma Adı"
                             variant="standard"
                           />
@@ -173,7 +173,7 @@ export default function Register() {
                           />
                           <TextField
                             fullWidth
-                            id="email"
+                            id="kurumsal-email"
                             label="Kurumsal E-posta Adresi"
                             variant="standard"
                           />
@@ -196,7 +196,7 @@ export default function Register() {
                           <TextField
                             fullWidth
                             type="password"
-                            id="şifre"
+                            id="kurumsal-şifre"
                             label="Şifre"
                             variant="standard"
                           />
