@@ -1,0 +1,16 @@
+.styled-textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+  .Typography {
+    text-align: left;
+    width:max-content;
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 4px;
+    margin-left: 14px;
+  }
