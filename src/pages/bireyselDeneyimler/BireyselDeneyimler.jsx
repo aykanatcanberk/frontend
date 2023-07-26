@@ -69,8 +69,9 @@ export default function App() {
     {
       title: "Mukemmel bir deneyimdi!!!",
       description: `Staj döneminde öğrendiklerimden bazıları şunlardır:
+      
       - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
-      - Veritabanı yönetimi ve veri tabanı tasarımı konusunda temel bilgi.
+      - Veritabanı yönetimi tasarımı konusunda temel bilgi.
       - Hata ayıklama ve sorun giderme becerilerini geliştirme.
       - Sürüm kontrol sistemlerini (Git) etkin kullanma.`,
       companyName: "Aselsan",
@@ -78,8 +79,9 @@ export default function App() {
     {
       title: "Mukemmel bir deneyimdi!!!",
       description: `Staj döneminde öğrendiklerimden bazıları şunlardır:
+
       - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
-      - Yazılım geliştirme süreçlerine uyum sağlama ve takım içinde etkin iletişim.
+      - Yazılım geliştirme süreçlerine uyum sağlama.
       - Agil yazılım geliştirme metodolojileriyle çalışma deneyimi.
       - Sürüm kontrol sistemlerini (Git) etkin kullanma.`,
       companyName: "Aselsan",

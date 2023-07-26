@@ -1,25 +1,29 @@
 import React, { useState } from "react";
 import { Button } from "@mui/material";
-import DeneyimText from "./DeneyimText";
 import FirmaSelect from "./FirmaSelect";
 import SendIcon from "@mui/icons-material/Send";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
+import LoadingButton from "@mui/lab/LoadingButton";
+import { wait } from "@testing-library/user-event/dist/utils";
 
 function DeneyimPaylas() {
   const [deneyimBaslik, setDeneyimBaslik] = useState("");
   const [deneyimIcerik, setDeneyimIcerik] = useState("");
   const [firma, setFirma] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const firmaSec = (par) => {
     setFirma(par);
   };
-
   const handleClick = () => {
-    //burada deneyimBaslik, deneyimIcerik ve firma state'lerini kullanarak veritabanına kayıt yapılacak
-    console.log(deneyimBaslik, deneyimIcerik, firma);
+    setLoading(true);
+    // 5 sn bekleme suresi daha sonra silinecek
+    setTimeout(() => {
+      console.log(deneyimBaslik, deneyimIcerik, firma);
+      setLoading(false);
+    }, 5000);
   };
-
   return (
     <div className="deneyimPaylas">
       <TextField
@@ -50,15 +54,16 @@ function DeneyimPaylas() {
       </Box>
       <div className="deneyimFirmaButon">
         <FirmaSelect firmaSec={firmaSec} firma={firma} />
-        <Button
+        <LoadingButton
           size="small"
           sx={{ height: "40px" }}
-          variant="contained"
           onClick={handleClick}
           endIcon={<SendIcon />}
+          loading={loading}
+          variant="contained"
         >
           Gonder
-        </Button>
+        </LoadingButton>
       </div>
     </div>
   );

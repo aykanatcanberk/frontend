@@ -14,7 +14,7 @@ export default function FirmaSelect(props) {
   return (
     <Box sx={{ minWidth: 120, margin: "5px" }}>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Firmalar</InputLabel>
+        <InputLabel id="demo-simple-select-label">FirmaSeç </InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
