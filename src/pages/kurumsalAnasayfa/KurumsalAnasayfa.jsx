@@ -4,14 +4,7 @@ import { styled } from "@mui/material/styles";
 import ProfilCard from "../../components/kurumsalAnasayfa/profilcard";
 import Gonderi from "../../components/kurumsalAnasayfa/gönderi";
 import Gonderiolustur from "../../components/kurumsalAnasayfa/gonderiolusturma";
-const kurumsalanasayfaprofil = [
-  {
-    name: "Aselsan",
-    kurulustarihi: 1975,
-    calisansayisi: 450,
-    konum: "Ankara",
-  },
-];
+import db from "../../data/db.json";
 const PageWrapper = styled(Grid)({
   padding: "2rem",
   margin: "0 auto",
@@ -35,7 +28,7 @@ const App = () => {
       >
         {/* profil kısmı */}
         <div className="firmaContainer">
-          {kurumsalanasayfaprofil.map((firma) => (
+          {db["my-info-firma"].map((firma) => (
             <ProfilCard profilcard={firma} />
           ))}
         </div>
@@ -51,10 +44,13 @@ const App = () => {
           "@media (min-width: 960px)": { display: "block" },
         }}
       >
-        {/* gönderi kısmı */}
+        {/* gönderi oluşturma kısmı */}
         <Gonderiolustur />
-        <Gonderi />
-        <Gonderi />
+        <div className="firmaContainer">
+          {db["post"].map((postcard) => (
+            <Gonderi key={postcard.id} postcard={postcard} />
+          ))}
+        </div>
       </Grid>
     </PageWrapper>
   );

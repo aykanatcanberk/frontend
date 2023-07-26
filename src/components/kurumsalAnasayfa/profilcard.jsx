@@ -36,31 +36,35 @@ function ProfilCard({ profilcard }) {
       >
         {profilcard.name}
       </Typography>
+
       <Typography
         variant="body1"
         fontSize={"14px"}
         color="text.secondary"
-        sx={{ marginTop: "30px", marginBottom: "30px" }}
+        sx={{ marginTop: "15px", marginBottom: "15px" }}
+      >
+        <LocationSearchingIcon sx={{ marginLeft: "10px" }} />
+        {profilcard.location}
+      </Typography>
+
+      <Typography
+        variant="body1"
+        fontSize={"14px"}
+        color="text.secondary"
+        sx={{ marginTop: "15x", marginBottom: "15px" }}
+      >
+        <PeopleIcon sx={{ marginLeft: "10px" }} />
+        {profilcard.employeeCount}
+      </Typography>
+      <Typography
+        variant="body1"
+        fontSize={"14px"}
+        color="text.secondary"
+        sx={{ marginTop: "15px", marginBottom: "15px" }}
       >
         <CalendarMonthIcon sx={{ marginLeft: "10px" }} />
-        {profilcard.kurulustarihi}
-        <LocationSearchingIcon sx={{ marginLeft: "10px" }} />
-        {profilcard.konum}
-        <PeopleIcon sx={{ marginLeft: "10px" }} />
-        {profilcard.calisansayisi}
+        {profilcard.founded}
       </Typography>
-      <Grid item xs={12} sm={12} md={12}>
-        <Typography
-          variant="subtitle1"
-          style={{
-            fontFamily: "Arial",
-            fontSize: "12px",
-            fontWeight: "normal",
-            color: "secondary",
-            textAlign: "center",
-          }}
-        ></Typography>
-      </Grid>
     </CardWrapper>
   );
 }
