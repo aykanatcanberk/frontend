@@ -4,6 +4,7 @@ import SendIcon from "@mui/icons-material/Send";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import LoadingButton from "@mui/lab/LoadingButton";
+import { addDeneyim } from "../../services/addDeneyim";
 
 function DeneyimPaylas() {
   const [deneyimBaslik, setDeneyimBaslik] = useState("");
@@ -14,14 +15,27 @@ function DeneyimPaylas() {
   const firmaSec = (par) => {
     setFirma(par);
   };
-  const handleClick = () => {
-    setLoading(true);
-    // 5 sn bekleme suresi daha sonra silinecek
-    setTimeout(() => {
-      console.log(deneyimBaslik, deneyimIcerik, firma);
-      setLoading(false);
-    }, 5000);
-  };
+
+  // const addDeneyim = () => {
+  //   setLoading(true);
+  //   const newDeneyim = {
+  //     name: "Dinny Micah",
+  //     title: deneyimBaslik,
+  //     companyName: firma,
+  //     description: deneyimIcerik,
+  //   };
+
+  //   axios
+  //     .post("http://localhost:3000/deneyimler", newDeneyim)
+  //     .then(() => {
+  //       setLoading(false);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error adding data:", error);
+  //       setLoading(false);
+  //     });
+  // };
+
   return (
     <div className="deneyimPaylas">
       <TextField
@@ -55,7 +69,7 @@ function DeneyimPaylas() {
         <LoadingButton
           size="small"
           sx={{ height: "40px" }}
-          onClick={handleClick}
+          onClick={addDeneyim}
           endIcon={<SendIcon />}
           loading={loading}
           variant="contained"

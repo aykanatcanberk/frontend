@@ -8,8 +8,39 @@ import "./bireyselDeneyimler.css";
 import { EffectCoverflow, Autoplay } from "swiper/modules";
 import Deneyimlerim from "../../components/deneyimFirma/Deneyimlerim";
 import DeneyimPaylas from "../../components/deneyimFirma/DeneyimPaylas";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 export default function App() {
+  const [deneyimler, setDeneyimler] = useState([]);
+
+  // async axios request to get deneyimler from db.json file and add .then method
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/deneyimler");
+        setDeneyimler(response.data);
+        console.log(deneyimler);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  // useEffect(async () => {
+  //   axios
+  //     .get("http://localhost:3000/deneyimler")
+  //     .then((response) => {
+  //       setDeneyimler(response.data);
+  //       console.log(deneyimler);
+  //     })
+  //     .then((error) => {
+  //       console.log(error);
+  //     });
+  // });
+
   var items = [
     {
       name: "Mehmet Ali",
@@ -111,7 +142,7 @@ export default function App() {
         modules={[EffectCoverflow, Autoplay]}
         className="mySwiper"
       >
-        {items.map((item, i) => (
+        {deneyimler?.map((item, i) => (
           <SwiperSlide key={i}>
             <Slider key={i} item={item} />
           </SwiperSlide>
