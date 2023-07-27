@@ -47,7 +47,7 @@ function TakipEdilenFirmalar() {
       <Grid container spacing={1}>
       <Grid item xs={6} sm={6} md={6}>
       <Card elevation={0} style={{borderRadius: "50%"}}>
-        <CardActionArea onClick={handleClick}>
+        <CardActionArea onClick={handleClick} href="/bireysel-firma/3">
           {/* Karta eklemek istediğiniz içerik burada olacak */}
           <SmallAvatarWrapper src={roketsan} alt="Roketsan" />
           <CardContent>
@@ -66,7 +66,7 @@ function TakipEdilenFirmalar() {
     </Grid>
     <Grid item xs={6} sm={6} md={6}>
       <Card elevation={0} style={{borderRadius: "50%"}}>
-        <CardActionArea onClick={handleClick}>
+        <CardActionArea onClick={handleClick} href="/bireysel-firma/2">
           {/* Karta eklemek istediğiniz içerik burada olacak */}
           <SmallAvatarWrapper src={havelsanlogo} alt="Havelsan" />
           <CardContent>
@@ -85,7 +85,7 @@ function TakipEdilenFirmalar() {
     </Grid>
     <Grid item xs={6} sm={6} md={6}>
       <Card elevation={0} style={{borderRadius: "50%"}}>
-        <CardActionArea onClick={handleClick}>
+        <CardActionArea onClick={handleClick} href="/bireysel-firma/1">
           {/* Karta eklemek istediğiniz içerik burada olacak */}
           <SmallAvatarWrapper src={aselsanlogo} alt="Aselsan" />
           <CardContent>
@@ -104,7 +104,7 @@ function TakipEdilenFirmalar() {
     </Grid>
     <Grid item xs={6} sm={6} md={6}>
       <Card elevation={0} style={{borderRadius: "50%"}}>
-        <CardActionArea onClick={handleClick}>
+        <CardActionArea onClick={handleClick} href="/bireysel-firma/5">
           {/* Karta eklemek istediğiniz içerik burada olacak */}
           <SmallAvatarWrapper src={tusas} alt="TUSAŞ" />
           <CardContent>
@@ -125,7 +125,7 @@ function TakipEdilenFirmalar() {
           <Grid container justifyContent="center" spacing={1}>
           <Grid item xs={6} sm={6} md={6}>
       <Card elevation={0} style={{borderRadius: "50%"}}>
-        <CardActionArea onClick={handleClick}>
+        <CardActionArea onClick={handleClick} href="/bireysel-firma/4">
           {/* Karta eklemek istediğiniz içerik burada olacak */}
           <SmallAvatarWrapper src={tet} alt="TET A.Ş." />
           <CardContent>
