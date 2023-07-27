@@ -18,31 +18,15 @@ import KurumsalOnayKutusu from "../pages/kurumsalOnayKutusu/KurumsalOnayKutusu";
 import KurumsalProfil from "../pages/kurumsalProfil/KurumsalProfil";
 import NotFoundError from "./NotFoundError";
 import SignInOutContainer from "../containers";
-import { getCompany } from "../services/userService";
 
 const Router = () => {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    getCompany(null)
-    .then((response) => {
-    console.log(response.data);
-    setData(response.data);
-  })
-  .catch((error) => {
-    console.error("Şirket verileri alınamadı:", error);
-  });
-  }, []);
-
-  if (!data) {
-    // Veriler yüklenmediyse bir yükleme göstergesi veya hata mesajı ekleyebilirsiniz.
-    return <div>Veriler yükleniyor...</div>;
-  }
-
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LoginLayout element={<SignInOutContainer />} />} />
+        <Route
+          path="/"
+          element={<LoginLayout element={<SignInOutContainer />} />}
+        />
         <Route path="/kayit-ol-bireysel" element={<KayitOlBireysel />} />
         <Route path="/kayit-ol-kurumsal" element={<KayitOlKurumsal />} />
         <Route
@@ -61,17 +45,18 @@ const Router = () => {
           path="/bireysel-deneyimler"
           element={<UserLayout element={<BireyselDeneyimler />} />}
         />
-        {data.map((firma) => (
-          <Route
-            key={firma.id}
-            path={`/bireysel-firma/${firma.id}`}
-            element={<UserLayout element={<BireyselFirma id={firma.id} />} />}
-          />
-        ))}
+
         <Route
           path="/bireysel-firmalar"
           element={<UserLayout element={<BireyselFirmalar />} />}
         />
+        <Route
+          path="/bireysel-firma"
+          element={<UserLayout element={<BireyselFirma />} />}
+        >
+          <Route path=":id" element={<BireyselFirma />} />
+        </Route>
+
         <Route
           path="/bireysel-ilanlar"
           element={<UserLayout element={<BireyselIlanlar />} />}
