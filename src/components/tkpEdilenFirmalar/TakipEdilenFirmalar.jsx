@@ -146,7 +146,7 @@ function TakipEdilenFirmalar() {
         </Grid>
       </Grid>
       <Button
-        href="#"
+        href="/bireysel-firmalar"
         variant="contained"
         color="primary"
         style={{
