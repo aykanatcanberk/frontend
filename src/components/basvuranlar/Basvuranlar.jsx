@@ -1,8 +1,11 @@
 import * as React from "react";
-import { Grid, Paper, Typography } from "@mui/material";
+import { Paper, Typography, CardActionArea } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import { styled } from "@mui/material/styles";
-import pp from "../../components/bryselAsayfaProfilComp/images/pp";
+//import pp from "../../components/bryselAsayfaProfilComp/images/pp";
+import RecentActorsIcon from "@mui/icons-material/RecentActors";
+import SchoolIcon from "@mui/icons-material/School";
+import StarIcon from "@mui/icons-material/Star";
 
 const CardWrapper = styled(Paper)({
   padding: "1rem",
@@ -18,34 +21,74 @@ const AvatarWrapper = styled(Avatar)({
   borderRadius: "50%",
 });
 
-function Basvuranlar(applicant) {
+const handleClick = () => {
+  // Burada tıklama işlemlerini gerçekleştirebilirsiniz
+};
+
+function Basvuranlar({ applicant }) {
   return (
     <CardWrapper>
-      <AvatarWrapper src={pp} alt="Profil Avatarı" />
+      <CardActionArea onClick={handleClick} href="/bireysel-profil">
+        {/* Karta eklemek istediğiniz içerik burada olacak */}
+        <AvatarWrapper alt="Profil Avatarı" />
+
+        <Typography
+          style={{
+            fontFamily: "Arial",
+            fontSize: "14px",
+            fontWeight: "normal",
+          }}
+        >
+          <RecentActorsIcon
+            sx={{
+              fontSize: 18,
+              marginRight: 1.5,
+              marginTop: 2,
+            }}
+          />
+          {applicant.name_surname}
+        </Typography>
+      </CardActionArea>
+
       <Typography
-        variant="h6"
+        variant="subtitle1"
         style={{
           fontFamily: "Arial",
           fontSize: "14px",
           fontWeight: "normal",
+          color: "secondary",
+          textAlign: "center",
         }}
       >
-        {applicant.name_surname}
-      </Typography>
-      <Grid item xs={12} sm={12} md={12}>
-        <Typography
-          variant="subtitle1"
-          style={{
-            fontFamily: "Arial",
-            fontSize: "12px",
-            fontWeight: "normal",
-            color: "secondary",
-            textAlign: "center",
+        <SchoolIcon
+          sx={{
+            fontSize: 18,
+            marginRight: 1.5,
+            marginTop: 2,
           }}
-        >
-          {applicant.university}
-        </Typography>
-      </Grid>
+        />
+        {applicant.university}
+      </Typography>
+
+      <Typography
+        variant="subtitle1"
+        style={{
+          fontFamily: "Arial",
+          fontSize: "14px",
+          fontWeight: "normal",
+          color: "secondary",
+          textAlign: "center",
+        }}
+      >
+        <StarIcon
+          sx={{
+            fontSize: 18,
+            marginRight: 1.5,
+            marginTop: 2,
+          }}
+        />
+        {applicant.gno}
+      </Typography>
     </CardWrapper>
   );
 }

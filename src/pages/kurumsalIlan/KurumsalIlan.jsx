@@ -21,13 +21,20 @@ function KurumsalIlan() {
           marginTop={3}
           spacing={2}
         >
+          <Typography
+            level="h6"
+            className="Typography"
+            style={{ marginRight: 430, marginTop: 2 }}
+          >
+            İLAN DETAYI
+          </Typography>
           {db["advert-detail"].map((advert, index) => (
             <Grid
               item
               key={advert.id}
               xs={12}
               sm={12}
-              marginTop={10}
+              marginTop={5}
               marginLeft={10}
             >
               <İlanDetay advert={advert} />
@@ -50,11 +57,11 @@ function KurumsalIlan() {
         <Typography
           level="h6"
           className="Typography"
-          style={{ marginLeft: 2, marginTop: 10 }}
+          style={{ marginLeft: 2, marginTop: 20 }}
         >
           BAŞVURANLAR
         </Typography>
-        <div style={{ marginTop: 20, marginRight: 10 }}>
+        <div style={{ marginTop: 60, marginRight: 10 }}>
           {db.applicant.map((applicant) => (
             <Basvuranlar key={applicant.id} applicant={applicant} />
           ))}
