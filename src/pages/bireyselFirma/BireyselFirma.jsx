@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ProfileCardComp from "../../components/bireyselFirmaLayoutComp/bireyselFirmaLay";
 import { getCompany } from "../../services/userService";
 import { useParams } from "react-router-dom";
+import NotFoundError from "../../routes/NotFoundError";
 
 const BireyselFirma = () => {
   const [companyDataList, setCompanyDataList] = useState([]);
@@ -17,6 +18,10 @@ const BireyselFirma = () => {
         console.error("Error fetching company data:", error);
       });
   }, [id]);
+
+  if (companyDataList.length === 0) {
+    return <NotFoundError props={"Böyle bir şirket mevcut değil"} />;
+  }
 
   return (
     <>
