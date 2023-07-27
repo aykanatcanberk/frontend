@@ -2,7 +2,6 @@
   width: 100%;
   height: 70px;
   background: linear-gradient(#071952, #35a29f);
-
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -20,7 +19,7 @@
 }
 
 .navbar .rightSide a {
-  font-family: "Calibri";
+  font-family: "Arial";
   color: white;
   font-size: 16px;
   font-weight: 100;
@@ -81,7 +80,7 @@
 }
 
 .mobileMenu a {
-  font-family: "Calibri";
+  font-family: "Arial";
   color: white;
   font-size: 16px;
   font-weight: 100;
