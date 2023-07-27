@@ -11,6 +11,9 @@ import TextareaAutosize from "@mui/base/TextareaAutosize";
 import { grey } from "@mui/material/colors";
 import BusinessIcon from "@mui/icons-material/Business";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import EngineeringIcon from "@mui/icons-material/Engineering";
+import LocalAtmIcon from "@mui/icons-material/LocalAtm";
+import WorkHistoryIcon from "@mui/icons-material/WorkHistory";
 
 const StyledTextarea = styled(TextareaAutosize)(
   ({ theme }) => `
@@ -19,8 +22,8 @@ const StyledTextarea = styled(TextareaAutosize)(
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 2;
-  padding: 8px;
-  margin-left:20px;
+  padding: 20px;
+  margin-left:10px;
   height:250px;
   border-radius: 12px 12px 0 12px;
   color: ${theme.palette.mode === "dark" ? grey[300] : grey[900]};
@@ -57,7 +60,7 @@ export default function İlanDetay({ advert }) {
               {advert.ilan_date}
             </Typography>
             <BusinessCenterIcon
-              sx={{ fontSize: 14, marginLeft: 1, marginTop: 0.8 }}
+              sx={{ fontSize: 14, marginLeft: 2, marginTop: 0.8 }}
             />
             <Typography variant="body2" color="text.secondary" marginTop={0.8}>
               {advert.ilan_tipi}
@@ -73,18 +76,25 @@ export default function İlanDetay({ advert }) {
         readOnly
       />
 
-      <Typography marginLeft={5} marginTop={0.5} variant="body2">
-        {advert.çalışma_şekli}
-        <ArrowForwardIcon
-          sx={{ fontSize: 17, marginLeft: 1, marginTop: 0.8 }}
-        />
-      </Typography>
-      <Typography marginLeft={5} marginTop={0.5} variant="body2">
-        {advert.çalışma_tercihi}
-      </Typography>
-      <Typography marginLeft={5} marginTop={0.5} variant="body2">
-        {advert.bölüm}
-      </Typography>
+      <Box display="flex" alignItems="center">
+        <WorkHistoryIcon sx={{ fontSize: 14, marginLeft: 4, marginTop: 0.8 }} />
+        <Typography variant="body2" marginTop={0.8} marginLeft={0.5}>
+          {advert.çalışma_şekli}
+        </Typography>
+        <LocalAtmIcon sx={{ fontSize: 14, marginLeft: 4, marginTop: 0.8 }} />
+        <Typography variant="body2" marginTop={0.8} marginLeft={0.5}>
+          {advert.çalışma_tercihi}
+        </Typography>
+        <EngineeringIcon sx={{ fontSize: 14, marginLeft: 4, marginTop: 0.8 }} />
+        <Typography
+          variant="body2"
+          marginTop={2.8}
+          marginLeft={0.5}
+          marginBottom={2}
+        >
+          {advert.bölüm}
+        </Typography>
+      </Box>
     </Card>
   );
 }
