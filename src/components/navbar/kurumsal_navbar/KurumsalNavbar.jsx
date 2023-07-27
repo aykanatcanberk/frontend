@@ -18,7 +18,7 @@ function Navbar() {
       </div>
       <div className={`rightSide ${openMenu ? "showMenu" : "hideMenu"}`}>
       <Link to="/kurumsal-anasayfa">Anasayfa</Link>
-          <Link to="/kurumsal-ilan">İlanlar</Link>
+          <Link to="/kurumsal-ilanlar">İlanlar</Link>
           <Link to="/kurumsal-onay-kutusu">Onay Kutusu</Link>
           <Link to="/kurumsal-profil">Profilim</Link>
       </div>
