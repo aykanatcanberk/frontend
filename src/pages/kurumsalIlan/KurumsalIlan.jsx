@@ -12,7 +12,7 @@ function KurumsalIlan() {
         item
         lg={7}
         md={10}
-        sx={{ paddingRight: "100px", paddingLeft: "60px" }}
+        sx={{ paddingRight: "100px", paddingLeft: "80px" }}
       >
         <Grid
           container
@@ -24,7 +24,7 @@ function KurumsalIlan() {
           <Typography
             level="h6"
             className="Typography"
-            style={{ marginRight: 430, marginTop: 2 }}
+            style={{ marginRight: 410, marginTop: 2 }}
           >
             İLAN DETAYI
           </Typography>
