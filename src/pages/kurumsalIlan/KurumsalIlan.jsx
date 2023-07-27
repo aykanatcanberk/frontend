@@ -61,6 +61,7 @@ function KurumsalIlan() {
         >
           BAŞVURANLAR
         </Typography>
+
         <div style={{ marginTop: 60, marginRight: 10 }}>
           {db.applicant.map((applicant) => (
             <Basvuranlar key={applicant.id} applicant={applicant} />
