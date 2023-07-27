@@ -165,6 +165,9 @@ function BireyselIlanlar() {
             </FormControl>
           </Grid>
         </Grid>
+        <Grid item>
+        <Button sx={{ marginLeft:40, color: 'black'}} variant="outlined">UYGULA</Button>
+        </Grid>
       </Grid>
       <Grid item xs={12} lg={9}>
         <Grid

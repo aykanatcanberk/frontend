@@ -24,6 +24,7 @@ import db from '../../data/db.json';
 function KurumsalIlanlar() {
   const [formData, setFormData] = useState({
     ilan_adi: "",
+    firma_adı:"",
     çalışma_şekli: [],
     çalışma_tercihi: [],
     ilan_tipi: [],
