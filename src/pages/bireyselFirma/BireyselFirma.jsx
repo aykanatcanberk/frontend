@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import ProfileCardComp from "../../components/bireyselFirmaLayoutComp/bireyselFirmaLay";
 import { getCompany } from "../../services/userService";
 import { useParams } from "react-router-dom";
 
 const BireyselFirma = () => {
   const [companyDataList, setCompanyDataList] = useState([]);
-  const params = useParams();
-  const id = params.id;
+  const { id } = useParams();
 
   useEffect(() => {
     getCompany(id)
