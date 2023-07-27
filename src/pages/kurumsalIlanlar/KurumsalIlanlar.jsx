@@ -19,58 +19,51 @@ import "./KurumsalIlanlar.css";
 import { Link } from 'react-router-dom';
 import Advert from '../../components/Advert/Advert';
 import db from '../../data/db.json';
-
+import addAdvert from '../../services/advertService';
 
 function KurumsalIlanlar() {
-  const [formData, setFormData] = useState({
-    ilan_adi: "",
+  const FormData = {
+    ilan_adi: '',
     çalışma_şekli: [],
     çalışma_tercihi: [],
     ilan_tipi: [],
     bölüm: [],
-    desc: ""
-  });
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
+    desc: '',
+  };
+  const [formData, setFormData] = useState(FormData);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
   };
 
-  const handleCheckboxChange = (event) => {
-    const { name, value } = event.target;
-    if (event.target.checked) {
-      setFormData({
-        ...formData,
-        [name]: [...formData[name], value]
-      });
-    } else {
-      setFormData({
-        ...formData,
-        [name]: formData[name].filter((item) => item !== value)
-      });
-    }
+  const handleCheckboxChange = (e) => {
+    const { name, value, checked } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: checked
+        ? [...prevFormData[name], value]
+        : prevFormData[name].filter((item) => item !== value),
+    }));
   };
-
   const handleSubmit = () => {
-
     const newAdvert = {
-      id: db.advert.length + 1, 
-      ...formData,
-      ilan_date: new Date().toLocaleDateString() 
+      title: formData.ilan_adi,
+      description: formData.desc,
+      çalışma_şekli: formData.çalışma_şekli,
+      çalışma_tercihi: formData.çalışma_tercihi,
+      ilan_tipi: formData.ilan_tipi,
+      bölüm: formData.bölüm,
+      ilan_date: new Date().toLocaleDateString(), // Şu anki tarih
     };
-
-    db.advert.push(newAdvert);
-
-    setFormData({
-      ilan_adi: "",
-      çalışma_şekli: [],
-      çalışma_tercihi: [],
-      ilan_tipi: [],
-      bölüm: [],
-      desc: ""
-    });
+    addAdvert(newAdvert)
+      .then((response) => {
+        console.log('İlan başarıyla eklendi:', response.data);
+      })
+      .catch((error) => {
+        console.error('İlan eklenirken bir hata oluştu:', error);
+      });
+      setFormData(FormData);
   };
   return (
     <> 
