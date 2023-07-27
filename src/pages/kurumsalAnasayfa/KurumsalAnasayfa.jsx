@@ -1,10 +1,12 @@
 import React from "react";
-import { Grid } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import ProfilCard from "../../components/kurumsalAnasayfa/profilcard";
 import Gonderi from "../../components/kurumsalAnasayfa/gönderi";
 import Gonderiolustur from "../../components/kurumsalAnasayfa/gonderiolusturma";
 import db from "../../data/db.json";
+import PopulerIcerikler from "../../components/populerIcerikler/PopulerIcerikler";
+
 const PageWrapper = styled(Grid)({
   padding: "2rem",
   margin: "0 auto",
@@ -32,13 +34,16 @@ const App = () => {
             <ProfilCard profilcard={firma} />
           ))}
         </div>
+        {/* <Typography>
+          <PopulerIcerikler />
+        </Typography> */}
       </Grid>
 
       <Grid
         item
         xs={10}
         sm={5}
-        md={8}
+        md={6}
         sx={{
           textAlign: "center",
           "@media (min-width: 960px)": { display: "block" },
@@ -51,6 +56,20 @@ const App = () => {
             <Gonderi key={postcard.id} postcard={postcard} />
           ))}
         </div>
+      </Grid>
+      <Grid
+        item
+        xs={12}
+        sm={5}
+        md={3}
+        sx={{
+          display: "none",
+          "@media (min-width: 960px)": { display: "block" },
+        }}
+      >
+        {/* Üçüncü Kolon */}
+
+        <PopulerIcerikler />
       </Grid>
     </PageWrapper>
   );
