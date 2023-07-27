@@ -1,28 +1,26 @@
-/* Author: Hasan Basri BİLGE
-Last Update: 25.07.2023 */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ProfileCardComp from "../../components/bireyselFirmaLayoutComp/bireyselFirmaLay";
+import { getCompany } from "../../services/userService";
 
-function BireyselFirma({id}) {
+const BireyselFirma = ({ id }) => {
   const [companyDataList, setCompanyDataList] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/info-firma${id}`)
+    getCompany(id)
       .then((response) => {
+        console.log("API Response:", response.data);
         setCompanyDataList(response.data);
       })
       .catch((error) => {
         console.error("Error fetching company data:", error);
       });
-  }, []);
+  }, [id]);
 
   return (
-    <div>
-      {companyDataList.map((companyData, index) => (
-        <ProfileCardComp key={index} companyData={companyData} />
-      ))}
-    </div>
+    <>
+        <ProfileCardComp companyData={companyDataList} />
+    </>
   );
 }
 

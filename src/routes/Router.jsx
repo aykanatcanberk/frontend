@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginLayout from "../layouts/LoginLayout";
 import CompanyLayout from "../layouts/CompanyLayout";
@@ -7,9 +7,9 @@ import KayitOlBireysel from "../pages/giris/KayitOlBireysel";
 import KayitOlKurumsal from "../pages/giris/KayitOlKurumsal";
 import BireyselAnasayfa from "../pages/bireyselAnasayfa/BireyselAnasayfa";
 import BireyselDeneyimler from "../pages/bireyselDeneyimler/BireyselDeneyimler";
-import BirseyselFirma from "../pages/bireyselFirma/BireyselFirma";
-import BirseyselFirmalar from "../pages/bireyselFirmalar/BireyselFirmalar";
-import BirseyselIlanlar from "../pages/bireyselIlanlar/BireyselIlanlar";
+import BireyselFirma from "../pages/bireyselFirma/BireyselFirma";
+import BireyselFirmalar from "../pages/bireyselFirmalar/BireyselFirmalar";
+import BireyselIlanlar from "../pages/bireyselIlanlar/BireyselIlanlar";
 import BireyselProfil from "../pages/bireyselProfil/BireyselProfil";
 import KurumsalAnasayfa from "../pages/kurumsalAnasayfa/KurumsalAnasayfa";
 import KurumsalIlan from "../pages/kurumsalIlan/KurumsalIlan";
@@ -18,15 +18,31 @@ import KurumsalOnayKutusu from "../pages/kurumsalOnayKutusu/KurumsalOnayKutusu";
 import KurumsalProfil from "../pages/kurumsalProfil/KurumsalProfil";
 import NotFoundError from "./NotFoundError";
 import SignInOutContainer from "../containers";
+import { getCompany } from "../services/userService";
 
 const Router = () => {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    getCompany(null)
+    .then((response) => {
+    console.log(response.data);
+    setData(response.data);
+  })
+  .catch((error) => {
+    console.error("Şirket verileri alınamadı:", error);
+  });
+  }, []);
+
+  if (!data) {
+    // Veriler yüklenmediyse bir yükleme göstergesi veya hata mesajı ekleyebilirsiniz.
+    return <div>Veriler yükleniyor...</div>;
+  }
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/"
-          element={<LoginLayout element={<SignInOutContainer />} />}
-        />
+        <Route path="/" element={<LoginLayout element={<SignInOutContainer />} />} />
         <Route path="/kayit-ol-bireysel" element={<KayitOlBireysel />} />
         <Route path="/kayit-ol-kurumsal" element={<KayitOlKurumsal />} />
         <Route
@@ -41,22 +57,24 @@ const Router = () => {
             />
           }
         />
-
         <Route
           path="/bireysel-deneyimler"
           element={<UserLayout element={<BireyselDeneyimler />} />}
         />
-        <Route
-          path="/bireysel-firma"
-          element={<UserLayout element={<BirseyselFirma />} />}
-        />
+        {data.map((firma) => (
+          <Route
+            key={firma.id}
+            path={`/bireysel-firma/${firma.id}`}
+            element={<UserLayout element={<BireyselFirma id={firma.id} />} />}
+          />
+        ))}
         <Route
           path="/bireysel-firmalar"
-          element={<UserLayout element={<BirseyselFirmalar />} />}
+          element={<UserLayout element={<BireyselFirmalar />} />}
         />
         <Route
           path="/bireysel-ilanlar"
-          element={<UserLayout element={<BirseyselIlanlar />} />}
+          element={<UserLayout element={<BireyselIlanlar />} />}
         />
         <Route
           path="/bireysel-profil"
