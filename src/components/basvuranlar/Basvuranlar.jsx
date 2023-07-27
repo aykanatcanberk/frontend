@@ -18,7 +18,7 @@ const AvatarWrapper = styled(Avatar)({
   borderRadius: "50%",
 });
 
-function Basvuranlar(applicant) {
+function Basvuranlar({ applicant }) {
   return (
     <CardWrapper>
       <AvatarWrapper src={pp} alt="Profil Avatarı" />
@@ -44,6 +44,30 @@ function Basvuranlar(applicant) {
           }}
         >
           {applicant.university}
+        </Typography>
+        <Typography
+          variant="subtitle1"
+          style={{
+            fontFamily: "Arial",
+            fontSize: "12px",
+            fontWeight: "normal",
+            color: "secondary",
+            textAlign: "center",
+          }}
+        >
+          {applicant.department}
+        </Typography>
+        <Typography
+          variant="subtitle1"
+          style={{
+            fontFamily: "Arial",
+            fontSize: "12px",
+            fontWeight: "normal",
+            color: "secondary",
+            textAlign: "center",
+          }}
+        >
+          {applicant.gno}
         </Typography>
       </Grid>
     </CardWrapper>
