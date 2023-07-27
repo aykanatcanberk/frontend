@@ -10,7 +10,6 @@ import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
 import { grey } from "@mui/material/colors";
 import BusinessIcon from "@mui/icons-material/Business";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import EngineeringIcon from "@mui/icons-material/Engineering";
 import LocalAtmIcon from "@mui/icons-material/LocalAtm";
 import WorkHistoryIcon from "@mui/icons-material/WorkHistory";

@@ -1,7 +1,7 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
 import İlanDetay from "../../components/ilanDetay/İlanDetay";
-import Advert from "../../components/Advert/Advert";
+import Basvuranlar from "../../components/basvuranlar/Basvuranlar";
 import Typography from "@mui/joy/Typography";
 import db from "../../data/db.json";
 
@@ -55,8 +55,8 @@ function KurumsalIlan() {
           BAŞVURANLAR
         </Typography>
         <div style={{ marginTop: 20, marginRight: 10 }}>
-          {db.advert.map((advert) => (
-            <Advert key={advert.id} advert={advert} />
+          {db.applicant.map((applicant) => (
+            <Basvuranlar key={applicant.id} applicant={applicant} />
           ))}
         </div>
       </Grid>

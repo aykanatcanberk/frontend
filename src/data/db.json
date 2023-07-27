@@ -144,33 +144,24 @@
   "applicant": [
     {
       "id": 1,
-      "name": "Yazılım Geliştirme Uzmanı",
-      "surname": "14.06.2023",
-      "": "İş İlanı",
-      "desc": "Daha önce Java kullanmış en az 2 yıl tecrübeli, lisans diplomalı yazılım geliştirme uzmanı arıyoruz",
-      "çalışma_şekli": "Yüz Yüze",
-      "çalışma_tercihi": "Tam Zamanlı",
-      "bölüm": "Bilgisayar Mühendisliği"
+      "name_surname": "Aslı Koç",
+      "university": "Hacettepe Üniversitesi",
+      "department": "Bilgisayar Mühendisliği",
+      "gno": "3.02"
     },
     {
       "id": 2,
-      "ilan_adi": "Yazılım Geliştirme Uzmanı",
-      "ilan_date": "14.06.2023",
-      "ilan_tipi": "İş İlanı",
-      "desc": "Daha önce Java kullanmış en az 2 yıl tecrübeli, lisans diplomalı yazılım geliştirme uzmanı arıyoruz",
-      "çalışma_şekli": "Yüz Yüze",
-      "çalışma_tercihi": "Tam Zamanlı",
-      "bölüm": "Bilgisayar Mühendisliği"
+      "name_surname": "Burak Yılmaz",
+      "university": "Ankara Üniversitesi",
+      "department": "Bilgisayar Mühendisliği",
+      "gno": "2.78"
     },
     {
       "id": 3,
-      "ilan_adi": "Yazılım Geliştirme Uzmanı",
-      "ilan_date": "14.06.2023",
-      "ilan_tipi": "İş İlanı",
-      "desc": "Daha önce Java kullanmış en az 2 yıl tecrübeli, lisans diplomalı yazılım geliştirme uzmanı arıyoruz",
-      "çalışma_şekli": "Yüz Yüze",
-      "çalışma_tercihi": "Tam Zamanlı",
-      "bölüm": "Bilgisayar Mühendisliği"
+      "name_surname": "Ezgi Kaplan",
+      "university": "Gazi Üniversitesi",
+      "department": "Bilgisayar Mühendisliği",
+      "gno": "3.52"
     }
   ],
 
