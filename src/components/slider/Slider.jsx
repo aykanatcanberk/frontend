@@ -6,8 +6,9 @@ function Slider({ item }) {
   return (
     <Paper
       sx={{
-        border: "2px solid blue",
-        height: "40vh",
+        borderRadius: "10px",
+        backgroundColor: "#d4f2ff",
+        height: "260px",
         margin: "20px",
         width: "100%",
         minWidth: "300px",
@@ -20,7 +21,7 @@ function Slider({ item }) {
       <TextField
         fullWidth
         multiline
-        rows={8}
+        rows={7}
         label={item.title}
         disabled
         defaultValue={item.description}
