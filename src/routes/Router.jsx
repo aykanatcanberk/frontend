@@ -51,7 +51,7 @@ const Router = () => {
           element={<UserLayout element={<BireyselFirmalar />} />}
         />
         <Route
-          path="/bireysel-firma"
+          path="/bireysel-"
           element={<UserLayout element={<BireyselFirma />} />}
         >
           <Route path="firma:id" element={<BireyselFirma />} />
