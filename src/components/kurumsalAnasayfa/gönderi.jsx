@@ -4,8 +4,9 @@ import Avatar from "@mui/material/Avatar";
 import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import SendIcon from "@mui/icons-material/Send";
 import kurumsalpp from "../assets/firmaprofillogo.png";
+import LikeButton from "../likeButton/LikeButton";
+import PaylasButton from "../paylasButton/PaylasButton";
 
 const ButtonsWrapper = styled("div")({
   display: "flex",
@@ -18,7 +19,7 @@ const PostCardWrapper = styled(Paper)({
   marginBottom: "10px",
   marginTop: "40px",
   borderRadius: "20px",
-  marginLeft: "0px",
+  marginLeft: "12px",
 });
 const RoundButton = styled(Button)({
   borderRadius: "20px",
@@ -73,28 +74,8 @@ function Gonderi({ postcard }) {
       >
         {postcard.postdesc}
       </Typography>
-
-      {/* <Typography
-        variant="body2"
-        style={{
-          fontFamily: "Arial",
-          fontSize: "12px",
-          fontWeight: "normal",
-          color: "textSecondary",
-          textAlign: "end",
-        }}
-      >
-        32 Beğeni
-      </Typography> */}
       <ButtonsWrapper>
-        <RoundButton
-          variant="contained"
-          color="primary"
-          size="small"
-          sx={{ marginRight: "5px" }}
-        >
-          Beğen
-        </RoundButton>
+        <LikeButton />
         <TextField
           label="Yorum yaz..."
           variant="outlined"
@@ -103,14 +84,7 @@ function Gonderi({ postcard }) {
           size="small"
           style={{ flexGrow: 1 }}
         />
-        <RoundButton
-          variant="contained"
-          color="primary"
-          size="small"
-          sx={{ marginLeft: "5px" }}
-        >
-          <SendIcon />
-        </RoundButton>
+        <PaylasButton />
       </ButtonsWrapper>
     </PostCardWrapper>
   );
