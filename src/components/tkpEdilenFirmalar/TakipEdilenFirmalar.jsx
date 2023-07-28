@@ -42,7 +42,7 @@ function TakipEdilenFirmalar() {
           fontWeight: "bold",
         }}
       >
-        Takip Edilen Firmalar
+        Öne Çıkan Firmalar
       </Typography>
       <Grid container spacing={1}>
       <Grid item xs={6} sm={6} md={6}>
