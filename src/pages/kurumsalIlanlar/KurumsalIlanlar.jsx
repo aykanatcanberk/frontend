@@ -19,7 +19,7 @@ import "./KurumsalIlanlar.css";
 import { Link } from 'react-router-dom';
 import Advert from '../../components/Advert/Advert';
 import db from '../../data/db.json';
-
+import addAdvert from '../../services/advertService';
 
 function KurumsalIlanlar() {
   const [formData, setFormData] = useState({
@@ -30,7 +30,7 @@ function KurumsalIlanlar() {
     ilan_tipi: [],
     bölüm: [],
     desc: ""
-  });
+  };
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData({
@@ -38,7 +38,7 @@ function KurumsalIlanlar() {
       [name]: value
     });
   };
-
+  const [formData, setFormData] = useState(FormData);
   const handleCheckboxChange = (event) => {
     const { name, value } = event.target;
     if (event.target.checked) {
@@ -55,24 +55,25 @@ function KurumsalIlanlar() {
   };
 
   const handleSubmit = () => {
-
     const newAdvert = {
-      id: db.advert.length + 1, 
-      ...formData,
-      ilan_date: new Date().toLocaleDateString() 
+      ilan_adi: formData.ilan_adi,
+      desc: formData.desc,
+      çalışma_şekli: formData.çalışma_şekli,
+      çalışma_tercihi: formData.çalışma_tercihi,
+      ilan_tipi: formData.ilan_tipi,
+      bölüm: formData.bölüm,
+      ilan_date: new Date().toLocaleDateString()
     };
-
-    db.advert.push(newAdvert);
-
-    setFormData({
-      ilan_adi: "",
-      çalışma_şekli: [],
-      çalışma_tercihi: [],
-      ilan_tipi: [],
-      bölüm: [],
-      desc: ""
+ 
+    addAdvert(newAdvert)
+    .then((response) => {
+      console.log('İlan başarıyla eklendi:', response.data);
+    })
+    .catch((error) => {
+      console.error('İlan eklenirken bir hata oluştu:', error);
     });
-  };
+    setFormData(FormData);
+};
   return (
     <> 
       <Grid container direction="column" marginTop={2} paddingLeft={80} alignItems="center" spacing={2}>  
@@ -178,8 +179,8 @@ function KurumsalIlanlar() {
             Yayımlanmış İlanlar
           </Typography>
           <div style={{ marginTop: 20, marginRight: 20 }}>
-          {db.advert.map((advert) => (
-            <Advert key={advert.id} advert={advert} />
+          {db["kurumsal-ilanlar"].map((advert) => (
+            <Advert key={advert.id} kurumsalİlanlarVerisi={advert} />
           ))}
         </div>
         </Grid>
