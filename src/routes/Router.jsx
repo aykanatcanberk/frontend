@@ -52,9 +52,8 @@ const Router = () => {
         />
         <Route
           path="/bireysel-firma"
-          element={<UserLayout element={<BireyselFirma />} />}
         >
-          <Route path=":id" element={<BireyselFirma />} />
+          <Route path=":id" element={<UserLayout element={<BireyselFirma />}/>} />
         </Route>
 
         <Route
@@ -94,7 +93,7 @@ const Router = () => {
           path="/kurumsal-profil"
           element={<CompanyLayout element={<KurumsalProfil />} />}
         />
-        <Route path="*" element={<NotFoundError />} />
+        <Route path="/not-found" element={<NotFoundError />} />
       </Routes>
     </BrowserRouter>
   );
