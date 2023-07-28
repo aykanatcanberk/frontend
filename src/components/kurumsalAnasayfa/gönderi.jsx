@@ -4,7 +4,6 @@ import Avatar from "@mui/material/Avatar";
 import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import SendIcon from "@mui/icons-material/Send";
 import kurumsalpp from "../assets/firmaprofillogo.png";
 import LikeButton from "../likeButton/LikeButton";
 import PaylasButton from "../paylasButton/PaylasButton";
@@ -75,20 +74,8 @@ function Gonderi({ postcard }) {
       >
         {postcard.postdesc}
       </Typography>
-
       <ButtonsWrapper>
-        <ButtonsWrapper>
-          <LikeButton />
-          <TextField
-            label="Yorum yaz..."
-            variant="outlined"
-            margin="none"
-            fullWidth
-            size="small"
-            style={{ flexGrow: 1 }}
-          />
-          <PaylasButton />
-        </ButtonsWrapper>
+        <LikeButton />
         <TextField
           label="Yorum yaz..."
           variant="outlined"
@@ -97,14 +84,7 @@ function Gonderi({ postcard }) {
           size="small"
           style={{ flexGrow: 1 }}
         />
-        <RoundButton
-          variant="contained"
-          color="primary"
-          size="small"
-          sx={{ marginLeft: "5px" }}
-        >
-          <SendIcon />
-        </RoundButton>
+        <PaylasButton />
       </ButtonsWrapper>
     </PostCardWrapper>
   );
