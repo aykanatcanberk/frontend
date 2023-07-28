@@ -109,13 +109,6 @@
       "gno": "3.52"
     }
   ],
-  "post": [
-    {
-      "companyname": "Aselsan",
-      "companydate": "12.06.2023",
-      "postdesc": "(GÖNDERİ İÇERİĞİ) Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi est ad aspernatur illo dolore voluptatibus exercitationem natus eligendi, qui inventore laboriosam consequuntur reiciendis quasi reprehenderit! Nisi eos dignissimos voluptatem quam."
-    }
-  ],
   "user-Posts": [
     {
       "id": 1,
@@ -845,19 +838,38 @@
     {
       "ilan_adi": "C# Yazılım Geliştirme Uzmanı",
       "desc": "Daha önce C#  kullanmış en az 2 yıl tecrübeli, lisans diplomalı yazılım geliştirme uzmanı arıyoruz",
-      "çalışma_şekli": ["Yüz Yüze"],
-      "çalışma_tercihi": ["Tam Zamanlı"],
-      "ilan_tipi": ["İş İlanı"],
-      "bölüm": ["Bilgisayar Mühendisliği"],
+      "çalışma_şekli": [
+        "Yüz Yüze"
+      ],
+      "çalışma_tercihi": [
+        "Tam Zamanlı"
+      ],
+      "ilan_tipi": [
+        "İş İlanı"
+      ],
+      "bölüm": [
+        "Bilgisayar Mühendisliği"
+      ],
       "ilan_date": "28.07.2023",
       "id": 2
     }
   ],
-  "post": [
+  "kurumsal-anasayfa": [
     {
+      "id": 1,
       "companyname": "Aselsan",
       "companydate": "12.06.2023",
       "postdesc": "(GÖNDERİ İÇERİĞİ) Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi est ad aspernatur illo dolore voluptatibus exercitationem natus eligendi, qui inventore laboriosam consequuntur reiciendis quasi reprehenderit! Nisi eos dignissimos voluptatem quam."
+    },
+    {
+      "postdesc": "",
+      "companydate": "28.07.2023",
+      "id": 2
+    },
+    {
+      "postdesc": "",
+      "companydate": "28.07.2023",
+      "id": 3
     }
   ]
 }
