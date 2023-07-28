@@ -51,10 +51,10 @@ const Router = () => {
           element={<UserLayout element={<BireyselFirmalar />} />}
         />
         <Route
-          path="/bireysel-"
+          path="/bireysel-firma"
           element={<UserLayout element={<BireyselFirma />} />}
         >
-          <Route path="firma:id" element={<BireyselFirma />} />
+          <Route path=":id" element={<BireyselFirma />} />
         </Route>
 
         <Route
