@@ -34,6 +34,7 @@ const boxstyle = {
   height: "70%",
   bgcolor: "background.paper",
   boxShadow: 24,
+  borderRadius: "50px",
 };
 
 const center = {
@@ -102,6 +103,7 @@ export default function Login() {
                   height: "70vh",
                   minHeight: "500px",
                   backgroundColor: "#3b33d5",
+                  borderRadius: "50px",
                 }}
               >
                 <ThemeProvider theme={darkTheme}>

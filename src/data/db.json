@@ -4,6 +4,7 @@
       "id": 1,
       "name": "Aselsan",
       "founded": "1975",
+      "category": "Savunma Sanayii",
       "location": "Ankara, Yenimahalle",
       "employeeCount": "5.001-10.000"
     }
@@ -85,7 +86,752 @@
       "contact": "+90 (312) 811 14 25"
     }
   ],
-  "advert": [
+  "applicant": [
+    {
+      "id": 1,
+      "name_surname": "Aslı Koç",
+      "university": "Hacettepe Üniversitesi",
+      "department": "Bilgisayar Mühendisliği",
+      "gno": "3.02"
+    },
+    {
+      "id": 2,
+      "name_surname": "Burak Yılmaz",
+      "university": "Ankara Üniversitesi",
+      "department": "Bilgisayar Mühendisliği",
+      "gno": "2.78"
+    },
+    {
+      "id": 3,
+      "name_surname": "Ezgi Kaplan",
+      "university": "Gazi Üniversitesi",
+      "department": "Bilgisayar Mühendisliği",
+      "gno": "3.52"
+    }
+  ],
+  "post": [
+    {
+      "companyname": "Aselsan",
+      "companydate": "12.06.2023",
+      "postdesc": "(GÖNDERİ İÇERİĞİ) Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi est ad aspernatur illo dolore voluptatibus exercitationem natus eligendi, qui inventore laboriosam consequuntur reiciendis quasi reprehenderit! Nisi eos dignissimos voluptatem quam."
+    }
+  ],
+  "user-Posts": [
+    {
+      "id": 1,
+      "first_name": "Sebastian",
+      "last_name": "Ross",
+      "comments": "Duis venenatis ipsum ut magna porta, quis posuere eros euismod",
+      "post_date": "2/9/2020"
+    },
+    {
+      "id": 2,
+      "first_name": "Michelle",
+      "last_name": "Miller",
+      "comments": "Nulla pellentesque sagittis mi, id lacinia nisl fringilla a",
+      "post_date": "1/11/2022"
+    },
+    {
+      "id": 3,
+      "first_name": "Alexander",
+      "last_name": "Howard",
+      "comments": "Etiam interdum odio nec suscipit finibus",
+      "post_date": "24/8/2015"
+    },
+    {
+      "id": 4,
+      "first_name": "Tyler",
+      "last_name": "Carter",
+      "comments": "Maecenas ac porttitor justo",
+      "post_date": "1/8/2022"
+    },
+    {
+      "id": 5,
+      "first_name": "Mary",
+      "last_name": "Powell",
+      "comments": "Phasellus a blandit lectus, quis imperdiet velit",
+      "post_date": "7/12/2016"
+    },
+    {
+      "id": 6,
+      "first_name": "William",
+      "last_name": "Anderson",
+      "comments": "Suspendisse ultricies mi eget nisi vehicula, at aliquam nunc interdum",
+      "post_date": "6/10/2014"
+    },
+    {
+      "id": 7,
+      "first_name": "Kayla",
+      "last_name": "Powell",
+      "comments": "Donec convallis, libero pretium accumsan viverra, felis diam venenatis massa, et vulputate magna nibh et urna",
+      "post_date": "24/3/2012"
+    },
+    {
+      "id": 8,
+      "first_name": "Kevin",
+      "last_name": "Reed",
+      "comments": "Aenean eget turpis quis lorem porta condimentum eu vel orci",
+      "post_date": "1/2/2016"
+    },
+    {
+      "id": 9,
+      "first_name": "Sofia",
+      "last_name": "Flores",
+      "comments": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+      "post_date": "18/11/2022"
+    },
+    {
+      "id": 10,
+      "first_name": "Ethan",
+      "last_name": "Butler",
+      "comments": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Curabitur eget risus ut velit vulputate rutrum nec eget metus",
+      "post_date": "15/5/2020"
+    },
+    {
+      "id": 11,
+      "first_name": "Jessica",
+      "last_name": "Davis",
+      "comments": "Aliquam commodo mattis volutpat",
+      "post_date": "1/11/2012"
+    },
+    {
+      "id": 12,
+      "first_name": "Elizabeth",
+      "last_name": "Murphy",
+      "comments": "Nunc porta egestas arcu",
+      "post_date": "16/11/2010"
+    },
+    {
+      "id": 13,
+      "first_name": "Sara",
+      "last_name": "Reed",
+      "comments": "Sed purus urna, egestas ac dolor vehicula, cursus mattis turpis",
+      "post_date": "10/1/2015"
+    },
+    {
+      "id": 14,
+      "first_name": "Rebecca",
+      "last_name": "Jackson",
+      "comments": "Proin imperdiet feugiat consectetur",
+      "post_date": "1/1/2012"
+    },
+    {
+      "id": 15,
+      "first_name": "Laura",
+      "last_name": "Lewis",
+      "comments": "In lacus justo, sollicitudin vel orci vitae, ornare pretium odio",
+      "post_date": "11/3/2023"
+    },
+    {
+      "id": 16,
+      "first_name": "Austin",
+      "last_name": "Perry",
+      "comments": "Etiam et enim eros",
+      "post_date": "1/2/2016"
+    },
+    {
+      "id": 17,
+      "first_name": "Christina",
+      "last_name": "Brooks",
+      "comments": "Suspendisse vitae venenatis orci",
+      "post_date": "1/4/2012"
+    },
+    {
+      "id": 18,
+      "first_name": "Anna",
+      "last_name": "Johnson",
+      "comments": "Aenean sit amet felis id purus commodo auctor id non odio",
+      "post_date": "1/2/2016"
+    },
+    {
+      "id": 19,
+      "first_name": "Brittany",
+      "last_name": "Perez",
+      "comments": "Donec porta ex libero, id fringilla ipsum ornare in",
+      "post_date": "19/3/2022"
+    },
+    {
+      "id": 20,
+      "first_name": "Joseph",
+      "last_name": "Roberts",
+      "comments": "Integer viverra commodo dui, eu tristique odio efficitur vehicula",
+      "post_date": "29/9/2013"
+    },
+    {
+      "id": 21,
+      "first_name": "Isaac",
+      "last_name": "Mitchell",
+      "comments": "Nam suscipit felis nunc, in pharetra nibh consectetur in",
+      "post_date": "13/11/2021"
+    },
+    {
+      "id": 22,
+      "first_name": "Erin",
+      "last_name": "Roberts",
+      "comments": "Nunc vel dignissim mauris",
+      "post_date": "1/6/2023"
+    },
+    {
+      "id": 23,
+      "first_name": "Amber",
+      "last_name": "Price",
+      "comments": "Integer ut vehicula odio, eget rhoncus tellus",
+      "post_date": "2/1/2018"
+    },
+    {
+      "id": 24,
+      "first_name": "Joshua",
+      "last_name": "Nelson",
+      "comments": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+      "post_date": "19/10/2018"
+    },
+    {
+      "id": 25,
+      "first_name": "Taylor",
+      "last_name": "Bell",
+      "comments": "Maecenas augue risus, mattis fringilla facilisis nec, maximus sed ligula",
+      "post_date": "16/6/2016"
+    },
+    {
+      "id": 26,
+      "first_name": "Maria",
+      "last_name": "Perez",
+      "comments": "Fusce eget purus suscipit, sagittis lacus sed, posuere mauris",
+      "post_date": "5/1/2021"
+    },
+    {
+      "id": 27,
+      "first_name": "Timothy",
+      "last_name": "Rodriguez",
+      "comments": "Nullam volutpat ut dui nec gravida",
+      "post_date": "6/4/2020"
+    },
+    {
+      "id": 28,
+      "first_name": "Jennifer",
+      "last_name": "Roberts",
+      "comments": "Etiam nec malesuada tellus",
+      "post_date": "28/5/2013"
+    },
+    {
+      "id": 29,
+      "first_name": "Stephen",
+      "last_name": "Walker",
+      "comments": "Fusce at nunc orci",
+      "post_date": "29/1/2011"
+    },
+    {
+      "id": 30,
+      "first_name": "John",
+      "last_name": "Flores",
+      "comments": "Ut interdum laoreet elementum",
+      "post_date": "29/6/2023"
+    },
+    {
+      "id": 31,
+      "first_name": "Nathan",
+      "last_name": "Peterson",
+      "comments": "Interdum et malesuada fames ac ante ipsum primis in faucibus",
+      "post_date": "20/6/2019"
+    },
+    {
+      "id": 32,
+      "first_name": "Erin",
+      "last_name": "Wood",
+      "comments": "Ut nisl urna, suscipit vel egestas sed, placerat eu nibh",
+      "post_date": "10/8/2017"
+    },
+    {
+      "id": 33,
+      "first_name": "Mateo",
+      "last_name": "Davis",
+      "comments": "Maecenas ac enim lectus",
+      "post_date": "21/11/2022"
+    },
+    {
+      "id": 34,
+      "first_name": "Laura",
+      "last_name": "Cox",
+      "comments": "Proin sed scelerisque neque",
+      "post_date": "3/8/2020"
+    },
+    {
+      "id": 35,
+      "first_name": "Christina",
+      "last_name": "Taylor",
+      "comments": "Suspendisse lorem augue, dapibus ac arcu quis, molestie accumsan enim",
+      "post_date": "24/2/2020"
+    },
+    {
+      "id": 36,
+      "first_name": "Brianna",
+      "last_name": "Russell",
+      "comments": "Aliquam commodo mattis volutpat",
+      "post_date": "8/11/2022"
+    },
+    {
+      "id": 37,
+      "first_name": "Isabella",
+      "last_name": "Hernandez",
+      "comments": "Fusce rutrum erat mattis sem molestie, eget lobortis neque dapibus",
+      "post_date": "29/1/2018"
+    },
+    {
+      "id": 38,
+      "first_name": "Victoria",
+      "last_name": "Wilson",
+      "comments": "Duis convallis ante ipsum, id suscipit sem ultricies quis",
+      "post_date": "25/10/2010"
+    },
+    {
+      "id": 39,
+      "first_name": "Robert",
+      "last_name": "Walker",
+      "comments": "Aenean vehicula, dui ac molestie dapibus, dui diam semper urna, eu porta elit magna eget justo",
+      "post_date": "1/2/2013"
+    },
+    {
+      "id": 40,
+      "first_name": "Chelsea",
+      "last_name": "Wright",
+      "comments": "Sed venenatis maximus bibendum",
+      "post_date": "19/6/2011"
+    },
+    {
+      "id": 41,
+      "first_name": "Maria",
+      "last_name": "Gonzales",
+      "comments": "Donec non lectus quis tellus ultrices cursus",
+      "post_date": "20/2/2022"
+    },
+    {
+      "id": 42,
+      "first_name": "Jose",
+      "last_name": "Sanchez",
+      "comments": "Nunc cursus posuere sapien ut scelerisque",
+      "post_date": "21/4/2013"
+    },
+    {
+      "id": 43,
+      "first_name": "Ethan",
+      "last_name": "Martinez",
+      "comments": "Ut dapibus ut odio sit amet vehicula",
+      "post_date": "21/5/2014"
+    },
+    {
+      "id": 44,
+      "first_name": "Alyssa",
+      "last_name": "Bailey",
+      "comments": "Donec dictum, tellus vitae fermentum egestas, erat leo tristique orci, ut aliquet lectus massa sed mauris",
+      "post_date": "11/2/2021"
+    },
+    {
+      "id": 45,
+      "first_name": "James",
+      "last_name": "Washington",
+      "comments": "Pellentesque lacinia nisl rutrum tempor tincidunt",
+      "post_date": "1/3/2023"
+    },
+    {
+      "id": 46,
+      "first_name": "Charles",
+      "last_name": "James",
+      "comments": "Donec eleifend id nunc quis semper",
+      "post_date": "26/1/2021"
+    },
+    {
+      "id": 47,
+      "first_name": "Melissa",
+      "last_name": "Wilson",
+      "comments": "Nulla congue posuere ligula ac pulvinar",
+      "post_date": "28/8/2016"
+    },
+    {
+      "id": 48,
+      "first_name": "Christopher",
+      "last_name": "Garcia",
+      "comments": "Suspendisse euismod rhoncus sapien, sit amet pretium arcu mollis a",
+      "post_date": "29/7/2020"
+    },
+    {
+      "id": 49,
+      "first_name": "Mark",
+      "last_name": "Garcia",
+      "comments": "Cras pulvinar ipsum vulputate, hendrerit quam ut, ullamcorper lectus.",
+      "post_date": "15/2/2021"
+    },
+    {
+      "id": 50,
+      "first_name": "Victoria",
+      "last_name": "Washington",
+      "comments": "In ut libero orci",
+      "post_date": "11/8/2016"
+    },
+    {
+      "id": 51,
+      "first_name": "Brian",
+      "last_name": "White",
+      "comments": "Pellentesque dictum ante ac quam lobortis placerat",
+      "post_date": "8/4/2020"
+    },
+    {
+      "id": 52,
+      "first_name": "Sofia",
+      "last_name": "Edwards",
+      "comments": "Integer eu ligula metus",
+      "post_date": "12/6/2022"
+    },
+    {
+      "id": 53,
+      "first_name": "Haley",
+      "last_name": "Bailey",
+      "comments": "Donec et odio ac leo elementum lacinia",
+      "post_date": "11/10/2014"
+    },
+    {
+      "id": 54,
+      "first_name": "Joshua",
+      "last_name": "Price",
+      "comments": "Sed ac ligula eget orci consectetur interdum",
+      "post_date": "26/1/2014"
+    },
+    {
+      "id": 55,
+      "first_name": "Austin",
+      "last_name": "Perez",
+      "comments": "Integer ut tellus leo",
+      "post_date": "4/5/2011"
+    },
+    {
+      "id": 56,
+      "first_name": "Andrew",
+      "last_name": "Barnes",
+      "comments": "Vestibulum eget libero eget nibh sodales vehicula vitae ut est",
+      "post_date": "5/4/2021"
+    },
+    {
+      "id": 57,
+      "first_name": "Audrey",
+      "last_name": "Adams",
+      "comments": "Integer pharetra massa at aliquet vestibulum",
+      "post_date": "18/2/2021"
+    },
+    {
+      "id": 58,
+      "first_name": "Christopher",
+      "last_name": "King",
+      "comments": "Maecenas laoreet tellus augue, id dictum magna dictum non",
+      "post_date": "29/12/2010"
+    },
+    {
+      "id": 59,
+      "first_name": "Andrew",
+      "last_name": "Parker",
+      "comments": "Donec interdum, enim eu porttitor facilisis, nunc nunc viverra dui, vitae viverra ipsum felis ac neque",
+      "post_date": "5/12/2015"
+    },
+    {
+      "id": 60,
+      "first_name": "Grace",
+      "last_name": "Brooks",
+      "comments": "Cras nec turpis eu enim vestibulum condimentum eu eget nunc",
+      "post_date": "17/10/2013"
+    },
+    {
+      "id": 61,
+      "first_name": "Isabella",
+      "last_name": "Williams",
+      "comments": "Nam dignissim consequat finibus",
+      "post_date": "1/4/2019"
+    },
+    {
+      "id": 62,
+      "first_name": "Adam",
+      "last_name": "Campbell",
+      "comments": "Donec nec purus et massa hendrerit finibus",
+      "post_date": "10/5/2022"
+    },
+    {
+      "id": 63,
+      "first_name": "Kaitlyn",
+      "last_name": "Perry",
+      "comments": "Donec sed pretium risus, eget vestibulum lacus",
+      "post_date": "1/2/2021"
+    },
+    {
+      "id": 64,
+      "first_name": "Tyler",
+      "last_name": "Sanchez",
+      "comments": "Phasellus sed erat ac lorem facilisis fermentum",
+      "post_date": "24/7/2021"
+    },
+    {
+      "id": 65,
+      "first_name": "Amber",
+      "last_name": "Sanders",
+      "comments": "Nam a massa suscipit, tempor lorem sed, maximus elit",
+      "post_date": "3/3/2020"
+    },
+    {
+      "id": 66,
+      "first_name": "Alexandra",
+      "last_name": "Scott",
+      "comments": "Aenean sagittis arcu in justo euismod posuere",
+      "post_date": "18/11/2011"
+    },
+    {
+      "id": 67,
+      "first_name": "Kaitlyn",
+      "last_name": "Stewart",
+      "comments": "Etiam et enim eros",
+      "post_date": "9/4/2011"
+    },
+    {
+      "id": 68,
+      "first_name": "Katherine",
+      "last_name": "Hall",
+      "comments": "Nam vel sapien ipsum",
+      "post_date": "6/3/2021"
+    },
+    {
+      "id": 69,
+      "first_name": "Olivia",
+      "last_name": "Hill",
+      "comments": "Aenean sagittis arcu in justo euismod posuere",
+      "post_date": "15/12/2015"
+    },
+    {
+      "id": 70,
+      "first_name": "Jessica",
+      "last_name": "Martin",
+      "comments": "Vivamus sapien lacus, mollis vel urna non, finibus finibus ligula.",
+      "post_date": "12/4/2015"
+    },
+    {
+      "id": 71,
+      "first_name": "Olivia",
+      "last_name": "Parker",
+      "comments": "Sed accumsan pretium interdum",
+      "post_date": "11/12/2018"
+    },
+    {
+      "id": 72,
+      "first_name": "Stephen",
+      "last_name": "Davis",
+      "comments": "Praesent accumsan venenatis leo eget tempor",
+      "post_date": "24/3/2019"
+    },
+    {
+      "id": 73,
+      "first_name": "Taylor",
+      "last_name": "Cook",
+      "comments": "Suspendisse velit nibh, finibus at elit sit amet, blandit condimentum leo",
+      "post_date": "15/12/2022"
+    },
+    {
+      "id": 74,
+      "first_name": "Heather",
+      "last_name": "Rogers",
+      "comments": "Interdum et malesuada fames ac ante ipsum primis in faucibus",
+      "post_date": "15/1/2021"
+    },
+    {
+      "id": 75,
+      "first_name": "Nathan",
+      "last_name": "Campbell",
+      "comments": "In at pharetra ligula, quis convallis nisl",
+      "post_date": "22/12/2016"
+    },
+    {
+      "id": 76,
+      "first_name": "Henry",
+      "last_name": "Bryant",
+      "comments": "Phasellus purus mauris, bibendum sit amet leo eu, tempor vestibulum neque",
+      "post_date": "31/5/2018"
+    },
+    {
+      "id": 77,
+      "first_name": "Aubrey",
+      "last_name": "Foster",
+      "comments": "Curabitur iaculis vitae erat in eleifend.",
+      "post_date": "6/7/2012"
+    },
+    {
+      "id": 78,
+      "first_name": "Kevin",
+      "last_name": "Powell",
+      "comments": "Ut et enim sit amet nunc pulvinar sagittis sit amet nec elit",
+      "post_date": "12/4/2014"
+    },
+    {
+      "id": 79,
+      "first_name": "Jeremy",
+      "last_name": "Bell",
+      "comments": "In condimentum viverra congue",
+      "post_date": "22/5/2021"
+    },
+    {
+      "id": 80,
+      "first_name": "Brian",
+      "last_name": "Ward",
+      "comments": "Donec eu cursus turpis",
+      "post_date": "27/6/2018"
+    },
+    {
+      "id": 81,
+      "first_name": "Jessica",
+      "last_name": "Sanchez",
+      "comments": "Praesent mollis a lacus ornare fringilla",
+      "post_date": "9/4/2016"
+    },
+    {
+      "id": 82,
+      "first_name": "Evelyn",
+      "last_name": "Murphy",
+      "comments": "Maecenas pharetra id dui eu semper",
+      "post_date": "20/5/2016"
+    },
+    {
+      "id": 83,
+      "first_name": "Nicholas",
+      "last_name": "Gray",
+      "comments": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Suspendisse luctus luctus metus et eleifend",
+      "post_date": "22/10/2022"
+    },
+    {
+      "id": 84,
+      "first_name": "Heather",
+      "last_name": "Thompson",
+      "comments": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus malesuada tempor odio, sed imperdiet sapien",
+      "post_date": "18/3/2018"
+    },
+    {
+      "id": 85,
+      "first_name": "Jeremy",
+      "last_name": "Thompson",
+      "comments": "In dictum, libero sit amet mollis aliquam, nulla nunc mollis felis, eu pharetra justo tellus id ligula",
+      "post_date": "4/11/2019"
+    },
+    {
+      "id": 86,
+      "first_name": "Haley",
+      "last_name": "Foster",
+      "comments": "Donec vehicula porttitor nibh et posuere",
+      "post_date": "15/7/2022"
+    },
+    {
+      "id": 87,
+      "first_name": "Erin",
+      "last_name": "Williams",
+      "comments": "Praesent ut ligula elit",
+      "post_date": "14/3/2022"
+    },
+    {
+      "id": 88,
+      "first_name": "Matthew",
+      "last_name": "Nelson",
+      "comments": "Nunc tristique elit fringilla arcu condimentum euismod",
+      "post_date": "23/12/2017"
+    },
+    {
+      "id": 89,
+      "first_name": "Alyssa",
+      "last_name": "Perry",
+      "comments": "Sed non varius nunc, at gravida est",
+      "post_date": "12/7/2020"
+    },
+    {
+      "id": 90,
+      "first_name": "Joshua",
+      "last_name": "Garcia",
+      "comments": "Donec ut urna varius, porta turpis ut, interdum massa",
+      "post_date": "16/1/2021"
+    },
+    {
+      "id": 91,
+      "first_name": "Jennifer",
+      "last_name": "White",
+      "comments": "Sed et diam volutpat nisi aliquet tempor",
+      "post_date": "10/3/2020"
+    },
+    {
+      "id": 92,
+      "first_name": "Tyler",
+      "last_name": "Walker",
+      "comments": "Duis fermentum vestibulum elit aliquet pharetra",
+      "post_date": "29/12/2013"
+    },
+    {
+      "id": 93,
+      "first_name": "William",
+      "last_name": "Collins",
+      "comments": "Vestibulum eget libero eget nibh sodales vehicula vitae ut est",
+      "post_date": "29/9/2013"
+    },
+    {
+      "id": 94,
+      "first_name": "David",
+      "last_name": "Robinson",
+      "comments": "In at pharetra ligula, quis convallis nisl",
+      "post_date": "27/1/2010"
+    },
+    {
+      "id": 95,
+      "first_name": "Stephen",
+      "last_name": "Bryant",
+      "comments": "Pellentesque porttitor venenatis orci sit amet blandit",
+      "post_date": "28/11/2012"
+    },
+    {
+      "id": 96,
+      "first_name": "Sara",
+      "last_name": "Collins",
+      "comments": "Donec sed pretium risus, eget vestibulum lacus",
+      "post_date": "28/7/2013"
+    },
+    {
+      "id": 97,
+      "first_name": "Michael",
+      "last_name": "Sanders",
+      "comments": "Donec vehicula cursus diam at varius",
+      "post_date": "21/9/2021"
+    },
+    {
+      "id": 98,
+      "first_name": "Joshua",
+      "last_name": "Kelly",
+      "comments": "Phasellus molestie, nisi sit amet blandit gravida, felis libero ultrices risus, vel tincidunt nulla dolor sed ipsum",
+      "post_date": "25/7/2012"
+    },
+    {
+      "id": 99,
+      "first_name": "Dylan",
+      "last_name": "Price",
+      "comments": "Sed non urna iaculis, ultrices ligula id, ultricies lacus",
+      "post_date": "31/10/2011"
+    },
+    {
+      "id": 100,
+      "first_name": "Heather",
+      "last_name": "Hill",
+      "comments": "Ut eu nulla vitae ipsum vestibulum eleifend",
+      "post_date": "6/4/2010"
+    }
+  ],
+  "advert-detail": [
+    {
+      "id": 1,
+      "ilan_adi": "Yazılım Geliştirme Uzmanı",
+      "firma": "Aselsan",
+      "ilan_date": "14.06.2023",
+      "ilan_tipi": "İş İlanı",
+      "desc": "Daha önce Java kullanmış en az 2 yıl tecrübeli, lisans diplomalı yazılım geliştirme uzmanı arıyoruz.Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi est ad aspernatur illo dolore voluptatibus exercitationem natus eligendi, qui inventore laboriosam consequuntur reiciendis quasi reprehenderit! Nisi eos dignissimos voluptatem quam.",
+      "çalışma_şekli": "Yüz Yüze",
+      "çalışma_tercihi": "Tam Zamanlı",
+      "bölüm": "Bilgisayar Mühendisliği"
+    }
+  ],
+  "kurumsal-ilanlar": [
     {
       "id": 1,
       "ilan_adi": "Yazılım Geliştirme Uzmanı",
@@ -97,34 +843,14 @@
       "bölüm": "Bilgisayar Mühendisliği"
     },
     {
-      "id": 2,
-      "ilan_adi": "Veritabanı Stajyeri",
-      "ilan_date": "18.06.2023",
-      "ilan_tipi": "Staj İlanı",
-      "desc": "SQL,MySQL,PostgreSQL en az biri hakkında bilgi sahibi ve zorunlu stajı 4.sınıf öğrencisi arıyoruz.",
-      "çalışma_şekli": "Yüz Yüze",
-      "çalışma_tercihi": "Tam Zamanlı",
-      "bölüm": "Bilgisayar Mühendisliği"
-    },
-    {
-      "id": 3,
-      "ilan_adi": "Veritabanı Uzmanı",
-      "ilan_date": "20.06.2023",
-      "ilan_tipi": "İş İlanı",
-      "desc": "SQL,MySQL,PostgreSQL en az biri hakkında tecrübesi olan uzman arıyoruz.",
-      "çalışma_şekli": "Hibrit",
-      "çalışma_tercihi": "Tam Zamanlı",
-      "bölüm": "Bilgisayar Mühendisliği"
-    },
-    {
-      "id": 4,
-      "ilan_adi": "Makine Mühendisi/Teknikeri",
-      "ilan_date": "12.06.2023",
-      "ilan_tipi": "İş İlanı",
-      "desc": "TS EN ISO IEC 17020 kalite sistemleri hakkında eğitimi veya tecrübesi olan makine mühendisi arıyoruz.",
-      "çalışma_şekli": "Yüz Yüze",
-      "çalışma_tercihi": "Serbest Zamanlı",
-      "bölüm": "Makine Mühendisliği"
+      "ilan_adi": "C# Yazılım Geliştirme Uzmanı",
+      "desc": "Daha önce C#  kullanmış en az 2 yıl tecrübeli, lisans diplomalı yazılım geliştirme uzmanı arıyoruz",
+      "çalışma_şekli": ["Yüz Yüze"],
+      "çalışma_tercihi": ["Tam Zamanlı"],
+      "ilan_tipi": ["İş İlanı"],
+      "bölüm": ["Bilgisayar Mühendisliği"],
+      "ilan_date": "28.07.2023",
+      "id": 2
     }
   ],
   "post": [

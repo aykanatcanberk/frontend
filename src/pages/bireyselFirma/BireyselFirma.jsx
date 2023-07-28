@@ -1,29 +1,33 @@
-/* Author: Hasan Basri BİLGE
-Last Update: 25.07.2023 */
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import ProfileCardComp from "../../components/bireyselFirmaLayoutComp/bireyselFirmaLay";
+import { getCompany } from "../../services/userService";
+import { useParams } from "react-router-dom";
+import NotFoundError from "../../routes/NotFoundError";
 
-function BireyselFirma({id}) {
+const BireyselFirma = () => {
   const [companyDataList, setCompanyDataList] = useState([]);
+  const { id } = useParams();
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/info-firma${id}`)
+    getCompany(id)
       .then((response) => {
+        console.log("API Response:", response.data);
         setCompanyDataList(response.data);
       })
       .catch((error) => {
         console.error("Error fetching company data:", error);
       });
-  }, []);
+  }, [id]);
+
+  if (companyDataList.length === 0) {
+    return <NotFoundError props={"Böyle bir şirket mevcut değil"} />;
+  }
 
   return (
-    <div>
-      {companyDataList.map((companyData, index) => (
-        <ProfileCardComp key={index} companyData={companyData} />
-      ))}
-    </div>
+    <>
+      <ProfileCardComp companyData={companyDataList} />
+    </>
   );
-}
+};
 
 export default BireyselFirma;
