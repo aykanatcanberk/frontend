@@ -6,6 +6,8 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
 import kurumsalpp from "../assets/firmaprofillogo.png";
+import LikeButton from "../likeButton/LikeButton";
+import PaylasButton from "../paylasButton/PaylasButton";
 
 const ButtonsWrapper = styled("div")({
   display: "flex",
@@ -74,27 +76,19 @@ function Gonderi({ postcard }) {
         {postcard.postdesc}
       </Typography>
 
-      {/* <Typography
-        variant="body2"
-        style={{
-          fontFamily: "Arial",
-          fontSize: "12px",
-          fontWeight: "normal",
-          color: "textSecondary",
-          textAlign: "end",
-        }}
-      >
-        32 Beğeni
-      </Typography> */}
       <ButtonsWrapper>
-        <RoundButton
-          variant="contained"
-          color="primary"
-          size="small"
-          sx={{ marginRight: "5px" }}
-        >
-          Beğen
-        </RoundButton>
+        <ButtonsWrapper>
+          <LikeButton />
+          <TextField
+            label="Yorum yaz..."
+            variant="outlined"
+            margin="none"
+            fullWidth
+            size="small"
+            style={{ flexGrow: 1 }}
+          />
+          <PaylasButton />
+        </ButtonsWrapper>
         <TextField
           label="Yorum yaz..."
           variant="outlined"

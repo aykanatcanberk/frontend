@@ -10,7 +10,8 @@ import FormControl from "@mui/material/FormControl";
 import Typography from "@mui/joy/Typography";
 import İlan from "../../components/İlan/İlan";
 import db from "../../data/db.json";
-
+import Button from '@mui/material/Button';
+import "./BireyselIlanlar.css";
 
 const jobOptions = [{ title: "Staj İlanları" }, { title: "İş İlanları" }];
 const companies = [
@@ -157,12 +158,12 @@ function BireyselIlanlar() {
               <FormControlLabel control={<Checkbox />} label="Tam Zamanlı" />
               <FormControlLabel control={<Checkbox />} label="Yarı Zamanlı" />
               <FormControlLabel control={<Checkbox />} label="Proje Bazlı" />
-              <FormControlLabel
-                control={<Checkbox />}
-                label="Serbest Zamanlı"
-              />
+              <FormControlLabel control={<Checkbox />}label="Serbest Zamanlı"/>
             </FormControl>
           </Grid>
+        </Grid>
+        <Grid item>
+        <Button sx={{ marginLeft:20, marginTop:3, marginBottom:2, color: 'black'}} variant="outlined">UYGULA</Button>
         </Grid>
       </Grid>
       <Grid item xs={12} lg={9}>
@@ -173,7 +174,7 @@ function BireyselIlanlar() {
           marginTop={3}
           spacing={2}
         >
-          {db.advert.map((advert, index) => (
+          {db["kurumsal-ilanlar"].map((advert, index) => (
             <Grid item key={advert.id} xs={12} sm={6}>
               <İlan advert={advert} />
             </Grid>

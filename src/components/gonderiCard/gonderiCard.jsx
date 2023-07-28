@@ -7,7 +7,8 @@ import Avatar from "@mui/material/Avatar";
 import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import SendIcon from "@mui/icons-material/Send";
+import LikeButton from "../likeButton/LikeButton";
+import PaylasButton from "../paylasButton/PaylasButton";
 
 const ButtonsWrapper = styled("div")({
     display: "flex",
@@ -27,7 +28,7 @@ const RoundButton = styled(Button)({
     padding: "5px 10px",
 });
 
-function GonderiCard() {
+function GonderiCard({userPosts}) {
   return (
     <PostCardWrapper>
           <Grid container alignItems="center">
@@ -43,7 +44,7 @@ function GonderiCard() {
                   fontWeight: "bold",
                 }}
               >
-                Kullanıcı Adı
+                {userPosts.first_name} + <span /> + {userPosts.last_name}
               </Typography>
               <Typography
                 variant="subtitle2"
@@ -54,7 +55,7 @@ function GonderiCard() {
                   color: "textSecondary",
                 }}
               >
-                25 Temmuz 2023, 10:30
+                {userPosts.post_date}
               </Typography>
             </Grid>
           </Grid>
@@ -66,26 +67,10 @@ function GonderiCard() {
               fontWeight: "normal",
             }}
           >
-            Bu bir örnek gönderi içeriğidir. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Nulla consectetur nulla sit amet nisi
-            sodales, in eleifend quam lacinia.
-          </Typography>
-          <Typography
-            variant="body2"
-            style={{
-              fontFamily: "Arial",
-              fontSize: "12px",
-              fontWeight: "normal",
-              color: "textSecondary",
-              textAlign: "end",
-            }}
-          >
-            10 Beğeni
+            {userPosts.comments}
           </Typography>
           <ButtonsWrapper>
-            <RoundButton variant="contained" color="primary" size="small" sx={{marginRight: "5px"}}>
-              Beğen
-            </RoundButton>
+            <LikeButton />
             <TextField
               label="Yorum yaz..."
               variant="outlined"
@@ -94,9 +79,7 @@ function GonderiCard() {
               size="small"
               style={{ flexGrow: 1 }}
             />
-            <RoundButton variant="contained" color="primary" size="small" sx={{marginLeft: "5px"}}>
-              <SendIcon />
-            </RoundButton>
+            <PaylasButton />
           </ButtonsWrapper>
         </PostCardWrapper>
   )
