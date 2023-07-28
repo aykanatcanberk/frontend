@@ -28,6 +28,9 @@ function DeneyimPaylas() {
     addDeneyim(newDeneyim)
       .then(() => {
         console.log("Deneyim eklendi");
+        setDeneyimBaslik("");
+        setFirma("");
+        setDeneyimIcerik("");
         setLoading(false);
       })
       .catch((error) => {
@@ -42,11 +45,11 @@ function DeneyimPaylas() {
         rows={1}
         maxRows={1}
         label="Deneyim Basligi"
+        value={deneyimBaslik}
         id="fullWidth"
         onChange={(e) => setDeneyimBaslik(e.target.value)}
-        sx={{ margin: "5px" }}
+        sx={{ marginTop: "15px" }}
       />
-      {/* <DeneyimText /> */}
       <Box
         sx={{
           width: 500,

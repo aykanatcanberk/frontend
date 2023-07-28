@@ -41,7 +41,6 @@ const Router = () => {
             />
           }
         />
-
         <Route
           path="/bireysel-deneyimler"
           element={<UserLayout element={<BireyselDeneyimler />} />}
