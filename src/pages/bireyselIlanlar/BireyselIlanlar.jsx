@@ -174,7 +174,7 @@ function BireyselIlanlar() {
           marginTop={3}
           spacing={2}
         >
-          {db.advert.map((advert, index) => (
+          {db["kurumsal-ilanlar"].map((advert, index) => (
             <Grid item key={advert.id} xs={12} sm={6}>
               <İlan advert={advert} />
             </Grid>
