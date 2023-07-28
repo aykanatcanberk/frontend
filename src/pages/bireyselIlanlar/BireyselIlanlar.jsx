@@ -163,7 +163,7 @@ function BireyselIlanlar() {
           </Grid>
         </Grid>
         <Grid item>
-        <Button className="button-style">Uygula</Button>
+        <Button sx={{ marginLeft:20, marginTop:3, marginBottom:2, color: 'black'}} variant="outlined">UYGULA</Button>
         </Grid>
       </Grid>
       <Grid item xs={12} lg={9}>
