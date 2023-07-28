@@ -22,14 +22,13 @@ import db from '../../data/db.json';
 import addAdvert from '../../services/advertService';
 
 function KurumsalIlanlar() {
-  const [formData, setFormData] = useState({
-    ilan_adi: "",
-    firma_adı:"",
+  const FormData = {
+    ilan_adi: '',
     çalışma_şekli: [],
     çalışma_tercihi: [],
     ilan_tipi: [],
     bölüm: [],
-    desc: ""
+    desc: ''
   };
   const handleInputChange = (event) => {
     const { name, value } = event.target;
