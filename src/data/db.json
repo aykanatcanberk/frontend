@@ -204,47 +204,6 @@
       "title": "GIS Technical Architect",
       "companyName": "Kreiger, Smith and Wisozk",
       "description": "consequat metus sapien ut nunc vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae mauris viverra diam vitae quam suspendisse potenti nullam porttitor lacus at turpis donec posuere metus vitae ipsum aliquam non mauris morbi non lectus aliquam sit amet diam in magna bibendum imperdiet nullam orci pede venenatis non sodales sed tincidunt eu felis fusce posuere felis sed lacus morbi sem mauris laoreet ut rhoncus aliquet pulvinar sed nisl nunc rhoncus dui vel sem sed sagittis nam congue risus semper porta volutpat quam pede lobortis ligula sit amet eleifend pede libero quis orci nullam molestie"
-    },
-    {
-      "id": 11,
-      "name": "Dinny Micah",
-      "title": {
-        "deneyimBaslik": "Benim Deneyimim"
-      },
-      "companyName": {
-        "firma": "TR EGITIM VE TEKNOLOJI"
-      },
-      "description": {
-        "deneyimIcerik": "Staj döneminde öğrendiklerimden bazıları şunlardır:\n      \n      - Python ve JavaScript gibi dillerde kod yazma yetkinliği.\n      - Veritabanı yönetimi tasarımı konusunda temel bilgi.\n      - Hata ayıklama ve sorun giderme becerilerini geliştirme.\n      - Sürüm kontrol sistemlerini (Git) etkin kullanma."
-      }
-    },
-    {
-      "id": 12,
-      "name": "Dinny Micah",
-      "title": "Yeni Deneyim",
-      "companyName": "ROKETSAN",
-      "description": "Staj döneminde öğrendiklerimden bazıları şunlardır:\n      \n      - Python ve JavaScript gibi dillerde kod yazma yetkinliği.\n      - Veritabanı yönetimi tasarımı konusunda temel bilgi.\n      - Hata ayıklama ve sorun giderme becerilerini geliştirme.\n      - Sürüm kontrol sistemlerini (Git) etkin kullanma."
-    },
-    {
-      "id": 13,
-      "name": "Dinny Micah",
-      "title": "Deneyim",
-      "companyName": "TUSAS",
-      "description": "Staj döneminde öğrendiklerimden bazıları şunlardır:\n      \n      - Python ve JavaScript gibi dillerde kod yazma yetkinliği.\n      - Veritabanı yönetimi tasarımı konusunda temel bilgi.\n      - Hata ayıklama ve sorun giderme becerilerini geliştirme.\n      - Sürüm kontrol sistemlerini (Git) etkin kullanma."
-    },
-    {
-      "id": 14,
-      "name": "Dinny Micah",
-      "title": "Deneyimlerim",
-      "companyName": "HAVELSAN",
-      "description": "Staj döneminde öğrendiklerimden bazıları şunlardır:\n      \n      - Python ve JavaScript gibi dillerde kod yazma yetkinliği.\n      - Veritabanı yönetimi tasarımı konusunda temel bilgi.\n      - Hata ayıklama ve sorun giderme becerilerini geliştirme.\n      - Sürüm kontrol sistemlerini (Git) etkin kullanma."
-    },
-    {
-      "name": "Dinny Micah",
-      "title": "Deneyimlerim",
-      "companyName": "TUSAS",
-      "description": "Staj döneminde öğrendiklerimden bazıları şunlardır:\n      \n      - Python ve JavaScript gibi dillerde kod yazma yetkinliği.\n      - Veritabanı yönetimi tasarımı konusunda temel bilgi.\n      - Hata ayıklama ve sorun giderme becerilerini geliştirme.\n      - Sürüm kontrol sistemlerini (Git) etkin kullanma.",
-      "id": 15
     }
   ]
 }

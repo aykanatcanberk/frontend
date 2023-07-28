@@ -7,7 +7,7 @@ function Deneyimlerim(props) {
     <Paper style={{ maxHeight: 600, width: "600px", overflow: "auto" }}>
       {props.props.map((deneyim, i) => (
         <SwiperSlide key={i}>
-          <Slider key={i} item={deneyim} />
+          <Slider key={deneyim.id} item={deneyim} />
         </SwiperSlide>
       ))}
     </Paper>

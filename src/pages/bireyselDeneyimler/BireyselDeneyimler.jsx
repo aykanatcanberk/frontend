@@ -8,93 +8,23 @@ import "./bireyselDeneyimler.css";
 import { EffectCoverflow, Autoplay } from "swiper/modules";
 import Deneyimlerim from "../../components/deneyimFirma/Deneyimlerim";
 import DeneyimPaylas from "../../components/deneyimFirma/DeneyimPaylas";
-import axios from "axios";
 import { useEffect, useState } from "react";
+import { getDeneyimler } from "../../services/deneyimService";
 
 export default function App() {
   const [deneyimler, setDeneyimler] = useState([]);
 
-  // async axios request to get deneyimler from db.json file and add .then method
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("http://localhost:3000/deneyimler");
+    getDeneyimler()
+      .then((response) => {
         setDeneyimler(response.data);
-        console.log(deneyimler);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
+      })
+      .catch((error) => {
+        console.log("Hata alindi " + error);
+      });
 
-    fetchData();
+    console.log(deneyimler);
   }, []);
-
-  // useEffect(async () => {
-  //   axios
-  //     .get("http://localhost:3000/deneyimler")
-  //     .then((response) => {
-  //       setDeneyimler(response.data);
-  //       console.log(deneyimler);
-  //     })
-  //     .then((error) => {
-  //       console.log(error);
-  //     });
-  // });
-
-  var items = [
-    {
-      name: "Mehmet Ali",
-      title: "Harikaydi!!!",
-      companyName: "Aselsan",
-      description: `Staj döneminde öğrendiklerimden bazıları şunlardır:
-      - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
-      - Yazılım geliştirme süreçlerine uyum sağlama ve takım içinde etkin iletişim.
-      - Agil yazılım geliştirme metodolojileriyle çalışma deneyimi.
-      - Veritabanı yönetimi ve veri tabanı tasarımı konusunda temel bilgi.
-      - Hata ayıklama ve sorun giderme becerilerini geliştirme.
-      - Sürüm kontrol sistemlerini (Git) etkin kullanma.`,
-      firma: "Aselsan",
-    },
-    {
-      name: "Ayşe Fatma",
-      title: "Mukemmel bir deneyimdi!!!",
-      companyName: "Havelsan",
-      description: `Bu beş aylık staj dönemim boyunca, ABC Teknoloji Şirketi'nde yazılım geliştirme ekibiyle birlikte çalıştım ve değerli bir deneyim kazandım. Şirket, öncü teknolojiler üzerinde çalışan bir endüstri lideridir ve kendilerine özgü ürünler geliştirmektedir.
-      Stajım süresince, gerçek dünya yazılım projelerine katılarak, yazılım geliştirme süreçleri hakkında derinlemesine bir anlayış elde ettim. Projeler, takım çalışmasını vurgulayan ve benim sorumluluklarımı alarak öğrenme fırsatı sağlayan çeşitli endüstriyel uygulamaları kapsıyordu.
-      Proje ekiplerimiz, yazılım yaşam döngüsünün her aşamasında yer aldığımız ve kendi becerilerimi geliştirmek için önemli bir fırsat sağlayan gerçek müşteri projeleriydi. İşbirliği içinde çalışarak, analiz etme, tasarım yapma, kodlama ve test etme aşamalarında yer aldım. Bu süreçler, yazılımın nasıl başarılı bir şekilde geliştirileceği ve sunulacağı konusunda sağlam bir kavrayış elde etmeme yardımcı oldu.`,
-      firma: "Havelsan",
-    },
-    {
-      name: "Hasan Hüseyin",
-      title: "Mukemmel bir deneyimdi!!!",
-      companyName: "Roketsan",
-      description: `Bu beş aylık staj dönemim boyunca, ABC Teknoloji Şirketi'nde yazılım geliştirme ekibiyle birlikte çalıştım ve değerli bir deneyim kazandım. Şirket, öncü teknolojiler üzerinde çalışan bir endüstri lideridir ve kendilerine özgü ürünler geliştirmektedir.
-      Stajım süresince, gerçek dünya yazılım projelerine katılarak, yazılım geliştirme süreçleri hakkında derinlemesine bir anlayış elde ettim. Projeler, takım çalışmasını vurgulayan ve benim sorumluluklarımı alarak öğrenme fırsatı sağlayan çeşitli endüstriyel uygulamaları kapsıyordu.
-      Proje ekiplerimiz, yazılım yaşam döngüsünün her aşamasında yer aldığımız ve kendi becerilerimi geliştirmek için önemli bir fırsat sağlayan gerçek müşteri projeleriydi. İşbirliği içinde çalışarak, analiz etme, tasarım yapma, kodlama ve test etme aşamalarında yer aldım. Bu süreçler, yazılımın nasıl başarılı bir şekilde geliştirileceği ve sunulacağı konusunda sağlam bir kavrayış elde etmeme yardımcı oldu.
-      `,
-      firma: "Havelsan",
-    },
-    {
-      name: "Uğur Utku",
-      title: "Mukemmel bir deneyimdi!!!",
-      companyName: "TUSAŞ",
-      description: `Bu beş aylık staj dönemim boyunca, ABC Teknoloji Şirketi'nde yazılım geliştirme ekibiyle birlikte çalıştım ve değerli bir deneyim kazandım. Şirket, öncü teknolojiler üzerinde çalışan bir endüstri lideridir ve kendilerine özgü ürünler geliştirmektedir.
-      Stajım süresince, gerçek dünya yazılım projelerine katılarak, yazılım geliştirme süreçleri hakkında derinlemesine bir anlayış elde ettim. Projeler, takım çalışmasını vurgulayan ve benim sorumluluklarımı alarak öğrenme fırsatı sağlayan çeşitli endüstriyel uygulamaları kapsıyordu.
-      Proje ekiplerimiz, yazılım yaşam döngüsünün her aşamasında yer aldığımız ve kendi becerilerimi geliştirmek için önemli bir fırsat sağlayan gerçek müşteri projeleriydi. İşbirliği içinde çalışarak, analiz etme, tasarım yapma, kodlama ve test etme aşamalarında yer aldım. Bu süreçler, yazılımın nasıl başarılı bir şekilde geliştirileceği ve sunulacağı konusunda sağlam bir kavrayış elde etmeme yardımcı oldu.
-      `,
-      firma: "Havelsan",
-    },
-    {
-      name: "Zeynep Zehra",
-      title: "Mukemmel bir deneyimdi!!!",
-      companyName: "TR EGITIM",
-      description: `Bu beş aylık staj dönemim boyunca, ABC Teknoloji Şirketi'nde yazılım geliştirme ekibiyle birlikte çalıştım ve değerli bir deneyim kazandım. Şirket, öncü teknolojiler üzerinde çalışan bir endüstri lideridir ve kendilerine özgü ürünler geliştirmektedir.
-      Stajım süresince, gerçek dünya yazılım projelerine katılarak, yazılım geliştirme süreçleri hakkında derinlemesine bir anlayış elde ettim. Projeler, takım çalışmasını vurgulayan ve benim sorumluluklarımı alarak öğrenme fırsatı sağlayan çeşitli endüstriyel uygulamaları kapsıyordu.
-      Proje ekiplerimiz, yazılım yaşam döngüsünün her aşamasında yer aldığımız ve kendi becerilerimi geliştirmek için önemli bir fırsat sağlayan gerçek müşteri projeleriydi. İşbirliği içinde çalışarak, analiz etme, tasarım yapma, kodlama ve test etme aşamalarında yer aldım. Bu süreçler, yazılımın nasıl başarılı bir şekilde geliştirileceği ve sunulacağı konusunda sağlam bir kavrayış elde etmeme yardımcı oldu.
-      `,
-      firma: "Havelsan",
-    },
-  ];
 
   var deneyimlerim = [
     {
@@ -144,7 +74,7 @@ export default function App() {
       >
         {deneyimler?.map((item, i) => (
           <SwiperSlide key={i}>
-            <Slider key={i} item={item} />
+            <Slider item={item} />
           </SwiperSlide>
         ))}
       </Swiper>
