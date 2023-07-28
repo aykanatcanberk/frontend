@@ -4,6 +4,7 @@ import SendIcon from "@mui/icons-material/Send";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import LoadingButton from "@mui/lab/LoadingButton";
+import { addDeneyim } from "../../services/deneyimService";
 
 function DeneyimPaylas() {
   const [deneyimBaslik, setDeneyimBaslik] = useState("");
@@ -14,25 +15,41 @@ function DeneyimPaylas() {
   const firmaSec = (par) => {
     setFirma(par);
   };
-  const handleClick = () => {
+
+  const handleAddDeneyim = () => {
     setLoading(true);
-    // 5 sn bekleme suresi daha sonra silinecek
-    setTimeout(() => {
-      console.log(deneyimBaslik, deneyimIcerik, firma);
-      setLoading(false);
-    }, 5000);
+    const newDeneyim = {
+      name: "Dinny Micah",
+      title: deneyimBaslik,
+      companyName: firma,
+      description: deneyimIcerik,
+    };
+
+    addDeneyim(newDeneyim)
+      .then(() => {
+        console.log("Deneyim eklendi");
+        setDeneyimBaslik("");
+        setFirma("");
+        setDeneyimIcerik("");
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error adding data:", error);
+        setLoading(false);
+      });
   };
+
   return (
     <div className="deneyimPaylas">
       <TextField
         rows={1}
         maxRows={1}
         label="Deneyim Basligi"
+        value={deneyimBaslik}
         id="fullWidth"
         onChange={(e) => setDeneyimBaslik(e.target.value)}
-        sx={{ margin: "5px" }}
+        sx={{ marginTop: "15px" }}
       />
-      {/* <DeneyimText /> */}
       <Box
         sx={{
           width: 500,
@@ -55,7 +72,7 @@ function DeneyimPaylas() {
         <LoadingButton
           size="small"
           sx={{ height: "40px" }}
-          onClick={handleClick}
+          onClick={handleAddDeneyim}
           endIcon={<SendIcon />}
           loading={loading}
           variant="contained"

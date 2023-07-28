@@ -14,7 +14,7 @@ export default function DeneyimText() {
       <TextField
         fullWidth
         multiline
-        rows={8}
+        rows={7}
         label="Deneyim Icerigi"
         id="fullWidth"
       />

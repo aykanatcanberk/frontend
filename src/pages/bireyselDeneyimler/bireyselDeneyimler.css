@@ -1,3 +1,21 @@
+/* CSS styling */
+.bireyselDeneyimler {
+  /* Set background image using the imported image path */
+  background-image: url("https://images.pexels.com/photos/3695238/pexels-photo-3695238.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+  /* Set background size to cover the entire container */
+  background-size: cover;
+  background-image: rot;
+  /* Set background repeat to no-repeat */
+  background-repeat: no-repeat;
+  /* Set background position to center */
+  background-position: center;
+  /* Set the height of the container to make the background visible */
+  height: 100%; /* Set height to your desired value */
+}
+
+.bireyselDeneyimler {
+  background-color: #e6f6fd;
+}
 .swiper {
   width: 100%;
   padding-top: 5px;
@@ -7,20 +25,23 @@
 .swiper-slide {
   background-position: center;
   background-size: cover;
-  width: 500px;
-  height: 400px;
+  width: 400px;
+  height: 300px;
+  margin: 20px;
 }
 
 .deneyimPaylas {
   width: 525px;
   height: 380px;
-
+  border: 5px solid rgb(108, 189, 255);
+  border: 5px inset #94dcfa;
   display: flex;
   flex-direction: column;
-
   align-items: center;
-  background-color: #fff;
-  border-radius: 5px;
+  background-color: rgb(250, 250, 239);
+  background-color: #ffffff;
+  background-color: #f2f9fc;
+  border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 .deneyimText {
@@ -66,7 +87,7 @@
   );
 }
 .deneyimBaslik h4 {
-  color: rgb(255, 220, 173);
+  color: rgb(252, 185, 104);
 }
 .deneyimPaylas .deneyimFirmaButon {
   display: flex;
