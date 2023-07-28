@@ -13,6 +13,7 @@ const SharePostCardWrapper = styled(Paper)({
   flexDirection: "column",
   justifyContent: "space-between",
   borderRadius: "20px",
+  marginLeft: "12px",
 });
 
 const PostInputWrapper = styled(TextField)({
@@ -27,16 +28,6 @@ const ButtonsWrapper = styled("div")({
   display: "flex",
   justifyContent: "space-between",
   marginTop: "10px",
-});
-
-const BlueButton = styled(Button)({
-  borderRadius: "15px",
-  color: "blue",
-  borderColor: "blue",
-  backgroundColor: "transparent",
-  "&:hover": {
-    backgroundColor: "transparent",
-  },
 });
 
 const GreenButton = styled(Button)({
@@ -69,13 +60,6 @@ function Gonderiolustur() {
         rows={4}
       />
       <ButtonsWrapper>
-        <BlueButton
-          variant="contained"
-          color="primary"
-          sx={{ height: "30px", width: "auto" }}
-        >
-          Resim Yükle
-        </BlueButton>
         <GreenButton
           variant="contained"
           color="primary"
