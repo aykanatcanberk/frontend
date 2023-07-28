@@ -54,7 +54,7 @@ const Router = () => {
           path="/bireysel-firma"
           element={<UserLayout element={<BireyselFirma />} />}
         >
-          <Route path=":id" element={<BireyselFirma />} />
+          <Route path="firma:id" element={<BireyselFirma />} />
         </Route>
 
         <Route
