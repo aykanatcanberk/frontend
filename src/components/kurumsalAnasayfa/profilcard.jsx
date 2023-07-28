@@ -6,6 +6,7 @@ import kurumsalpp from "../assets/firmaprofillogo.png";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import LocationSearchingIcon from "@mui/icons-material/LocationSearching";
 import PeopleIcon from "@mui/icons-material/People";
+import ClassIcon from "@mui/icons-material/Class";
 const CardWrapper = styled(Paper)({
   padding: "1rem",
   textAlign: "center",
@@ -36,14 +37,29 @@ function ProfilCard({ profilcard }) {
       >
         {profilcard.name}
       </Typography>
-
+      <Typography
+        variant="body1"
+        fontSize={"14px"}
+        color="text.secondary"
+        sx={{ marginTop: "10x", marginBottom: "15px" }}
+      >
+        <ClassIcon
+          sx={{
+            marginLeft: "10px",
+            marginRight: "5px",
+          }}
+        />
+        {profilcard.category}
+      </Typography>
       <Typography
         variant="body1"
         fontSize={"14px"}
         color="text.secondary"
         sx={{ marginTop: "15px", marginBottom: "15px" }}
       >
-        <LocationSearchingIcon sx={{ marginLeft: "10px" }} />
+        <LocationSearchingIcon
+          sx={{ marginLeft: "10px", marginRight: "5px" }}
+        />
         {profilcard.location}
       </Typography>
 
@@ -53,7 +69,7 @@ function ProfilCard({ profilcard }) {
         color="text.secondary"
         sx={{ marginTop: "15x", marginBottom: "15px" }}
       >
-        <PeopleIcon sx={{ marginLeft: "10px" }} />
+        <PeopleIcon sx={{ marginLeft: "10px", marginRight: "5px" }} />
         {profilcard.employeeCount}
       </Typography>
       <Typography
@@ -62,7 +78,7 @@ function ProfilCard({ profilcard }) {
         color="text.secondary"
         sx={{ marginTop: "15px", marginBottom: "15px" }}
       >
-        <CalendarMonthIcon sx={{ marginLeft: "10px" }} />
+        <CalendarMonthIcon sx={{ marginLeft: "10px", marginRight: "5px" }} />
         {profilcard.founded}
       </Typography>
     </CardWrapper>

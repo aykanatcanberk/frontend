@@ -4,6 +4,7 @@
       "id": 1,
       "name": "Aselsan",
       "founded": "1975",
+      "category": "Savunma Sanayii",
       "location": "Ankara, Yenimahalle",
       "employeeCount": "5.001-10.000"
     }
@@ -128,7 +129,6 @@
       "çalışma_tercihi": "Serbest Zamanlı",
       "bölüm": "Makine Mühendisliği"
     }
-
   ],
   "post": [
     {
@@ -136,6 +136,5 @@
       "companydate": "12.06.2023",
       "postdesc": "(GÖNDERİ İÇERİĞİ) Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi est ad aspernatur illo dolore voluptatibus exercitationem natus eligendi, qui inventore laboriosam consequuntur reiciendis quasi reprehenderit! Nisi eos dignissimos voluptatem quam."
     }
-
   ]
 }

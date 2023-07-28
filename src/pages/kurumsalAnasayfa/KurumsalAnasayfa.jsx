@@ -9,7 +9,7 @@ import PopulerIcerikler from "../../components/populerIcerikler/PopulerIcerikler
 
 const PageWrapper = styled(Grid)({
   padding: "2rem",
-  margin: "0 auto",
+  margin: "-5px",
   maxWidth: "1300px",
   marginTop: "-20px",
   width: "100%",
@@ -34,9 +34,6 @@ const App = () => {
             <ProfilCard profilcard={firma} />
           ))}
         </div>
-        {/* <Typography>
-          <PopulerIcerikler />
-        </Typography> */}
       </Grid>
 
       <Grid
