@@ -93,7 +93,7 @@ const Router = () => {
           path="/kurumsal-profil"
           element={<CompanyLayout element={<KurumsalProfil />} />}
         />
-        <Route path="/not-found" element={<NotFoundError />} />
+        <Route path="*" element={<NotFoundError />} />
       </Routes>
     </BrowserRouter>
   );
