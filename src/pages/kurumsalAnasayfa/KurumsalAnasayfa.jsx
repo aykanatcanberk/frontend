@@ -5,7 +5,7 @@ import ProfilCard from "../../components/kurumsalAnasayfa/profilcard";
 import Gonderi from "../../components/kurumsalAnasayfa/gönderi";
 import Gonderiolustur from "../../components/kurumsalAnasayfa/gonderiolusturma";
 import db from "../../data/db.json";
-import PopulerIcerikler from "../../components/populerIcerikler/PopulerIcerikler";
+import Populerkonular from "../../components/kurumsalAnasayfa/populerkonular";
 
 const PageWrapper = styled(Grid)({
   padding: "2rem",
@@ -66,7 +66,7 @@ const App = () => {
       >
         {/* Üçüncü Kolon */}
 
-        <PopulerIcerikler />
+        <Populerkonular />
       </Grid>
     </PageWrapper>
   );

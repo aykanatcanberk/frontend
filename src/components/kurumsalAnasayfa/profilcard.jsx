@@ -8,7 +8,7 @@ import LocationSearchingIcon from "@mui/icons-material/LocationSearching";
 import PeopleIcon from "@mui/icons-material/People";
 import ClassIcon from "@mui/icons-material/Class";
 const CardWrapper = styled(Paper)({
-  padding: "1rem",
+  padding: "40px",
   textAlign: "center",
   marginBottom: "10px",
   borderRadius: "20px",
