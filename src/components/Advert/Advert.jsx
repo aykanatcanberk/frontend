@@ -34,7 +34,7 @@ const StyledTextarea = styled(TextareaAutosize)(
 `
 );
 
-export default function Advert({ advert }) {
+export default function Advert({ kurumsalİlanlarVerisi}) {
   return (
     <Card sx={{ maxWidth: 380 }}>
       <CardHeader
@@ -46,18 +46,18 @@ export default function Advert({ advert }) {
         }
         title={
           <Typography variant="h8" fontWeight="bold">
-            {advert.ilan_adi}
+            { kurumsalİlanlarVerisi.ilan_adi}
           </Typography>
         }
         subheader={
           <Box display="flex" alignItems="center">
             <CalendarMonthIcon sx={{ fontSize: 14, marginLeft: 1 }} />
             <Typography variant="body2" color="text.secondary">
-              {advert.ilan_date}
+              { kurumsalİlanlarVerisi.ilan_date}
             </Typography>
             <BusinessCenterIcon sx={{ fontSize: 14, marginLeft: 1 }} />
             <Typography variant="body2" color="text.secondary">
-              {advert.ilan_tipi}
+              { kurumsalİlanlarVerisi.ilan_tipi}
             </Typography>
           </Box>
         }
@@ -66,7 +66,7 @@ export default function Advert({ advert }) {
         maxRows={4}
         aria-label="maximum height"
         placeholder="Maximum 100 rows"
-        defaultValue={advert.desc}
+        defaultValue={kurumsalİlanlarVerisi.desc}
         readOnly
       />
       <CardActions>

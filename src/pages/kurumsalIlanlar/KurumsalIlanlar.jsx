@@ -28,43 +28,51 @@ function KurumsalIlanlar() {
     çalışma_tercihi: [],
     ilan_tipi: [],
     bölüm: [],
-    desc: '',
+    desc: ""
+  };
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
   };
   const [formData, setFormData] = useState(FormData);
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
+  const handleCheckboxChange = (event) => {
+    const { name, value } = event.target;
+    if (event.target.checked) {
+      setFormData({
+        ...formData,
+        [name]: [...formData[name], value]
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: formData[name].filter((item) => item !== value)
+      });
+    }
   };
 
-  const handleCheckboxChange = (e) => {
-    const { name, value, checked } = e.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: checked
-        ? [...prevFormData[name], value]
-        : prevFormData[name].filter((item) => item !== value),
-    }));
-  };
   const handleSubmit = () => {
     const newAdvert = {
-      title: formData.ilan_adi,
-      description: formData.desc,
+      ilan_adi: formData.ilan_adi,
+      desc: formData.desc,
       çalışma_şekli: formData.çalışma_şekli,
       çalışma_tercihi: formData.çalışma_tercihi,
       ilan_tipi: formData.ilan_tipi,
       bölüm: formData.bölüm,
-      ilan_date: new Date().toLocaleDateString(), // Şu anki tarih
+      ilan_date: new Date().toLocaleDateString()
     };
+ 
     addAdvert(newAdvert)
-      .then((response) => {
-        console.log('İlan başarıyla eklendi:', response.data);
-      })
-      .catch((error) => {
-        console.error('İlan eklenirken bir hata oluştu:', error);
-      });
-      setFormData(FormData);
-  };
+    .then((response) => {
+      console.log('İlan başarıyla eklendi:', response.data);
+    })
+    .catch((error) => {
+      console.error('İlan eklenirken bir hata oluştu:', error);
+    });
+    setFormData(FormData);
+};
   return (
     <> 
       <Grid container direction="column" marginTop={2} paddingLeft={80} alignItems="center" spacing={2}>  
@@ -170,8 +178,8 @@ function KurumsalIlanlar() {
             Yayımlanmış İlanlar
           </Typography>
           <div style={{ marginTop: 20, marginRight: 20 }}>
-          {db.advert.map((advert) => (
-            <Advert key={advert.id} advert={advert} />
+          {db["kurumsal-ilanlar"].map((advert) => (
+            <Advert key={advert.id} kurumsalİlanlarVerisi={advert} />
           ))}
         </div>
         </Grid>
