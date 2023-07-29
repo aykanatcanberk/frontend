@@ -7,9 +7,9 @@ function Slider({ item }) {
     <Paper
       sx={{
         borderRadius: "10px",
+        border: "1px solid blue",
         backgroundColor: "#d4f2ff",
         height: "260px",
-        margin: "20px",
         width: "100%",
         minWidth: "300px",
       }}
