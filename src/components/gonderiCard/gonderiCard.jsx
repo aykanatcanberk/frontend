@@ -7,7 +7,8 @@ import Avatar from "@mui/material/Avatar";
 import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import SendIcon from "@mui/icons-material/Send";
+import LikeButton from "../likeButton/LikeButton";
+import PaylasButton from "../paylasButton/PaylasButton";
 
 const ButtonsWrapper = styled("div")({
   display: "flex",
@@ -27,68 +28,61 @@ const RoundButton = styled(Button)({
   padding: "5px 10px",
 });
 
-function GonderiCard({ postData }) {
+function GonderiCard({ userPosts }) {
   return (
     <PostCardWrapper>
-      <Grid container alignItems="center">
-        <Grid item xs={2} sm={2} md={2}>
-          <Avatar src="url_profil_avatar" alt="Profil Avatarı" />
-        </Grid>
-        <Grid item xs={10} sm={10} md={10}>
+          <Grid container alignItems="center">
+            <Grid item xs={2} sm={2} md={2}>
+              <Avatar src="url_profil_avatar" alt="Profil Avatarı" />
+            </Grid>
+            <Grid item xs={10} sm={10} md={10}>
+              <Typography
+                variant="subtitle1"
+                style={{
+                  fontFamily: "Arial",
+                  fontSize: "14px",
+                  fontWeight: "bold",
+                }}
+              >
+            {userPosts.first_name} <span /> {userPosts.last_name}
+              </Typography>
+              <Typography
+                variant="subtitle2"
+                style={{
+                  fontFamily: "Arial",
+                  fontSize: "12px",
+                  fontWeight: "normal",
+                  color: "textSecondary",
+                }}
+              >
+                {userPosts.post_date}
+              </Typography>
+            </Grid>
+          </Grid>
           <Typography
-            variant="subtitle1"
+            variant="body1"
             style={{
               fontFamily: "Arial",
               fontSize: "14px",
-              fontWeight: "bold",
+              fontWeight: "normal",
             }}
           >
-            {postData.userName}
+            {userPosts.comments}
           </Typography>
           <Typography
-            variant="subtitle2"
+            variant="body2"
             style={{
               fontFamily: "Arial",
               fontSize: "12px",
               fontWeight: "normal",
               color: "textSecondary",
+              textAlign: "end",
             }}
           >
-            {postData.postDate}
+            10 Beğeni
           </Typography>
-        </Grid>
-      </Grid>
-      <Typography
-        variant="body1"
-        style={{
-          fontFamily: "Arial",
-          fontSize: "14px",
-          fontWeight: "normal",
-        }}
-      >
-        {postData.content}
-      </Typography>
-      <Typography
-        variant="body2"
-        style={{
-          fontFamily: "Arial",
-          fontSize: "12px",
-          fontWeight: "normal",
-          color: "textSecondary",
-          textAlign: "end",
-        }}
-      >
-        ?10 Beğeni?
-      </Typography>
-      <ButtonsWrapper>
-        <RoundButton
-          variant="contained"
-          color="primary"
-          size="small"
-          sx={{ marginRight: "5px" }}
-        >
-          Beğen
-        </RoundButton>
+          <ButtonsWrapper>
+        <LikeButton />
         <TextField
           label="Yorum yaz..."
           variant="outlined"
@@ -97,17 +91,10 @@ function GonderiCard({ postData }) {
           size="small"
           style={{ flexGrow: 1 }}
         />
-        <RoundButton
-          variant="contained"
-          color="primary"
-          size="small"
-          sx={{ marginLeft: "5px" }}
-        >
-          <SendIcon />
-        </RoundButton>
+        <PaylasButton />
       </ButtonsWrapper>
-    </PostCardWrapper>
-  );
+        </PostCardWrapper>
+  )
 }
 
 export default GonderiCard;

@@ -17,7 +17,7 @@ const FirmaKartvizit = ({ props }) => {
     marginLeft: "10px",
     border: "1px solid #ccc",
   };
-  
+  const linkUrl = `/bireysel-firma/${companycard.id}`;
   return (
     <div className="firmaKartvizit">
       <Paper>
@@ -40,7 +40,7 @@ const FirmaKartvizit = ({ props }) => {
             {props.employeeCount}
           </Typography>
           <Typography sx={{ marginLeft: "270px" }}>
-            <Link to="/bireysel-firma">
+            <Link to={linkUrl}>
               <Button sx={{ color: "	#00838F" }}>Sayfaya Git</Button>
             </Link>
           </Typography>

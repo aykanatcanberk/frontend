@@ -7,9 +7,9 @@ import KayitOlBireysel from "../pages/giris/KayitOlBireysel";
 import KayitOlKurumsal from "../pages/giris/KayitOlKurumsal";
 import BireyselAnasayfa from "../pages/bireyselAnasayfa/BireyselAnasayfa";
 import BireyselDeneyimler from "../pages/bireyselDeneyimler/BireyselDeneyimler";
-import BirseyselFirma from "../pages/bireyselFirma/BireyselFirma";
-import BirseyselFirmalar from "../pages/bireyselFirmalar/BireyselFirmalar";
-import BirseyselIlanlar from "../pages/bireyselIlanlar/BireyselIlanlar";
+import BireyselFirma from "../pages/bireyselFirma/BireyselFirma";
+import BireyselFirmalar from "../pages/bireyselFirmalar/BireyselFirmalar";
+import BireyselIlanlar from "../pages/bireyselIlanlar/BireyselIlanlar";
 import BireyselProfil from "../pages/bireyselProfil/BireyselProfil";
 import KurumsalAnasayfa from "../pages/kurumsalAnasayfa/KurumsalAnasayfa";
 import KurumsalIlan from "../pages/kurumsalIlan/KurumsalIlan";
@@ -41,22 +41,24 @@ const Router = () => {
             />
           }
         />
-
         <Route
           path="/bireysel-deneyimler"
           element={<UserLayout element={<BireyselDeneyimler />} />}
         />
-        <Route
-          path="/bireysel-firma"
-          element={<UserLayout element={<BirseyselFirma />} />}
-        />
+
         <Route
           path="/bireysel-firmalar"
-          element={<UserLayout element={<BirseyselFirmalar />} />}
+          element={<UserLayout element={<BireyselFirmalar />} />}
         />
         <Route
+          path="/bireysel-firma"
+        >
+          <Route path=":id" element={<UserLayout element={<BireyselFirma />}/>} />
+        </Route>
+
+        <Route
           path="/bireysel-ilanlar"
-          element={<UserLayout element={<BirseyselIlanlar />} />}
+          element={<UserLayout element={<BireyselIlanlar />} />}
         />
         <Route
           path="/bireysel-profil"

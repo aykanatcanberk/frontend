@@ -2,14 +2,17 @@ import React, { useEffect, useState } from "react";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import Checkbox from '@mui/material/Checkbox';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import Typography from '@mui/joy/Typography'
-import İlan from '../../components/İlan/İlan';
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Checkbox from "@mui/material/Checkbox";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
+import Typography from "@mui/joy/Typography";
+import İlan from "../../components/İlan/İlan";
+import Button from '@mui/material/Button';
 import { getAllAdverts } from "../../services/advertService";
+import "./BireyselIlanlar.css";
+
 
 const jobOptions = [{ title: "Staj İlanları" }, { title: "İş İlanları" }];
 const companies = [
@@ -169,12 +172,12 @@ function BireyselIlanlar() {
               <FormControlLabel control={<Checkbox />} label="Tam Zamanlı" />
               <FormControlLabel control={<Checkbox />} label="Yarı Zamanlı" />
               <FormControlLabel control={<Checkbox />} label="Proje Bazlı" />
-              <FormControlLabel
-                control={<Checkbox />}
-                label="Serbest Zamanlı"
-              />
+              <FormControlLabel control={<Checkbox />}label="Serbest Zamanlı"/>
             </FormControl>
           </Grid>
+        </Grid>
+        <Grid item>
+        <Button sx={{ marginLeft:20, marginTop:3, marginBottom:2, color: 'black'}} variant="outlined">UYGULA</Button>
         </Grid>
       </Grid>
       <Grid item xs={12} lg={9}>

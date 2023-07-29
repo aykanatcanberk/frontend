@@ -1,29 +1,29 @@
-/* Author: Hasan Basri BİLGE
-Last Update: 25.07.2023 */
 import React, { useState, useEffect } from "react";
 import ProfileCardComp from "../../components/bireyselFirmaLayoutComp/bireyselFirmaLay";
-import { getAllCompanies } from "../../services/companyService";
+import { getCompany } from "../../services/userService";
+import { useParams } from "react-router-dom";
+import NotFoundError from "../../routes/NotFoundError";
 
-function BireyselFirma({id}) {
-  const [companies, setCompanies] = useState([]);
+const BireyselFirma = () => {
+  const [companyDataList, setCompanyDataList] = useState([]);
+  const { id } = useParams();
 
   useEffect(() => {
-    getAllCompanies()
-      .then((companies) => {
-        setCompanies(companies);
+    getCompany(id)
+      .then((response) => {
+        console.log("API Response:", response.data);
+        setCompanyDataList(response.data);
       })
-      .catch((err) => {
-        console.error("Coulnt fetch the all posts data due to :" + err.message);
+      .catch((error) => {
+        return <NotFoundError props={"Böyle bir şirket mevcut değil"} />;
       });
-  }, []); 
+  }, [id]);
 
   return (
-    <div>
-      {companies.map((companyData, index) => (
-        <ProfileCardComp key={index} companyData={companyData} />
-      ))}
-    </div>
+    <>
+      <ProfileCardComp companyData={companyDataList} />
+    </>
   );
-}
+};
 
 export default BireyselFirma;

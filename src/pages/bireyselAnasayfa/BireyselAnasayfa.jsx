@@ -1,7 +1,4 @@
-/* Author: Hasan Basri BİLGE
-Last Update: 25.07.2023 */
-
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Grid } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import GonderiCard from "../../components/gonderiCard/gonderiCard";
@@ -11,6 +8,7 @@ import TakipEdilenFirmalar from "../../components/tkpEdilenFirmalar/TakipEdilenF
 import IlgılıIlanlar from "../../components/ilgiliIlanlar/IlgılıIlanlar";
 import PopulerIcerikler from "../../components/populerIcerikler/PopulerIcerikler";
 import { getAllPosts } from "../../services/postServices";
+import { getUserPosts } from "../../services/userService";
 
 const PageWrapper = styled(Grid)({
   padding: "2rem",
@@ -21,17 +19,58 @@ const PageWrapper = styled(Grid)({
 });
 
 const BireyselAnasayfa = () => {
-  const [posts, setPosts] = useState([]);
+  const [gorunenVeriler, setGorunenVeriler] = useState([]);
+  const itemsPerPage = 10;
+  const batchSize = 5;
+  const [pageNumber, setPageNumber] = useState(1);
 
   useEffect(() => {
-    getAllPosts()
-      .then((posts) => {
-        setPosts(posts);
-      })
-      .catch((err) => {
-        console.error("Coulnt fetch the all posts data due to :" + err.message);
-      });
+    console.log("Component mounted");
+    loadInitialData();
+
+    const handleScroll = () => {
+      const { scrollTop, clientHeight, scrollHeight } =
+        document.documentElement;
+      if (scrollTop + clientHeight >= scrollHeight - 200) {
+        // Load more data here
+        loadMoreData();
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
+
+  const loadInitialData = () => {
+    getUserPosts(1, itemsPerPage)
+      .then((response) => {
+        console.log("Data fetched:", response.data);
+        const data = response.data;
+        if (data && Array.isArray(data)) {
+          setGorunenVeriler(data);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  };
+
+  const loadMoreData = () => {
+    const nextPage = pageNumber + 1;
+    getUserPosts(nextPage, batchSize)
+      .then((response) => {
+        console.log("More data fetched:", response.data);
+        const data = response.data;
+        if (data && Array.isArray(data)) {
+          setGorunenVeriler((prevData) => [...prevData, ...data]);
+          setPageNumber(nextPage);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching more data:", error);
+      });
+  };
 
   return (
     <PageWrapper container spacing={3} justifyContent="center">
@@ -60,12 +99,11 @@ const BireyselAnasayfa = () => {
         }}
       >
         {/* İkinci Kolon */}
-        <GonderiYap  />
-        {posts.map((post) => (
-          <GonderiCard postData={post}/>
+        <GonderiYap />
+        {gorunenVeriler.map((veri, index) => (
+          <GonderiCard key={index} userPosts={veri} />
         ))}
       </Grid>
-
       <Grid
         item
         xs={12}
