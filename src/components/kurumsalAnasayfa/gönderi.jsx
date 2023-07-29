@@ -20,6 +20,7 @@ const PostCardWrapper = styled(Paper)({
   marginTop: "40px",
   borderRadius: "20px",
   marginLeft: "12px",
+  width: "550px",
 });
 const RoundButton = styled(Button)({
   borderRadius: "20px",

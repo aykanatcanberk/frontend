@@ -49,7 +49,7 @@ const App = () => {
         {/* gönderi oluşturma kısmı */}
         <Gonderiolustur />
         <div className="firmaContainer">
-          {db["post"].map((postcard) => (
+          {db["kurumsal-anasayfa"].map((postcard) => (
             <Gonderi key={postcard.id} postcard={postcard} />
           ))}
         </div>
