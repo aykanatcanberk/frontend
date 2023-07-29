@@ -30,14 +30,22 @@ const CardWrapper = styled(Paper)({
   padding: "1rem",
   textAlign: "center",
   marginBottom: "10px",
-  borderRadius: "20px",
+  borderRadius: "3px",
+});
+
+const CardWrapperForTitles = styled(Paper)({
+  padding: "1rem",
+  textAlign: "center",
+  marginBottom: "10px",
+  borderRadius: "3px",
+  display: "inline-block",
 });
 
 const CardWrapperLeftAligned = styled(Paper)({
   padding: "1rem",
   textAlign: "left",
   marginBottom: "10px",
-  borderRadius: "20px",
+  borderRadius: "3px",
 });
 
 const AvatarWrapper = styled(Avatar)({
@@ -89,10 +97,13 @@ const RoundButton = styled(Button)({
   padding: "5px 10px",
 });
 
+// İLETİŞİM -> SADECE DÜZENLE,
+// DİĞERLERİ EKLE VE DÜZENLE
+
 function PageChangeButtons({ sharedPostsActive, setSharedPostsActive }) {
   return (
     <>
-      <CardWrapper>
+      <CardWrapper elevation={0}>
         <ButtonsWrapper>
           <EqualWidthButton
             variant="contained"
@@ -118,360 +129,339 @@ function PageChangeButtons({ sharedPostsActive, setSharedPostsActive }) {
   );
 }
 
-function KimlikBilgileri({ userName, userTR_Id, userEmail }) {
-
-
+function SahsiBilgiler({ userName, userTR_Id, userEmail }) {
   return (
     <>
-      <Grid container alignItems="left">
-        <Grid item xs={10} sm={10} md={10} alignItems="left">
-          <Typography
-            variant="subtitle1"
-            style={{
-              fontFamily: "Arial",
-              fontSize: "14px",
-              fontWeight: "bold",
-              alignSelf: "left",
-            }}
-          >
-            AD SOYAD
+      <CardWrapper elevation={0}>
+        <Grid container alignItems="left">
+          <CardWrapperForTitles elevation={4} alignSelf="right">
             <Typography
               variant="subtitle1"
               style={{
                 fontFamily: "Arial",
-                fontSize: "14px",
+                fontSize: "18px",
                 fontWeight: "bold",
                 alignSelf: "left",
+                flex: "auto",
               }}
             >
-              **
+              Şahsi Bilgiler
             </Typography>
-          </Typography>
-
-          <Typography
-            variant="subtitle1"
-            style={{
-              fontFamily: "Arial",
-              fontSize: "14px",
-              fontWeight: "bold",
-              alignSelf: "left",
-            }}
-          >
-            T.C. KİMLİK NUMARASI
-            <Typography
-              variant="subtitle1"
-              style={{
-                fontFamily: "Arial",
-                fontSize: "14px",
-                fontWeight: "bold",
-                alignSelf: "left",
-              }}
-            >
-              **
-            </Typography>
-          </Typography>
-
-          <Typography
-            variant="subtitle1"
-            style={{
-              fontFamily: "Arial",
-              fontSize: "14px",
-              fontWeight: "bold",
-              alignSelf: "left",
-            }}
-          >
-            E-POSTA ADRESİ
-            <Typography
-              variant="subtitle1"
-              style={{
-                fontFamily: "Arial",
-                fontSize: "14px",
-                fontWeight: "bold",
-                alignSelf: "left",
-              }}
-            >
-              **
-            </Typography>
-          </Typography>
+          </CardWrapperForTitles>
         </Grid>
-      </Grid>
+        <CardWrapperLeftAligned elevation={4}>
+          <Grid container alignItems="left">
+            <Grid item xs={10} sm={10} md={10} alignItems="left">
+              <Typography
+                variant="subtitle1"
+                style={{
+                  fontFamily: "Arial",
+                  fontSize: "14px",
+                  fontWeight: "bold",
+                  alignSelf: "left",
+                }}
+              >
+                Ad Soyad
+                <Typography
+                  variant="subtitle1"
+                  style={{
+                    fontFamily: "Arial",
+                    fontSize: "14px",
+                    fontWeight: "bold",
+                    alignSelf: "left",
+                  }}
+                >
+                  **
+                </Typography>
+              </Typography>
 
-      <ButtonsWrapper>
-        <RoundButton variant="contained" color="primary" size="small">
-          DÜZENLE?
-        </RoundButton>
-        <RoundButton variant="contained" color="primary" size="small">
-          SİL
-        </RoundButton>
-      </ButtonsWrapper>
+              <Typography
+                variant="subtitle1"
+                style={{
+                  fontFamily: "Arial",
+                  fontSize: "14px",
+                  fontWeight: "bold",
+                  alignSelf: "left",
+                }}
+              >
+                E-posta Adresi
+                <Typography
+                  variant="subtitle1"
+                  style={{
+                    fontFamily: "Arial",
+                    fontSize: "14px",
+                    fontWeight: "bold",
+                    alignSelf: "left",
+                  }}
+                >
+                  **
+                </Typography>
+              </Typography>
+
+              <Typography
+                variant="subtitle1"
+                style={{
+                  fontFamily: "Arial",
+                  fontSize: "14px",
+                  fontWeight: "bold",
+                  alignSelf: "left",
+                }}
+              >
+                Doğum Tarihi
+                <Typography
+                  variant="subtitle1"
+                  style={{
+                    fontFamily: "Arial",
+                    fontSize: "14px",
+                    fontWeight: "bold",
+                    alignSelf: "left",
+                  }}
+                >
+                  **
+                </Typography>
+              </Typography>
+
+              <Typography
+                variant="subtitle1"
+                style={{
+                  fontFamily: "Arial",
+                  fontSize: "14px",
+                  fontWeight: "bold",
+                  alignSelf: "left",
+                }}
+              >
+                Yaşadığı Şehir
+                <Typography
+                  variant="subtitle1"
+                  style={{
+                    fontFamily: "Arial",
+                    fontSize: "14px",
+                    fontWeight: "bold",
+                    alignSelf: "left",
+                  }}
+                >
+                  **
+                </Typography>
+              </Typography>
+
+              <Typography
+                variant="subtitle1"
+                style={{
+                  fontFamily: "Arial",
+                  fontSize: "14px",
+                  fontWeight: "bold",
+                  alignSelf: "left",
+                }}
+              >
+                Cep Telefonu
+                <Typography
+                  variant="subtitle1"
+                  style={{
+                    fontFamily: "Arial",
+                    fontSize: "14px",
+                    fontWeight: "bold",
+                    alignSelf: "left",
+                  }}
+                >
+                  **
+                </Typography>
+              </Typography>
+            </Grid>
+          </Grid>
+          <ButtonsWrapper>
+            <RoundButton variant="contained" color="primary" size="small">
+              EKLE
+            </RoundButton>
+            <RoundButton variant="contained" color="primary" size="small">
+              DÜZENLE (EĞER DOLUYSA)
+            </RoundButton>
+          </ButtonsWrapper>
+        </CardWrapperLeftAligned>
+      </CardWrapper>
     </>
   );
 }
 
-function EgitimGecmisi({ degree, classYear, faculty, departmant, schoolStartDate, gradeAverage}) {
+function EgitimGecmisi({
+  degree,
+  classYear,
+  faculty,
+  departmant,
+  schoolStartDate,
+  gradeAverage,
+}) {
   return (
     <>
-      <Grid container alignItems="left">
-        <Grid item xs={10} sm={10} md={10} alignItems="left">
-          <Typography
-            variant="subtitle1"
-            style={{
-              fontFamily: "Arial",
-              fontSize: "14px",
-              fontWeight: "bold",
-              alignSelf: "left",
-            }}
-          >
-            LİSANS
+      <CardWrapper elevation={0}>
+        <Grid container alignItems="left">
+          <CardWrapperForTitles elevation={4} alignSelf="right">
             <Typography
               variant="subtitle1"
               style={{
                 fontFamily: "Arial",
-                fontSize: "14px",
+                fontSize: "18px",
                 fontWeight: "bold",
                 alignSelf: "left",
+                flex: "auto",
               }}
             >
-              **
+              Eğitim Geçmişi
             </Typography>
-          </Typography>
-
-          <Typography
-            variant="subtitle1"
-            style={{
-              fontFamily: "Arial",
-              fontSize: "14px",
-              fontWeight: "bold",
-              alignSelf: "left",
-            }}
-          >
-            SINIF
-            <Typography
-              variant="subtitle1"
-              style={{
-                fontFamily: "Arial",
-                fontSize: "14px",
-                fontWeight: "bold",
-                alignSelf: "left",
-              }}
-            >
-              **
-            </Typography>
-          </Typography>
-
-          <Typography
-            variant="subtitle1"
-            style={{
-              fontFamily: "Arial",
-              fontSize: "14px",
-              fontWeight: "bold",
-              alignSelf: "left",
-            }}
-          >
-            FAKÜLTE
-            <Typography
-              variant="subtitle1"
-              style={{
-                fontFamily: "Arial",
-                fontSize: "14px",
-                fontWeight: "bold",
-                alignSelf: "left",
-              }}
-            >
-              **
-            </Typography>
-          </Typography>
-
-          <Typography
-            variant="subtitle1"
-            style={{
-              fontFamily: "Arial",
-              fontSize: "14px",
-              fontWeight: "bold",
-              alignSelf: "left",
-            }}
-          >
-            BÖLÜM
-            <Typography
-              variant="subtitle1"
-              style={{
-                fontFamily: "Arial",
-                fontSize: "14px",
-                fontWeight: "bold",
-                alignSelf: "left",
-              }}
-            >
-              **
-            </Typography>
-          </Typography>
-
-          <Typography
-            variant="subtitle1"
-            style={{
-              fontFamily: "Arial",
-              fontSize: "14px",
-              fontWeight: "bold",
-              alignSelf: "left",
-            }}
-          >
-            BAŞLAMA TARİHİ
-            <Typography
-              variant="subtitle1"
-              style={{
-                fontFamily: "Arial",
-                fontSize: "14px",
-                fontWeight: "bold",
-                alignSelf: "left",
-              }}
-            >
-              **
-            </Typography>
-          </Typography>
-
-          <Typography
-            variant="subtitle1"
-            style={{
-              fontFamily: "Arial",
-              fontSize: "14px",
-              fontWeight: "bold",
-              alignSelf: "left",
-            }}
-          >
-            EĞİTİM DURUMU
-            <Typography
-              variant="subtitle1"
-              style={{
-                fontFamily: "Arial",
-                fontSize: "14px",
-                fontWeight: "bold",
-                alignSelf: "left",
-              }}
-            >
-              **
-            </Typography>
-          </Typography>
-
-          <Typography
-            variant="subtitle1"
-            style={{
-              fontFamily: "Arial",
-              fontSize: "14px",
-              fontWeight: "bold",
-              alignSelf: "left",
-            }}
-          >
-            ORTALAMA
-            <Typography
-              variant="subtitle1"
-              style={{
-                fontFamily: "Arial",
-                fontSize: "14px",
-                fontWeight: "bold",
-                alignSelf: "left",
-              }}
-            >
-              **
-            </Typography>
-          </Typography>
+          </CardWrapperForTitles>
         </Grid>
-      </Grid>
+        <CardWrapperLeftAligned elevation={4}>
+          <Grid container alignItems="left">
+            <Grid item xs={10} sm={10} md={10} alignItems="left">
+              <Typography
+                variant="subtitle1"
+                style={{
+                  fontFamily: "Arial",
+                  fontSize: "14px",
+                  fontWeight: "bold",
+                  alignSelf: "left",
+                }}
+              >
+                Lisans
+                <Typography
+                  variant="subtitle1"
+                  style={{
+                    fontFamily: "Arial",
+                    fontSize: "14px",
+                    fontWeight: "bold",
+                    alignSelf: "left",
+                  }}
+                >
+                  **
+                </Typography>
+              </Typography>
 
-      <ButtonsWrapper>
-        <RoundButton variant="contained" color="primary" size="small">
-          DÜZENLE?
-        </RoundButton>
-        <RoundButton variant="contained" color="primary" size="small">
-          SİL
-        </RoundButton>
-      </ButtonsWrapper>
-    </>
-  );
-}
+              <Typography
+                variant="subtitle1"
+                style={{
+                  fontFamily: "Arial",
+                  fontSize: "14px",
+                  fontWeight: "bold",
+                  alignSelf: "left",
+                }}
+              >
+                Sınıf
+                <Typography
+                  variant="subtitle1"
+                  style={{
+                    fontFamily: "Arial",
+                    fontSize: "14px",
+                    fontWeight: "bold",
+                    alignSelf: "left",
+                  }}
+                >
+                  **
+                </Typography>
+              </Typography>
 
-function SahsiBilgiler({ birthDate, birthPlace,  }) {
-  return (
-    <>
-      <Grid container alignItems="left">
-        <Grid item xs={10} sm={10} md={10} alignItems="left">
-          <Typography
-            variant="subtitle1"
-            style={{
-              fontFamily: "Arial",
-              fontSize: "14px",
-              fontWeight: "bold",
-              alignSelf: "left",
-            }}
-          >
-            DOĞUM TARİHİ
-            <Typography
-              variant="subtitle1"
-              style={{
-                fontFamily: "Arial",
-                fontSize: "14px",
-                fontWeight: "bold",
-                alignSelf: "left",
-              }}
-            >
-              **
-            </Typography>
-          </Typography>
+              <Typography
+                variant="subtitle1"
+                style={{
+                  fontFamily: "Arial",
+                  fontSize: "14px",
+                  fontWeight: "bold",
+                  alignSelf: "left",
+                }}
+              >
+                Bölüm Adı
+                <Typography
+                  variant="subtitle1"
+                  style={{
+                    fontFamily: "Arial",
+                    fontSize: "14px",
+                    fontWeight: "bold",
+                    alignSelf: "left",
+                  }}
+                >
+                  **
+                </Typography>
+              </Typography>
 
-          <Typography
-            variant="subtitle1"
-            style={{
-              fontFamily: "Arial",
-              fontSize: "14px",
-              fontWeight: "bold",
-              alignSelf: "left",
-            }}
-          >
-            DOĞUM YERİ
-            <Typography
-              variant="subtitle1"
-              style={{
-                fontFamily: "Arial",
-                fontSize: "14px",
-                fontWeight: "bold",
-                alignSelf: "left",
-              }}
-            >
-              **
-            </Typography>
-          </Typography>
+              <Typography
+                variant="subtitle1"
+                style={{
+                  fontFamily: "Arial",
+                  fontSize: "14px",
+                  fontWeight: "bold",
+                  alignSelf: "left",
+                }}
+              >
+                Fakülte
+                <Typography
+                  variant="subtitle1"
+                  style={{
+                    fontFamily: "Arial",
+                    fontSize: "14px",
+                    fontWeight: "bold",
+                    alignSelf: "left",
+                  }}
+                >
+                  **
+                </Typography>
+              </Typography>
 
-          <Typography
-            variant="subtitle1"
-            style={{
-              fontFamily: "Arial",
-              fontSize: "14px",
-              fontWeight: "bold",
-              alignSelf: "left",
-            }}
-          >
-            NUFÜSA KAYITLI OLDUĞU ŞEHİR
-            <Typography
-              variant="subtitle1"
-              style={{
-                fontFamily: "Arial",
-                fontSize: "14px",
-                fontWeight: "bold",
-                alignSelf: "left",
-              }}
-            >
-              **
-            </Typography>
-          </Typography>
-        </Grid>
-      </Grid>
+              <Typography
+                variant="subtitle1"
+                style={{
+                  fontFamily: "Arial",
+                  fontSize: "14px",
+                  fontWeight: "bold",
+                  alignSelf: "left",
+                }}
+              >
+                Eğitim Durumu
+                <Typography
+                  variant="subtitle1"
+                  style={{
+                    fontFamily: "Arial",
+                    fontSize: "14px",
+                    fontWeight: "bold",
+                    alignSelf: "left",
+                  }}
+                >
+                  **
+                </Typography>
+              </Typography>
 
-      <ButtonsWrapper>
-        <RoundButton variant="contained" color="primary" size="small">
-          DÜZENLE?
-        </RoundButton>
-        <RoundButton variant="contained" color="primary" size="small">
-          SİL
-        </RoundButton>
-      </ButtonsWrapper>
+              <Typography
+                variant="subtitle1"
+                style={{
+                  fontFamily: "Arial",
+                  fontSize: "14px",
+                  fontWeight: "bold",
+                  alignSelf: "left",
+                }}
+              >
+                Ortalama
+                <Typography
+                  variant="subtitle1"
+                  style={{
+                    fontFamily: "Arial",
+                    fontSize: "14px",
+                    fontWeight: "bold",
+                    alignSelf: "left",
+                  }}
+                >
+                  **
+                </Typography>
+              </Typography>
+            </Grid>
+          </Grid>
+
+          <ButtonsWrapper>
+            <RoundButton variant="contained" color="primary" size="small">
+              EKLE
+            </RoundButton>
+            <RoundButton variant="contained" color="primary" size="small">
+              DÜZENLE (EĞER DOLUYSA)
+            </RoundButton>
+          </ButtonsWrapper>
+        </CardWrapperLeftAligned>
+      </CardWrapper>
     </>
   );
 }
@@ -479,267 +469,176 @@ function SahsiBilgiler({ birthDate, birthPlace,  }) {
 function IsGecmisi({ companyName, workPosition, workingDate, departmant }) {
   return (
     <>
-      <Grid container alignItems="left">
-        <Grid item xs={10} sm={10} md={10} alignItems="left">
-          <Typography
-            variant="subtitle1"
-            style={{
-              fontFamily: "Arial",
-              fontSize: "14px",
-              fontWeight: "bold",
-              alignSelf: "left",
-            }}
-          >
-            Şirket Adı
+      <CardWrapper elevation={0}>
+        <Grid container alignItems="left">
+          <CardWrapperForTitles elevation={4} alignSelf="right">
             <Typography
               variant="subtitle1"
               style={{
                 fontFamily: "Arial",
-                fontSize: "14px",
+                fontSize: "18px",
                 fontWeight: "bold",
                 alignSelf: "left",
+                flex: "auto",
               }}
             >
-              **
+              İş Geçmişi
             </Typography>
-          </Typography>
-
-          <Typography
-            variant="subtitle1"
-            style={{
-              fontFamily: "Arial",
-              fontSize: "14px",
-              fontWeight: "bold",
-              alignSelf: "left",
-            }}
-          >
-            POZİSYON
-            <Typography
-              variant="subtitle1"
-              style={{
-                fontFamily: "Arial",
-                fontSize: "14px",
-                fontWeight: "bold",
-                alignSelf: "left",
-              }}
-            >
-              **
-            </Typography>
-          </Typography>
-
-          <Typography
-            variant="subtitle1"
-            style={{
-              fontFamily: "Arial",
-              fontSize: "14px",
-              fontWeight: "bold",
-              alignSelf: "left",
-            }}
-          >
-            BAŞLAMA-BİTİŞ TARİHİ
-            <Typography
-              variant="subtitle1"
-              style={{
-                fontFamily: "Arial",
-                fontSize: "14px",
-                fontWeight: "bold",
-                alignSelf: "left",
-              }}
-            >
-              **
-            </Typography>
-          </Typography>
-
-          <Typography
-            variant="subtitle1"
-            style={{
-              fontFamily: "Arial",
-              fontSize: "14px",
-              fontWeight: "bold",
-              alignSelf: "left",
-            }}
-          >
-            AÇIKLAMA-HANGİ DEPARTMAN
-            <Typography
-              variant="subtitle1"
-              style={{
-                fontFamily: "Arial",
-                fontSize: "14px",
-                fontWeight: "bold",
-                alignSelf: "left",
-              }}
-            >
-              **
-            </Typography>
-          </Typography>
+          </CardWrapperForTitles>
         </Grid>
-      </Grid>
+        <CardWrapperLeftAligned elevation={4}>
+          <Grid container alignItems="left">
+            <Grid item xs={10} sm={10} md={10} alignItems="left">
+              <Typography
+                variant="subtitle1"
+                style={{
+                  fontFamily: "Arial",
+                  fontSize: "14px",
+                  fontWeight: "bold",
+                  alignSelf: "left",
+                }}
+              >
+                Şirket Adı
+                <Typography
+                  variant="subtitle1"
+                  style={{
+                    fontFamily: "Arial",
+                    fontSize: "14px",
+                    fontWeight: "bold",
+                    alignSelf: "left",
+                  }}
+                >
+                  **
+                </Typography>
+              </Typography>
 
-      <ButtonsWrapper>
-        <RoundButton variant="contained" color="primary" size="small">
-          DÜZENLE?
-        </RoundButton>
-        <RoundButton variant="contained" color="primary" size="small">
-          SİL
-        </RoundButton>
-      </ButtonsWrapper>
-    </>
-  );
-}
+              <Typography
+                variant="subtitle1"
+                style={{
+                  fontFamily: "Arial",
+                  fontSize: "14px",
+                  fontWeight: "bold",
+                  alignSelf: "left",
+                }}
+              >
+                Pozisyon/Birim
+                <Typography
+                  variant="subtitle1"
+                  style={{
+                    fontFamily: "Arial",
+                    fontSize: "14px",
+                    fontWeight: "bold",
+                    alignSelf: "left",
+                  }}
+                >
+                  **
+                </Typography>
+              </Typography>
 
-function İletisimBilgileri({ country, city, district, address, zipCode, cellPhone }) {
-  return (
-    <>
-      <Grid container alignItems="left">
-        <Grid item xs={10} sm={10} md={10} alignItems="left">
-          <Typography
-            variant="subtitle1"
-            style={{
-              fontFamily: "Arial",
-              fontSize: "14px",
-              fontWeight: "bold",
-              alignSelf: "left",
-            }}
-          >
-            YAŞADIĞI ÜLKE
-            <Typography
-              variant="subtitle1"
-              style={{
-                fontFamily: "Arial",
-                fontSize: "14px",
-                fontWeight: "bold",
-                alignSelf: "left",
-              }}
-            >
-              **
-            </Typography>
-          </Typography>
+              <Typography
+                variant="subtitle1"
+                style={{
+                  fontFamily: "Arial",
+                  fontSize: "14px",
+                  fontWeight: "bold",
+                  alignSelf: "left",
+                }}
+              >
+                Başlama-Bitiş Tarihi
+                <Typography
+                  variant="subtitle1"
+                  style={{
+                    fontFamily: "Arial",
+                    fontSize: "14px",
+                    fontWeight: "bold",
+                    alignSelf: "left",
+                  }}
+                >
+                  **
+                </Typography>
+              </Typography>
 
-          <Typography
-            variant="subtitle1"
-            style={{
-              fontFamily: "Arial",
-              fontSize: "14px",
-              fontWeight: "bold",
-              alignSelf: "left",
-            }}
-          >
-            YAŞADIĞI ŞEHİR
-            <Typography
-              variant="subtitle1"
-              style={{
-                fontFamily: "Arial",
-                fontSize: "14px",
-                fontWeight: "bold",
-                alignSelf: "left",
-              }}
-            >
-              **
-            </Typography>
-          </Typography>
+              <Typography
+                variant="subtitle1"
+                style={{
+                  fontFamily: "Arial",
+                  fontSize: "14px",
+                  fontWeight: "bold",
+                  alignSelf: "left",
+                }}
+              >
+                Açıklama(hangi departman)
+                <Typography
+                  variant="subtitle1"
+                  style={{
+                    fontFamily: "Arial",
+                    fontSize: "14px",
+                    fontWeight: "bold",
+                    alignSelf: "left",
+                  }}
+                >
+                  **
+                </Typography>
+              </Typography>
 
-          <Typography
-            variant="subtitle1"
-            style={{
-              fontFamily: "Arial",
-              fontSize: "14px",
-              fontWeight: "bold",
-              alignSelf: "left",
-            }}
-          >
-            YAŞADIĞI İLÇE
-            <Typography
-              variant="subtitle1"
-              style={{
-                fontFamily: "Arial",
-                fontSize: "14px",
-                fontWeight: "bold",
-                alignSelf: "left",
-              }}
-            >
-              **
-            </Typography>
-          </Typography>
+              <Typography
+                variant="subtitle1"
+                style={{
+                  fontFamily: "Arial",
+                  fontSize: "14px",
+                  fontWeight: "bold",
+                  alignSelf: "left",
+                }}
+              >
+                Personel Numarası
+                <Typography
+                  variant="subtitle1"
+                  style={{
+                    fontFamily: "Arial",
+                    fontSize: "14px",
+                    fontWeight: "bold",
+                    alignSelf: "left",
+                  }}
+                >
+                  **
+                </Typography>
+              </Typography>
 
-          <Typography
-            variant="subtitle1"
-            style={{
-              fontFamily: "Arial",
-              fontSize: "14px",
-              fontWeight: "bold",
-              alignSelf: "left",
-            }}
-          >
-            ADRES
-            <Typography
-              variant="subtitle1"
-              style={{
-                fontFamily: "Arial",
-                fontSize: "14px",
-                fontWeight: "bold",
-                alignSelf: "left",
-              }}
-            >
-              **
-            </Typography>
-          </Typography>
+              <Typography
+                variant="subtitle1"
+                style={{
+                  fontFamily: "Arial",
+                  fontSize: "14px",
+                  fontWeight: "bold",
+                  alignSelf: "left",
+                }}
+              >
+                Onay Mektubu
+                <Typography
+                  variant="subtitle1"
+                  style={{
+                    fontFamily: "Arial",
+                    fontSize: "14px",
+                    fontWeight: "bold",
+                    alignSelf: "left",
+                  }}
+                >
+                  **
+                </Typography>
+              </Typography>
+            </Grid>
+          </Grid>
 
-          <Typography
-            variant="subtitle1"
-            style={{
-              fontFamily: "Arial",
-              fontSize: "14px",
-              fontWeight: "bold",
-              alignSelf: "left",
-            }}
-          >
-            POSTA KODU
-            <Typography
-              variant="subtitle1"
-              style={{
-                fontFamily: "Arial",
-                fontSize: "14px",
-                fontWeight: "bold",
-                alignSelf: "left",
-              }}
-            >
-              **
-            </Typography>
-          </Typography>
-
-          <Typography
-            variant="subtitle1"
-            style={{
-              fontFamily: "Arial",
-              fontSize: "14px",
-              fontWeight: "bold",
-              alignSelf: "left",
-            }}
-          >
-            CEP TELEFONU
-            <Typography
-              variant="subtitle1"
-              style={{
-                fontFamily: "Arial",
-                fontSize: "14px",
-                fontWeight: "bold",
-                alignSelf: "left",
-              }}
-            >
-              **
-            </Typography>
-          </Typography>
-        </Grid>
-      </Grid>
-
-      <ButtonsWrapper>
-        <RoundButton variant="contained" color="primary" size="small">
-          DÜZENLE?
-        </RoundButton>
-        <RoundButton variant="contained" color="primary" size="small">
-          SİL
-        </RoundButton>
-      </ButtonsWrapper>
+          <ButtonsWrapper>
+            <RoundButton variant="contained" color="primary" size="small">
+              YENİ EKLE
+            </RoundButton>
+            <RoundButton variant="contained" color="primary" size="small">
+              ONAYA GÖNDER
+            </RoundButton>
+          </ButtonsWrapper>
+        </CardWrapperLeftAligned>
+      </CardWrapper>
     </>
   );
 }
@@ -764,29 +663,39 @@ function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {
       return (
         <>
           <Grid className="left-side" item xs={6}>
-            <ProfileWrapper>
+            <ProfileWrapper elevation={0}>
               <AvatarWrapper src={avatarSrc} alt="Profil Avatarı" />
               <div>
-                <Typography
-                  variant="h6"
-                  style={{
-                    fontFamily: "Arial",
-                    fontSize: "14px",
-                    fontWeight: "normal",
-                  }}
-                >
-                  User Name
-                </Typography>
-                <Typography
-                  variant="h6"
-                  style={{
-                    fontFamily: "Arial",
-                    fontSize: "14px",
-                    fontWeight: "normal",
-                  }}
-                >
-                  Department
-                </Typography>
+                <Grid container alignItems="left">
+                  <CardWrapperForTitles elevation={4} alignSelf="right">
+                    <Typography
+                      variant="subtitle1"
+                      style={{
+                        fontFamily: "Arial",
+                        fontSize: "18px",
+                        fontWeight: "bold",
+                        alignSelf: "left",
+                        flex: "auto",
+                      }}
+                    >
+                      AD-SOYAD
+                    </Typography>
+                  </CardWrapperForTitles>
+                  <CardWrapperForTitles elevation={4} alignSelf="right">
+                    <Typography
+                      variant="subtitle1"
+                      style={{
+                        fontFamily: "Arial",
+                        fontSize: "18px",
+                        fontWeight: "bold",
+                        alignSelf: "left",
+                        flex: "auto",
+                      }}
+                    >
+                      Departman
+                    </Typography>
+                  </CardWrapperForTitles>
+                </Grid>
               </div>
             </ProfileWrapper>
 
@@ -876,24 +785,12 @@ function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {
               setSharedPostsActive={setSharedPostsActive}
             />
 
-            <CardWrapperLeftAligned elevation={4}>
-              <KimlikBilgileri />
-            </CardWrapperLeftAligned>
-            <CardWrapperLeftAligned elevation={4}>
-              <EgitimGecmisi />
-            </CardWrapperLeftAligned>
+            <SahsiBilgiler />
+            <EgitimGecmisi />
           </Grid>
 
           <Grid className="right-side" item xs={6}>
-            <CardWrapperLeftAligned elevation={4}>
-              <SahsiBilgiler />
-            </CardWrapperLeftAligned>
-            <CardWrapperLeftAligned elevation={4}>
-              <IsGecmisi />
-            </CardWrapperLeftAligned>
-            <CardWrapperLeftAligned elevation={4}>
-              <İletisimBilgileri />
-            </CardWrapperLeftAligned>
+            <IsGecmisi />
           </Grid>
         </>
       );
@@ -913,3 +810,235 @@ function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {
 }
 
 export default BireyselProfil;
+
+// // İŞ GEÇMİŞ, EĞİTİM GEÇMİŞİ, İLETİŞİM
+
+// function İletisimBilgileri({
+//   country,
+//   city,
+//   district,
+//   address,
+//   zipCode,
+//   cellPhone,
+// }) {
+//   // YAŞADIĞI ŞEHİR, TELEFON, MAİLİ BURAYA AL
+//   return (
+//     <>
+//       <Grid container alignItems="left">
+//         <Grid item xs={10} sm={10} md={10} alignItems="left">
+//           <Typography
+//             variant="subtitle1"
+//             style={{
+//               fontFamily: "Arial",
+//               fontSize: "14px",
+//               fontWeight: "bold",
+//               alignSelf: "left",
+//             }}
+//           >
+//             YAŞADIĞI ÜLKE
+//             <Typography
+//               variant="subtitle1"
+//               style={{
+//                 fontFamily: "Arial",
+//                 fontSize: "14px",
+//                 fontWeight: "bold",
+//                 alignSelf: "left",
+//               }}
+//             >
+//               **
+//             </Typography>
+//           </Typography>
+
+//           <Typography
+//             variant="subtitle1"
+//             style={{
+//               fontFamily: "Arial",
+//               fontSize: "14px",
+//               fontWeight: "bold",
+//               alignSelf: "left",
+//             }}
+//           >
+//             YAŞADIĞI ŞEHİR
+//             <Typography
+//               variant="subtitle1"
+//               style={{
+//                 fontFamily: "Arial",
+//                 fontSize: "14px",
+//                 fontWeight: "bold",
+//                 alignSelf: "left",
+//               }}
+//             >
+//               **
+//             </Typography>
+//           </Typography>
+
+//           <Typography
+//             variant="subtitle1"
+//             style={{
+//               fontFamily: "Arial",
+//               fontSize: "14px",
+//               fontWeight: "bold",
+//               alignSelf: "left",
+//             }}
+//           >
+//             E-MAİL
+//             <Typography
+//               variant="subtitle1"
+//               style={{
+//                 fontFamily: "Arial",
+//                 fontSize: "14px",
+//                 fontWeight: "bold",
+//                 alignSelf: "left",
+//               }}
+//             >
+//               **
+//             </Typography>
+//           </Typography>
+
+//           <Typography
+//             variant="subtitle1"
+//             style={{
+//               fontFamily: "Arial",
+//               fontSize: "14px",
+//               fontWeight: "bold",
+//               alignSelf: "left",
+//             }}
+//           >
+//             POSTA KODU
+//             <Typography
+//               variant="subtitle1"
+//               style={{
+//                 fontFamily: "Arial",
+//                 fontSize: "14px",
+//                 fontWeight: "bold",
+//                 alignSelf: "left",
+//               }}
+//             >
+//               **
+//             </Typography>
+//           </Typography>
+
+//           <Typography
+//             variant="subtitle1"
+//             style={{
+//               fontFamily: "Arial",
+//               fontSize: "14px",
+//               fontWeight: "bold",
+//               alignSelf: "left",
+//             }}
+//           >
+//             CEP TELEFONU
+//             <Typography
+//               variant="subtitle1"
+//               style={{
+//                 fontFamily: "Arial",
+//                 fontSize: "14px",
+//                 fontWeight: "bold",
+//                 alignSelf: "left",
+//               }}
+//             >
+//               **
+//             </Typography>
+//           </Typography>
+//         </Grid>
+//       </Grid>
+
+//       <ButtonsWrapper>
+//         <RoundButton variant="contained" color="primary" size="small">
+//           DÜZENLE?
+//         </RoundButton>
+//         <RoundButton variant="contained" color="primary" size="small">
+//           SİL
+//         </RoundButton>
+//       </ButtonsWrapper>
+//     </>
+//   );
+// }
+
+// function SahsiBilgiler({ birthDate, birthPlace }) {
+//   return (
+//     <>
+//       <Grid container alignItems="left">
+//         <Grid item xs={10} sm={10} md={10} alignItems="left">
+//           <Typography
+//             variant="subtitle1"
+//             style={{
+//               fontFamily: "Arial",
+//               fontSize: "14px",
+//               fontWeight: "bold",
+//               alignSelf: "left",
+//             }}
+//           >
+//             DOĞUM TARİHİ
+//             <Typography
+//               variant="subtitle1"
+//               style={{
+//                 fontFamily: "Arial",
+//                 fontSize: "14px",
+//                 fontWeight: "bold",
+//                 alignSelf: "left",
+//               }}
+//             >
+//               **
+//             </Typography>
+//           </Typography>
+
+//           <Typography
+//             variant="subtitle1"
+//             style={{
+//               fontFamily: "Arial",
+//               fontSize: "14px",
+//               fontWeight: "bold",
+//               alignSelf: "left",
+//             }}
+//           >
+//             DOĞUM YERİ
+//             <Typography
+//               variant="subtitle1"
+//               style={{
+//                 fontFamily: "Arial",
+//                 fontSize: "14px",
+//                 fontWeight: "bold",
+//                 alignSelf: "left",
+//               }}
+//             >
+//               **
+//             </Typography>
+//           </Typography>
+
+//           <Typography
+//             variant="subtitle1"
+//             style={{
+//               fontFamily: "Arial",
+//               fontSize: "14px",
+//               fontWeight: "bold",
+//               alignSelf: "left",
+//             }}
+//           >
+//             NUFÜSA KAYITLI OLDUĞU ŞEHİR
+//             <Typography
+//               variant="subtitle1"
+//               style={{
+//                 fontFamily: "Arial",
+//                 fontSize: "14px",
+//                 fontWeight: "bold",
+//                 alignSelf: "left",
+//               }}
+//             >
+//               **
+//             </Typography>
+//           </Typography>
+//         </Grid>
+//       </Grid>
+
+//       <ButtonsWrapper>
+//         <RoundButton variant="contained" color="primary" size="small">
+//           DÜZENLE?
+//         </RoundButton>
+//         <RoundButton variant="contained" color="primary" size="small">
+//           SİL
+//         </RoundButton>
+//       </ButtonsWrapper>
+//     </>
+//   );
+// }
