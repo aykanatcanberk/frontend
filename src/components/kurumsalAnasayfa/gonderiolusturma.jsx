@@ -8,7 +8,7 @@ import addPost from "../../services/postService";
 import { useState } from "react";
 
 const SharePostCardWrapper = styled(Paper)({
-  padding: "1rem",
+  padding: "2px",
   height: "auto",
   textAlign: "center",
   display: "flex",
@@ -19,7 +19,7 @@ const SharePostCardWrapper = styled(Paper)({
 });
 
 const PostInputWrapper = styled(TextField)({
-  margin: "10px 0",
+  margin: "10px ",
   borderRadius: "10px",
   "& .MuiOutlinedInput-root": {
     borderRadius: "10px",
@@ -89,7 +89,8 @@ function Gonderiolustur() {
         variant="outlined"
         multiline
         rows={4}
-        value={postData.postdec}
+        name="postdesc"
+        value={postData.postdesc}
         onChange={handleInputChange}
       />
       <ButtonsWrapper>
