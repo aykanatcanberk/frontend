@@ -50,6 +50,11 @@ const StyledTextarea = styled(TextareaAutosize)(
              {advert.ilan_adi}
           </Typography>
         }
+        company={
+          <Typography variant="h8">
+          {advert.firma_adi}
+       </Typography>
+        }
         subheader={
           <Box display="flex" alignItems="center">
             <CalendarMonthIcon sx={{ fontSize: 14, marginLeft: 1 }} />

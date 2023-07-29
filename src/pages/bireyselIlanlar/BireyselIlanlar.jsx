@@ -1,4 +1,6 @@
 import React from "react";
+import { useState } from "react";
+import axios from "axios";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
@@ -29,6 +31,28 @@ const bolumler = [
 ];
 
 function BireyselIlanlar() {
+  const [applications, setApplications] = useState([]);
+  const addApplication = (newApplication) => {
+    const apiUrl = 'http://localhost:3001/bireysel-ilanlar';
+    axios.post(apiUrl, newApplication)
+      .then(response => {
+        setApplications([...applications, response.data]);
+      })
+      .catch(error => {
+        console.error("Başvuru eklemede problem gerçekleşti:", error);
+      });
+  };
+  const deleteApplication = (applicationId) => {
+    const apiUrl = `http://localhost:3001/bireysel-ilanlar/${applicationId}`;
+    axios.delete(apiUrl)
+      .then(() => {
+        setApplications(applications.filter(app => app.id !== applicationId));
+      })
+      .catch(error => {
+        console.error("Başvuru silmede problem gerçekleşti:", error);
+      });
+  };
+
   return (
     <Grid container justifyContent="left">
       <Grid item xs={10} lg={3}>
@@ -175,8 +199,12 @@ function BireyselIlanlar() {
           spacing={2}
         >
           {db["kurumsal-ilanlar"].map((advert, index) => (
-            <Grid item key={advert.id} xs={12} sm={6}>
-              <İlan advert={advert} />
+      <Grid item key={advert.id} xs={12} sm={6}>
+        <İlan
+          advert={advert}
+          onApply={() => addApplication({ advertId: advert.id })} 
+          onCancel={() => deleteApplication(advert.id)} 
+        />
             </Grid>
           ))}
         </Grid>
