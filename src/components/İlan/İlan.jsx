@@ -33,12 +33,12 @@ const StyledTextarea = styled(TextareaAutosize)(
 
 `,
 );
-export default function İlan({advert}){
-  const [buttonText, setButtonText] = useState('Başvur');
-  function handleClick() {
-    setButtonText('Başvuruldu');
-  }
-
+  export default function İlan({ advert }) {
+    const [isApplied, setIsApplied] = useState(false);
+  
+    function handleButtonClick() {
+      setIsApplied((prevIsApplied) => !prevIsApplied);//başvur-başvuruyu iptal et arasında gidip gelmesi için
+    }
   return (
     <Card sx={{ maxWidth: 500 }}>
       <CardHeader
@@ -68,8 +68,8 @@ export default function İlan({advert}){
         readOnly
       />
       <CardActions>
-      <Button variant="solid" color="primary" onClick={handleClick}>
-          {buttonText}
+      <Button variant="solid" color="primary" onClick={handleButtonClick}>
+          {isApplied ? 'Başvuruyu İptal Et' : 'Başvur'}
         </Button>
       </CardActions>
     </Card>
