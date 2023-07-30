@@ -9,7 +9,7 @@ import PeopleIcon from "@mui/icons-material/People";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 
-const FirmaKartvizit = ({ props }) => {
+const FirmaKartvizit = ({ companyCard }) => {
   const avatarStyle = {
     width: "100px",
     height: "100px",
@@ -17,7 +17,7 @@ const FirmaKartvizit = ({ props }) => {
     marginLeft: "10px",
     border: "1px solid #ccc",
   };
-  const linkUrl = `/bireysel-firma/${companycard.id}`;
+  const linkUrl = `/bireysel-firma/${companyCard.id}`;
   return (
     <div className="firmaKartvizit">
       <Paper>
@@ -28,16 +28,16 @@ const FirmaKartvizit = ({ props }) => {
             component="div"
             sx={{ marginTop: "5px", marginLeft: "20px", color: "	#00838F" }}
           >
-            {props.companyName}
+            {companyCard.companyName}
           </Typography>
 
           <Typography variant="body1" fontSize={"14px"} color="text.secondary">
             <CalendarMonthIcon sx={{ marginLeft: "115px" }} />
-            {props.foundationDate}
+            {companyCard.foundationDate}
             <LocationSearchingIcon sx={{ marginLeft: "10px" }} />
-            {props.location}
+            {companyCard.location}
             <PeopleIcon sx={{ marginLeft: "10px" }} />
-            {props.employeeCount}
+            {companyCard.employeeCount}
           </Typography>
           <Typography sx={{ marginLeft: "270px" }}>
             <Link to={linkUrl}>
