@@ -213,7 +213,7 @@ function BireyselIlanlar() {
           variant="outlined"
           color="primary"
           onClick={handleApplyFilter}
-          style={{ marginLeft:150, marginTop: 3, marginBottom: 2, color: "black" }}> UYGULA</Button>
+          style={{ marginLeft:150, marginTop: 3, marginBottom: 2, color: "black" }}>UYGULA</Button>
         </Grid>
       </Grid>
       <Grid item xs={12} lg={9}>
