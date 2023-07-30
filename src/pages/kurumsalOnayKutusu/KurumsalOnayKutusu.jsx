@@ -1,155 +1,35 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../kurumsalOnayKutusu/kurumsal.css";
 import OnayIstegi from "../../components/onayIstegi/OnayIstegi";
+import { getWaitingForApproval } from "../../services/workHistoryService";
 
 function KurumsalOnayKutusu() {
-  const data = [
-    {
-      id: 1,
-      isim: "Mehmet Sait",
-      baslangicTarihi: "2022/09/09",
-      bitisTarihi: "2023/09/09",
-      departmanIsmi: "Yazilim Birimi",
-    },
-    {
-      id: 2,
-      isim: "Ali Osman",
-      baslangicTarihi: "2022/09/09",
-      bitisTarihi: "2023/09/09",
-      departmanIsmi: "Yazilim Birimi",
-    },
-    {
-      id: 3,
-      isim: "Hasan Basri",
-      baslangicTarihi: "2022/09/09",
-      bitisTarihi: "2023/09/09",
-      departmanIsmi: "Yazilim Birimi",
-    },
-    {
-      id: 4,
-      isim: "Can Berk",
-      baslangicTarihi: "2022/09/09",
-      bitisTarihi: "2023/09/09",
-      departmanIsmi: "Yazilim Birimi",
-    },
-    {
-      id: 1,
-      isim: "Mehmet Sait",
-      baslangicTarihi: "2022/09/09",
-      bitisTarihi: "2023/09/09",
-      departmanIsmi: "Yazilim Birimi",
-    },
-    {
-      id: 2,
-      isim: "Ali Osman",
-      baslangicTarihi: "2022/09/09",
-      bitisTarihi: "2023/09/09",
-      departmanIsmi: "Yazilim Birimi",
-    },
-    {
-      id: 3,
-      isim: "Hasan Basri",
-      baslangicTarihi: "2022/09/09",
-      bitisTarihi: "2023/09/09",
-      departmanIsmi: "Yazilim Birimi",
-    },
-    {
-      id: 4,
-      isim: "Can Berk",
-      baslangicTarihi: "2022/09/09",
-      bitisTarihi: "2023/09/09",
-      departmanIsmi: "Yazilim Birimi",
-    },
-    {
-      id: 1,
-      isim: "Mehmet Sait",
-      baslangicTarihi: "2022/09/09",
-      bitisTarihi: "2023/09/09",
-      departmanIsmi: "Yazilim Birimi",
-    },
-    {
-      id: 2,
-      isim: "Ali Osman",
-      baslangicTarihi: "2022/09/09",
-      bitisTarihi: "2023/09/09",
-      departmanIsmi: "Yazilim Birimi",
-    },
-    {
-      id: 3,
-      isim: "Hasan Basri",
-      baslangicTarihi: "2022/09/09",
-      bitisTarihi: "2023/09/09",
-      departmanIsmi: "Yazilim Birimi",
-    },
-    {
-      id: 4,
-      isim: "Can Berk",
-      baslangicTarihi: "2022/09/09",
-      bitisTarihi: "2023/09/09",
-      departmanIsmi: "Yazilim Birimi",
-    },
-    {
-      id: 1,
-      isim: "Mehmet Sait",
-      baslangicTarihi: "2022/09/09",
-      bitisTarihi: "2023/09/09",
-      departmanIsmi: "Yazilim Birimi",
-    },
-    {
-      id: 2,
-      isim: "Ali Osman",
-      baslangicTarihi: "2022/09/09",
-      bitisTarihi: "2023/09/09",
-      departmanIsmi: "Yazilim Birimi",
-    },
-    {
-      id: 3,
-      isim: "Hasan Basri",
-      baslangicTarihi: "2022/09/09",
-      bitisTarihi: "2023/09/09",
-      departmanIsmi: "Yazilim Birimi",
-    },
-    {
-      id: 4,
-      isim: "Can Berk",
-      baslangicTarihi: "2022/09/09",
-      bitisTarihi: "2023/09/09",
-      departmanIsmi: "Yazilim Birimi",
-    },
-    {
-      id: 1,
-      isim: "Mehmet Sait",
-      baslangicTarihi: "2022/09/09",
-      bitisTarihi: "2023/09/09",
-      departmanIsmi: "Yazilim Birimi",
-    },
-    {
-      id: 2,
-      isim: "Ali Osman",
-      baslangicTarihi: "2022/09/09",
-      bitisTarihi: "2023/09/09",
-      departmanIsmi: "Yazilim Birimi",
-    },
-    {
-      id: 3,
-      isim: "Hasan Basri",
-      baslangicTarihi: "2022/09/09",
-      bitisTarihi: "2023/09/09",
-      departmanIsmi: "Yazilim Birimi",
-    },
-    {
-      id: 4,
-      isim: "Can Berk",
-      baslangicTarihi: "2022/09/09",
-      bitisTarihi: "2023/09/09",
-      departmanIsmi: "Yazilim Birimi",
-    },
-  ];
+  const [data, setData] = useState([]);
+  const [guncelle, setGuncelle] = useState(false);
+
+  const handleGuncelle = () => {
+    setGuncelle(!guncelle);
+  };
+
+  useEffect(() => {
+    getWaitingForApproval()
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((error) => {
+        console.log("Hata alindi " + error);
+      });
+  }, [guncelle]);
 
   return (
     <div className="kurumsal">
-      {data.map((kisi) => (
-        <OnayIstegi props={kisi} border="5px solid orange" />
+      {data?.map((kisi) => (
+        <OnayIstegi
+          key={kisi.id}
+          props={kisi}
+          guncelle={handleGuncelle}
+          border="5px solid orange"
+        />
       ))}
     </div>
   );
