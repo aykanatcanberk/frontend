@@ -33,9 +33,11 @@ const OnayIstegi = ({ props, guncelle }) => {
           {props?.startDate} - {props?.finishDate}
         </Typography>
         <Typography variant="body2">
-          Merhaba, belirttigim tarihler arasinda sirketinizde {"   "}
-          {props?.department} departmaninda calistigimi dogrulayabilir misiniz?
+          Merhaba, belirttiğim tarihler arasında şirketinizde
           <br />
+          <span className="onayDepartman">{props?.department}</span>
+          <br />
+          departmanında çalıştığımı doğrulayabilir misiniz?
         </Typography>
       </CardContent>
       <CardActions style={{ justifyContent: "flex-end" }}>
