@@ -5,13 +5,17 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import DoneIcon from "@mui/icons-material/Done";
 import ClearIcon from "@mui/icons-material/Clear";
+import { setWorkApproval } from "../../services/workHistoryService";
 
-const OnayIstegi = ({ props }) => {
-  const handleAccept = () => {
-    console.log("Accepted");
-  };
-  const handleReject = () => {
-    console.log("Rejected");
+const OnayIstegi = ({ props, guncelle }) => {
+  const handleApproval = (id, status) => {
+    setWorkApproval(id, status)
+      .then((response) => {
+        guncelle();
+      })
+      .catch((error) => {
+        console.log("Hata alindi " + error);
+      });
   };
 
   return (
@@ -23,28 +27,32 @@ const OnayIstegi = ({ props }) => {
           Onay Bekliyor
         </Typography>
         <Typography variant="h5" component="div">
-          {props?.isim}
+          {props?.name}
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          {props?.baslangicTarihi} - {props?.bitisTarihi}
+          {props?.startDate} - {props?.finishDate}
         </Typography>
         <Typography variant="body2">
           Merhaba, belirttigim tarihler arasinda sirketinizde {"   "}
-          {props?.departmanIsmi} departmaninda calistigimi dogrulayabilir
-          misiniz?
+          {props?.department} departmaninda calistigimi dogrulayabilir misiniz?
           <br />
         </Typography>
       </CardContent>
-      <CardActions
-        style={{ justifyContent: "flex-end" }}
-        classes="onayIstegiButon"
-      >
+      <CardActions style={{ justifyContent: "flex-end" }}>
         {/* Buton yerine direk icon koyulabilir */}
 
-        <Button onClick={handleAccept} sx={{ color: "green" }} size="small">
+        <Button
+          onClick={() => handleApproval(props?.id, 1)}
+          sx={{ color: "green" }}
+          size="small"
+        >
           <DoneIcon />
         </Button>
-        <Button onClick={handleReject} sx={{ color: "red" }} size="small">
+        <Button
+          onClick={() => handleApproval(props?.id, 2)}
+          sx={{ color: "red" }}
+          size="small"
+        >
           <ClearIcon />
         </Button>
       </CardActions>
