@@ -52,9 +52,8 @@ const Router = () => {
         />
         <Route
           path="/bireysel-firma"
-          element={<UserLayout element={<BireyselFirma />} />}
         >
-          <Route path=":id" element={<BireyselFirma />} />
+          <Route path=":id" element={<UserLayout element={<BireyselFirma />}/>} />
         </Route>
 
         <Route

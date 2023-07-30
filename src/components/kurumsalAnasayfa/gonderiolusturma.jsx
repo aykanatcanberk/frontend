@@ -4,9 +4,11 @@ import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
+import addPost from "../../services/postService";
+import { useState } from "react";
 
 const SharePostCardWrapper = styled(Paper)({
-  padding: "1rem",
+  padding: "2px",
   height: "auto",
   textAlign: "center",
   display: "flex",
@@ -17,7 +19,7 @@ const SharePostCardWrapper = styled(Paper)({
 });
 
 const PostInputWrapper = styled(TextField)({
-  margin: "10px 0",
+  margin: "10px ",
   borderRadius: "10px",
   "& .MuiOutlinedInput-root": {
     borderRadius: "10px",
@@ -40,6 +42,35 @@ const GreenButton = styled(Button)({
 });
 
 function Gonderiolustur() {
+  const PostData = {
+    companyname: "",
+    postdesc: "",
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setPostData({
+      ...postData,
+      [name]: value,
+    });
+  };
+  const [postData, setPostData] = useState(PostData);
+
+  const handleSubmit = () => {
+    const newPost = {
+      postdesc: postData.postdesc,
+      companydate: new Date().toLocaleDateString(),
+    };
+
+    addPost(newPost)
+      .then((response) => {
+        console.log("Post başarıyla eklendi:", response.data);
+      })
+      .catch((error) => {
+        console.error("Post eklenirken bir hata oluştu:", error);
+      });
+    setPostData(PostData);
+  };
   return (
     <SharePostCardWrapper>
       <Typography
@@ -58,12 +89,16 @@ function Gonderiolustur() {
         variant="outlined"
         multiline
         rows={4}
+        name="postdesc"
+        value={postData.postdesc}
+        onChange={handleInputChange}
       />
       <ButtonsWrapper>
         <GreenButton
           variant="contained"
           color="primary"
           sx={{ height: "30px", width: "auto" }}
+          onClick={handleSubmit}
         >
           Paylaş
         </GreenButton>

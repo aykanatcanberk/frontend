@@ -15,13 +15,9 @@ const BireyselFirma = () => {
         setCompanyDataList(response.data);
       })
       .catch((error) => {
-        console.error("Error fetching company data:", error);
+        return <NotFoundError props={"Böyle bir şirket mevcut değil"} />;
       });
   }, [id]);
-
-  if (companyDataList.length === 0) {
-    return <NotFoundError props={"Böyle bir şirket mevcut değil"} />;
-  }
 
   return (
     <>
