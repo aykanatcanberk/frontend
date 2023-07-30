@@ -50,10 +50,11 @@ const Router = () => {
           path="/bireysel-firmalar"
           element={<UserLayout element={<BireyselFirmalar />} />}
         />
-        <Route
-          path="/bireysel-firma"
-        >
-          <Route path=":id" element={<UserLayout element={<BireyselFirma />}/>} />
+        <Route path="/bireysel-firma">
+          <Route
+            path=":id"
+            element={<UserLayout element={<BireyselFirma />} />}
+          />
         </Route>
 
         <Route
@@ -77,10 +78,14 @@ const Router = () => {
             />
           }
         />
-        <Route
-          path="/kurumsal-ilan"
-          element={<CompanyLayout element={<KurumsalIlan />} />}
-        />
+
+        <Route path="/kurumsal-ilan">
+          <Route
+            path=":id"
+            element={<CompanyLayout element={<KurumsalIlan />} />}
+          />
+        </Route>
+
         <Route
           path="/kurumsal-ilanlar"
           element={<CompanyLayout element={<KurumsalIlanlar />} />}

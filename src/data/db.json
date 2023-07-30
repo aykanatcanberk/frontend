@@ -811,19 +811,7 @@
       "post_date": "6/4/2010"
     }
   ],
-  "advert-detail": [
-    {
-      "id": 1,
-      "ilan_adi": "Yazılım Geliştirme Uzmanı",
-      "firma": "Aselsan",
-      "ilan_date": "14.06.2023",
-      "ilan_tipi": "İş İlanı",
-      "desc": "Daha önce Java kullanmış en az 2 yıl tecrübeli, lisans diplomalı yazılım geliştirme uzmanı arıyoruz.Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi est ad aspernatur illo dolore voluptatibus exercitationem natus eligendi, qui inventore laboriosam consequuntur reiciendis quasi reprehenderit! Nisi eos dignissimos voluptatem quam.",
-      "çalışma_şekli": "Yüz Yüze",
-      "çalışma_tercihi": "Tam Zamanlı",
-      "bölüm": "Bilgisayar Mühendisliği"
-    }
-  ],
+
   "kurumsal-ilanlar": [
     {
       "id": 1,
@@ -838,20 +826,22 @@
     {
       "ilan_adi": "C# Yazılım Geliştirme Uzmanı",
       "desc": "Daha önce C#  kullanmış en az 2 yıl tecrübeli, lisans diplomalı yazılım geliştirme uzmanı arıyoruz",
-      "çalışma_şekli": [
-        "Yüz Yüze"
-      ],
-      "çalışma_tercihi": [
-        "Tam Zamanlı"
-      ],
-      "ilan_tipi": [
-        "İş İlanı"
-      ],
-      "bölüm": [
-        "Bilgisayar Mühendisliği"
-      ],
+      "çalışma_şekli": ["Yüz Yüze"],
+      "çalışma_tercihi": ["Tam Zamanlı"],
+      "ilan_tipi": ["İş İlanı"],
+      "bölüm": ["Bilgisayar Mühendisliği"],
       "ilan_date": "28.07.2023",
       "id": 2
+    },
+    {
+      "ilan_adi": "Python Yazılım Geliştirme Uzmanı",
+      "desc": "Python konusunda bilgili, en az 3 yıl deneyimli yazılım geliştirme uzmanı arıyoruz.",
+      "çalışma_şekli": ["Yüz Yüze"],
+      "çalışma_tercihi": ["Proje Bazlı"],
+      "ilan_tipi": ["İş İlanı"],
+      "bölüm": ["Bilgisayar Mühendisliği"],
+      "ilan_date": "30.07.2023",
+      "id": 3
     }
   ],
   "kurumsal-anasayfa": [
