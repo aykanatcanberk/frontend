@@ -15,7 +15,7 @@ import db from "../../data/db.json";
 import Button from "@mui/material/Button";
 import "./BireyselIlanlar.css";
 
-const jobOptions = [{ title: "Staj İlanları" }, { title: "İş İlanları" }];
+const jobOptions = [{ title: "Staj İlanı" }, { title: "İş İlanı" }];
 const companies = [
   { title: "Aselsan" },
   { title: "Havelsan" },
