@@ -1,4 +1,6 @@
 import React from "react";
+import { useState } from "react";
+import axios from "axios";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
@@ -10,10 +12,10 @@ import FormControl from "@mui/material/FormControl";
 import Typography from "@mui/joy/Typography";
 import İlan from "../../components/İlan/İlan";
 import db from "../../data/db.json";
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
 import "./BireyselIlanlar.css";
 
-const jobOptions = [{ title: "Staj İlanları" }, { title: "İş İlanları" }];
+const jobOptions = [{ title: "Staj İlanı" }, { title: "İş İlanı" }];
 const companies = [
   { title: "Aselsan" },
   { title: "Havelsan" },
@@ -29,6 +31,45 @@ const bolumler = [
 ];
 
 function BireyselIlanlar() {
+  const [applications, setApplications] = useState([]);
+  const [selectedJobs, setSelectedJobs] = useState([]);
+ 
+  const addApplication = (newApplication) => {
+    const apiUrl = 'http://localhost:3000/bireysel-ilanlar';
+    axios.post(apiUrl, newApplication)
+      .then(response => {
+        setApplications([...applications, response.data]);
+      })
+      .catch((error) => {
+        console.error("Başvuru eklemede problem gerçekleşti:", error);
+      });
+  };
+  const deleteApplication = (applicationId) => {
+
+    const apiUrl = `http://localhost:3000/bireysel-ilanlar/${applicationId}`;
+    axios.delete(apiUrl)
+      .then(() => {
+        setApplications(applications.filter((app) => app.id !== applicationId));
+      })
+      .catch((error) => {
+        console.error("Başvuru silmede problem gerçekleşti:", error);
+      });
+  };
+  const handleApplyFilter = () => {
+    const apiUrl = "http://localhost:3000/bireysel-ilanlar";
+    const filters = {
+      jobType: selectedJobs,
+    };
+  axios
+  .get(apiUrl, { params: filters })
+  .then((response) => {
+    setApplications(response.data);
+  })
+  .catch((error) => {
+    console.error("İlanları filtrelerken bir hata oluştu:", error);
+  });
+};
+
   return (
     <Grid container justifyContent="left">
       <Grid item xs={10} lg={3}>
@@ -67,6 +108,8 @@ function BireyselIlanlar() {
             <Stack spacing={3} sx={{ width: 250 }}>
               <Typography variant="body2" style={{ fontSize: "10px" }}>
                 <Autocomplete
+                  value={selectedJobs}
+                  onChange={(event, newValue) => setSelectedJobs(newValue)}
                   multiple
                   id="tags-outlined"
                   options={companies}
@@ -158,12 +201,19 @@ function BireyselIlanlar() {
               <FormControlLabel control={<Checkbox />} label="Tam Zamanlı" />
               <FormControlLabel control={<Checkbox />} label="Yarı Zamanlı" />
               <FormControlLabel control={<Checkbox />} label="Proje Bazlı" />
-              <FormControlLabel control={<Checkbox />}label="Serbest Zamanlı"/>
+              <FormControlLabel
+                control={<Checkbox />}
+                label="Serbest Zamanlı"
+              />
             </FormControl>
           </Grid>
         </Grid>
         <Grid item>
-        <Button sx={{ marginLeft:20, marginTop:3, marginBottom:2, color: 'black'}} variant="outlined">UYGULA</Button>
+         <Button
+          variant="outlined"
+          color="primary"
+          onClick={handleApplyFilter}
+          style={{ marginLeft:150, marginTop: 3, marginBottom: 2, color: "black" }}>UYGULA</Button>
         </Grid>
       </Grid>
       <Grid item xs={12} lg={9}>
@@ -176,7 +226,11 @@ function BireyselIlanlar() {
         >
           {db["kurumsal-ilanlar"].map((advert, index) => (
             <Grid item key={advert.id} xs={12} sm={6}>
-              <İlan advert={advert} />
+              <İlan
+                advert={advert}
+                onApply={() => addApplication({ advertId: advert.id })}
+                onCancel={() => deleteApplication(advert.id)}
+              />
             </Grid>
           ))}
         </Grid>

@@ -46,9 +46,14 @@ const StyledTextarea = styled(TextareaAutosize)(
           <BusinessIcon sx={{ fontSize: 35, bgcolor: blue[500] }} aria-label="recipe" />
         }
         title={
-          <Typography variant="h8" fontWeight="bold">
-             {advert.ilan_adi}
-          </Typography>
+          <React.Fragment>
+            <Typography variant="h8" fontWeight="bold" sx={{ marginLeft: 1 }}>
+              {advert.ilan_adi}
+            </Typography>
+            <Typography variant="body2" color="text.secondary" sx={{ marginLeft: 1 }}>
+              {advert.firma_adi}
+            </Typography>
+          </React.Fragment>
         }
         subheader={
           <Box display="flex" alignItems="center">
