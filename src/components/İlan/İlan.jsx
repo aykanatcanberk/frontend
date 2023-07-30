@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useState} from 'react';
 import { styled } from '@mui/system';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -11,7 +12,8 @@ import TextareaAutosize from '@mui/base/TextareaAutosize';
 import { grey } from '@mui/material/colors';
 import BusinessIcon from '@mui/icons-material/Business';
 import Button from '@mui/material/Button';
-import CardActions from '@mui/joy/CardActions';
+import CardActions from '@mui/material/CardActions';
+
 
 const StyledTextarea = styled(TextareaAutosize)(
   ({ theme }) => `
@@ -31,8 +33,12 @@ const StyledTextarea = styled(TextareaAutosize)(
 
 `,
 );
-
-export default function İlan({advert}){
+  export default function İlan({ advert }) {
+    const [isApplied, setIsApplied] = useState(false);
+  
+    function handleButtonClick() {
+      setIsApplied((prevIsApplied) => !prevIsApplied);//başvur-başvuruyu iptal et arasında gidip gelmesi için
+    }
   return (
     <Card sx={{ maxWidth: 500 }}>
       <CardHeader
@@ -62,9 +68,9 @@ export default function İlan({advert}){
         readOnly
       />
       <CardActions>
-      <Button variant="solid" color="primary">
-            Başvur
-          </Button>
+      <Button variant="solid" color="primary" onClick={handleButtonClick}>
+          {isApplied ? 'Başvuruyu İptal Et' : 'Başvur'}
+        </Button>
       </CardActions>
     </Card>
   );
