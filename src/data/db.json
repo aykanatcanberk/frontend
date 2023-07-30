@@ -1,6 +1,15 @@
 {
- "info-firma": [
-  {
+  "my-info-firma": [
+    {
+      "id": 1,
+      "name": "Aselsan",
+      "founded": "1975",
+      "location": "Ankara, Yenimahalle",
+      "employeeCount": "5.001-10.000"
+    }
+  ],
+  "info-firma": [
+    {
       "id": 1,
       "name": "Aselsan",
       "category": "Savunma Sanayii",
@@ -45,7 +54,6 @@
       "phone": "+9031286055",
       "contact": "+90 (312) 863 42 08"
     },
-
     {
       "id": 4,
       "name": "TR EĞİTİM VE TEKNOLOJİ A.Ş.",
@@ -76,47 +84,80 @@
       "phone": "+90 (312) 811 18 00",
       "contact": "+90 (312) 811 14 25"
     }
-    ],
-    "advert": [{
-        "id" : 1,
-        "ilan_adi":"Yazılım Geliştirme Uzmanı",
-        "ilan_date": "14.06.2023",
-        "ilan_tipi":"İş İlanı",
-        "desc":"Daha önce Java kullanmış en az 2 yıl tecrübeli, lisans diplomalı yazılım geliştirme uzmanı arıyoruz",
-        "çalışma_şekli":"Yüz Yüze",
-        "çalışma_tercihi":"Tam Zamanlı",
-        "bölüm":"Bilgisayar Mühendisliği"
-        },
-        {
-        "id" : 2,
-        "ilan_adi":"Veritabanı Stajyeri",
-        "ilan_date": "18.06.2023",
-        "ilan_tipi":"Staj İlanı",
-        "desc":"SQL,MySQL,PostgreSQL en az biri hakkında bilgi sahibi ve zorunlu stajı 4.sınıf öğrencisi arıyoruz.",
-        "çalışma_şekli":"Yüz Yüze",
-        "çalışma_tercihi":"Tam Zamanlı",
-        "bölüm":"Bilgisayar Mühendisliği"
-        },
-        {
-        "id" : 3,
-        "ilan_adi":"Veritabanı Uzmanı",
-        "ilan_date": "20.06.2023",
-        "ilan_tipi":"İş İlanı",
-        "desc":"SQL,MySQL,PostgreSQL en az biri hakkında tecrübesi olan uzman arıyoruz.",
-        "çalışma_şekli":"Hibrit",
-        "çalışma_tercihi":"Tam Zamanlı",
-        "bölüm":"Bilgisayar Mühendisliği"
-         },
-         {
-        "id" : 4,
-        "ilan_adi":"Makine Mühendisi/Teknikeri",
-        "ilan_date": "12.06.2023",
-        "ilan_tipi":"İş İlanı",
-        "desc":"TS EN ISO IEC 17020 kalite sistemleri hakkında eğitimi veya tecrübesi olan makine mühendisi arıyoruz.",
-        "çalışma_şekli":"Yüz Yüze",
-        "çalışma_tercihi":"Serbest Zamanlı",
-        "bölüm":"Makine Mühendisliği"
-         }
-    ]
+  ],
+  "applicant": [
+    {
+      "id": 1,
+      "name_surname": "Aslı Koç",
+      "university": "Hacettepe Üniversitesi",
+      "department": "Bilgisayar Mühendisliği",
+      "gno": "3.02"
+    },
+    {
+      "id": 2,
+      "name_surname": "Burak Yılmaz",
+      "university": "Ankara Üniversitesi",
+      "department": "Bilgisayar Mühendisliği",
+      "gno": "2.78"
+    },
+    {
+      "id": 3,
+      "name_surname": "Ezgi Kaplan",
+      "university": "Gazi Üniversitesi",
+      "department": "Bilgisayar Mühendisliği",
+      "gno": "3.52"
+    }
+  ],
+  "post": [
+    {
+      "companyname": "Aselsan",
+      "companydate": "12.06.2023",
+      "postdesc": "(GÖNDERİ İÇERİĞİ) Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi est ad aspernatur illo dolore voluptatibus exercitationem natus eligendi, qui inventore laboriosam consequuntur reiciendis quasi reprehenderit! Nisi eos dignissimos voluptatem quam."
+    }
+  ],
+  "advert-detail": [
+    {
+      "id": 1,
+      "ilan_adi": "Yazılım Geliştirme Uzmanı",
+      "firma": "Aselsan",
+      "ilan_date": "14.06.2023",
+      "ilan_tipi": "İş İlanı",
+      "desc": "Daha önce Java kullanmış en az 2 yıl tecrübeli, lisans diplomalı yazılım geliştirme uzmanı arıyoruz.Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi est ad aspernatur illo dolore voluptatibus exercitationem natus eligendi, qui inventore laboriosam consequuntur reiciendis quasi reprehenderit! Nisi eos dignissimos voluptatem quam.",
+      "çalışma_şekli": "Yüz Yüze",
+      "çalışma_tercihi": "Tam Zamanlı",
+      "bölüm": "Bilgisayar Mühendisliği"
+    }
+  ],
+  "kurumsal-ilanlar": [
+    {
+      "id": 1,
+      "ilan_adi": "Yazılım Geliştirme Uzmanı",
+      "firma_adi":"Aselsan",
+      "ilan_date": "14.06.2023",
+      "ilan_tipi": "Staj İlanı",
+      "desc": "Daha önce Java kullanmış en az 2 yıl tecrübeli, lisans diplomalı yazılım geliştirme uzmanı arıyoruz",
+      "çalışma_şekli": "Yüz Yüze",
+      "çalışma_tercihi": "Tam Zamanlı",
+      "bölüm": "Bilgisayar Mühendisliği"
+    },
+    {
+      "ilan_adi": "C# Yazılım Geliştirme Uzmanı",
+      "firma_adi":"Havelsan",
+      "desc": "Daha önce C#  kullanmış en az 2 yıl tecrübeli, lisans diplomalı yazılım geliştirme uzmanı arıyoruz",
+      "çalışma_şekli": [
+        "Yüz Yüze"
+      ],
+      "çalışma_tercihi": [
+        "Tam Zamanlı"
+      ],
+      "ilan_tipi": [
+        "İş İlanı"
+      ],
+      "bölüm": [
+        "Bilgisayar Mühendisliği"
+      ],
+      "ilan_date": "28.07.2023",
+      "id": 2
+    }
+  ]
 }
-

@@ -1,0 +1,20 @@
+.kurumsal {
+  border: 1px solid red;
+  background-color: rgb(209, 231, 249);
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.kurumsal .onayIstegiCard {
+  background-color: rgb(223, 221, 221);
+  border: 2px inset rgb(14, 23, 56); /* override oldu */
+  margin: 15px;
+  margin-top: 35px;
+  width: 28%;
+  width: 350px;
+  border-width: 3px 3px 5px 5px;
+  border-radius: 4% 95% 6% 95%/95% 4% 92% 5%;
+  transform: rotate(-1deg);
+}

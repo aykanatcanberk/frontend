@@ -1,10 +1,11 @@
 import React from "react";
+import "./NotFoundError.css"; // Import the CSS file for NotFoundError
 
-function NotFoundError() {
+function NotFoundError({ props }) {
   return (
-    <div id="error-page">
+    <div className="not-found-error">
       <h1>Oops!</h1>
-      <p>Boyle bir url mevcut degil</p>
+      <p>{props ? props : "Böyle bir URL mevcut değil"}</p>
     </div>
   );
 }
