@@ -14,11 +14,11 @@ function Navbar() {
   return (
     <div className="navbar">
       <div className="leftSide">
-        <img src={Logo} alt="" />
+        <Link to="/kurumsal-anasayfa"><img src={Logo} alt="" /></Link>
       </div>
       <div className={`rightSide ${openMenu ? "showMenu" : "hideMenu"}`}>
       <Link to="/kurumsal-anasayfa">Anasayfa</Link>
-          <Link to="/kurumsal-ilan">İlanlar</Link>
+          <Link to="/kurumsal-ilanlar">İlanlar</Link>
           <Link to="/kurumsal-onay-kutusu">Onay Kutusu</Link>
           <Link to="/kurumsal-profil">Profilim</Link>
       </div>

@@ -1,0 +1,24 @@
+.kurumsal {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.kurumsal .onayIstegiCard {
+  background-color: #f3f9ff;
+  border: 2px inset #3b33d5; /* override oldu */
+  margin: 15px;
+  margin-top: 95px;
+  width: 28%;
+  width: 350px;
+  border-width: 3px 3px 5px 5px;
+  border-radius: 4% 95% 6% 95%/95% 4% 92% 5%;
+  transform: rotate(-1deg);
+}
+.onayDepartman {
+  font-size: 20px;
+  font-style: italic;
+  font-weight: bold;
+  color: rgb(216, 146, 41);
+}
