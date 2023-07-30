@@ -26,8 +26,6 @@ export default function App() {
       .catch((error) => {
         console.log("Hata alindi " + error);
       });
-
-    console.log(deneyimler);
   }, []);
 
   var deneyimlerim = [
