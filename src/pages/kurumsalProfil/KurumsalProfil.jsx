@@ -5,7 +5,9 @@ import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { getAllPosts } from "../../services/postServices";
-import KurumsalProfilBilgileri from "./KurumsalProfilBilgileri";
+import BlurredBackgroundWrapper from "./BlurredBackgroundWrapper";
+import FirmaBilgileri from "./FirmaBilgileri/FirmaBilgiler";
+import EditFirmaBilgileri from "./FirmaBilgileri/EditFirmaBilgileri";
 
 const PageWrapper = styled(Grid)({
   padding: "2rem",
@@ -74,6 +76,46 @@ const ButtonsWrapper = styled("div")({
 function KurumsalProfil({ avatarSrc = "url_profil_avatar", name, school }) {
   const [posts, setPosts] = useState([]);
 
+  const initialPrivateCompanyInfo = {
+    companySector: "John",
+    companyType: "Doe",
+    employeeCount: "john.doe@example.com",
+    foundedIn: "10/10/10",
+    location: "Istanbul",
+    areaOfExpertise: "İstanbul",
+    webSite: "123-456-7890",
+    phoneNum: "123-456-7890",
+  };
+
+  const [privateCompanyInfo, setPrivateCompanyInfo] = useState(
+    initialPrivateCompanyInfo
+  );
+  const [isEditingPrivateCompanyInfo, setIsEditingPrivateCompanyInfo] =
+    useState(false);
+
+  const handleEditPrivateCompanyInfoClick = () => {
+    setIsEditingPrivateCompanyInfo(true);
+    disableScroll();
+  };
+
+  const handleEditPrivateCompanyInfoSave = (editedCompanyInfo) => {
+    setPrivateCompanyInfo(editedCompanyInfo);
+    enableScroll();
+  };
+
+  const disableScroll = () => {
+    document.body.style.overflow = "hidden";
+  };
+
+  const enableScroll = () => {
+    document.body.style.overflow = "auto";
+  };
+
+  const handleEditCancel = () => {
+    setIsEditingPrivateCompanyInfo(false);
+    enableScroll();
+  };
+
   useEffect(() => {
     getAllPosts()
       .then((posts) => {
@@ -109,9 +151,23 @@ function KurumsalProfil({ avatarSrc = "url_profil_avatar", name, school }) {
               </Grid>
             </div>
           </ProfileWrapper>
-          
-          <KurumsalProfilBilgileri/>
-          
+
+          <BlurredBackgroundWrapper isShown={isEditingPrivateCompanyInfo}>
+            <FirmaBilgileri
+              companyInfo={privateCompanyInfo}
+              onEditClick={handleEditPrivateCompanyInfoClick}
+            />
+
+            {isEditingPrivateCompanyInfo && (
+              <div className="popup-container">
+                <EditFirmaBilgileri
+                  initialData={isEditingPrivateCompanyInfo}
+                  onClose={handleEditCancel}
+                  onSave={handleEditPrivateCompanyInfoSave}
+                />
+              </div>
+            )}
+          </BlurredBackgroundWrapper>
         </Grid>
         <Grid className="right-side" item xs={6}>
           <CardWrapper>

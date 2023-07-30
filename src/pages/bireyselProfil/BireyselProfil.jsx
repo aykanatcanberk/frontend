@@ -8,6 +8,14 @@ import DeneyimYorumu from "./DeneyimYorumu";
 import "./BireyselProfil.css";
 import { getAllExperienceReviews } from "../../services/expReviewServices";
 
+import EgitimGecmisi from "./Ozgecmis/EgitimGecmisi/EgitimGecmisi";
+import IsGecmisi from "./Ozgecmis/IsGecmisi/IsGecmisi";
+import SahsiBilgiler from "./Ozgecmis/SahsiBilgiler/SahsiBilgiler";
+import EditSahsiBilgiler from "./Ozgecmis/SahsiBilgiler/EditSahsiBilgiler";
+import BlurredBackgroundWrapper from "./BlurredBackgroundWrapper";
+import EditEgitimGecmisi from "./Ozgecmis/EgitimGecmisi/EditEgitimGecmisi";
+import EditIsGecmisi from "./Ozgecmis/IsGecmisi/EditIsGecmisi";
+
 const PageWrapper = styled(Grid)({
   padding: "2rem",
   margin: "0 auto",
@@ -41,13 +49,6 @@ const CardWrapperForTitles = styled(Paper)({
   display: "inline-block",
 });
 
-const CardWrapperLeftAligned = styled(Paper)({
-  padding: "1rem",
-  textAlign: "left",
-  marginBottom: "10px",
-  borderRadius: "3px",
-});
-
 const AvatarWrapper = styled(Avatar)({
   width: "100px",
   height: "100px",
@@ -79,26 +80,10 @@ const ButtonsWrapper = styled("div")({
   marginTop: "10px",
 });
 
-const PostCardWrapper = styled(Paper)({
-  padding: "1rem",
-  textAlign: "left",
-  marginBottom: "10px",
-  marginTop: "10px",
-  borderRadius: "20px",
-});
-
 const EqualWidthButton = styled(Button)({
   flex: 1, // Make the buttons share the available space equally
   margin: "0 5px", // Optional: Add some margin between the buttons
 });
-
-const RoundButton = styled(Button)({
-  borderRadius: "20px",
-  padding: "5px 10px",
-});
-
-// İLETİŞİM -> SADECE DÜZENLE,
-// DİĞERLERİ EKLE VE DÜZENLE
 
 function PageChangeButtons({ sharedPostsActive, setSharedPostsActive }) {
   return (
@@ -129,520 +114,6 @@ function PageChangeButtons({ sharedPostsActive, setSharedPostsActive }) {
   );
 }
 
-function SahsiBilgiler({ userName, userTR_Id, userEmail }) {
-  return (
-    <>
-      <CardWrapper elevation={0}>
-        <Grid container alignItems="left">
-          <CardWrapperForTitles elevation={4} alignSelf="right">
-            <Typography
-              variant="subtitle1"
-              style={{
-                fontFamily: "Arial",
-                fontSize: "18px",
-                fontWeight: "bold",
-                alignSelf: "left",
-                flex: "auto",
-              }}
-            >
-              Şahsi Bilgiler
-            </Typography>
-          </CardWrapperForTitles>
-        </Grid>
-        <CardWrapperLeftAligned elevation={4}>
-          <Grid container alignItems="left">
-            <Grid item xs={10} sm={10} md={10} alignItems="left">
-              <Typography
-                variant="subtitle1"
-                style={{
-                  fontFamily: "Arial",
-                  fontSize: "14px",
-                  fontWeight: "bold",
-                  alignSelf: "left",
-                }}
-              >
-                Ad Soyad
-                <Typography
-                  variant="subtitle1"
-                  style={{
-                    fontFamily: "Arial",
-                    fontSize: "14px",
-                    fontWeight: "bold",
-                    alignSelf: "left",
-                  }}
-                >
-                  **
-                </Typography>
-              </Typography>
-
-              <Typography
-                variant="subtitle1"
-                style={{
-                  fontFamily: "Arial",
-                  fontSize: "14px",
-                  fontWeight: "bold",
-                  alignSelf: "left",
-                }}
-              >
-                E-posta Adresi
-                <Typography
-                  variant="subtitle1"
-                  style={{
-                    fontFamily: "Arial",
-                    fontSize: "14px",
-                    fontWeight: "bold",
-                    alignSelf: "left",
-                  }}
-                >
-                  **
-                </Typography>
-              </Typography>
-
-              <Typography
-                variant="subtitle1"
-                style={{
-                  fontFamily: "Arial",
-                  fontSize: "14px",
-                  fontWeight: "bold",
-                  alignSelf: "left",
-                }}
-              >
-                Doğum Tarihi
-                <Typography
-                  variant="subtitle1"
-                  style={{
-                    fontFamily: "Arial",
-                    fontSize: "14px",
-                    fontWeight: "bold",
-                    alignSelf: "left",
-                  }}
-                >
-                  **
-                </Typography>
-              </Typography>
-
-              <Typography
-                variant="subtitle1"
-                style={{
-                  fontFamily: "Arial",
-                  fontSize: "14px",
-                  fontWeight: "bold",
-                  alignSelf: "left",
-                }}
-              >
-                Yaşadığı Şehir
-                <Typography
-                  variant="subtitle1"
-                  style={{
-                    fontFamily: "Arial",
-                    fontSize: "14px",
-                    fontWeight: "bold",
-                    alignSelf: "left",
-                  }}
-                >
-                  **
-                </Typography>
-              </Typography>
-
-              <Typography
-                variant="subtitle1"
-                style={{
-                  fontFamily: "Arial",
-                  fontSize: "14px",
-                  fontWeight: "bold",
-                  alignSelf: "left",
-                }}
-              >
-                Cep Telefonu
-                <Typography
-                  variant="subtitle1"
-                  style={{
-                    fontFamily: "Arial",
-                    fontSize: "14px",
-                    fontWeight: "bold",
-                    alignSelf: "left",
-                  }}
-                >
-                  **
-                </Typography>
-              </Typography>
-            </Grid>
-          </Grid>
-          <ButtonsWrapper>
-            <RoundButton variant="contained" color="primary" size="small">
-              EKLE
-            </RoundButton>
-            <RoundButton variant="contained" color="primary" size="small">
-              DÜZENLE (EĞER DOLUYSA)
-            </RoundButton>
-          </ButtonsWrapper>
-        </CardWrapperLeftAligned>
-      </CardWrapper>
-    </>
-  );
-}
-
-function EgitimGecmisi({
-  degree,
-  classYear,
-  faculty,
-  departmant,
-  schoolStartDate,
-  gradeAverage,
-}) {
-  return (
-    <>
-      <CardWrapper elevation={0}>
-        <Grid container alignItems="left">
-          <CardWrapperForTitles elevation={4} alignSelf="right">
-            <Typography
-              variant="subtitle1"
-              style={{
-                fontFamily: "Arial",
-                fontSize: "18px",
-                fontWeight: "bold",
-                alignSelf: "left",
-                flex: "auto",
-              }}
-            >
-              Eğitim Geçmişi
-            </Typography>
-          </CardWrapperForTitles>
-        </Grid>
-        <CardWrapperLeftAligned elevation={4}>
-          <Grid container alignItems="left">
-            <Grid item xs={10} sm={10} md={10} alignItems="left">
-              <Typography
-                variant="subtitle1"
-                style={{
-                  fontFamily: "Arial",
-                  fontSize: "14px",
-                  fontWeight: "bold",
-                  alignSelf: "left",
-                }}
-              >
-                Lisans
-                <Typography
-                  variant="subtitle1"
-                  style={{
-                    fontFamily: "Arial",
-                    fontSize: "14px",
-                    fontWeight: "bold",
-                    alignSelf: "left",
-                  }}
-                >
-                  **
-                </Typography>
-              </Typography>
-
-              <Typography
-                variant="subtitle1"
-                style={{
-                  fontFamily: "Arial",
-                  fontSize: "14px",
-                  fontWeight: "bold",
-                  alignSelf: "left",
-                }}
-              >
-                Sınıf
-                <Typography
-                  variant="subtitle1"
-                  style={{
-                    fontFamily: "Arial",
-                    fontSize: "14px",
-                    fontWeight: "bold",
-                    alignSelf: "left",
-                  }}
-                >
-                  **
-                </Typography>
-              </Typography>
-
-              <Typography
-                variant="subtitle1"
-                style={{
-                  fontFamily: "Arial",
-                  fontSize: "14px",
-                  fontWeight: "bold",
-                  alignSelf: "left",
-                }}
-              >
-                Bölüm Adı
-                <Typography
-                  variant="subtitle1"
-                  style={{
-                    fontFamily: "Arial",
-                    fontSize: "14px",
-                    fontWeight: "bold",
-                    alignSelf: "left",
-                  }}
-                >
-                  **
-                </Typography>
-              </Typography>
-
-              <Typography
-                variant="subtitle1"
-                style={{
-                  fontFamily: "Arial",
-                  fontSize: "14px",
-                  fontWeight: "bold",
-                  alignSelf: "left",
-                }}
-              >
-                Fakülte
-                <Typography
-                  variant="subtitle1"
-                  style={{
-                    fontFamily: "Arial",
-                    fontSize: "14px",
-                    fontWeight: "bold",
-                    alignSelf: "left",
-                  }}
-                >
-                  **
-                </Typography>
-              </Typography>
-
-              <Typography
-                variant="subtitle1"
-                style={{
-                  fontFamily: "Arial",
-                  fontSize: "14px",
-                  fontWeight: "bold",
-                  alignSelf: "left",
-                }}
-              >
-                Eğitim Durumu
-                <Typography
-                  variant="subtitle1"
-                  style={{
-                    fontFamily: "Arial",
-                    fontSize: "14px",
-                    fontWeight: "bold",
-                    alignSelf: "left",
-                  }}
-                >
-                  **
-                </Typography>
-              </Typography>
-
-              <Typography
-                variant="subtitle1"
-                style={{
-                  fontFamily: "Arial",
-                  fontSize: "14px",
-                  fontWeight: "bold",
-                  alignSelf: "left",
-                }}
-              >
-                Ortalama
-                <Typography
-                  variant="subtitle1"
-                  style={{
-                    fontFamily: "Arial",
-                    fontSize: "14px",
-                    fontWeight: "bold",
-                    alignSelf: "left",
-                  }}
-                >
-                  **
-                </Typography>
-              </Typography>
-            </Grid>
-          </Grid>
-
-          <ButtonsWrapper>
-            <RoundButton variant="contained" color="primary" size="small">
-              EKLE
-            </RoundButton>
-            <RoundButton variant="contained" color="primary" size="small">
-              DÜZENLE (EĞER DOLUYSA)
-            </RoundButton>
-          </ButtonsWrapper>
-        </CardWrapperLeftAligned>
-      </CardWrapper>
-    </>
-  );
-}
-
-function IsGecmisi({ companyName, workPosition, workingDate, departmant }) {
-  return (
-    <>
-      <CardWrapper elevation={0}>
-        <Grid container alignItems="left">
-          <CardWrapperForTitles elevation={4} alignSelf="right">
-            <Typography
-              variant="subtitle1"
-              style={{
-                fontFamily: "Arial",
-                fontSize: "18px",
-                fontWeight: "bold",
-                alignSelf: "left",
-                flex: "auto",
-              }}
-            >
-              İş Geçmişi
-            </Typography>
-          </CardWrapperForTitles>
-        </Grid>
-        <CardWrapperLeftAligned elevation={4}>
-          <Grid container alignItems="left">
-            <Grid item xs={10} sm={10} md={10} alignItems="left">
-              <Typography
-                variant="subtitle1"
-                style={{
-                  fontFamily: "Arial",
-                  fontSize: "14px",
-                  fontWeight: "bold",
-                  alignSelf: "left",
-                }}
-              >
-                Şirket Adı
-                <Typography
-                  variant="subtitle1"
-                  style={{
-                    fontFamily: "Arial",
-                    fontSize: "14px",
-                    fontWeight: "bold",
-                    alignSelf: "left",
-                  }}
-                >
-                  **
-                </Typography>
-              </Typography>
-
-              <Typography
-                variant="subtitle1"
-                style={{
-                  fontFamily: "Arial",
-                  fontSize: "14px",
-                  fontWeight: "bold",
-                  alignSelf: "left",
-                }}
-              >
-                Pozisyon/Birim
-                <Typography
-                  variant="subtitle1"
-                  style={{
-                    fontFamily: "Arial",
-                    fontSize: "14px",
-                    fontWeight: "bold",
-                    alignSelf: "left",
-                  }}
-                >
-                  **
-                </Typography>
-              </Typography>
-
-              <Typography
-                variant="subtitle1"
-                style={{
-                  fontFamily: "Arial",
-                  fontSize: "14px",
-                  fontWeight: "bold",
-                  alignSelf: "left",
-                }}
-              >
-                Başlama-Bitiş Tarihi
-                <Typography
-                  variant="subtitle1"
-                  style={{
-                    fontFamily: "Arial",
-                    fontSize: "14px",
-                    fontWeight: "bold",
-                    alignSelf: "left",
-                  }}
-                >
-                  **
-                </Typography>
-              </Typography>
-
-              <Typography
-                variant="subtitle1"
-                style={{
-                  fontFamily: "Arial",
-                  fontSize: "14px",
-                  fontWeight: "bold",
-                  alignSelf: "left",
-                }}
-              >
-                Açıklama(hangi departman)
-                <Typography
-                  variant="subtitle1"
-                  style={{
-                    fontFamily: "Arial",
-                    fontSize: "14px",
-                    fontWeight: "bold",
-                    alignSelf: "left",
-                  }}
-                >
-                  **
-                </Typography>
-              </Typography>
-
-              <Typography
-                variant="subtitle1"
-                style={{
-                  fontFamily: "Arial",
-                  fontSize: "14px",
-                  fontWeight: "bold",
-                  alignSelf: "left",
-                }}
-              >
-                Personel Numarası
-                <Typography
-                  variant="subtitle1"
-                  style={{
-                    fontFamily: "Arial",
-                    fontSize: "14px",
-                    fontWeight: "bold",
-                    alignSelf: "left",
-                  }}
-                >
-                  **
-                </Typography>
-              </Typography>
-
-              <Typography
-                variant="subtitle1"
-                style={{
-                  fontFamily: "Arial",
-                  fontSize: "14px",
-                  fontWeight: "bold",
-                  alignSelf: "left",
-                }}
-              >
-                Onay Mektubu
-                <Typography
-                  variant="subtitle1"
-                  style={{
-                    fontFamily: "Arial",
-                    fontSize: "14px",
-                    fontWeight: "bold",
-                    alignSelf: "left",
-                  }}
-                >
-                  **
-                </Typography>
-              </Typography>
-            </Grid>
-          </Grid>
-
-          <ButtonsWrapper>
-            <RoundButton variant="contained" color="primary" size="small">
-              YENİ EKLE
-            </RoundButton>
-            <RoundButton variant="contained" color="primary" size="small">
-              ONAYA GÖNDER
-            </RoundButton>
-          </ButtonsWrapper>
-        </CardWrapperLeftAligned>
-      </CardWrapper>
-    </>
-  );
-}
-
 function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {
   const [sharedPostsActive, setSharedPostsActive] = useState(true);
 
@@ -657,6 +128,87 @@ function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {
         console.error("Coulnt fetch the all posts data due to :" + err.message);
       });
   }, []);
+
+  const initialPrivateInfo = {
+    name: "John",
+    surname: "Doe",
+    email: "john.doe@example.com",
+    birthDate: "10/10/10",
+    city: "İstanbul",
+    cellNumber: "123-456-7890",
+  };
+
+  const initialEduBackground = {
+    graduate: "**",
+    year: "3",
+    department: "comp engineering",
+    faculty: "engineering",
+    eduStatus: "?",
+    gpa: "3.13",
+  };
+
+  const initialWorkBackground = {
+    companyName: "**",
+    workPosition: "3",
+    startDate: "comp engineering",
+    endDate: "",
+    personnelNumber: "engineering",
+    confirmationLetter: "?",
+  };
+
+  const [privateInfo, setPrivateInfo] = useState(initialPrivateInfo);
+  const [isEditingPrivateInfo, setIsEditingPrivateInfo] = useState(false);
+
+  const [eduBackground, setEduBackground] = useState(initialEduBackground);
+  const [isEditingEduBackground, setIsEditingEduBackground] = useState(false);
+
+  const [workBackground, setWorkBackground] = useState(initialWorkBackground);
+  const [isEditingWorkBackground, setIsEditingWorkBackground] = useState(false);
+
+  const handleEditPrivateInfoClick = () => {
+    setIsEditingPrivateInfo(true);
+    disableScroll();
+  };
+
+  const handleEditEduBackgroundClick = () => {
+    setIsEditingEduBackground(true);
+    disableScroll();
+  };
+
+  const handleEditWorkBackgroundClick = () => {
+    setIsEditingWorkBackground(true);
+    disableScroll();
+  };
+
+  const handleEditPrivateInfoSave = (editedSahsiInfo) => {
+    setPrivateInfo(editedSahsiInfo);
+    enableScroll();
+  };
+
+  const handleEditEduBackgroundSave = (editedEduBackground) => {
+    setEduBackground(editedEduBackground);
+    enableScroll();
+  };
+
+  const handleEditWorkBackgroundSave = (editedWorkBackground) => {
+    setWorkBackground(editedWorkBackground);
+    enableScroll();
+  };
+
+  const disableScroll = () => {
+    document.body.style.overflow = "hidden";
+  };
+
+  const enableScroll = () => {
+    document.body.style.overflow = "auto";
+  };
+
+  const handleEditCancel = () => {
+    setIsEditingPrivateInfo(false);
+    setIsEditingEduBackground(false);
+    setIsEditingWorkBackground(false);
+    enableScroll();
+  };
 
   function handleRendering() {
     if (sharedPostsActive) {
@@ -785,12 +337,64 @@ function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {
               setSharedPostsActive={setSharedPostsActive}
             />
 
-            <SahsiBilgiler />
-            <EgitimGecmisi />
+            <BlurredBackgroundWrapper
+              isShown={isEditingPrivateInfo || isEditingEduBackground}
+            >
+              <SahsiBilgiler
+                sahsiBilgiler={privateInfo}
+                onEditClick={handleEditPrivateInfoClick}
+              />
+
+              {isEditingPrivateInfo && (
+                <div className="popup-container">
+                  <EditSahsiBilgiler
+                    initialData={privateInfo}
+                    onClose={handleEditCancel}
+                    onSave={handleEditPrivateInfoSave}
+                  />
+                </div>
+              )}
+
+              <EgitimGecmisi
+                eduBackground={eduBackground}
+                onEditClick={handleEditEduBackgroundClick}
+              />
+
+              {isEditingEduBackground && (
+                <div className="popup-container">
+                  <EditEgitimGecmisi
+                    initialData={eduBackground}
+                    onClose={handleEditCancel}
+                    onSave={handleEditEduBackgroundSave}
+                  />
+                </div>
+              )}
+            </BlurredBackgroundWrapper>
           </Grid>
 
           <Grid className="right-side" item xs={6}>
-            <IsGecmisi />
+            <BlurredBackgroundWrapper
+              isShown={
+                isEditingPrivateInfo ||
+                isEditingEduBackground ||
+                isEditingWorkBackground
+              }
+            >
+              <IsGecmisi
+                workBackground={workBackground}
+                onEditClick={handleEditWorkBackgroundClick}
+              />
+
+              {isEditingWorkBackground && (
+                <div className="popup-container">
+                  <EditIsGecmisi
+                    initialData={workBackground}
+                    onClose={handleEditCancel}
+                    onSave={handleEditWorkBackgroundSave}
+                  />
+                </div>
+              )}
+            </BlurredBackgroundWrapper>
           </Grid>
         </>
       );
