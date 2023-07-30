@@ -10,6 +10,7 @@ import Deneyimlerim from "../../components/deneyimFirma/Deneyimlerim";
 import DeneyimPaylas from "../../components/deneyimFirma/DeneyimPaylas";
 import { useEffect, useState } from "react";
 import { getDeneyimler } from "../../services/deneyimService";
+import DeneyimBackground from "../../components/deneyimFirma/DeneyimBackground";
 
 export default function App() {
   const [deneyimler, setDeneyimler] = useState([]);
@@ -25,11 +26,65 @@ export default function App() {
       .catch((error) => {
         console.log("Hata alindi " + error);
       });
-
-    console.log(deneyimler);
   }, []);
 
   var deneyimlerim = [
+    {
+      title: "Mukemmel bir deneyimdi!!!",
+      description: `Staj döneminde öğrendiklerimden bazıları şunlardır:
+      - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
+      - Veritabanı yönetimi tasarımı konusunda temel bilgi.`,
+      companyName: "Aselsan",
+    },
+    {
+      title: "Mukemmel bir deneyimdi!!!",
+      description: `Staj döneminde öğrendiklerimden bazıları şunlardır:
+      - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
+      - Yazılım geliştirme süreçlerine uyum sağlama.`,
+      companyName: "Aselsan",
+    },
+    {
+      title: "Mukemmel bir deneyimdi!!!",
+      description: `Staj döneminde öğrendiklerimden bazıları şunlardır:
+      - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
+      - Veritabanı yönetimi tasarımı konusunda temel bilgi.`,
+      companyName: "Aselsan",
+    },
+    {
+      title: "Mukemmel bir deneyimdi!!!",
+      description: `Staj döneminde öğrendiklerimden bazıları şunlardır:
+      - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
+      - Yazılım geliştirme süreçlerine uyum sağlama.`,
+      companyName: "Aselsan",
+    },
+    {
+      title: "Mukemmel bir deneyimdi!!!",
+      description: `Staj döneminde öğrendiklerimden bazıları şunlardır:
+      - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
+      - Veritabanı yönetimi tasarımı konusunda temel bilgi.`,
+      companyName: "Aselsan",
+    },
+    {
+      title: "Mukemmel bir deneyimdi!!!",
+      description: `Staj döneminde öğrendiklerimden bazıları şunlardır:
+      - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
+      - Yazılım geliştirme süreçlerine uyum sağlama.`,
+      companyName: "Aselsan",
+    },
+    {
+      title: "Mukemmel bir deneyimdi!!!",
+      description: `Staj döneminde öğrendiklerimden bazıları şunlardır:
+      - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
+      - Veritabanı yönetimi tasarımı konusunda temel bilgi.`,
+      companyName: "Aselsan",
+    },
+    {
+      title: "Mukemmel bir deneyimdi!!!",
+      description: `Staj döneminde öğrendiklerimden bazıları şunlardır:
+      - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
+      - Yazılım geliştirme süreçlerine uyum sağlama.`,
+      companyName: "Aselsan",
+    },
     {
       title: "Mukemmel bir deneyimdi!!!",
       description: `Staj döneminde öğrendiklerimden bazıları şunlardır:
@@ -48,6 +103,7 @@ export default function App() {
 
   return (
     <div className="bireyselDeneyimler">
+      <DeneyimBackground />
       {loading ? (
         <div className="loading">Yükleniyor...</div>
       ) : (

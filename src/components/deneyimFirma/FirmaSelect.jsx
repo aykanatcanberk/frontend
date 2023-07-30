@@ -22,12 +22,12 @@ export default function FirmaSelect(props) {
           label="Firmalar"
           onChange={handleChange}
         >
-          <MenuItem value="ASELSAN">ASELSAN</MenuItem>
-          <MenuItem value="HAVELSAN">HAVELSAN</MenuItem>
-          <MenuItem value="ROKETSAN">ROKETSAN</MenuItem>
-          <MenuItem value="TUSAS">TUSAS</MenuItem>
-          <MenuItem value="TR EGITIM VE TEKNOLOJI">
-            TR EGITIM VE TEKNOLOJI
+          <MenuItem value="Aselsan">Aselsan</MenuItem>
+          <MenuItem value="Havelsan">Havelsan</MenuItem>
+          <MenuItem value="Roketsan">Roketsan</MenuItem>
+          <MenuItem value="Tusaş">Tusaş</MenuItem>
+          <MenuItem value="TR Eğitim ve Teknoloji">
+            TR Eğitim ve Teknoloji
           </MenuItem>
         </Select>
       </FormControl>
