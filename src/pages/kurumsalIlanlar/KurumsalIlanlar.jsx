@@ -19,7 +19,7 @@ import "./KurumsalIlanlar.css";
 import { Link } from 'react-router-dom';
 import Advert from '../../components/Advert/Advert';
 import db from '../../data/db.json';
-import addAdvert from '../../services/advertService';
+import {addAdvert} from '../../services/advertService';
 
 function KurumsalIlanlar() {
   const FormData = {

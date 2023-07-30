@@ -45,6 +45,7 @@ function BireyselIlanlar() {
       });
   };
   const deleteApplication = (applicationId) => {
+
     const apiUrl = `http://localhost:3000/bireysel-ilanlar/${applicationId}`;
     axios.delete(apiUrl)
       .then(() => {
@@ -213,17 +214,6 @@ function BireyselIlanlar() {
           color="primary"
           onClick={handleApplyFilter}
           style={{ marginLeft:150, marginTop: 3, marginBottom: 2, color: "black" }}> UYGULA</Button>
-          <Button
-            sx={{
-              marginLeft: 20,
-              marginTop: 3,
-              marginBottom: 2,
-              color: "black",
-            }}
-            variant="outlined"
-          >
-            UYGULA
-          </Button>
         </Grid>
       </Grid>
       <Grid item xs={12} lg={9}>
