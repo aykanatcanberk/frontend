@@ -3,7 +3,7 @@ import axios from "axios";
 const BASE_URL = process.env.REACT_APP_BACKEND_URL;
 
 export const addAdvert = (newAdvert) => {
-  return axios.post(`${BASE_URL}/kurumsal-ilanlar`,newAdvert);
+  return axios.post(`${BASE_URL}/kurumsal-ilanlar`, newAdvert);
 };
 
 export const getAdverts = () => {
@@ -30,8 +30,8 @@ export const cancelAdvert = (birey_id, ilan_id) => {
   );
 };
 
-export function getIlan(id) {
-  const baseUrl = "http://localhost:3000/kurumsal-ilanlar";
+export const getIlan = (id) => {
+  const baseUrl = `${BASE_URL}/kurumsal-ilanlar`;
   const url = id ? `${baseUrl}/${id}` : baseUrl;
   return axios.get(url);
-}
+};

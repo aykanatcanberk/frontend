@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getIlan } from "../../services/ilanService";
+import { getIlan } from "../../services/advertService";
 import { useParams } from "react-router-dom";
 import NotFoundError from "../../routes/NotFoundError";
 import Ilan from "../../components/kurumsalIlanLayout/kurumsalIlanLayout";
