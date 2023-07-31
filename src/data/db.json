@@ -826,17 +826,15 @@
     },
     {
       "ilan_adi": "C# Yazılım Geliştirme Uzmanı",
-
       "firma_adi": "Havelsan",
       "firma_id": 2,
-
       "desc": "Daha önce C#  kullanmış en az 2 yıl tecrübeli, lisans diplomalı yazılım geliştirme uzmanı arıyoruz",
       "çalışma_şekli": ["Yüz Yüze"],
       "çalışma_tercihi": ["Tam Zamanlı"],
       "ilan_tipi": ["İş İlanı"],
       "bölüm": ["Bilgisayar Mühendisliği"],
       "ilan_date": "28.07.2023",
-      "id": 5
+      "id": 2
     }
   ],
   "appliedAdverts": [
