@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
@@ -9,11 +9,11 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import Typography from "@mui/joy/Typography";
 import İlan from "../../components/İlan/İlan";
-import db from "../../data/db.json";
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
 import "./BireyselIlanlar.css";
+import { getAdverts } from "../../services/advertService";
 
-const jobOptions = [{ title: "Staj İlanları" }, { title: "İş İlanları" }];
+const jobOptions = [{ title: "Staj İlanı" }, { title: "İş İlanı" }];
 const companies = [
   { title: "Aselsan" },
   { title: "Havelsan" },
@@ -29,6 +29,19 @@ const bolumler = [
 ];
 
 function BireyselIlanlar() {
+  const [data, setData] = useState([]);
+  const [selectedJobs, setSelectedJobs] = useState([]);
+
+  useEffect(() => {
+    getAdverts()
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((error) => {
+        console.log("Hata alindi " + error);
+      });
+  }, []);
+
   return (
     <Grid container justifyContent="left">
       <Grid item xs={10} lg={3}>
@@ -67,6 +80,8 @@ function BireyselIlanlar() {
             <Stack spacing={3} sx={{ width: 250 }}>
               <Typography variant="body2" style={{ fontSize: "10px" }}>
                 <Autocomplete
+                  value={selectedJobs}
+                  onChange={(event, newValue) => setSelectedJobs(newValue)}
                   multiple
                   id="tags-outlined"
                   options={companies}
@@ -158,12 +173,27 @@ function BireyselIlanlar() {
               <FormControlLabel control={<Checkbox />} label="Tam Zamanlı" />
               <FormControlLabel control={<Checkbox />} label="Yarı Zamanlı" />
               <FormControlLabel control={<Checkbox />} label="Proje Bazlı" />
-              <FormControlLabel control={<Checkbox />}label="Serbest Zamanlı"/>
+              <FormControlLabel
+                control={<Checkbox />}
+                label="Serbest Zamanlı"
+              />
             </FormControl>
           </Grid>
         </Grid>
         <Grid item>
-        <Button sx={{ marginLeft:20, marginTop:3, marginBottom:2, color: 'black'}} variant="outlined">UYGULA</Button>
+          <Button
+            variant="outlined"
+            color="primary"
+            onClick={"handleApplyFilter"}
+            style={{
+              marginLeft: 150,
+              marginTop: 3,
+              marginBottom: 2,
+              color: "black",
+            }}
+          >
+            UYGULA
+          </Button>
         </Grid>
       </Grid>
       <Grid item xs={12} lg={9}>
@@ -174,7 +204,7 @@ function BireyselIlanlar() {
           marginTop={3}
           spacing={2}
         >
-          {db["kurumsal-ilanlar"].map((advert, index) => (
+          {data?.map((advert, index) => (
             <Grid item key={advert.id} xs={12} sm={6}>
               <İlan advert={advert} />
             </Grid>
