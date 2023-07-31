@@ -825,42 +825,6 @@
       "bölüm": "Bilgisayar Mühendisliği"
     },
     {
-      "id": 2,
-      "ilan_adi": "Yazılım Geliştirme Uzmanı",
-      "firma_id": 1,
-      "firma_adi": "Aselsan",
-      "ilan_date": "14.06.2023",
-      "ilan_tipi": "Staj İlanı",
-      "desc": "Daha önce Java kullanmış en az 2 yıl tecrübeli, lisans diplomalı yazılım geliştirme uzmanı arıyoruz",
-      "çalışma_şekli": "Yüz Yüze",
-      "çalışma_tercihi": "Tam Zamanlı",
-      "bölüm": "Bilgisayar Mühendisliği"
-    },
-    {
-      "id": 3,
-      "ilan_adi": "Yazılım Geliştirme Uzmanı",
-      "firma_id": 1,
-      "firma_adi": "Aselsan",
-      "ilan_date": "14.06.2023",
-      "ilan_tipi": "Staj İlanı",
-      "desc": "Daha önce Java kullanmış en az 2 yıl tecrübeli, lisans diplomalı yazılım geliştirme uzmanı arıyoruz",
-      "çalışma_şekli": "Yüz Yüze",
-      "çalışma_tercihi": "Tam Zamanlı",
-      "bölüm": "Bilgisayar Mühendisliği"
-    },
-    {
-      "id": 4,
-      "ilan_adi": "Yazılım Geliştirme Uzmanı",
-      "firma_id": 1,
-      "firma_adi": "Aselsan",
-      "ilan_date": "14.06.2023",
-      "ilan_tipi": "Staj İlanı",
-      "desc": "Daha önce Java kullanmış en az 2 yıl tecrübeli, lisans diplomalı yazılım geliştirme uzmanı arıyoruz",
-      "çalışma_şekli": "Yüz Yüze",
-      "çalışma_tercihi": "Tam Zamanlı",
-      "bölüm": "Bilgisayar Mühendisliği"
-    },
-    {
       "ilan_adi": "C# Yazılım Geliştirme Uzmanı",
 
       "firma_adi": "Havelsan",
