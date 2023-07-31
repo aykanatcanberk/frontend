@@ -1,13 +1,32 @@
 import axios from "axios";
-const addAdvert = (newAdvert) => {
-  const apiUrl = "http://localhost:3000/kurumsal-ilanlar";
-  return axios.post(apiUrl, newAdvert);
+
+const BASE_URL = process.env.REACT_APP_BACKEND_URL;
+
+export const addAdvert = (newAdvert) => {
+  return axios.post(`${BASE_URL}/kurumsal-ilanlar`);
 };
 
-export function getIlan(id) {
-  const baseUrl = "http://localhost:3000/kurumsal-ilanlar";
-  const url = id ? `${baseUrl}/${id}` : baseUrl;
-  return axios.get(url);
-}
+export const getAdverts = () => {
+  return axios.get(`${BASE_URL}/kurumsal-ilanlar`);
+};
 
-export default addAdvert;
+export const getAdvertApplicationStatus = (birey_id, ilan_id) => {
+  return axios.get(
+    `${BASE_URL}/appliedAdverts?birey_id=${birey_id}&ilan_id=${ilan_id}`
+  );
+};
+
+export const applyAdvert = (birey_id, ilan_id, firma_id) => {
+  return axios.post(`${BASE_URL}/appliedAdverts`, {
+    birey_id,
+    ilan_id,
+    firma_id,
+  });
+};
+
+export const cancelAdvert = (birey_id, ilan_id) => {
+  return axios.delete(
+    `${BASE_URL}/appliedAdverts?birey_id=${birey_id}&ilan_id=${ilan_id}`
+  );
+};
+
