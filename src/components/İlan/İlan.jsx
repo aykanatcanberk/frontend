@@ -87,7 +87,6 @@ export default function İlan({ advert }) {
             <Typography variant="h8" fontWeight="bold" sx={{ marginLeft: 1 }}>
               {advert.ilan_adi}
             </Typography>
-
             <Typography
               variant="body2"
               color="text.secondary"
