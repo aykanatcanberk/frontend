@@ -15,7 +15,7 @@ export const getAdvertApplicationStatus = (birey_id, ilan_id) => {
     `${BASE_URL}/appliedAdverts?birey_id=${birey_id}&ilan_id=${ilan_id}`
   );
 };
-// ?birey_id=${birey_id}&ilan_id=${ilan_id}
+
 export const applyAdvert = (birey_id, ilan_id, firma_id) => {
   return axios.post(`${BASE_URL}/appliedAdverts`, {
     birey_id,
@@ -29,3 +29,4 @@ export const cancelAdvert = (birey_id, ilan_id) => {
     `${BASE_URL}/appliedAdverts?birey_id=${birey_id}&ilan_id=${ilan_id}`
   );
 };
+
