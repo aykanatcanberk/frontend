@@ -30,3 +30,8 @@ export const cancelAdvert = (birey_id, ilan_id) => {
   );
 };
 
+export function getIlan(id) {
+  const baseUrl = "http://localhost:3000/kurumsal-ilanlar";
+  const url = id ? `${baseUrl}/${id}` : baseUrl;
+  return axios.get(url);
+}
