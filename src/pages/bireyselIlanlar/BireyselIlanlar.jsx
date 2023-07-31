@@ -1,6 +1,4 @@
-import React from "react";
-import { useState } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
@@ -11,9 +9,9 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import Typography from "@mui/joy/Typography";
 import İlan from "../../components/İlan/İlan";
-import db from "../../data/db.json";
 import Button from "@mui/material/Button";
 import "./BireyselIlanlar.css";
+import { getAdverts } from "../../services/advertService";
 
 const jobOptions = [{ title: "Staj İlanı" }, { title: "İş İlanı" }];
 const companies = [
@@ -31,44 +29,18 @@ const bolumler = [
 ];
 
 function BireyselIlanlar() {
-  const [applications, setApplications] = useState([]);
+  const [data, setData] = useState([]);
   const [selectedJobs, setSelectedJobs] = useState([]);
- 
-  const addApplication = (newApplication) => {
-    const apiUrl = 'http://localhost:3000/bireysel-ilanlar';
-    axios.post(apiUrl, newApplication)
-      .then(response => {
-        setApplications([...applications, response.data]);
-      })
-      .catch((error) => {
-        console.error("Başvuru eklemede problem gerçekleşti:", error);
-      });
-  };
-  const deleteApplication = (applicationId) => {
 
-    const apiUrl = `http://localhost:3000/bireysel-ilanlar/${applicationId}`;
-    axios.delete(apiUrl)
-      .then(() => {
-        setApplications(applications.filter((app) => app.id !== applicationId));
+  useEffect(() => {
+    getAdverts()
+      .then((response) => {
+        setData(response.data);
       })
       .catch((error) => {
-        console.error("Başvuru silmede problem gerçekleşti:", error);
+        console.log("Hata alindi " + error);
       });
-  };
-  const handleApplyFilter = () => {
-    const apiUrl = "http://localhost:3000/kurumsal-ilanlar";
-    const filters = {
-      jobType: selectedJobs,
-    };
-  axios
-  .get(apiUrl, { params: filters })
-  .then((response) => {
-    setApplications(response.data);
-  })
-  .catch((error) => {
-    console.error("İlanları filtrelerken bir hata oluştu:", error);
-  });
-};
+  }, []);
 
   return (
     <Grid container justifyContent="left">
@@ -209,11 +181,19 @@ function BireyselIlanlar() {
           </Grid>
         </Grid>
         <Grid item>
-         <Button
-          variant="outlined"
-          color="primary"
-          onClick={handleApplyFilter}
-          style={{ marginLeft:150, marginTop: 3, marginBottom: 2, color: "black" }}>UYGULA</Button>
+          <Button
+            variant="outlined"
+            color="primary"
+            onClick={"handleApplyFilter"}
+            style={{
+              marginLeft: 150,
+              marginTop: 3,
+              marginBottom: 2,
+              color: "black",
+            }}
+          >
+            UYGULA
+          </Button>
         </Grid>
       </Grid>
       <Grid item xs={12} lg={9}>
@@ -224,13 +204,9 @@ function BireyselIlanlar() {
           marginTop={3}
           spacing={2}
         >
-          {db["kurumsal-ilanlar"].map((advert, index) => (
+          {data?.map((advert, index) => (
             <Grid item key={advert.id} xs={12} sm={6}>
-              <İlan
-                advert={advert}
-                onApply={() => addApplication({ advertId: advert.id })}
-                onCancel={() => deleteApplication(advert.id)}
-              />
+              <İlan advert={advert} />
             </Grid>
           ))}
         </Grid>

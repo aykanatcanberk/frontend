@@ -10,7 +10,6 @@ import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
 import { grey } from "@mui/material/colors";
 import BusinessIcon from "@mui/icons-material/Business";
-import CardActions from "@mui/joy/CardActions";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 
@@ -34,48 +33,48 @@ const StyledTextarea = styled(TextareaAutosize)(
 `
 );
 
-export default function Advert({ kurumsalİlanlarVerisi}) {
+export default function Advert({ kurumsalİlanlarVerisi }) {
+  const advertDetailUrl = `/kurumsal-ilan/${kurumsalİlanlarVerisi.id}`;
   return (
-    <Card sx={{ maxWidth: 380 }}>
-      <CardHeader
-        avatar={
-          <BusinessIcon
-            sx={{ fontSize: 35, bgcolor: blue[500] }}
-            aria-label="recipe"
-          />
-        }
-        title={
-          <Typography variant="h8" fontWeight="bold">
-            { kurumsalİlanlarVerisi.ilan_adi}
-          </Typography>
-        }
-        subheader={
-          <Box display="flex" alignItems="center">
-            <CalendarMonthIcon sx={{ fontSize: 14, marginLeft: 1 }} />
-            <Typography variant="body2" color="text.secondary">
-              { kurumsalİlanlarVerisi.ilan_date}
+    <Link to={advertDetailUrl} style={{ textDecoration: "none" }}>
+      <Card sx={{ maxWidth: 380 }}>
+        <CardHeader
+          avatar={
+            <BusinessIcon
+              sx={{ fontSize: 35, bgcolor: blue[500] }}
+              aria-label="recipe"
+            />
+          }
+          title={
+            <Typography variant="h8" fontWeight="bold">
+              {kurumsalİlanlarVerisi.ilan_adi}
             </Typography>
-            <BusinessCenterIcon sx={{ fontSize: 14, marginLeft: 1 }} />
-            <Typography variant="body2" color="text.secondary">
-              { kurumsalİlanlarVerisi.ilan_tipi}
-            </Typography>
-          </Box>
-        }
-      />
-      <StyledTextarea
-        maxRows={4}
-        aria-label="maximum height"
-        placeholder="Maximum 100 rows"
-        defaultValue={kurumsalİlanlarVerisi.desc}
-        readOnly
-      />
-      <CardActions>
-        <Link to="/kurumsal-ilan">
-          <Button variant="solid" color="primary" sx={{ marginLeft: 27 }}>
-            İlan Detayı
-          </Button>
-        </Link>
-      </CardActions>
-    </Card>
+          }
+          subheader={
+            <Box display="flex" alignItems="center">
+              <CalendarMonthIcon sx={{ fontSize: 14, marginLeft: 1 }} />
+              <Typography variant="body2" color="text.secondary">
+                {kurumsalİlanlarVerisi.ilan_date}
+              </Typography>
+              <BusinessCenterIcon sx={{ fontSize: 14, marginLeft: 1 }} />
+              <Typography variant="body2" color="text.secondary">
+                {kurumsalİlanlarVerisi.ilan_tipi}
+              </Typography>
+            </Box>
+          }
+        />
+        <StyledTextarea
+          maxRows={4}
+          aria-label="maximum height"
+          placeholder="Maximum 100 rows"
+          defaultValue={kurumsalİlanlarVerisi.desc}
+          readOnly
+        />
+
+        <Button variant="solid" color="primary" sx={{ marginLeft: 27 }}>
+          İlan Detayı
+        </Button>
+      </Card>
+    </Link>
   );
 }
