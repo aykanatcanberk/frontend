@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getIlan } from "../../services/advertService";
+import { addAdvert } from "../../services/advertService";
 import { useParams } from "react-router-dom";
 import NotFoundError from "../../routes/NotFoundError";
 import Ilan from "../../components/kurumsalIlanLayout/kurumsalIlanLayout";
@@ -9,7 +9,7 @@ const KurumsalIlan = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    getIlan(id)
+    addAdvert(id)
       .then((response) => {
         console.log("API Response:", response.data);
         setAdvertDataList(response.data);
