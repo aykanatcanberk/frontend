@@ -56,7 +56,7 @@ function BireyselIlanlar() {
       });
   };
   const handleApplyFilter = () => {
-    const apiUrl = "http://localhost:3000/bireysel-ilanlar";
+    const apiUrl = "http://localhost:3000/kurumsal-ilanlar";
     const filters = {
       jobType: selectedJobs,
     };
