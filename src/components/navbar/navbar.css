@@ -10,6 +10,7 @@
 
 .navbar img {
   width: 300px;
+  scale: 0.5;
   margin-left: 20px;
 }
 
