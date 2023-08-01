@@ -1,14 +1,20 @@
 import React from "react";
 import { Paper } from "@mui/material";
-import { SwiperSlide } from "swiper/react";
 import Slider from "../../components/slider/Slider";
+
 function Deneyimlerim(props) {
   return (
-    <Paper style={{ maxHeight: 600, width: "600px", overflow: "auto" }}>
+    <Paper
+      className="gecmisDeneyimlerim"
+      style={{
+        maxHeight: 600,
+        width: "450px",
+        overflow: "auto",
+        backgroundColor: "#d4f2ff",
+      }}
+    >
       {props.props.map((deneyim, i) => (
-        <SwiperSlide key={i}>
-          <Slider key={i} item={deneyim} />
-        </SwiperSlide>
+        <Slider key={deneyim.id} item={deneyim} />
       ))}
     </Paper>
   );

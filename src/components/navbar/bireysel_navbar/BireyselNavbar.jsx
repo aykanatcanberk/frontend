@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
-import ReorderIcon from '@mui/icons-material/Reorder';
+import ReorderIcon from "@mui/icons-material/Reorder";
 import "../../navbar/navbar.css";
 
 function Navbar() {
@@ -14,7 +14,7 @@ function Navbar() {
   return (
     <div className="navbar">
       <div className="leftSide">
-        <img src={Logo} alt="" />
+      <Link to="/bireysel-anasayfa"><img src={Logo} alt="" /></Link>
       </div>
       <div className={`rightSide ${openMenu ? "showMenu" : "hideMenu"}`}>
         <Link to="/bireysel-anasayfa">Anasayfa</Link>

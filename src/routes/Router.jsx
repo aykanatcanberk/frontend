@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginLayout from "../layouts/LoginLayout";
 import CompanyLayout from "../layouts/CompanyLayout";
@@ -18,31 +18,15 @@ import KurumsalOnayKutusu from "../pages/kurumsalOnayKutusu/KurumsalOnayKutusu";
 import KurumsalProfil from "../pages/kurumsalProfil/KurumsalProfil";
 import NotFoundError from "./NotFoundError";
 import SignInOutContainer from "../containers";
-import { getCompany } from "../services/userService";
 
 const Router = () => {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    getCompany(null)
-    .then((response) => {
-    console.log(response.data);
-    setData(response.data);
-  })
-  .catch((error) => {
-    console.error("Şirket verileri alınamadı:", error);
-  });
-  }, []);
-
-  if (!data) {
-    // Veriler yüklenmediyse bir yükleme göstergesi veya hata mesajı ekleyebilirsiniz.
-    return <div>Veriler yükleniyor...</div>;
-  }
-
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LoginLayout element={<SignInOutContainer />} />} />
+        <Route
+          path="/"
+          element={<LoginLayout element={<SignInOutContainer />} />}
+        />
         <Route path="/kayit-ol-bireysel" element={<KayitOlBireysel />} />
         <Route path="/kayit-ol-kurumsal" element={<KayitOlKurumsal />} />
         <Route
@@ -61,17 +45,18 @@ const Router = () => {
           path="/bireysel-deneyimler"
           element={<UserLayout element={<BireyselDeneyimler />} />}
         />
-        {data.map((firma) => (
-          <Route
-            key={firma.id}
-            path={`/bireysel-firma/${firma.id}`}
-            element={<UserLayout element={<BireyselFirma id={firma.id} />} />}
-          />
-        ))}
+
         <Route
           path="/bireysel-firmalar"
           element={<UserLayout element={<BireyselFirmalar />} />}
         />
+        <Route path="/bireysel-firma">
+          <Route
+            path=":id"
+            element={<UserLayout element={<BireyselFirma />} />}
+          />
+        </Route>
+
         <Route
           path="/bireysel-ilanlar"
           element={<UserLayout element={<BireyselIlanlar />} />}
@@ -93,10 +78,14 @@ const Router = () => {
             />
           }
         />
-        <Route
-          path="/kurumsal-ilan"
-          element={<CompanyLayout element={<KurumsalIlan />} />}
-        />
+
+        <Route path="/kurumsal-ilan">
+          <Route
+            path=":id"
+            element={<CompanyLayout element={<KurumsalIlan />} />}
+          />
+        </Route>
+
         <Route
           path="/kurumsal-ilanlar"
           element={<CompanyLayout element={<KurumsalIlanlar />} />}

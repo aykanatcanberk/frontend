@@ -1,28 +1,30 @@
 import React from "react";
 import { Paper } from "@mui/material";
 import TextField from "@mui/material/TextField";
-function Slider(props) {
+
+function Slider({ item }) {
   return (
     <Paper
       sx={{
-        border: "2px solid blue",
-        height: "40vh",
-        margin: "20px",
+        borderRadius: "10px",
+        border: "1px solid blue",
+        backgroundColor: "#d4f2ff",
+        height: "260px",
         width: "100%",
         minWidth: "300px",
       }}
     >
       <div className="deneyimBaslik">
-        <h2>{props.item.name}</h2>
-        <h4>{props.item.companyName}</h4>
+        <h2>{item.name}</h2>
+        <h4>{item.companyName}</h4>
       </div>
       <TextField
         fullWidth
         multiline
-        rows={8}
-        label={props.item.title}
+        rows={7}
+        label={item.title}
         disabled
-        defaultValue={props.item.description}
+        defaultValue={item.description}
       />
     </Paper>
   );
