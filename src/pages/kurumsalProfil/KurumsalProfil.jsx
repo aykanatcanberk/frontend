@@ -8,6 +8,8 @@ import { getAllPosts } from "../../services/postServices";
 import BlurredBackgroundWrapper from "./BlurredBackgroundWrapper";
 import FirmaBilgileri from "./FirmaBilgileri/FirmaBilgiler";
 import EditFirmaBilgileri from "./FirmaBilgileri/EditFirmaBilgileri";
+import NewPost from "../bireyselProfil/NewPost";
+import GonderiCard from "../../components/gonderiCard/gonderiCard";
 
 const PageWrapper = styled(Grid)({
   padding: "2rem",
@@ -126,6 +128,18 @@ function KurumsalProfil({ avatarSrc = "url_profil_avatar", name, school }) {
       });
   }, []);
 
+  const [allPosts, setAllPosts] = useState([]);
+  useEffect(() => {
+    getAllPosts()
+      .then((response) => {
+        setAllPosts(response.data);
+      })
+      .catch((error) => {
+        console.log("there is an error with getting the posts in bireyselporfil " + error.massage);
+      });
+  }, []);
+
+
   function handleRendering() {
     return (
       <>
@@ -170,42 +184,24 @@ function KurumsalProfil({ avatarSrc = "url_profil_avatar", name, school }) {
           </BlurredBackgroundWrapper>
         </Grid>
         <Grid className="right-side" item xs={6}>
-          <CardWrapper>
-            <SharePostCardWrapper>
-              <Typography
-                variant="h6"
-                style={{
-                  fontFamily: "Arial",
-                  fontSize: "14px",
-                  fontWeight: "normal",
-                }}
-              >
-                Gönderi Paylaş
-              </Typography>
-              <PostInputWrapper
-                label="Gönderinizi buraya yazın"
-                variant="outlined"
-                multiline
-                rows={4}
-              />
-              <ButtonsWrapper>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  sx={{ height: "30px", width: "auto" }}
-                >
-                  Resim Yükle
-                </Button>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  sx={{ height: "30px", width: "auto" }}
-                >
-                  Paylaş
-                </Button>
-              </ButtonsWrapper>
-            </SharePostCardWrapper>
-          </CardWrapper>
+        <NewPost url={"/posts"} userId={1} />
+            <br />
+            <Paper
+              className="allPosts"
+              style={{
+                maxHeight: 600,
+                width: "100%",
+                elevation: "0",
+                overflow: "auto",
+                backgroundColor: "white",
+                alignContent: "center",
+
+              }}
+            >
+              {allPosts.map((post, index) => (
+                <GonderiCard  key={index} userPosts={post} />
+              ))}
+            </Paper>
         </Grid>
       </>
     );

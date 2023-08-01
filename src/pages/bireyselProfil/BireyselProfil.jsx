@@ -6,7 +6,11 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import DeneyimYorumu from "./DeneyimYorumu";
 import "./BireyselProfil.css";
-import { getAllExperienceReviews } from "../../services/expReviewServices";
+import {
+  getAllExperienceReviews,
+  getSelfExperiences,
+} from "../../services/expReviewServices";
+import NewPost from "./NewPost";
 
 import EgitimGecmisi from "./Ozgecmis/EgitimGecmisi/EgitimGecmisi";
 import IsGecmisi from "./Ozgecmis/IsGecmisi/IsGecmisi";
@@ -15,6 +19,10 @@ import EditSahsiBilgiler from "./Ozgecmis/SahsiBilgiler/EditSahsiBilgiler";
 import BlurredBackgroundWrapper from "./BlurredBackgroundWrapper";
 import EditEgitimGecmisi from "./Ozgecmis/EgitimGecmisi/EditEgitimGecmisi";
 import EditIsGecmisi from "./Ozgecmis/IsGecmisi/EditIsGecmisi";
+import UserAllPostsSlider from "./UserAllPostsSlider";
+import { getAllPosts } from "../../services/postServices";
+import SinglePost from "./SinglePost";
+import GonderiCard from "../../components/gonderiCard/gonderiCard";
 
 const PageWrapper = styled(Grid)({
   padding: "2rem",
@@ -117,17 +125,13 @@ function PageChangeButtons({ sharedPostsActive, setSharedPostsActive }) {
 function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {
   const [sharedPostsActive, setSharedPostsActive] = useState(true);
 
-  const [expReviews, setexpReviews] = useState([]);
+  const [expReviewsSelf, setExpReviewsSelf] = useState([]);
 
-  useEffect(() => {
-    getAllExperienceReviews()
-      .then((reviews) => {
-        setexpReviews(reviews);
-      })
-      .catch((err) => {
-        console.error("Coulnt fetch the all posts data due to :" + err.message);
-      });
-  }, []);
+  // useEffect(() => {
+  //   console.log(getSelfExperiences().promiseResult);
+  //   const selfRev = getSelfExperiences();
+  //   setExpReviewsSelf(getSelfExperiences());
+  // }, []);
 
   const initialPrivateInfo = {
     name: "John",
@@ -210,6 +214,18 @@ function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {
     enableScroll();
   };
 
+
+  const [allPosts, setAllPosts] = useState([]);
+  useEffect(() => {
+    getAllPosts()
+      .then((response) => {
+        setAllPosts(response.data);
+      })
+      .catch((error) => {
+        console.log("there is an error with getting the posts in bireyselporfil " + error.massage);
+      });
+  }, []);
+
   function handleRendering() {
     if (sharedPostsActive) {
       return (
@@ -255,48 +271,30 @@ function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {
               sharedPostsActive={sharedPostsActive}
               setSharedPostsActive={setSharedPostsActive}
             />
-            <CardWrapper>
-              <SharePostCardWrapper>
-                <Typography
-                  variant="h6"
-                  style={{
-                    fontFamily: "Arial",
-                    fontSize: "14px",
-                    fontWeight: "normal",
-                  }}
-                >
-                  Gönderi Paylaş
-                </Typography>
-                <PostInputWrapper
-                  label="Gönderinizi buraya yazın"
-                  variant="outlined"
-                  multiline
-                  rows={4}
-                />
-                <ButtonsWrapper>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    sx={{ height: "30px", width: "auto" }}
-                  >
-                    Resim Yükle
-                  </Button>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    sx={{ height: "30px", width: "auto" }}
-                  >
-                    Paylaş
-                  </Button>
-                </ButtonsWrapper>
-              </SharePostCardWrapper>
-            </CardWrapper>
+            <NewPost url={"/posts"} userId={1} />
+            <br />
+            <Paper
+              className="allPosts"
+              style={{
+                maxHeight: 600,
+                width: "100%",
+                elevation: "0",
+                overflow: "auto",
+                backgroundColor: "white",
+                alignContent: "center",
+
+              }}
+            >
+              {allPosts.map((post, index) => (
+                <GonderiCard  key={index} userPosts={post} />
+              ))}
+            </Paper>
           </Grid>
 
           <Grid className="right-side" item xs={6}>
-            <CardWrapper>DENEYİM YORUMLARI</CardWrapper>
+            <CardWrapper>DENEYİM YORUMLARIM</CardWrapper>
             <CardWrapper elevation={12}>
-              {expReviews.map((expReview) => (
+              {expReviewsSelf.map((expReview) => (
                 <DeneyimYorumu expReview={expReview} />
               ))}
             </CardWrapper>
@@ -373,13 +371,7 @@ function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {
           </Grid>
 
           <Grid className="right-side" item xs={6}>
-            <BlurredBackgroundWrapper
-              isShown={
-                isEditingPrivateInfo ||
-                isEditingEduBackground ||
-                isEditingWorkBackground
-              }
-            >
+            <BlurredBackgroundWrapper isShown={isEditingWorkBackground}>
               <IsGecmisi
                 workBackground={workBackground}
                 onEditClick={handleEditWorkBackgroundClick}
