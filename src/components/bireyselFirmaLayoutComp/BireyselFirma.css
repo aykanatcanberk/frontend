@@ -2,7 +2,7 @@
 @import "slick-carousel/slick/slick-theme.css";
 
 .Slider {
-    width: 60%;
+    width: 100%;
     margin: 2rem auto;
     height: 200px;
   }
@@ -13,7 +13,7 @@
   }
   
   .slide {
-    transform: scale(0.6);
+    transform: scale(0.3);
     transition: transform 300ms;
     opacity: 1;
   }
@@ -47,3 +47,72 @@
     left: 0%;
     top: 50%;
   }
+/* /// */
+  .swiper {
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: #3b33d5;
+  }
+  .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 400px;
+    height: 300px;
+    margin: 20px;
+  }
+  .deneyimText {
+    border: 10px solid red;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  .deneyimContainer {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .deneyimContainer h3 {
+    color: rgb(118, 118, 118);
+  }
+  
+  .deneyimBaslik {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+  }
+  .deneyimBaslik h2 {
+    color: rgb(25, 86, 136);
+    color: linear-gradient(
+      90deg,
+      rgba(25, 86, 136, 1) 0%,
+      rgba(248, 169, 66, 1) 100%
+    );
+  }
+  .deneyimBaslik h4 {
+    color: rgb(252, 185, 104);
+  }
+  .deneyimPaylas .deneyimFirmaButon {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #tsparticles {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    left: 0;
+    top: 0;
+    z-index: -1;
+  }
+  

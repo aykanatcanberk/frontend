@@ -1,10 +1,9 @@
-import * as React from "react";
+import React, { useState } from "react";
 import FirmaKartvizit from "../../components/firmaKartvizit/FirmaKartvizit";
-import { Container, InputAdornment, TextField } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
-import { useState } from "react";
+import { Container } from "@mui/material";
 import "./BireyselFirmalar.css";
-import { getAllCompanies } from "../../services/companyService";
+import db from "../../data/db.json";
+import SearchBar from "../../components/searchBar/searchBar";
 
 export default function ComplexGrid() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -13,41 +12,20 @@ export default function ComplexGrid() {
     setSearchTerm(event.target.value);
   };
 
-  const [companies, setCompanies] = useState([]);
-
-  React.useEffect(() => {
-    getAllCompanies()
-      .then((companies) => {
-        setCompanies(companies);
-      })
-      .catch((err) => {
-        console.error("Coulnt fetch the all posts data due to :" + err.message);
-      });
-  }, []);
+  // "searchTerm" kullanarak firmaları filtreleyin
+  const filteredCompanies = db["info-firma"].filter((company) =>
+    company.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <>
       <Container maxWidth="md" sx={{ mt: 8 }}>
-        <TextField
-          id="search"
-          type="search"
-          label="Search"
-          value={searchTerm}
-          onChange={handleChange}
-          sx={{ width: 800 }}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <SearchIcon />
-              </InputAdornment>
-            ),
-          }}
-        />
+        <SearchBar searchTerm={searchTerm} onChange={handleChange} />
       </Container>
-      <div className="searchFilter">{}</div>
+
       <div className="firmaContainer">
-        {companies.map((company) => (
-          <FirmaKartvizit props={company} />
+        {filteredCompanies.map((companycard) => (
+          <FirmaKartvizit key={companycard.id} companycard={companycard} />
         ))}
       </div>
     </>

@@ -1,31 +1,38 @@
-import axios from 'axios';
+import axios from "axios";
 
-export const getAllAdverts = async () => {
-  try {
-    const response = await axios.get(
-        process.env.REACT_APP_BACKEND_URL + "adverts"
-    );
-    return response.data; // Assuming you want to return the data array from the response
-  } catch (err) {
-    console.error("Login Failed due to: " + err.message);
-    return {}; // Return an empty object in case of an error
-  }
+const BASE_URL = process.env.REACT_APP_BACKEND_URL;
+
+export const addAdvert = (newAdvert) => {
+  return axios.post(`${BASE_URL}/kurumsal-ilanlar`, newAdvert);
 };
 
-const addAdvert = async (newAdvert) => {
+export const getAdverts = () => {
+  return axios.get(`${BASE_URL}/kurumsal-ilanlar`);
+};
 
-  try {
-    const response = await axios.post(
-        process.env.REACT_APP_BACKEND_URL + "adverts"
-    );
-    return response.data; // Assuming you want to return the data array from the response
-  } catch (err) {
-    console.error("Login Failed due to: " + err.message);
-    return {}; // Return an empty object in case of an error
-  }
+export const getAdvertApplicationStatus = (birey_id, ilan_id) => {
+  return axios.get(
+    `${BASE_URL}/appliedAdverts?birey_id=${birey_id}&ilan_id=${ilan_id}`
+  );
+};
+// ?birey_id=${birey_id}&ilan_id=${ilan_id}
+export const applyAdvert = (birey_id, ilan_id, firma_id) => {
+  return axios.post(`${BASE_URL}/appliedAdverts`, {
+    birey_id,
+    ilan_id,
+    firma_id,
+  });
+};
 
-    // const apiUrl = 'http://localhost:3000/kurumsal-ilanlar'; 
-    // return axios.post(apiUrl, newAdvert);
-  };
-  
-  export default addAdvert;
+export const cancelAdvert = (birey_id, ilan_id) => {
+  return axios.delete(
+    `${BASE_URL}/appliedAdverts?birey_id=${birey_id}&ilan_id=${ilan_id}`
+  );
+};
+
+
+export const getIlan = (id) => {
+  const baseUrl = `${BASE_URL}/kurumsal-ilanlar`;
+  const url = id ? `${baseUrl}/${id}` : baseUrl;
+  return axios.get(url);
+};
