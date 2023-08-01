@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import ProfilCard from "../../components/kurumsalAnasayfa/profilcard";
 import Gonderi from "../../components/kurumsalAnasayfa/gönderi";
