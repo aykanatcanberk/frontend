@@ -85,14 +85,14 @@ export default function İlan({ advert }) {
         title={
           <React.Fragment>
             <Typography variant="h8" fontWeight="bold" sx={{ marginLeft: 1 }}>
-              {advert.ilan_adi}
+              {advert.advertName}
             </Typography>
             <Typography
               variant="body2"
               color="text.secondary"
               sx={{ marginLeft: 1 }}
             >
-              {advert.firma_adi}
+              {advert.companyName}
             </Typography>
           </React.Fragment>
         }
@@ -100,11 +100,11 @@ export default function İlan({ advert }) {
           <Box display="flex" alignItems="center">
             <CalendarMonthIcon sx={{ fontSize: 14, marginLeft: 1 }} />
             <Typography variant="body2" color="text.secondary">
-              {advert.ilan_date}
+              {advert.advertDate}
             </Typography>
             <BusinessCenterIcon sx={{ fontSize: 14, marginLeft: 1 }} />
             <Typography variant="body2" color="text.secondary">
-              {advert.ilan_tipi}
+              {advert.jobType}
             </Typography>
           </Box>
         }
@@ -127,7 +127,6 @@ export default function İlan({ advert }) {
           }
         >
           {isApplied ? "Başvuruyu İptal Et" : "Başvur"}
-          {/* Başvur */}
         </Button>
       </CardActions>
     </Card>
