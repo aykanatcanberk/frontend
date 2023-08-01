@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Avatar from "@mui/material/Avatar";
 import BusinessIcon from "@mui/icons-material/Business";
 import { blue } from "@mui/material/colors";
@@ -18,10 +18,21 @@ import TextareaAutosize from "@mui/base/TextareaAutosize";
 import "./KurumsalIlanlar.css";
 import { Link } from "react-router-dom";
 import Advert from "../../components/Advert/Advert";
-import db from "../../data/db.json";
-import { addAdvert } from "../../services/advertService";
+import { addAdvert, getAdverts } from "../../services/advertService";
 
 function KurumsalIlanlar() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    getAdverts()
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((error) => {
+        console.log("Hata alindi " + error);
+      });
+  }, []);
+
   const FormData = {
     ilan_adi: "",
     çalışma_şekli: [],
@@ -313,7 +324,7 @@ function KurumsalIlanlar() {
             Yayımlanmış İlanlar
           </Typography>
           <div style={{ marginTop: 20, marginRight: 20 }}>
-            {db["kurumsal-ilanlar"].map((advert) => (
+            {data?.map((advert) => (
               <Advert key={advert.id} kurumsalİlanlarVerisi={advert} />
             ))}
           </div>
