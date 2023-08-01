@@ -24,6 +24,7 @@ import { addAdvert } from "../../services/advertService";
 function KurumsalIlanlar() {
   const FormData = {
     ilan_adi: "",
+    firma_adı:"",
     çalışma_şekli: [],
     çalışma_tercihi: [],
     ilan_tipi: [],
