@@ -811,7 +811,6 @@
       "post_date": "6/4/2010"
     }
   ],
-
   "kurumsal-ilanlar": [
     {
       "id": 1,
@@ -821,68 +820,55 @@
       "advertDate": "14.06.2023",
       "jobType": "İş İlanı",
       "desc": "Daha önce Java kullanmış en az 2 yıl tecrübeli, lisans diplomalı yazılım geliştirme uzmanı arıyoruz",
-      "jobStyle": ["Yüz Yüze", "Uzaktan"],
-      "jobTime": ["Tam Zamanlı"],
-      "major": ["Bilgisayar Mühendisliği", "Makine Mühendisliği"]
+      "jobStyle": [
+        "Yüz Yüze",
+        "Uzaktan"
+      ],
+      "jobTime": [
+        "Tam Zamanlı"
+      ],
+      "major": [
+        "Bilgisayar Mühendisliği",
+        "Makine Mühendisliği"
+      ]
     },
     {
-      "advertName": "Yazılım Geliştirme Uzmanı",
+      "id": 2,
+      "advertName": "Python Yazılım Geliştirme Uzmanı",
       "companyId": 2,
       "companyName": "Havelsan",
       "advertDate": "14.06.2023",
       "jobType": "Staj İlanı",
       "desc": "Daha önce Java kullanmış en az 2 yıl tecrübeli, lisans diplomalı yazılım geliştirme uzmanı arıyoruz",
-      "jobStyle": ["Yüz Yüze", "Hibrit"],
-      "jobTime": ["Yarı Zamanlı"],
-      "major": ["Bilgisayar Mühendisliği", "Endüstri Mühendisliği"]
+      "jobStyle": [
+        "Yüz Yüze",
+        "Hibrit"
+      ],
+      "jobTime": [
+        "Yarı Zamanlı"
+      ],
+      "major": [
+        "Bilgisayar Mühendisliği",
+        "Endüstri Mühendisliği"
+      ]
     },
     {
-      "id": 3,
-      "advertName": "Yazılım Geliştirme Uzmanı",
-      "companyId": 3,
-      "companyName": "Roketsan",
-      "advertDate": "14.06.2023",
-      "jobType": "Staj İlanı",
-      "desc": "Daha önce Java kullanmış en az 2 yıl tecrübeli, lisans diplomalı yazılım geliştirme uzmanı arıyoruz",
-      "jobStyle": ["Uzaktan", "Hibrit"],
-      "jobTime": ["Tam Zamanlı", "Yarı Zamanlı"],
-      "major": ["Bilgisayar Mühendisliği", "Elektrik-Elektronik Mühendisliği"]
-    },
-    {
-      "id": 4,
-      "advertName": "Yazılım Geliştirme Uzmanı",
-      "companyId": 3,
-      "companyName": "Roketsan",
-      "advertDate": "14.06.2023",
-      "jobType": "İş İlanı",
-      "desc": "Daha önce Java kullanmış en az 2 yıl tecrübeli, lisans diplomalı yazılım geliştirme uzmanı arıyoruz",
-      "jobStyle": ["Yüz Yüze"],
-      "jobTime": ["Proje Bazlı", "Serbest Zamanlı"],
-      "major": ["Makine Mühendisliği", "Elektrik-Elektronik Mühendisliği"]
-    },
-    {
-      "id": 5,
-      "advertName": "Yazılım Geliştirme Uzmanı",
-      "companyId": 5,
-      "companyName": "TUSAŞ",
-      "advertDate": "14.06.2023",
-      "jobType": "Staj İlanı",
-      "desc": "Daha önce Java kullanmış en az 2 yıl tecrübeli, lisans diplomalı yazılım geliştirme uzmanı arıyoruz",
-      "jobStyle": ["Uzaktan"],
-      "jobTime": ["Proje Bazlı"],
-      "major": ["Elektrik-Elektronik Mühendisliği", "Endüstri Mühendisliği"]
-    },
-    {
-      "id": 6,
-      "advertName": "Yazılım Geliştirme Uzmanı",
-      "companyId": 5,
-      "companyName": "TUSAŞ",
-      "advertDate": "14.06.2023",
-      "jobType": "Staj İlanı",
-      "desc": "Daha önce Java kullanmış en az 2 yıl tecrübeli, lisans diplomalı yazılım geliştirme uzmanı arıyoruz",
-      "jobStyle": ["Hibrit"],
-      "jobTime": ["Serbest Zamanlı"],
-      "major": ["Bilgisayar Mühendisliği"]
+      "advertName": "C# Yazılım Geliştirme Uzmanı",
+      "desc": "Lisans mezunu ve sektörde en az 2 yıl deneyimi olan tercihen C# alanında çalışmış yeni iş arkadaşı aramaktayız.",
+      "jobStyle": [
+        "Yüz Yüze"
+      ],
+      "jobTime": [
+        "Proje Bazlı"
+      ],
+      "jobType": [
+        "İş İlanı"
+      ],
+      "major": [
+        "Bilgisayar Mühendisliği"
+      ],
+      "advertDate": "01.08.2023",
+      "id": 3
     }
   ],
   "appliedAdverts": [
