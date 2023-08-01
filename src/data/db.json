@@ -811,7 +811,7 @@
       "post_date": "6/4/2010"
     }
   ],
- 
+
   "kurumsal-ilanlar": [
     {
       "id": 1,
@@ -870,7 +870,8 @@
       "bölüm": ["Bilgisayar Mühendisliği"],
       "ilan_date": "28.07.2023",
       "id": 5
-
+    },
+    {
       "advertName": "Yazılım Geliştirme Uzmanı",
       "companyId": 2,
       "companyName": "Havelsan",
@@ -928,7 +929,6 @@
       "jobStyle": ["Hibrit"],
       "jobTime": ["Serbest Zamanlı"],
       "major": ["Bilgisayar Mühendisliği"]
-
     }
   ],
   "appliedAdverts": [
