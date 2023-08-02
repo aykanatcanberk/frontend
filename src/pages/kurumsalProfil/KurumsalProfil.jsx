@@ -134,59 +134,58 @@ function KurumsalProfil({ avatarSrc = "url_profil_avatar", name, school }) {
   function handleRendering() {
     return (
       <>
-        <Grid className="left-side" item xs={6}>
-          <ProfileWrapper elevation={0}>
+        <div>
+          <ProfileWrapper>
             <AvatarWrapper src={avatarSrc} alt="Profil Avatarı" />
             <div>
-              <Grid container alignItems="left">
-                <CardWrapperForTitles elevation={4} alignSelf="right">
-                  <Typography
-                    variant="subtitle1"
-                    style={{
-                      fontFamily: "Arial",
-                      fontSize: "16px",
-                      fontWeight: "bold",
-                      alignSelf: "left",
-                      flex: "auto",
-                    }}
-                  >
-                    Firma Adı
-                  </Typography>
-                </CardWrapperForTitles>
-              </Grid>
+              <Typography
+                variant="h6"
+                style={{
+                  fontFamily: "Arial",
+                  fontSize: "14px",
+                  fontWeight: "normal",
+                }}
+              >
+                Firma Adı
+              </Typography>
             </div>
           </ProfileWrapper>
-
-          <FirmaBilgileri
-            companyInfo={privateCompanyInfo}
-            onEditClick={handleEditPrivateCompanyInfoClick}
-          />
-          <EditFirmaBilgileri
-            initialData={privateCompanyInfo}
-            onClose={handleEditCancel}
-            onSave={handleEditPrivateCompanyInfoSave}
-            isOpen={isEditingPrivateCompanyInfo}
-          />
-        </Grid>
-        <Grid className="right-side" item xs={6}>
-          <NewPost url={"/posts"} userId={1} />
-          <br />
-          <Paper
-            className="allPosts"
-            style={{
-              maxHeight: 600,
-              width: "100%",
-              elevation: "0",
-              overflow: "auto",
-              backgroundColor: "white",
-              alignContent: "center",
-            }}
-          >
-            {allPosts.map((post, index) => (
-              <GonderiCard key={index} userPosts={post} />
-            ))}
-          </Paper>
-        </Grid>
+        </div>
+        <div style={{ width: "100%", height: "100%", marginTop: "2rem" }}>
+          <Grid container spacing={5}>
+            <Grid className="left-side" item xs={6}>
+              <FirmaBilgileri
+                companyInfo={privateCompanyInfo}
+                onEditClick={handleEditPrivateCompanyInfoClick}
+              />
+              <EditFirmaBilgileri
+                initialData={privateCompanyInfo}
+                onClose={handleEditCancel}
+                onSave={handleEditPrivateCompanyInfoSave}
+                isOpen={isEditingPrivateCompanyInfo}
+              />
+            </Grid>
+            <Grid className="right-side" item xs={6}>
+              <NewPost url={"/posts"} userId={1} />
+              <br />
+              <Paper
+                className="allPosts"
+                style={{
+                  maxHeight: 600,
+                  width: "100%",
+                  elevation: "0",
+                  overflow: "auto",
+                  backgroundColor: "white",
+                  alignContent: "center",
+                }}
+              >
+                {allPosts.map((post, index) => (
+                  <GonderiCard key={index} userPosts={post} />
+                ))}
+              </Paper>
+            </Grid>
+          </Grid>
+        </div>
       </>
     );
   }

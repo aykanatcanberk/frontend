@@ -883,6 +883,11 @@
       "ilan_id": 2,
       "firma_id": 2,
       "id": 2
+    },
+    {
+      "birey_id": 1,
+      "ilan_id": 3,
+      "id": 3
     }
   ],
   "kurumsal-anasayfa": [
@@ -2091,7 +2096,7 @@
       "startDate": "26/12/2019",
       "finishDate": "19/07/2023",
       "department": "Research and Development",
-      "approvalStatus": 0
+      "approvalStatus": 1
     },
     {
       "id": 61,
@@ -2770,5 +2775,4 @@
       "kullanıcı_tipi": "Kurumsal"
     }
   ]
-  
 }
