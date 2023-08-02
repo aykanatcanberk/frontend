@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import bg from "../bg/signin.svg";
+import bg from "../bg/login.png";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
@@ -103,24 +103,24 @@ const PasswordRequirementsTooltip = () => {
 //   );
 // };
 
-const NamedRequirementsTooltip = () => {
-  return (
-    <Tooltip
-      title={
-        <Typography>
-          Password must meet the following requirements:
-          <ul>
-            <li>At least 2 characters long</li>
-            <li>Must start with a capital letter</li>
-            <li>...</li> {/* Add more requirements */}
-          </ul>
-        </Typography>
-      }
-    >
-      <HelpIcon />
-    </Tooltip>
-  );
-};
+// const NamedRequirementsTooltip = () => {
+//   return (
+//     <Tooltip
+//       title={
+//         <Typography>
+//           Password must meet the following requirements:
+//           <ul>
+//             <li>At least 2 characters long</li>
+//             <li>Must start with a capital letter</li>
+//             <li>...</li> {/* Add more requirements */}
+//           </ul>
+//         </Typography>
+//       }
+//     >
+//       <HelpIcon />
+//     </Tooltip>
+//   );
+// };
 
 export default function Register() {
   const [open, setOpen] = useState(false);
@@ -276,7 +276,7 @@ export default function Register() {
                   backgroundSize: "cover",
                   height: "70vh",
                   minHeight: "500px",
-                  backgroundColor: "#3b33d5",
+                  backgroundColor: "#1e90ff",
                   borderRadius: "50px",
                 }}
               >
@@ -332,9 +332,7 @@ export default function Register() {
                               onBlur={() => setCompanyNameFocus(false)}
                               InputProps={{
                                 endAdornment: (
-                                  <InputAdornment position="end">
-                                    <PasswordRequirementsTooltip />
-                                  </InputAdornment>
+                                  <InputAdornment position="end"></InputAdornment>
                                 ),
                               }}
                             />
@@ -347,7 +345,9 @@ export default function Register() {
                               icon={faTimes}
                               color="white"
                               className={
-                                validCompanyName || !companyName ? "hide" : "invalid"
+                                validCompanyName || !companyName
+                                  ? "hide"
+                                  : "invalid"
                               }
                             />
                           </Box>
@@ -496,7 +496,7 @@ export default function Register() {
                             borderRadius: 28,
                             color: "#ffffff",
                             minWidth: "170px",
-                            backgroundColor: "#1e90ff",
+                            backgroundColor: "#3b33d5",
                           }}
                         >
                           KAYIT OL
