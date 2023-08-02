@@ -47,7 +47,7 @@ const NewPost = ({ url, userId }) => {
 
     const postDate = format(new Date(), "MMMM dd, yyyy pp");
     const newPost = {
-      title: postTitle,
+      // title: postTitle,
       postDate,
       content: postBody,
       userId: userId,
@@ -83,7 +83,7 @@ const NewPost = ({ url, userId }) => {
         >
           Gönderi Paylaş
         </Typography>
-        <PostInputWrapper
+        {/* <PostInputWrapper
           label="Gönderinizi başlığı"
           variant="outlined"
           multiline
@@ -93,7 +93,7 @@ const NewPost = ({ url, userId }) => {
           required
           value={postTitle}
           onChange={(e) => setPostTitle(e.target.value)}
-        />
+        /> */}
         <PostInputWrapper
           label="Gönderinizi buraya yazın"
           variant="outlined"
