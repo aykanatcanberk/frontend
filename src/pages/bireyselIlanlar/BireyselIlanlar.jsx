@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
@@ -110,6 +111,17 @@ function BireyselIlanlar() {
       calismaTercihiMatches
     );
   });
+ /* useEffect(() => {
+  axios
+      .get("https://localhost:7029/api/Advert/api/Advert/personpage") 
+      .then((response) => {
+        setData(response.data);
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log("Hata alindi " + error);
+      });
+  }, []);*/
 
   return (
     <Grid container justifyContent="left">
