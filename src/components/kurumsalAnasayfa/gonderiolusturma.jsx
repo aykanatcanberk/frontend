@@ -4,7 +4,7 @@ import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
-import { addPost } from "../../services/postService";
+import addPost from "../../services/postService";
 import { useState } from "react";
 
 const SharePostCardWrapper = styled(Paper)({

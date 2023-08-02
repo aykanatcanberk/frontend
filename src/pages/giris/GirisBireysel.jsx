@@ -8,18 +8,14 @@ import Container from "@mui/material/Container";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import { useState, forwardRef } from "react";
+import { useState } from "react";
 import Snackbar from "@mui/material/Snackbar";
 import Stack from "@mui/material/Stack";
-import MuiAlert from "@mui/material/Alert";
 import Slide from "@mui/material/Slide";
 import { useNavigate } from "react-router-dom";
-import { login1 } from "../../services/loginService";
+import { connect } from "react-redux";
+import { fetchUsers } from "../../redux/users/userActions";
 import axios from "axios";
-import { ResetTvSharp } from "@mui/icons-material";
-const Alert = forwardRef(function Alert(props, ref) {
-  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
 
 const darkTheme = createTheme({
   palette: {
@@ -45,7 +41,7 @@ const center = {
   left: "37%",
 };
 
-export default function Login() {
+function Login() {
   const [open, setOpen] = useState(false);
   const [remember, setRemember] = useState(false);
   const [email, setUsername] = useState("");
@@ -57,15 +53,7 @@ export default function Login() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setOpen(true);
-    const data = new FormData(event.currentTarget);
-    // login1({ email, password })
-    //   .then((response) => {
-    //     localStorage.setItem("token", response.data);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+
     axios
       .post(`https://localhost:7029/api/Auth/login`, { email, password })
       .then((res) => {
@@ -101,11 +89,7 @@ export default function Login() {
         onClose={handleClose}
         TransitionComponent={TransitionLeft}
         anchorOrigin={{ vertical, horizontal }}
-      >
-        <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-          Hata! E-posta ve şifre alanı boş bırakılamaz.
-        </Alert>
-      </Snackbar>
+      ></Snackbar>
       <div>
         <Box sx={boxstyle}>
           <Grid container>
@@ -150,24 +134,24 @@ export default function Login() {
                         <Grid item xs={12} sx={{ ml: "3em", mr: "3em" }}>
                           <TextField
                             required
-                            value={email}
-                            onChange={(e) => setUsername(e.target.value)}
                             fullWidth
                             id="email"
                             label="E-posta"
                             name="email"
+                            value={email}
+                            onChange={(e) => setUsername(e.target.value)}
                           />
                         </Grid>
                         <Grid item xs={12} sx={{ ml: "3em", mr: "3em" }}>
                           <TextField
                             required
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
                             fullWidth
                             name="şifre"
                             label="Şifre"
                             type="password"
                             id="şifre"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                           />
                         </Grid>
                         <Grid item xs={12} sx={{ ml: "3em", mr: "3em" }}>
@@ -235,3 +219,17 @@ export default function Login() {
     </>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    usersData: state.userrrrr,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchUsers: () => dispatch(fetchUsers()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
