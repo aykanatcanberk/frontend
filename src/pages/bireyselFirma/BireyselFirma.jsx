@@ -7,12 +7,91 @@ import NotFoundError from "../../routes/NotFoundError";
 const BireyselFirma = () => {
   const [companyDataList, setCompanyDataList] = useState([]);
   const { id } = useParams();
-
+  var deneyimlerim = [
+    {
+      title: "Mukemmel bir deneyimdi!!!",
+      description: `Staj döneminde öğrendiklerimden bazıları şunlardır:
+      - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
+      - Veritabanı yönetimi tasarımı konusunda temel bilgi.`,
+      companyName: "Aselsan",
+    },
+    {
+      title: "Mukemmel bir deneyimdi!!!",
+      description: `Staj döneminde öğrendiklerimden bazıları şunlardır:
+      - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
+      - Yazılım geliştirme süreçlerine uyum sağlama.`,
+      companyName: "Aselsan",
+    },
+    {
+      title: "Mukemmel bir deneyimdi!!!",
+      description: `Staj döneminde öğrendiklerimden bazıları şunlardır:
+      - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
+      - Veritabanı yönetimi tasarımı konusunda temel bilgi.`,
+      companyName: "Aselsan",
+    },
+    {
+      title: "Mukemmel bir deneyimdi!!!",
+      description: `Staj döneminde öğrendiklerimden bazıları şunlardır:
+      - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
+      - Yazılım geliştirme süreçlerine uyum sağlama.`,
+      companyName: "Aselsan",
+    },
+    {
+      title: "Mukemmel bir deneyimdi!!!",
+      description: `Staj döneminde öğrendiklerimden bazıları şunlardır:
+      - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
+      - Veritabanı yönetimi tasarımı konusunda temel bilgi.`,
+      companyName: "Aselsan",
+    },
+    {
+      title: "Mukemmel bir deneyimdi!!!",
+      description: `Staj döneminde öğrendiklerimden bazıları şunlardır:
+      - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
+      - Yazılım geliştirme süreçlerine uyum sağlama.`,
+      companyName: "Aselsan",
+    },
+    {
+      title: "Mukemmel bir deneyimdi!!!",
+      description: `Staj döneminde öğrendiklerimden bazıları şunlardır:
+      - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
+      - Veritabanı yönetimi tasarımı konusunda temel bilgi.`,
+      companyName: "Aselsan",
+    },
+    {
+      title: "Mukemmel bir deneyimdi!!!",
+      description: `Staj döneminde öğrendiklerimden bazıları şunlardır:
+      - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
+      - Yazılım geliştirme süreçlerine uyum sağlama.`,
+      companyName: "Aselsan",
+    },
+    {
+      title: "Mukemmel bir deneyimdi!!!",
+      description: `Staj döneminde öğrendiklerimden bazıları şunlardır:
+      - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
+      - Veritabanı yönetimi tasarımı konusunda temel bilgi.`,
+      companyName: "Aselsan",
+    },
+    {
+      title: "Mukemmel bir deneyimdi!!!",
+      description: `Staj döneminde öğrendiklerimden bazıları şunlardır:
+      - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
+      - Yazılım geliştirme süreçlerine uyum sağlama.`,
+      companyName: "Aselsan",
+    },
+  ];
   useEffect(() => {
-    getCompany(id)
+    getCompany()
       .then((response) => {
-        console.log("API Response:", response.data);
-        setCompanyDataList(response.data);
+        const allCompanies = response.data;
+        console.log(allCompanies)
+        const foundData = allCompanies.find((item) => item.id === Number(id));
+
+        if (foundData) {
+          console.log("API Response:", foundData);
+          setCompanyDataList(foundData);
+        } else {
+          throw new Error("Böyle bir şirket mevcut değil");
+        }
       })
       .catch((error) => {
         return <NotFoundError props={"Böyle bir şirket mevcut değil"} />;
@@ -21,7 +100,7 @@ const BireyselFirma = () => {
 
   return (
     <>
-      <ProfileCardComp companyData={companyDataList} />
+      <ProfileCardComp companyData={companyDataList} item={deneyimlerim} />
     </>
   );
 };

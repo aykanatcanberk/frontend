@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
@@ -9,11 +9,10 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import Typography from "@mui/joy/Typography";
 import İlan from "../../components/İlan/İlan";
-import db from "../../data/db.json";
-import Button from '@mui/material/Button';
 import "./BireyselIlanlar.css";
+import { getAdverts } from "../../services/advertService";
 
-const jobOptions = [{ title: "Staj İlanları" }, { title: "İş İlanları" }];
+const jobOptions = [{ title: "Staj İlanı" }, { title: "İş İlanı" }];
 const companies = [
   { title: "Aselsan" },
   { title: "Havelsan" },
@@ -29,6 +28,89 @@ const bolumler = [
 ];
 
 function BireyselIlanlar() {
+  const [data, setData] = useState([]);
+  const [selectedJobs, setSelectedJobs] = useState([]);
+  const [selectedCompanies, setSelectedCompanies] = useState([]);
+  const [selectedBolumler, setSelectedBolumler] = useState([]);
+  const [selectedCalismaSekli, setSelectedCalismaSekli] = useState([]);
+  const [selectedCalismaTercihi, setSelectedCalismaTercihi] = useState([]);
+
+  useEffect(() => {
+    getAdverts()
+      .then((response) => {
+        setData(response.data);
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log("Hata alindi " + error);
+      });
+  }, []);
+
+  const handleJobChange = (event, newValue) => {
+    setSelectedJobs([...newValue]);
+  };
+
+  const handleCompanyChange = (event, newValue) => {
+    setSelectedCompanies([...newValue]);
+  };
+
+  const handleBolumChange = (event, newValue) => {
+    setSelectedBolumler([...newValue]);
+  };
+
+  const handleCalismaSekliChange = (event) => {
+    const { value } = event.target;
+    setSelectedCalismaSekli((prev) => {
+      if (prev.includes(value)) {
+        return prev.filter((item) => item !== value);
+      } else {
+        return [...prev, value];
+      }
+    });
+  };
+
+  const handleCalismaTercihiChange = (event) => {
+    const { value } = event.target;
+    setSelectedCalismaTercihi((prev) => {
+      if (prev.includes(value)) {
+        return prev.filter((item) => item !== value);
+      } else {
+        return [...prev, value];
+      }
+    });
+  };
+
+  const filteredData = data.filter((advert) => {
+    const jobMatches =
+      selectedJobs.length === 0 ||
+      selectedJobs.some((job) => job.title === advert.jobType);
+    const companyMatches =
+      selectedCompanies.length === 0 ||
+      selectedCompanies.some((company) => company.title === advert.companyName);
+
+    const bolumMatches =
+      selectedBolumler.length === 0 ||
+      selectedBolumler.some((bolum) => advert.major.includes(bolum.title));
+
+    const calismaSekliMatches =
+      selectedCalismaSekli.length === 0 ||
+      selectedCalismaSekli.some((calismaSekli) =>
+        advert.jobStyle.includes(calismaSekli)
+      );
+
+    const calismaTercihiMatches =
+      selectedCalismaTercihi.length === 0 ||
+      selectedCalismaTercihi.some((tercih) => advert.jobTime.includes(tercih));
+
+    return (
+      jobMatches &&
+      companyMatches &&
+      bolumMatches &&
+      calismaSekliMatches &&
+      calismaTercihiMatches
+    );
+  });
+
   return (
     <Grid container justifyContent="left">
       <Grid item xs={10} lg={3}>
@@ -46,6 +128,8 @@ function BireyselIlanlar() {
                 multiple
                 id="tags-outlined"
                 options={jobOptions}
+                value={selectedJobs}
+                onChange={handleJobChange}
                 getOptionLabel={(option) => option.title}
                 filterSelectedOptions
                 renderInput={(params) => (
@@ -70,6 +154,8 @@ function BireyselIlanlar() {
                   multiple
                   id="tags-outlined"
                   options={companies}
+                  value={selectedCompanies}
+                  onChange={handleCompanyChange}
                   getOptionLabel={(option) => option.title}
                   filterSelectedOptions
                   renderInput={(params) => (
@@ -95,6 +181,8 @@ function BireyselIlanlar() {
                   multiple
                   id="tags-outlined"
                   options={bolumler}
+                  value={selectedBolumler}
+                  onChange={handleBolumChange}
                   getOptionLabel={(option) => option.title}
                   filterSelectedOptions
                   renderInput={(params) => (
@@ -127,9 +215,33 @@ function BireyselIlanlar() {
               Çalışma Şekli
             </Box>
             <FormControl sx={{ marginTop: 2, marginRight: 7 }}>
-              <FormControlLabel control={<Checkbox />} label="Yüz Yüze" />
-              <FormControlLabel control={<Checkbox />} label="Uzaktan" />
-              <FormControlLabel control={<Checkbox />} label="Hibrit" />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    onChange={handleCalismaSekliChange}
+                    value="Yüz Yüze"
+                  />
+                }
+                label="Yüz Yüze"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    onChange={handleCalismaSekliChange}
+                    value="Uzaktan"
+                  />
+                }
+                label="Uzaktan"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    onChange={handleCalismaSekliChange}
+                    value="Hibrit"
+                  />
+                }
+                label="Hibrit"
+              />
             </FormControl>
           </Grid>
         </Grid>
@@ -155,15 +267,44 @@ function BireyselIlanlar() {
               Çalışma Tercihi
             </Box>
             <FormControl sx={{ marginTop: 2 }}>
-              <FormControlLabel control={<Checkbox />} label="Tam Zamanlı" />
-              <FormControlLabel control={<Checkbox />} label="Yarı Zamanlı" />
-              <FormControlLabel control={<Checkbox />} label="Proje Bazlı" />
-              <FormControlLabel control={<Checkbox />}label="Serbest Zamanlı"/>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    onChange={handleCalismaTercihiChange}
+                    value="Tam Zamanlı"
+                  />
+                }
+                label="Tam Zamanlı"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    onChange={handleCalismaTercihiChange}
+                    value="Yarı Zamanlı"
+                  />
+                }
+                label="Yarı Zamanlı"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    onChange={handleCalismaTercihiChange}
+                    value="Proje Bazlı"
+                  />
+                }
+                label="Proje Bazlı"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    onChange={handleCalismaTercihiChange}
+                    value="Serbest Zamanlı"
+                  />
+                }
+                label="Serbest Zamanlı"
+              />
             </FormControl>
           </Grid>
-        </Grid>
-        <Grid item>
-        <Button sx={{ marginLeft:20, marginTop:3, marginBottom:2, color: 'black'}} variant="outlined">UYGULA</Button>
         </Grid>
       </Grid>
       <Grid item xs={12} lg={9}>
@@ -174,7 +315,7 @@ function BireyselIlanlar() {
           marginTop={3}
           spacing={2}
         >
-          {db["kurumsal-ilanlar"].map((advert, index) => (
+          {filteredData.map((advert, index) => (
             <Grid item key={advert.id} xs={12} sm={6}>
               <İlan advert={advert} />
             </Grid>

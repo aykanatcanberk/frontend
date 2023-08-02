@@ -50,11 +50,11 @@ export default function Login() {
   const horizontal = "right";
   const navigate = useNavigate();
 
-  const handleSubmit = async (event) => {
-    setOpen(true);
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-  };
+  // const handleSubmit = async (event) => {
+  //   setOpen(true);
+  //   event.preventDefault();
+  //   const data = new FormData(event.currentTarget);
+  // };
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -75,11 +75,7 @@ export default function Login() {
         onClose={handleClose}
         TransitionComponent={TransitionLeft}
         anchorOrigin={{ vertical, horizontal }}
-      >
-        <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-          Hata! E-posta ve şifre alanı boş bırakılamaz.
-        </Alert>
-      </Snackbar>
+      ></Snackbar>
       <div>
         <Box sx={boxstyle}>
           <Grid container>
@@ -117,7 +113,7 @@ export default function Login() {
                     <Box
                       component="form"
                       noValidate
-                      onSubmit={handleSubmit}
+                      // onSubmit={handleSubmit}
                       sx={{ mt: 2 }}
                     >
                       <Grid container spacing={1}>

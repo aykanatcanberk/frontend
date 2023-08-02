@@ -15,7 +15,7 @@ const KurumsalIlan = () => {
         setAdvertDataList(response.data);
       })
       .catch((error) => {
-        return <NotFoundError props={"Böyle bir şirket mevcut değil"} />;
+        return <NotFoundError props={"Böyle bir ilan mevcut değil"} />;
       });
   }, [id]);
 

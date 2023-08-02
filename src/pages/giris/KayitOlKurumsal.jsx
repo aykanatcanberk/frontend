@@ -6,7 +6,7 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { useState, forwardRef } from "react";
+import { useState, forwardRef, useRef, useEffect } from "react";
 import Snackbar from "@mui/material/Snackbar";
 import Stack from "@mui/material/Stack";
 import MuiAlert from "@mui/material/Alert";
@@ -15,6 +15,22 @@ import { useNavigate } from "react-router-dom";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import EmailIcon from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
+import FormControl from "@mui/material/FormControl";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { InputAdornment } from "@mui/material";
+import {
+  faCheck,
+  faTimes,
+  faInfoCircle,
+} from "@fortawesome/free-solid-svg-icons";
+import axios from "../../api/axios";
+import { styled } from "styled-components";
+import "./KayıtOlBireysel.css";
+import { Tooltip } from "@mui/material";
+import HelpIcon from "@mui/icons-material/Help";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Import the CSS
 
 const Alert = forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -44,16 +60,173 @@ const center = {
   left: "30%",
 };
 
+const USER_REGEX = /^.{1,22}$/; // şirket ismi her şey olabilsin ?
+// const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/; // Daha güçlü şifre için bunu kullanın
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const PWD_REGEX = /^.{6,}$/;
+const REGISTER_URL = "/register";
+
+const PasswordRequirementsTooltip = () => {
+  return (
+    <Tooltip
+      title={
+        <Typography>
+          Password must meet the following requirements:
+          <ul>
+            <li>At least 6 characters long</li>
+            <li>...</li> {/* Add more requirements */}
+          </ul>
+        </Typography>
+      }
+    >
+      <HelpIcon />
+    </Tooltip>
+  );
+};
+
+// const EmailRequirementsTooltip = () => {
+//   return (
+//     <Tooltip
+//       title={
+//         <Typography>
+//           Password must meet the following requirements:
+//           <ul>
+//             <li>At least 2 characters long</li>
+//             <li>Must start with a capital letter</li>
+//             <li>...</li> {/* Add more requirements */}
+//           </ul>
+//         </Typography>
+//       }
+//     >
+//       <HelpIcon />
+//     </Tooltip>
+//   );
+// };
+
+// const NamedRequirementsTooltip = () => {
+//   return (
+//     <Tooltip
+//       title={
+//         <Typography>
+//           Password must meet the following requirements:
+//           <ul>
+//             <li>At least 2 characters long</li>
+//             <li>Must start with a capital letter</li>
+//             <li>...</li> {/* Add more requirements */}
+//           </ul>
+//         </Typography>
+//       }
+//     >
+//       <HelpIcon />
+//     </Tooltip>
+//   );
+// };
+
 export default function Register() {
   const [open, setOpen] = useState(false);
   const vertical = "top";
   const horizontal = "right";
   const navigate = useNavigate();
 
-  const handleSubmit = async (event) => {
+  const companyNameRef = useRef();
+  const userSurnameRef = useRef();
+  const emailRef = useRef();
+  const errRef = useRef();
+
+  const [companyName, setCompanyName] = useState("");
+  const [validCompanyName, setValidUserName] = useState(false);
+  const [userNameFocus, setCompanyNameFocus] = useState(false);
+
+  const [companyEmail, setUserEmail] = useState("");
+  const [validEmail, setValidEmail] = useState(false);
+  const [emailFocus, setCompanyEmailFocus] = useState(false);
+
+  const [pwd, setPwd] = useState("");
+  const [validPwd, setValidPwd] = useState(false);
+  const [pwdFocus, setPwdFocus] = useState(false);
+
+  const [matchPwd, setMatchPwd] = useState("");
+  const [validMatch, setValidMatch] = useState(false);
+  const [matchFocus, setMatchFocus] = useState(false);
+
+  const [errMsg, setErrMsg] = useState("");
+  const [success, setSuccess] = useState(false);
+
+  useEffect(() => {
+    companyNameRef.current.focus();
+  }, []);
+
+  useEffect(() => {
+    setValidUserName(USER_REGEX.test(companyName));
+    setValidEmail(EMAIL_REGEX.test(companyEmail));
+  }, [companyName, companyEmail]);
+
+  useEffect(() => {
+    setValidPwd(PWD_REGEX.test(pwd));
+    setValidMatch(pwd === matchPwd);
+  }, [pwd, matchPwd]);
+
+  const handleSubmit = async (e) => {
     setOpen(true);
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+
+    // if button enabled with JS hack
+    const v1 = USER_REGEX.test(companyName);
+    const v2 = PWD_REGEX.test(pwd);
+    const v3 = EMAIL_REGEX.test(companyEmail);
+    if (!v1 || !v2 || !v3) {
+      setErrMsg("Invalid Entry");
+      return;
+    }
+    try {
+      // burası backend'e olmadan çalışmaz
+      const response = await axios.post(
+        REGISTER_URL,
+        JSON.stringify({ userName: companyName, userEmail: companyEmail, pwd }),
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
+      // response backend olunca bir işe yarıyor
+      // console.log(response?.data);
+      // console.log(response?.accessToken);
+      // console.log(JSON.stringify(response));
+      setSuccess(true);
+      //clear state and controlled inputs
+      //need value attrib on inputs for this
+      setCompanyName("");
+      setUserEmail("");
+      setPwd("");
+      setMatchPwd("");
+    } catch (err) {
+      if (!err?.response) {
+        setErrMsg("No Server Response");
+      } else if (err.response?.status === 409) {
+        setErrMsg("Username Taken");
+      } else {
+        setErrMsg("Registration Failed");
+      }
+      // errRef.current.focus();
+      setSuccess(false);
+    } finally {
+      if (success) {
+        toast.success("KAYIT OLMA İŞLEMİ BAŞARILI OLDU.", {
+          onClose: () => {
+            // Redirect to the desired page
+            navigate("/");
+          },
+        });
+      } else {
+        toast.error("ERROR! KAYIT OLMA İŞLEMİ BAŞARILI DEĞİL.", {
+          onClose: () => {
+            // Redirect to the desired page
+            navigate("/");
+          },
+        });
+      }
+    }
   };
 
   const handleClose = (event, reason) => {
@@ -69,6 +242,7 @@ export default function Register() {
 
   return (
     <>
+      <ToastContainer />
       <Snackbar
         open={open}
         autoHideDuration={3000}
@@ -76,9 +250,9 @@ export default function Register() {
         TransitionComponent={TransitionLeft}
         anchorOrigin={{ vertical, horizontal }}
       >
-        <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+        {/* <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
           Hata! E-posta ve şifre alanı boş bırakılamaz.
-        </Alert>
+        </Alert> */}
       </Snackbar>
       <div>
         <Box sx={boxstyle}>
@@ -124,7 +298,7 @@ export default function Register() {
                     <Box
                       component="form"
                       noValidate
-                      onSubmit={handleSubmit}
+                      // onSubmit={handleSubmit}
                       sx={{ mt: 2 }}
                     >
                       <Box
@@ -133,21 +307,15 @@ export default function Register() {
                           "& > :not(style)": { m: 1 },
                         }}
                       >
-                        <Box
-                          sx={{
-                            width: 465,
-                            ml: "2em",
-                            display: "flex",
-                            alignItems: "flex-end",
-                          }}
-                        >
-                          <AccountCircle
+                        <FormControl variant="standard">
+                          <Box
                             sx={{
-                              ml: "1.5em",
-                              color: "action.active",
-                              mr: 1,
-                              my: 0.5,
+                              width: 465,
+                              ml: "2em",
+                              display: "flex",
+                              alignItems: "flex-end",
                             }}
+<<<<<<< HEAD
                           />
                           <TextField
                             fullWidth
@@ -157,6 +325,45 @@ export default function Register() {
                           />
                         </Box>
 
+=======
+                          >
+                            <AccountCircle
+                              sx={{ color: "action.active", mr: 1, my: 0.5 }}
+                            />
+                            <TextField
+                              id="ad"
+                              label="Şirket İsmi"
+                              variant="standard"
+                              type="text"
+                              ref={companyNameRef}
+                              onChange={(e) => setCompanyName(e.target.value)}
+                              value={companyName}
+                              required
+                              onFocus={() => setCompanyNameFocus(true)}
+                              onBlur={() => setCompanyNameFocus(false)}
+                              InputProps={{
+                                endAdornment: (
+                                  <InputAdornment position="end"></InputAdornment>
+                                ),
+                              }}
+                            />
+                            <FontAwesomeIcon
+                              icon={faCheck}
+                              color="white"
+                              className={validCompanyName ? "valid" : "hide"}
+                            />
+                            <FontAwesomeIcon
+                              icon={faTimes}
+                              color="white"
+                              className={
+                                validCompanyName || !companyName
+                                  ? "hide"
+                                  : "invalid"
+                              }
+                            />
+                          </Box>
+                        </FormControl>
+>>>>>>> 2081ece6df8e9f49d36edb5e2c0261c2e3b774ea
                         <Box
                           sx={{
                             width: 465,
@@ -175,9 +382,34 @@ export default function Register() {
                           />
                           <TextField
                             fullWidth
+<<<<<<< HEAD
                             id="kurumsal-email"
                             label="Kurumsal E-posta Adresi"
+=======
+                            id="email"
+                            label="E-posta Adresi"
+>>>>>>> 2081ece6df8e9f49d36edb5e2c0261c2e3b774ea
                             variant="standard"
+                            type="email"
+                            ref={emailRef}
+                            onChange={(e) => setUserEmail(e.target.value)}
+                            value={companyEmail}
+                            required
+                            onFocus={() => setCompanyEmailFocus(true)}
+                            onBlur={() => setCompanyEmailFocus(false)}
+                            // Burada belki girilen e-postanın var olup olmadığı araştırılabilir.
+                          />
+                          <FontAwesomeIcon
+                            icon={faCheck}
+                            color="white"
+                            className={validEmail ? "valid" : "hide"}
+                          />
+                          <FontAwesomeIcon
+                            icon={faTimes}
+                            color="white"
+                            className={
+                              validEmail || !companyEmail ? "hide" : "invalid"
+                            }
                           />
                         </Box>
                         <Box
@@ -201,6 +433,71 @@ export default function Register() {
                             id="kurumsal-şifre"
                             label="Şifre"
                             variant="standard"
+                            onChange={(e) => setPwd(e.target.value)}
+                            value={pwd}
+                            required
+                            onFocus={(e) => {
+                              setPwdFocus(true);
+                            }}
+                            onBlur={() => {
+                              setPwdFocus(false);
+                            }}
+                            InputProps={{
+                              endAdornment: (
+                                <InputAdornment position="end">
+                                  <PasswordRequirementsTooltip />
+                                </InputAdornment>
+                              ),
+                            }}
+                          />
+
+                          <FontAwesomeIcon
+                            icon={faCheck}
+                            className={validPwd ? "valid" : "hide"}
+                          />
+                          <FontAwesomeIcon
+                            icon={faTimes}
+                            className={validPwd || !pwd ? "hide" : "invalid"}
+                          />
+                        </Box>
+                        <Box
+                          sx={{
+                            width: 465,
+                            display: "flex",
+                            alignItems: "flex-end",
+                          }}
+                        >
+                          <LockIcon
+                            sx={{
+                              ml: "1.5em",
+                              color: "action.active",
+                              mr: 1,
+                              my: 0.5,
+                            }}
+                          />
+                          <TextField
+                            fullWidth
+                            type="password"
+                            id="şifre"
+                            label="Şifre Tekrarı"
+                            variant="standard"
+                            onChange={(e) => setMatchPwd(e.target.value)}
+                            value={matchPwd}
+                            required
+                            onFocus={() => setMatchFocus(true)}
+                            onBlur={() => setMatchFocus(false)}
+                          />
+                          <FontAwesomeIcon
+                            icon={faCheck}
+                            className={
+                              validMatch && matchPwd ? "valid" : "hide"
+                            }
+                          />
+                          <FontAwesomeIcon
+                            icon={faTimes}
+                            className={
+                              validMatch || !matchPwd ? "hide" : "invalid"
+                            }
                           />
                         </Box>
                       </Box>

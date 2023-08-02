@@ -1,8 +1,13 @@
 /* Author: Hasan Basri BİLGE
 Last Update: 25.07.2023 */
 import "./BireyselFirma.css";
-import * as React from "react";
-import { useState, useEffect } from "react";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectCoverflow, Autoplay } from "swiper/modules";
+import { useEffect, useState } from "react";
 import haber1 from "./images/haber-1.png";
 import haber2 from "./images/haber-2.png";
 import haber3 from "./images/haber-3.png";
@@ -27,6 +32,7 @@ import PeopleIcon from "@mui/icons-material/People";
 import { Grid } from "@mui/material";
 import Slider from "react-slick";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
+import Slide from "../slider/Slider";
 
 const images_h = [
   haber1,
@@ -57,7 +63,7 @@ const avatarStyle = {
   borderRadius: "20%",
 };
 
-function ProfileCardComp({ companyData }) {
+function ProfileCardComp({ companyData, item }) {
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
@@ -205,7 +211,7 @@ function ProfileCardComp({ companyData }) {
                 marginLeft: "20px",
               }}
             />
-            {companyData.founded}
+            {companyData.fDate}
             <span />
             <br />
             <Typography
@@ -234,20 +240,39 @@ function ProfileCardComp({ companyData }) {
                   marginLeft: "20px",
                 }}
               />
-              {companyData.employeeCount}
+              {companyData.totalStaff}
             </Typography>
           </Typography>
         </div>
       </Paper>
-      <div className="Slider">
-        <Slider {...settings}>
-          {images_h.map((img, idx) => (
-            <div className={idx === ImageIndex ? "slide activeSlide" : "slide"}>
-              <img src={img} alt={img} />
-            </div>
+      <Swiper
+          effect={"coverflow"}
+          grabCursor={true}
+          centeredSlides={true}
+          loop={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }}
+          slidesPerView={"auto"}
+          coverflowEffect={{
+            rotate: 50,
+            stretch: 0,
+            depth: 100,
+            modifier: 1,
+            slideShadows: false,
+          }}
+          pagination={true}
+          modules={[EffectCoverflow, Autoplay]}
+          className="mySwiper"
+        >
+          {item?.map((data, i) => (
+            <SwiperSlide key={i}>
+              <Slide item={data} />
+            </SwiperSlide>
           ))}
-        </Slider>
-      </div>
+        </Swiper>
       <>
         <Grid container spacing={0} sx={{ marginTop: "20px" }}>
           <Grid
@@ -272,9 +297,18 @@ function ProfileCardComp({ companyData }) {
                 fontSize={"12px"}
                 textAlign={"justify"}
               >
-                {companyData.about}
+                {companyData.description}
               </Typography>
             </Paper>
+            <div className="Slider">
+        <Slider {...settings}>
+          {images_h.map((img, idx) => (
+            <div className={idx === ImageIndex ? "slide activeSlide" : "slide"}>
+              <img src={img} alt={img} />
+            </div>
+          ))}
+        </Slider>
+      </div>
           </Grid>
           <Grid
             item
@@ -306,7 +340,7 @@ function ProfileCardComp({ companyData }) {
                 fontSize={"12px"}
                 textAlign={"justify"}
               >
-                {companyData.expertise}
+                {companyData.prof}
               </Typography>
               <h5>İletişim</h5>
               <Typography
@@ -317,11 +351,11 @@ function ProfileCardComp({ companyData }) {
               >
                 <p>{companyData.website}</p>
                 <span />
-                <p>{companyData.address}</p>
+                <p>{companyData.location}</p>
                 <span />
                 <p>{companyData.phone}</p>
                 <span />
-                <p>{companyData.contact}</p>
+                <p>{companyData.phone}</p>
               </Typography>
             </Paper>
           </Grid>

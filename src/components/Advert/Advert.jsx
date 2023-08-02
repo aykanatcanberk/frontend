@@ -47,18 +47,18 @@ export default function Advert({ kurumsalİlanlarVerisi }) {
           }
           title={
             <Typography variant="h8" fontWeight="bold">
-              {kurumsalİlanlarVerisi.ilan_adi}
+              {kurumsalİlanlarVerisi.advertName}
             </Typography>
           }
           subheader={
             <Box display="flex" alignItems="center">
               <CalendarMonthIcon sx={{ fontSize: 14, marginLeft: 1 }} />
               <Typography variant="body2" color="text.secondary">
-                {kurumsalİlanlarVerisi.ilan_date}
+                {kurumsalİlanlarVerisi.advertDate}
               </Typography>
               <BusinessCenterIcon sx={{ fontSize: 14, marginLeft: 1 }} />
               <Typography variant="body2" color="text.secondary">
-                {kurumsalİlanlarVerisi.ilan_tipi}
+                {kurumsalİlanlarVerisi.jobType}
               </Typography>
             </Box>
           }
