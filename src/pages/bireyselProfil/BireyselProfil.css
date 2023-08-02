@@ -1,7 +1,7 @@
 /* App.css */
 .bireyselProfil {
   display: flex; /* or use 'grid' here if you prefer CSS Grid */
-  height: 100vh; /* Set the container height to cover the full viewport height */
+  height: auto; /* Set the container height to cover the full viewport height */
 }
 
 .left-side {
