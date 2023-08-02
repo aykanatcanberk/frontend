@@ -57,7 +57,7 @@ const center = {
   left: "30%",
 };
 
-const USER_REGEX = /^[A-z][A-z0-9-_]{2,23}$/;
+const USER_REGEX = /^[A-Za-zÇçĞğİıÖöŞşÜü][A-Za-z0-9ÇçĞğİıÖöŞşÜü_-]{2,22}$/
 // const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/; // Daha güçlü şifre için bunu kullanın
 const PWD_REGEX = /^.{6,}$/;
 const REGISTER_URL = "/register";
@@ -170,9 +170,15 @@ export default function Register() {
       } else {
         setErrMsg("Registration Failed");
       }
-      errRef.current.focus();
+      // errRef.current.focus();
+      setSuccess(false);
     } finally {
-      navigate("/bireysel-profil");
+      if(success){
+        navigate("/");
+      }else{
+        console.log("KAYIT OLMA İŞLEMİ BAŞARILI DEĞİL");
+      }
+      
     }
   };
 

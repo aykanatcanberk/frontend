@@ -15,6 +15,8 @@ import { useNavigate } from "react-router-dom";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import EmailIcon from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
+import { Tooltip } from "@mui/material";
+import HelpIcon from "@mui/icons-material/Help";
 
 const Alert = forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -42,6 +44,29 @@ const center = {
   position: "relative",
   top: "50%",
   left: "30%",
+};
+
+const USER_REGEX = /^[A-z][A-z0-9-_]{2,23}$/;
+// const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/; // Daha güçlü şifre için bunu kullanın
+const PWD_REGEX = /^.{6,}$/;
+const REGISTER_URL = "/register";
+
+const PasswordRequirementsTooltip = () => {
+  return (
+    <Tooltip
+      title={
+        <Typography>
+          Password must meet the following requirements:
+          <ul>
+            <li>At least 6 characters long</li>
+            <li>...</li> {/* Add more requirements */}
+          </ul>
+        </Typography>
+      }
+    >
+      <HelpIcon />
+    </Tooltip>
+  );
 };
 
 export default function Register() {
