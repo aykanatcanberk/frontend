@@ -16,6 +16,7 @@ import Slide from "@mui/material/Slide";
 import { useNavigate } from "react-router-dom";
 import { login1 } from "../../services/loginService";
 import axios from "axios";
+import { ResetTvSharp } from "@mui/icons-material";
 const Alert = forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
@@ -66,11 +67,19 @@ export default function Login() {
     //     console.log(error);
     //   });
     axios
-      .post(`http://localhost:5071/api/Auth/login`, { email, password })
+      .post(`https://localhost:7029/api/Auth/login`, { email, password })
       .then((res) => {
         console.log(res);
-        localStorage.setItem("token", res.data);
-        navigate("/bireysel-anasayfa");
+        localStorage.setItem("token", res.data.token);
+        const token = localStorage.getItem("token")
+        if(res.data.control === true){
+          axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
+          axios.post(`https://localhost:7029/api/Login/logincontrol`)
+          navigate("/bireysel-profil");
+        }else{
+          navigate("/bireysel-anasayfa");
+        }
+        
       });
   };
 
