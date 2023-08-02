@@ -133,7 +133,7 @@ function Login({ usersData, fetchUsers }) {
         anchorOrigin={{ vertical, horizontal }}
       >
         <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-          Hata! AAAAA E-posta ve şifre alanı boş bırakılamaz.
+          Hata! E-posta ve şifre alanı boş bırakılamaz.
         </Alert>
       </Snackbar>
       <div>
