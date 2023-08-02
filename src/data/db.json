@@ -12,7 +12,7 @@
   "info-firma": [
     {
       "companyId": 1,
-      "companyName": "Aselsan",
+      "name": "Aselsan",
       "category": "Savunma Sanayii",
       "type": "Halka Açık Şirket",
       "foundationDate": "1972",
@@ -27,7 +27,7 @@
     },
     {
       "companyId": 2,
-      "companyName": "Havelsan",
+      "name": "Havelsan",
       "category": "Savunma Sanayii",
       "type": "Halka Açık Şirket",
       "foundationDate": "2000",
@@ -42,7 +42,7 @@
     },
     {
       "companyId": 3,
-      "companyName": "TUSAŞ",
+      "name": "TUSAŞ",
       "category": "Savunma Sanayii",
       "type": "Halka Açık Şirket",
       "foundationDate": "1998",
@@ -57,7 +57,7 @@
     },
     {
       "companyId": 4,
-      "companyName": "Roketsan",
+      "name": "Roketsan",
       "category": "Savunma Sanayii",
       "type": "Halka Açık Şirket",
       "foundationDate": "2000",
@@ -72,7 +72,7 @@
     },
     {
       "companyId": 4,
-      "companyName": "TR EĞİTİM VE TEKNOLOJİ A.Ş.",
+      "name": "TR EĞİTİM VE TEKNOLOJİ A.Ş.",
       "category": "Savunma Sanayii",
       "type": "Halka Açık Şirket",
       "foundationDate": "2019",
