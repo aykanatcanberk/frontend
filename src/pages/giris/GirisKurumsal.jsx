@@ -14,6 +14,7 @@ import Stack from "@mui/material/Stack";
 import MuiAlert from "@mui/material/Alert";
 import Slide from "@mui/material/Slide";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Alert = forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -46,6 +47,8 @@ const center = {
 export default function Login() {
   const [open, setOpen] = useState(false);
   const [remember, setRemember] = useState(false);
+  const [email, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const vertical = "top";
   const horizontal = "right";
   const navigate = useNavigate();
@@ -54,6 +57,20 @@ export default function Login() {
     setOpen(true);
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+    axios
+      .post(`https://localhost:7029/api/Auth/login`, { email, password })
+      .then((res) => {
+        console.log(res);
+        localStorage.setItem("token", res.data.token);
+        const token = localStorage.getItem("token");
+        if (res.data.control === true) {
+          axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+          axios.post(`https://localhost:7029/api/Login/logincontrol`);
+          navigate("/kurumsal-profil");
+        } else {
+          navigate("/kurumsal-anasayfa");
+        }
+      });
   };
 
   const handleClose = (event, reason) => {
@@ -124,6 +141,8 @@ export default function Login() {
                         <Grid item xs={12} sx={{ ml: "3em", mr: "3em" }}>
                           <TextField
                             required
+                            value={email}
+                            onChange={(e) => setUsername(e.target.value)}
                             fullWidth
                             id="email"
                             label="E-posta"
@@ -136,6 +155,8 @@ export default function Login() {
                             fullWidth
                             name="şifre"
                             label="Şifre"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                             type="password"
                             id="şifre"
                           />
