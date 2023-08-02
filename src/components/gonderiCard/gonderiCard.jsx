@@ -44,7 +44,7 @@ function GonderiCard({ userPosts }) {
                   fontWeight: "bold",
                 }}
               >
-            {userPosts.first_name} <span /> {userPosts.last_name}
+            {userPosts.name}
               </Typography>
               <Typography
                 variant="subtitle2"
@@ -55,7 +55,7 @@ function GonderiCard({ userPosts }) {
                   color: "textSecondary",
                 }}
               >
-                {userPosts.post_date}
+                {userPosts.postDate}
               </Typography>
             </Grid>
           </Grid>
@@ -67,7 +67,7 @@ function GonderiCard({ userPosts }) {
               fontWeight: "normal",
             }}
           >
-            {userPosts.comments}
+            {userPosts.content}
           </Typography>
           <Typography
             variant="body2"
