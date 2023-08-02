@@ -68,49 +68,49 @@ function Login({ usersData, fetchUsers }) {
   const horizontal = "right";
   const navigate = useNavigate();
 
-  const handleSubmit = async (event) => {
-    setOpen(true);
-    event.preventDefault();
-    ProceedLogin();
-    // const data = new FormData(event.currentTarget);
-  };
+  // const handleSubmit = async (event) => {
+  //   setOpen(true);
+  //   event.preventDefault();
+  //   ProceedLogin();
+  //   // const data = new FormData(event.currentTarget);
+  // };
 
-  const ProceedLogin = () => {
-    if (validate()) {
-      getUserByEmail(tryAccount.eMail)
-        .then((user) => {
-          if (user[0].password === tryAccount.password) {
-            console.log("Success");
-            sessionStorage.setItem("eMail", tryAccount.eMail);
-            sessionStorage.setItem("userrole", user.role);
-            console.log("go to the main page!");
-            navigate("/bireysel-anasayfa");
-          } else {
-            console.error("Please Enter valid credentials");
-          }
-        })
-        .catch((err) => {
-          console.error("Login Failed due to :" + err.message);
-        });
-    }
-  };
-  
-  const validate = () => {
-    let result = true;
-    if (tryAccount.eMail === "" || tryAccount.eMail === null) {
-      result = false;
-      <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-        Hata! E-posta alanı boş bırakılamaz.
-      </Alert>;
-    }
-    if (tryAccount.password === "" || tryAccount.password === null) {
-      result = false;
-      <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-        Hata! Şifre alanı boş bırakılamaz.
-      </Alert>;
-    }
-    return result;
-  };
+  // const ProceedLogin = () => {
+  //   if (validate()) {
+  //     getUserByEmail(tryAccount.eMail)
+  //       .then((user) => {
+  //         if (user[0].password === tryAccount.password) {
+  //           console.log("Success");
+  //           sessionStorage.setItem("eMail", tryAccount.eMail);
+  //           sessionStorage.setItem("userrole", user.role);
+  //           console.log("go to the main page!");
+  //           navigate("/bireysel-anasayfa");
+  //         } else {
+  //           console.error("Please Enter valid credentials");
+  //         }
+  //       })
+  //       .catch((err) => {
+  //         console.error("Login Failed due to :" + err.message);
+  //       });
+  //   }
+  // };
+
+  // const validate = () => {
+  //   let result = true;
+  //   if (tryAccount.eMail === "" || tryAccount.eMail === null) {
+  //     result = false;
+  //     <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+  //       Hata! E-posta alanı boş bırakılamaz.
+  //     </Alert>;
+  //   }
+  //   if (tryAccount.password === "" || tryAccount.password === null) {
+  //     result = false;
+  //     <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+  //       Hata! Şifre alanı boş bırakılamaz.
+  //     </Alert>;
+  //   }
+  //   return result;
+  // };
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -131,11 +131,7 @@ function Login({ usersData, fetchUsers }) {
         onClose={handleClose}
         TransitionComponent={TransitionLeft}
         anchorOrigin={{ vertical, horizontal }}
-      >
-        <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-          Hata! E-posta ve şifre alanı boş bırakılamaz.
-        </Alert>
-      </Snackbar>
+      ></Snackbar>
       <div>
         <Box sx={boxstyle}>
           <Grid container>
@@ -173,7 +169,7 @@ function Login({ usersData, fetchUsers }) {
                     <Box
                       component="form"
                       noValidate
-                      onSubmit={handleSubmit}
+                      // onSubmit={handleSubmit}
                       sx={{ mt: 2 }}
                     >
                       <Grid container spacing={1}>
