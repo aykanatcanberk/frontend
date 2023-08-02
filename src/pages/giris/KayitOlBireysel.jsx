@@ -29,6 +29,9 @@ import "./KayıtOlBireysel.css";
 import { Tooltip } from "@mui/material";
 import HelpIcon from "@mui/icons-material/Help";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Import the CSS
+
 const Alert = forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
@@ -56,9 +59,12 @@ const center = {
   top: "50%",
   left: "30%",
 };
+
 const USER_REGEX = /^[A-zÇŞĞÜİÖçşğüıö][A-z0-9-_ÇŞĞÜİÖçşğüıö]{2,23}$/;
 //const USER_REGEX = /^[A-z][A-z0-9-_]{2,23}$/;
+
 // const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/; // Daha güçlü şifre için bunu kullanın
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PWD_REGEX = /^.{6,}$/;
 const REGISTER_URL = "/register";
 
@@ -70,6 +76,44 @@ const PasswordRequirementsTooltip = () => {
           Password must meet the following requirements:
           <ul>
             <li>At least 6 characters long</li>
+            <li>...</li> {/* Add more requirements */}
+          </ul>
+        </Typography>
+      }
+    >
+      <HelpIcon />
+    </Tooltip>
+  );
+};
+
+// const EmailRequirementsTooltip = () => {
+//   return (
+//     <Tooltip
+//       title={
+//         <Typography>
+//           Password must meet the following requirements:
+//           <ul>
+//             <li>At least 2 characters long</li>
+//             <li>Must start with a capital letter</li>
+//             <li>...</li> {/* Add more requirements */}
+//           </ul>
+//         </Typography>
+//       }
+//     >
+//       <HelpIcon />
+//     </Tooltip>
+//   );
+// };
+
+const NamedRequirementsTooltip = () => {
+  return (
+    <Tooltip
+      title={
+        <Typography>
+          Password must meet the following requirements:
+          <ul>
+            <li>At least 2 characters long</li>
+            <li>Must start with a capital letter</li>
             <li>...</li> {/* Add more requirements */}
           </ul>
         </Typography>
@@ -114,9 +158,6 @@ export default function Register() {
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
 
-  const [popoverAnchor, setPopoverAnchor] = useState(null);
-
-  const [passwordFocused, setPasswordFocused] = useState(false);
 
   useEffect(() => {
     userNameRef.current.focus();
@@ -125,7 +166,8 @@ export default function Register() {
   useEffect(() => {
     setValidUserName(USER_REGEX.test(userName));
     setValidUserSurname(USER_REGEX.test(userSurname));
-  }, [userName, userSurname]);
+    setValidEmail(EMAIL_REGEX.test(userEmail));
+  }, [userName, userSurname, userEmail]);
 
   useEffect(() => {
     setValidPwd(PWD_REGEX.test(pwd));
@@ -139,12 +181,15 @@ export default function Register() {
 
     // if button enabled with JS hack
     const v1 = USER_REGEX.test(userName);
-    const v2 = PWD_REGEX.test(pwd);
-    if (!v1 || !v2) {
+    const v2 = USER_REGEX.test(userSurname);
+    const v3 = PWD_REGEX.test(pwd);
+    const v4 = EMAIL_REGEX.test(userEmail);
+    if (!v1 || !v2 || !v3 || !v4) {
       setErrMsg("Invalid Entry");
       return;
     }
     try {
+      // burası backend'e olmadan çalışmaz
       const response = await axios.post(
         REGISTER_URL,
         JSON.stringify({ userName, userSurname, userEmail, pwd }),
@@ -153,13 +198,16 @@ export default function Register() {
           withCredentials: true,
         }
       );
-      console.log(response?.data);
-      console.log(response?.accessToken);
-      console.log(JSON.stringify(response));
+      // response backend olunca bir işe yarıyor
+      // console.log(response?.data);
+      // console.log(response?.accessToken);
+      // console.log(JSON.stringify(response));
       setSuccess(true);
       //clear state and controlled inputs
       //need value attrib on inputs for this
       setUserName("");
+      setUserSurname("");
+      setUserEmail("");
       setPwd("");
       setMatchPwd("");
     } catch (err) {
@@ -170,9 +218,24 @@ export default function Register() {
       } else {
         setErrMsg("Registration Failed");
       }
-      errRef.current.focus();
+      // errRef.current.focus();
+      setSuccess(false);
     } finally {
-      navigate("/bireysel-profil");
+      if (success) {
+        toast.success("KAYIT OLMA İŞLEMİ BAŞARILI OLDU.", {
+          onClose: () => {
+            // Redirect to the desired page
+            navigate("/");
+          },
+        });
+      } else {
+        toast.error("ERROR! KAYIT OLMA İŞLEMİ BAŞARILI DEĞİL.", {
+          onClose: () => {
+            // Redirect to the desired page
+            navigate("/");
+          },
+        });
+      }
     }
   };
 
@@ -189,6 +252,7 @@ export default function Register() {
 
   return (
     <>
+      <ToastContainer />
       <Snackbar
         open={open}
         autoHideDuration={3000}
@@ -196,9 +260,9 @@ export default function Register() {
         TransitionComponent={TransitionLeft}
         anchorOrigin={{ vertical, horizontal }}
       >
-        <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+        {/* <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
           Hata! E-posta ve şifre alanı boş bırakılamaz.
-        </Alert>
+        </Alert> */}
       </Snackbar>
       <div>
         <Box sx={boxstyle}>
@@ -276,6 +340,13 @@ export default function Register() {
                               required
                               onFocus={() => setUserNameFocus(true)}
                               onBlur={() => setUserNameFocus(false)}
+                              InputProps={{
+                                endAdornment: (
+                                  <InputAdornment position="end">
+                                    <PasswordRequirementsTooltip />
+                                  </InputAdornment>
+                                ),
+                              }}
                             />
                             <FontAwesomeIcon
                               icon={faCheck}
@@ -314,6 +385,13 @@ export default function Register() {
                               required
                               onFocus={() => setUserSurnameFocus(true)}
                               onBlur={() => setUserSurnameFocus(false)}
+                              InputProps={{
+                                endAdornment: (
+                                  <InputAdornment position="end">
+                                    <NamedRequirementsTooltip />
+                                  </InputAdornment>
+                                ),
+                              }}
                             />
                             <FontAwesomeIcon
                               icon={faCheck}
@@ -361,6 +439,20 @@ export default function Register() {
                             onBlur={() => setUserEmailFocus(false)}
                             // Burada belki girilen e-postanın var olup olmadığı araştırılabilir.
                           />
+                          <FontAwesomeIcon
+                              icon={faCheck}
+                              color="white"
+                              className={validEmail ? "valid" : "hide"}
+                            />
+                            <FontAwesomeIcon
+                              icon={faTimes}
+                              color="white"
+                              className={
+                                validEmail || !userEmail
+                                  ? "hide"
+                                  : "invalid"
+                              }
+                            />
                         </Box>
                         <Box
                           sx={{
