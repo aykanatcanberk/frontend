@@ -211,7 +211,7 @@ function ProfileCardComp({ companyData, item }) {
                 marginLeft: "20px",
               }}
             />
-            {companyData.founded}
+            {companyData.fDate}
             <span />
             <br />
             <Typography
@@ -240,7 +240,7 @@ function ProfileCardComp({ companyData, item }) {
                   marginLeft: "20px",
                 }}
               />
-              {companyData.employeeCount}
+              {companyData.totalStaff}
             </Typography>
           </Typography>
         </div>
@@ -297,7 +297,7 @@ function ProfileCardComp({ companyData, item }) {
                 fontSize={"12px"}
                 textAlign={"justify"}
               >
-                {companyData.about}
+                {companyData.description}
               </Typography>
             </Paper>
             <div className="Slider">
@@ -340,7 +340,7 @@ function ProfileCardComp({ companyData, item }) {
                 fontSize={"12px"}
                 textAlign={"justify"}
               >
-                {companyData.expertise}
+                {companyData.prof}
               </Typography>
               <h5>İletişim</h5>
               <Typography
@@ -351,11 +351,11 @@ function ProfileCardComp({ companyData, item }) {
               >
                 <p>{companyData.website}</p>
                 <span />
-                <p>{companyData.address}</p>
+                <p>{companyData.location}</p>
                 <span />
                 <p>{companyData.phone}</p>
                 <span />
-                <p>{companyData.contact}</p>
+                <p>{companyData.phone}</p>
               </Typography>
             </Paper>
           </Grid>

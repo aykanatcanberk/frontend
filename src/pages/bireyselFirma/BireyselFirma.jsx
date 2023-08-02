@@ -80,10 +80,18 @@ const BireyselFirma = () => {
     },
   ];
   useEffect(() => {
-    getCompany(id)
+    getCompany()
       .then((response) => {
-        console.log("API Response:", response.data);
-        setCompanyDataList(response.data);
+        const allCompanies = response.data;
+        console.log(allCompanies)
+        const foundData = allCompanies.find((item) => item.id === Number(id));
+
+        if (foundData) {
+          console.log("API Response:", foundData);
+          setCompanyDataList(foundData);
+        } else {
+          throw new Error("Böyle bir şirket mevcut değil");
+        }
       })
       .catch((error) => {
         return <NotFoundError props={"Böyle bir şirket mevcut değil"} />;
@@ -92,7 +100,7 @@ const BireyselFirma = () => {
 
   return (
     <>
-      <ProfileCardComp companyData={companyDataList} item={deneyimlerim}/>
+      <ProfileCardComp companyData={companyDataList} item={deneyimlerim} />
     </>
   );
 };
