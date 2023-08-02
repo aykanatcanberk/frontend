@@ -56,8 +56,8 @@ const center = {
   top: "50%",
   left: "30%",
 };
-
-const USER_REGEX = /^[A-z][A-z0-9-_]{2,23}$/;
+const USER_REGEX = /^[A-zÇŞĞÜİÖçşğüıö][A-z0-9-_ÇŞĞÜİÖçşğüıö]{2,23}$/;
+//const USER_REGEX = /^[A-z][A-z0-9-_]{2,23}$/;
 // const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/; // Daha güçlü şifre için bunu kullanın
 const PWD_REGEX = /^.{6,}$/;
 const REGISTER_URL = "/register";
