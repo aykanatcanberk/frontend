@@ -14,7 +14,8 @@ import Stack from "@mui/material/Stack";
 import MuiAlert from "@mui/material/Alert";
 import Slide from "@mui/material/Slide";
 import { useNavigate } from "react-router-dom";
-
+import { login1 } from "../../services/loginService";
+import axios from "axios";
 const Alert = forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
@@ -46,14 +47,31 @@ const center = {
 export default function Login() {
   const [open, setOpen] = useState(false);
   const [remember, setRemember] = useState(false);
+  const [email, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
   const vertical = "top";
   const horizontal = "right";
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
-    setOpen(true);
     event.preventDefault();
+    setOpen(true);
     const data = new FormData(event.currentTarget);
+    // login1({ email, password })
+    //   .then((response) => {
+    //     localStorage.setItem("token", response.data);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+    axios
+      .post(`http://localhost:5071/api/Auth/login`, { email, password })
+      .then((res) => {
+        console.log(res);
+        localStorage.setItem("token", res.data);
+        navigate("/bireysel-anasayfa");
+      });
   };
 
   const handleClose = (event, reason) => {
@@ -124,6 +142,8 @@ export default function Login() {
                         <Grid item xs={12} sx={{ ml: "3em", mr: "3em" }}>
                           <TextField
                             required
+                            value={email}
+                            onChange={(e) => setUsername(e.target.value)}
                             fullWidth
                             id="email"
                             label="E-posta"
@@ -133,6 +153,8 @@ export default function Login() {
                         <Grid item xs={12} sx={{ ml: "3em", mr: "3em" }}>
                           <TextField
                             required
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                             fullWidth
                             name="şifre"
                             label="Şifre"

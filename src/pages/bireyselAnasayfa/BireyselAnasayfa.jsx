@@ -8,7 +8,7 @@ import TakipEdilenFirmalar from "../../components/tkpEdilenFirmalar/TakipEdilenF
 import IlgılıIlanlar from "../../components/ilgiliIlanlar/IlgılıIlanlar";
 import PopulerIcerikler from "../../components/populerIcerikler/PopulerIcerikler";
 import { getUserPosts } from "../../services/userService";
-
+import axios from "axios";
 const PageWrapper = styled(Grid)({
   padding: "2rem",
   margin: "0 auto",
@@ -39,6 +39,29 @@ const BireyselAnasayfa = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
+  }, []);
+
+  useEffect(() => {
+    // Function to fetch data
+    const fetchData = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        console.log(token);
+        // Set the token in the Authorization header
+        axios.defaults.headers.common["Authorization"] = `Bearer {token}`;
+
+        const response = await axios.get(
+          "http://localhost:5071/api/PersonProfile"
+        );
+        console.log(response.data);
+      } catch (error) {
+        // Handle error
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    // Call the function
+    fetchData();
   }, []);
 
   const loadInitialData = () => {
