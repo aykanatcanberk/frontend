@@ -61,7 +61,6 @@ const EditSahsiBilgiler = ({ onClose, onSave, initialData, isOpen }) => {
         <PostInputWrapper
           name="birthDate"
           type="date"
-          label="Doğum Tarihi"
           variant="outlined"
           value={editedData.birthDate}
           onChange={handleChange}
