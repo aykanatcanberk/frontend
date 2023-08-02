@@ -1,0 +1,24 @@
+/* BireyselProfil.css */
+/* ... (other styles) */
+
+.popup-container {
+  /* ... (your existing styles for positioning and z-index) */
+}
+
+.popup-content {
+  /* Initial state of the pop-up (before animation) */
+  opacity: 0;
+  transform: scale(0.5); /* Start with a smaller size */
+
+  /* Add transition properties for smooth animation */
+  transition-property: opacity, transform;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+}
+
+.popup-container.active .popup-content {
+  /* The active class is added to the .popup-container when the pop-up is enabled */
+  opacity: 1;
+  transform: scale(1); /* Scale back to normal size */
+}
+

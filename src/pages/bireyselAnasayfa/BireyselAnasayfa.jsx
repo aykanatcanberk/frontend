@@ -7,6 +7,7 @@ import ProfilComp from "../../components/bryselAsayfaProfilComp/profilComp";
 import TakipEdilenFirmalar from "../../components/tkpEdilenFirmalar/TakipEdilenFirmalar";
 import IlgılıIlanlar from "../../components/ilgiliIlanlar/IlgılıIlanlar";
 import PopulerIcerikler from "../../components/populerIcerikler/PopulerIcerikler";
+import { getAllPosts } from "../../services/postServices";
 import { getUserPosts } from "../../services/userService";
 
 const PageWrapper = styled(Grid)({
