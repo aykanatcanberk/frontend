@@ -415,8 +415,8 @@ function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {
                 />
               </Grid>
 
-              <Grid className="right-side" item xs={6}>
-                <CardWrapperForTitles elevation={4}>
+              <Grid className="right-side" item xs={6} >
+                <CardWrapperForTitles elevation={4} style={{ marginLeft: 15}}>
                   <Typography
                     variant="subtitle1"
                     style={{
