@@ -429,7 +429,7 @@ export default function Register() {
                             fullWidth
                             type="password"
                             id="şifre"
-                            label="Şifre Tekrardan"
+                            label="Şifre Tekrarı"
                             variant="standard"
                             onChange={(e) => setMatchPwd(e.target.value)}
                             value={matchPwd}
