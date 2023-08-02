@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Grid, Paper, Typography } from "@mui/material";
+import { Grid, Paper, Typography, IconButton } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import DeneyimYorumu from "./DeneyimYorumu";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 import "./BireyselProfil.css";
 import {
   getAllExperienceReviews,
@@ -16,13 +17,20 @@ import EgitimGecmisi from "./Ozgecmis/EgitimGecmisi/EgitimGecmisi";
 import IsGecmisi from "./Ozgecmis/IsGecmisi/IsGecmisi";
 import SahsiBilgiler from "./Ozgecmis/SahsiBilgiler/SahsiBilgiler";
 import EditSahsiBilgiler from "./Ozgecmis/SahsiBilgiler/EditSahsiBilgiler";
-import BlurredBackgroundWrapper from "./BlurredBackgroundWrapper";
 import EditEgitimGecmisi from "./Ozgecmis/EgitimGecmisi/EditEgitimGecmisi";
 import EditIsGecmisi from "./Ozgecmis/IsGecmisi/EditIsGecmisi";
 import UserAllPostsSlider from "./UserAllPostsSlider";
 import { getAllPosts } from "../../services/postServices";
 import SinglePost from "./SinglePost";
 import GonderiCard from "../../components/gonderiCard/gonderiCard";
+import {
+  getUserById,
+  getUserPrivateInformationById,
+  getUserWorkBackgroundById,
+  updatePrivateInformation,
+  updateUserEduBackgroundInformation,
+} from "../../services/userServices";
+import AddIsGecmisi from "./Ozgecmis/IsGecmisi/AddIsGecmisi";
 
 const PageWrapper = styled(Grid)({
   padding: "2rem",
@@ -55,6 +63,7 @@ const CardWrapperForTitles = styled(Paper)({
   marginBottom: "10px",
   borderRadius: "3px",
   display: "inline-block",
+  marginLeft: "0px",
 });
 
 const AvatarWrapper = styled(Avatar)({
@@ -127,16 +136,26 @@ function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {
 
   const [expReviewsSelf, setExpReviewsSelf] = useState([]);
 
-  // useEffect(() => {
-  //   console.log(getSelfExperiences().promiseResult);
-  //   const selfRev = getSelfExperiences();
-  //   setExpReviewsSelf(getSelfExperiences());
-  // }, []);
+  const [userWorkBackground, setUserWorkBackground] = useState([]);
+
+  useEffect(() => {
+    getUserWorkBackgroundById(1)
+      .then((response) => {
+        setUserWorkBackground(userWorkBackground.data);
+        console.log(userWorkBackground);
+      })
+      .catch((error) => {
+        console.log(
+          "there is an error with getting the posts in bireyselporfil " +
+            error.massage
+        );
+      });
+  }, []);
 
   const initialPrivateInfo = {
-    name: "John",
-    surname: "Doe",
-    email: "john.doe@example.com",
+    userName: "John",
+    userSurname: "Doe",
+    eMail: "john.doe@example.com",
     birthDate: "10/10/10",
     city: "İstanbul",
     cellNumber: "123-456-7890",
@@ -158,6 +177,7 @@ function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {
     endDate: "",
     personnelNumber: "engineering",
     confirmationLetter: "?",
+    confirmationState: "notConfirmed",
   };
 
   const [privateInfo, setPrivateInfo] = useState(initialPrivateInfo);
@@ -169,51 +189,84 @@ function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {
   const [workBackground, setWorkBackground] = useState(initialWorkBackground);
   const [isEditingWorkBackground, setIsEditingWorkBackground] = useState(false);
 
+  const [editWorkBackgroundIndex, setEditWorkBackgroundIndex] = useState(-1);
+
+  const [isAddingNewWorkBackground, setIsAddingNewWorkBackground] =
+    useState(false);
+
+  const [userInfo, setUserInfo] = useState({});
+
+  useEffect(() => {
+    getUserById(1)
+      .then((res) => {
+        setUserInfo(res);
+        const info = {
+          userName: res.userName,
+          surname: res.userSurname,
+          email: res.eMail,
+          birthDate: res.userPrivateInfo.birthDate,
+          city: res.userPrivateInfo.city,
+          cellNumber: res.userPrivateInfo.cellNumber,
+        };
+        handleEditPrivateInfoSave(info);
+      })
+      .catch((error) => {
+        console.log(
+          "there is an error with getting the posts in bireyselporfil " +
+            error.massage
+        );
+      });
+  }, []);
+
   const handleEditPrivateInfoClick = () => {
     setIsEditingPrivateInfo(true);
-    disableScroll();
   };
 
   const handleEditEduBackgroundClick = () => {
     setIsEditingEduBackground(true);
-    disableScroll();
   };
 
   const handleEditWorkBackgroundClick = () => {
     setIsEditingWorkBackground(true);
-    disableScroll();
+  };
+
+  const handleAddWorkBackgroundClick = () => {
+    setIsAddingNewWorkBackground(true);
   };
 
   const handleEditPrivateInfoSave = (editedSahsiInfo) => {
+    updatePrivateInformation(
+      { ...userInfo, userEduBackground: editedSahsiInfo },
+      1
+    );
+
     setPrivateInfo(editedSahsiInfo);
-    enableScroll();
+    setIsEditingPrivateInfo(false);
   };
 
   const handleEditEduBackgroundSave = (editedEduBackground) => {
+    // updateUserEduBackgroundInformation(editedEduBackground, 1);
+
     setEduBackground(editedEduBackground);
-    enableScroll();
+    setIsEditingEduBackground(false);
   };
 
   const handleEditWorkBackgroundSave = (editedWorkBackground) => {
     setWorkBackground(editedWorkBackground);
-    enableScroll();
+    setIsEditingWorkBackground(false);
   };
 
-  const disableScroll = () => {
-    document.body.style.overflow = "hidden";
-  };
-
-  const enableScroll = () => {
-    document.body.style.overflow = "auto";
+  const handleAddWorkBackgroundSave = (editedWorkBackground) => {
+    // setWorkBackground(editedWorkBackground);
+    setIsAddingNewWorkBackground(false);
   };
 
   const handleEditCancel = () => {
     setIsEditingPrivateInfo(false);
     setIsEditingEduBackground(false);
     setIsEditingWorkBackground(false);
-    enableScroll();
+    setIsAddingNewWorkBackground(false);
   };
-
 
   const [allPosts, setAllPosts] = useState([]);
   useEffect(() => {
@@ -222,7 +275,10 @@ function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {
         setAllPosts(response.data);
       })
       .catch((error) => {
-        console.log("there is an error with getting the posts in bireyselporfil " + error.massage);
+        console.log(
+          "there is an error with getting the posts in bireyselporfil " +
+            error.massage
+        );
       });
   }, []);
 
@@ -230,40 +286,30 @@ function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {
     if (sharedPostsActive) {
       return (
         <>
-          <Grid className="left-side" item xs={6}>
-            <ProfileWrapper elevation={0}>
+          <div>
+          <ProfileWrapper>
               <AvatarWrapper src={avatarSrc} alt="Profil Avatarı" />
               <div>
-                <Grid container alignItems="left">
-                  <CardWrapperForTitles elevation={4} alignSelf="right">
-                    <Typography
-                      variant="subtitle1"
-                      style={{
-                        fontFamily: "Arial",
-                        fontSize: "18px",
-                        fontWeight: "bold",
-                        alignSelf: "left",
-                        flex: "auto",
-                      }}
-                    >
-                      AD-SOYAD
-                    </Typography>
-                  </CardWrapperForTitles>
-                  <CardWrapperForTitles elevation={4} alignSelf="right">
-                    <Typography
-                      variant="subtitle1"
-                      style={{
-                        fontFamily: "Arial",
-                        fontSize: "18px",
-                        fontWeight: "bold",
-                        alignSelf: "left",
-                        flex: "auto",
-                      }}
-                    >
-                      Departman
-                    </Typography>
-                  </CardWrapperForTitles>
-                </Grid>
+                <Typography
+                  variant="h6"
+                  style={{
+                    fontFamily: "Arial",
+                    fontSize: "14px",
+                    fontWeight: "normal",
+                  }}
+                >
+                  User Name
+                </Typography>
+                <Typography
+                  variant="h6"
+                  style={{
+                    fontFamily: "Arial",
+                    fontSize: "14px",
+                    fontWeight: "normal",
+                  }}
+                >
+                  Department
+                </Typography>
               </div>
             </ProfileWrapper>
 
@@ -271,40 +317,45 @@ function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {
               sharedPostsActive={sharedPostsActive}
               setSharedPostsActive={setSharedPostsActive}
             />
-            <NewPost url={"/posts"} userId={1} />
-            <br />
-            <Paper
-              className="allPosts"
-              style={{
-                maxHeight: 600,
-                width: "100%",
-                elevation: "0",
-                overflow: "auto",
-                backgroundColor: "white",
-                alignContent: "center",
+          </div>
+          <div style={{ width: "100%", height: "100%", marginTop: "1rem" }}>
+            <Grid container spacing={5}>
+              <Grid className="left-side" item xs={6}>
+                <NewPost url={"/posts"} userId={1} />
+                <br />
+                <Paper
+                  className="allPosts"
+                  style={{
+                    maxHeight: 600,
+                    width: "100%",
+                    elevation: "0",
+                    overflow: "auto",
+                    backgroundColor: "white",
+                    alignContent: "center",
+                  }}
+                >
+                  {allPosts.map((post, index) => (
+                    <GonderiCard key={index} userPosts={post} />
+                  ))}
+                </Paper>
+              </Grid>
 
-              }}
-            >
-              {allPosts.map((post, index) => (
-                <GonderiCard  key={index} userPosts={post} />
-              ))}
-            </Paper>
-          </Grid>
-
-          <Grid className="right-side" item xs={6}>
-            <CardWrapper>DENEYİM YORUMLARIM</CardWrapper>
-            <CardWrapper elevation={12}>
-              {expReviewsSelf.map((expReview) => (
-                <DeneyimYorumu expReview={expReview} />
-              ))}
-            </CardWrapper>
-          </Grid>
+              <Grid className="right-side" item xs={6}>
+                <CardWrapper>DENEYİM YORUMLARIM</CardWrapper>
+                <CardWrapper elevation={12}>
+                  {expReviewsSelf.map((expReview) => (
+                    <DeneyimYorumu expReview={expReview} />
+                  ))}
+                </CardWrapper>
+              </Grid>
+            </Grid>
+          </div>
         </>
       );
     } else {
       return (
         <>
-          <Grid className="left-side" item xs={6}>
+          <div>
             <ProfileWrapper>
               <AvatarWrapper src={avatarSrc} alt="Profil Avatarı" />
               <div>
@@ -330,64 +381,121 @@ function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {
                 </Typography>
               </div>
             </ProfileWrapper>
+
             <PageChangeButtons
               sharedPostsActive={sharedPostsActive}
               setSharedPostsActive={setSharedPostsActive}
             />
+          </div>
 
-            <BlurredBackgroundWrapper
-              isShown={isEditingPrivateInfo || isEditingEduBackground}
-            >
-              <SahsiBilgiler
-                sahsiBilgiler={privateInfo}
-                onEditClick={handleEditPrivateInfoClick}
-              />
+          <div style={{ width: "100%", height: "100%", marginTop: "1rem" }}>
+            <Grid container spacing={5}>
+              <Grid className="left-side" item xs={6}>
+                <SahsiBilgiler
+                  sahsiBilgiler={privateInfo}
+                  onEditClick={handleEditPrivateInfoClick}
+                />
 
-              {isEditingPrivateInfo && (
-                <div className="popup-container">
-                  <EditSahsiBilgiler
-                    initialData={privateInfo}
-                    onClose={handleEditCancel}
-                    onSave={handleEditPrivateInfoSave}
+                <EditSahsiBilgiler
+                  initialData={privateInfo}
+                  onClose={handleEditCancel}
+                  onSave={handleEditPrivateInfoSave}
+                  isOpen={isEditingPrivateInfo}
+                />
+
+                <EgitimGecmisi
+                  eduBackground={eduBackground}
+                  onEditClick={handleEditEduBackgroundClick}
+                />
+                <EditEgitimGecmisi
+                  initialData={eduBackground}
+                  onClose={handleEditCancel}
+                  onSave={handleEditEduBackgroundSave}
+                  isOpen={isEditingEduBackground}
+                />
+              </Grid>
+
+              <Grid className="right-side" item xs={6}>
+                <CardWrapperForTitles elevation={4}>
+                  <Typography
+                    variant="subtitle1"
+                    style={{
+                      fontFamily: "Arial",
+                      fontSize: "18px",
+                      fontWeight: "bold",
+                      alignSelf: "left",
+                      flex: "auto",
+                    }}
+                  >
+                    İş Geçmişi
+                  </Typography>
+                </CardWrapperForTitles>
+
+                <IconButton
+                  color="primary"
+                  aria-label="add new work experience"
+                  size="large"
+                  onClick={handleAddWorkBackgroundClick}
+                >
+                  <AddCircleIcon backgroundColor="#47e632" />
+                </IconButton>
+
+                <Paper
+                  className="allPosts"
+                  style={{
+                    maxHeight: 600,
+                    width: "100%",
+                    elevation: "0",
+                    overflow: "auto",
+                    backgroundColor: "white",
+                    alignContent: "left",
+                    marginLeft: "0px",
+                  }}
+                  elevation={0}
+                >
+                  <IsGecmisi
+                    workBackground={workBackground}
+                    onEditClick={handleEditWorkBackgroundClick}
+                    style={{ marginLeft: 400 }}
                   />
-                </div>
-              )}
 
-              <EgitimGecmisi
-                eduBackground={eduBackground}
-                onEditClick={handleEditEduBackgroundClick}
-              />
-
-              {isEditingEduBackground && (
-                <div className="popup-container">
-                  <EditEgitimGecmisi
-                    initialData={eduBackground}
-                    onClose={handleEditCancel}
-                    onSave={handleEditEduBackgroundSave}
+                  <IsGecmisi
+                    workBackground={workBackground}
+                    onEditClick={handleEditWorkBackgroundClick}
                   />
-                </div>
-              )}
-            </BlurredBackgroundWrapper>
-          </Grid>
 
-          <Grid className="right-side" item xs={6}>
-            <BlurredBackgroundWrapper isShown={isEditingWorkBackground}>
-              <IsGecmisi
-                workBackground={workBackground}
-                onEditClick={handleEditWorkBackgroundClick}
-              />
-
-              {isEditingWorkBackground && (
-                <div className="popup-container">
-                  <EditIsGecmisi
-                    initialData={workBackground}
-                    onClose={handleEditCancel}
-                    onSave={handleEditWorkBackgroundSave}
+                  <IsGecmisi
+                    workBackground={workBackground}
+                    onEditClick={handleEditWorkBackgroundClick}
                   />
-                </div>
-              )}
-            </BlurredBackgroundWrapper>
-          </Grid>
+
+                  <IsGecmisi
+                    workBackground={workBackground}
+                    onEditClick={handleEditWorkBackgroundClick}
+                  />
+
+                  <IsGecmisi
+                    workBackground={workBackground}
+                    onEditClick={handleEditWorkBackgroundClick}
+                  />
+                </Paper>
+
+                <AddIsGecmisi
+                  initialData={{}}
+                  onClose={handleEditCancel}
+                  onSave={handleAddWorkBackgroundClick}
+                  isOpen={isAddingNewWorkBackground}
+                />
+
+                {/* <EditIsGecmisi
+              initialData={isAddingNewWorkBackground ? workBackground : {}}
+              onClose={handleEditCancel}
+              onSave={handleEditWorkBackgroundSave}
+              isOpen={isEditingWorkBackground}
+            /> */}
+              </Grid>
+            </Grid>
+          </div>
         </>
       );
     }
@@ -406,3 +514,143 @@ function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {
 }
 
 export default BireyselProfil;
+
+{
+  /* <Grid className="left-side" item xs={6}>
+<ProfileWrapper>
+  <AvatarWrapper src={avatarSrc} alt="Profil Avatarı" />
+  <div>
+    <Typography
+      variant="h6"
+      style={{
+        fontFamily: "Arial",
+        fontSize: "14px",
+        fontWeight: "normal",
+      }}
+    >
+      User Name
+    </Typography>
+    <Typography
+      variant="h6"
+      style={{
+        fontFamily: "Arial",
+        fontSize: "14px",
+        fontWeight: "normal",
+      }}
+    >
+      Department
+    </Typography>
+  </div>
+</ProfileWrapper>
+
+<PageChangeButtons
+  sharedPostsActive={sharedPostsActive}
+  setSharedPostsActive={setSharedPostsActive}
+/>
+
+<SahsiBilgiler
+  sahsiBilgiler={privateInfo}
+  onEditClick={handleEditPrivateInfoClick}
+/>
+
+<EditSahsiBilgiler
+  initialData={privateInfo}
+  onClose={handleEditCancel}
+  onSave={handleEditPrivateInfoSave}
+  isOpen={isEditingPrivateInfo}
+/>
+
+<EgitimGecmisi
+  eduBackground={eduBackground}
+  onEditClick={handleEditEduBackgroundClick}
+/>
+<EditEgitimGecmisi
+  initialData={eduBackground}
+  onClose={handleEditCancel}
+  onSave={handleEditEduBackgroundSave}
+  isOpen={isEditingEduBackground}
+/>
+</Grid>
+
+<Grid className="right-side" item xs={6}>
+<CardWrapperForTitles elevation={4}>
+  <Typography
+    variant="subtitle1"
+    style={{
+      fontFamily: "Arial",
+      fontSize: "18px",
+      fontWeight: "bold",
+      alignSelf: "left",
+      flex: "auto",
+    }}
+  >
+    İş Geçmişi
+  </Typography>
+</CardWrapperForTitles>
+
+<IconButton
+  color="primary"
+  aria-label="add new work experience"
+  size="large"
+  onClick={handleAddWorkBackgroundClick}
+>
+  <AddCircleIcon backgroundColor="#47e632" />
+</IconButton>
+
+<Paper
+  className="allPosts"
+  style={{
+    maxHeight: 600,
+    width: "100%",
+    elevation: "0",
+    overflow: "auto",
+    backgroundColor: "white",
+    alignContent: "center",
+  }}
+  elevation={0}
+>
+  <IsGecmisi
+    workBackground={workBackground}
+    onEditClick={handleEditWorkBackgroundClick}
+  />
+
+  <IsGecmisi
+    workBackground={workBackground}
+    onEditClick={handleEditWorkBackgroundClick}
+  />
+
+  <IsGecmisi
+    workBackground={workBackground}
+    onEditClick={handleEditWorkBackgroundClick}
+  />
+
+  <IsGecmisi
+    workBackground={workBackground}
+    onEditClick={handleEditWorkBackgroundClick}
+  />
+
+  <IsGecmisi
+    workBackground={workBackground}
+    onEditClick={handleEditWorkBackgroundClick}
+  />
+</Paper>
+
+<AddIsGecmisi
+  initialData={{}}
+  onClose={handleEditCancel}
+  onSave={handleAddWorkBackgroundClick}
+  isOpen={isAddingNewWorkBackground}
+/>
+
+
+</Grid> */
+}
+
+{
+  /* <EditIsGecmisi
+  initialData={isAddingNewWorkBackground ? workBackground : {}}
+  onClose={handleEditCancel}
+  onSave={handleEditWorkBackgroundSave}
+  isOpen={isEditingWorkBackground}
+/> */
+}

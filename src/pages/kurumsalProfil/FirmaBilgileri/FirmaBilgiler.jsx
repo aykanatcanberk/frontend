@@ -222,25 +222,17 @@ function FirmaBilgileri({ companyInfo, onEditClick }) {
             </Typography>
             <br />
 
-            {/* Add other input fields here */}
           </Grid>
         </Grid>
         <ButtonsWrapper>
-          <RoundButton
-            type="submit"
-            variant="contained"
-            color="primary"
-            size="small"
-          >
-            EKLE
-          </RoundButton>
           <RoundButton
             variant="contained"
             color="primary"
             size="small"
             onClick={onEditClick}
+            style={{ marginLeft: "80%"}}
           >
-            DÜZENLE (EĞER DOLUYSA)
+            DÜZENLE
           </RoundButton>
         </ButtonsWrapper>
       </CardWrapperLeftAligned>

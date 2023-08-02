@@ -1,15 +1,21 @@
 import axios from "axios";
 
+const BASE_URL = process.env.REACT_APP_BACKEND_URL;
+
 export const getUserById = async (userId) => {
-  try {
-    const response = await axios.get(
-      process.env.REACT_APP_BACKEND_URL + "users?userID=" + userId
-    );
-    return response.data; // Assuming you want to return the data array from the response
-  } catch (err) {
-    console.error("Login Failed due to: " + err.message);
-    return {}; // Return an empty object in case of an error
-  }
+  // try {
+  //   const response = await axios.get(
+  //     process.env.REACT_APP_BACKEND_URL + "users?userID=" + userId
+  //   );
+  //   return response.data; // Assuming you want to return the data array from the response
+  // } catch (err) {
+  //   console.error("Login Failed due to: " + err.message);
+  //   return {}; // Return an empty object in case of an error
+  // }
+
+  const user = await axios.get(`${BASE_URL}/users/${userId}`);
+ 
+  return user.data;
 };
 
 //process.env.BACKEND_URL +
@@ -35,8 +41,24 @@ export const getUserByName = async (userName) => {
   }
 };
 
-export const addPersonalInformation = async (newPost, path) => {
-  return axios.post(process.env.REACT_APP_BACKEND_URL + path, newPost);
+export const getUserPrivateInformationById = async (id) => {
+  const user = await axios.get(`${BASE_URL}/users/${id}`);
+ 
+  return user.data.userPrivateInfo;
+};
+
+export const getUserWorkBackgroundById = async (id) => {
+  const user = await axios.get(`${BASE_URL}/users/${id}`);
+ 
+  return user.data.userWorkBackground;
+};
+
+export const updatePrivateInformation = async (newPrivateInfo, id) => {
+  return axios.put(`${BASE_URL}/users/${id}/`, newPrivateInfo);
+};
+
+export const updateUserEduBackgroundInformation = async (newEduInfo, id) => {
+  return axios.put(`${BASE_URL}/userEduBackground/${id}`, newEduInfo);
 };
 
 

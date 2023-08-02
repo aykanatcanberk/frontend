@@ -146,7 +146,7 @@ function EgitimGecmisi({ eduBackground, onEditClick }) {
                 alignSelf: "left",
               }}
             >
-             {eduBackground.eduStatus}
+              {eduBackground.eduStatus}
             </Typography>
             <br />
 
@@ -179,20 +179,13 @@ function EgitimGecmisi({ eduBackground, onEditClick }) {
         </Grid>
         <ButtonsWrapper>
           <RoundButton
-            type="submit"
-            variant="contained"
-            color="primary"
-            size="small"
-          >
-            EKLE
-          </RoundButton>
-          <RoundButton
             variant="contained"
             color="primary"
             size="small"
             onClick={onEditClick}
+            style={{ marginLeft: "80%"}}
           >
-            DÜZENLE (EĞER DOLUYSA)
+            DÜZENLE
           </RoundButton>
         </ButtonsWrapper>
       </CardWrapperLeftAligned>

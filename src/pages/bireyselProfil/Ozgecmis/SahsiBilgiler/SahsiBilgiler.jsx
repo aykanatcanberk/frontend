@@ -50,7 +50,7 @@ function SahsiBilgiler({ sahsiBilgiler, onEditClick }) {
                 alignSelf: "left",
               }}
             >
-              {sahsiBilgiler.name}
+              {sahsiBilgiler.userName}
             </Typography>
             <br />
 
@@ -146,7 +146,7 @@ function SahsiBilgiler({ sahsiBilgiler, onEditClick }) {
                 alignSelf: "left",
               }}
             >
-             {sahsiBilgiler.city}
+              {sahsiBilgiler.city}
             </Typography>
             <br />
 
@@ -179,20 +179,13 @@ function SahsiBilgiler({ sahsiBilgiler, onEditClick }) {
         </Grid>
         <ButtonsWrapper>
           <RoundButton
-            type="submit"
-            variant="contained"
-            color="primary"
-            size="small"
-          >
-            EKLE
-          </RoundButton>
-          <RoundButton
             variant="contained"
             color="primary"
             size="small"
             onClick={onEditClick}
+            style={{ marginLeft: "80%"}}
           >
-            DÜZENLE (EĞER DOLUYSA)
+            DÜZENLE
           </RoundButton>
         </ButtonsWrapper>
       </CardWrapperLeftAligned>

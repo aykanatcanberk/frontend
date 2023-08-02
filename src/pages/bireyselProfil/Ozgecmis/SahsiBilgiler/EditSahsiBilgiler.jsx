@@ -1,25 +1,14 @@
-// src/EditPopup.js
 import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
+import Dialog from "@mui/material/Dialog";
 
-import { Grid, Paper, Typography } from "@mui/material";
+import {
+  Button,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+} from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { ButtonsWrapper, EqualWidthButton } from "../../CustomStyledComponents";
-
-const CardWrapper = styled(Paper)({
-  padding: "1rem",
-  marginBottom: "10px",
-  borderRadius: "3px",
-  position: "fixed",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  display: "flex",
-  flexDirection: "column", // Arrange items in a column
-  alignItems: "flex-start", // Align items to the left
-  zIndex: "9999",
-  width: "30%",
-});
 
 const PostInputWrapper = styled(TextField)({
   margin: "10px 0",
@@ -27,11 +16,16 @@ const PostInputWrapper = styled(TextField)({
   "& .MuiOutlinedInput-root": {
     borderRadius: "10px",
   },
-  width : "95%",
-  marginLeft : "2.5%",
+  width: "95%",
+  marginLeft: "2.5%",
 });
 
-const EditSahsiBilgiler = ({ onClose, onSave, initialData }) => {
+const EqualWidthButton = styled(Button)({
+  flex: 1, // Make the buttons share the available space equally
+  margin: "0 5px", // Optional: Add some margin between the buttons
+});
+
+const EditSahsiBilgiler = ({ onClose, onSave, initialData, isOpen }) => {
   const [editedData, setEditedData] = useState({ ...initialData });
 
   const handleChange = (event) => {
@@ -39,69 +33,67 @@ const EditSahsiBilgiler = ({ onClose, onSave, initialData }) => {
     setEditedData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleSave = () => {
-    console.log("edited data : ");
-    console.log(editedData);
-    onSave(editedData);
-    onClose();
-  };
-
   return (
-    <CardWrapper className="popup-container">
-      <h2>Şahsi Bilgileri Düzenle</h2>
+    <Dialog open={isOpen} className="popup-container">
+      <DialogTitle>Şahsi Bilgileri Düzenle</DialogTitle>
+      <DialogContent>
+        <PostInputWrapper
+          name="userName"
+          label="Ad"
+          variant="outlined"
+          value={editedData.userName}
+          onChange={handleChange}
+        />
+        <PostInputWrapper
+          name="userSurname"
+          label="Soyad"
+          variant="outlined"
+          value={editedData.userSurname}
+          onChange={handleChange}
+        />
+        <PostInputWrapper
+          name="email"
+          label="Email"
+          variant="outlined"
+          value={editedData.email}
+          onChange={handleChange}
+        />
+        <PostInputWrapper
+          name="birthDate"
+          type="date"
+          label="Doğum Tarihi"
+          variant="outlined"
+          value={editedData.birthDate}
+          onChange={handleChange}
+        />
+        <PostInputWrapper
+          name="city"
+          label="Şehir"
+          variant="outlined"
+          value={editedData.city}
+          onChange={handleChange}
+        />
+        <PostInputWrapper
+          name="cellNumber"
+          label="Cep Numarası"
+          variant="outlined"
+          value={editedData.cellNumber}
+          onChange={handleChange}
+        />
+      </DialogContent>
 
-      <PostInputWrapper
-        name="name"
-        label="Ad"
-        variant="outlined"
-        value={editedData.name}
-        onChange={handleChange}
-      />
-      <PostInputWrapper
-        name="surname"
-        label="Soyad"
-        variant="outlined"
-        value={editedData.surname}
-        onChange={handleChange}
-      />
-      <PostInputWrapper
-        name="email"
-        label="Email"
-        variant="outlined"
-        value={editedData.email}
-        onChange={handleChange}
-      />
-      <PostInputWrapper
-        name="birthDate"
-        type="date"
-        label="Doğum Tarihi"
-        variant="outlined"
-        value={editedData.birthDate}
-        onChange={handleChange}
-      />
-      <PostInputWrapper
-        name="city"
-        label="Şehir"
-        variant="outlined"
-        value={editedData.city}
-        onChange={handleChange}
-      />
-      <PostInputWrapper
-        name="cellNumber"
-        label="Cep Numarası"
-        variant="outlined"
-        value={editedData.cellNumber}
-        onChange={handleChange}
-      />
-      <ButtonsWrapper>
-        <EqualWidthButton onClick={handleSave} variant="contained">
+      <DialogActions>
+        <EqualWidthButton
+          onClick={() => onSave(editedData)}
+          variant="contained"
+        >
           Kaydet
         </EqualWidthButton>
         <EqualWidthButton onClick={onClose} variant="contained">
           İptal Et
         </EqualWidthButton>
-      </ButtonsWrapper>
-    </CardWrapper>
+      </DialogActions>
+    </Dialog>
   );
 };
 

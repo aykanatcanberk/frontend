@@ -5,7 +5,6 @@ import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { getAllPosts } from "../../services/postServices";
-import BlurredBackgroundWrapper from "./BlurredBackgroundWrapper";
 import FirmaBilgileri from "./FirmaBilgileri/FirmaBilgiler";
 import EditFirmaBilgileri from "./FirmaBilgileri/EditFirmaBilgileri";
 import NewPost from "../bireyselProfil/NewPost";
@@ -97,25 +96,15 @@ function KurumsalProfil({ avatarSrc = "url_profil_avatar", name, school }) {
 
   const handleEditPrivateCompanyInfoClick = () => {
     setIsEditingPrivateCompanyInfo(true);
-    disableScroll();
   };
 
   const handleEditPrivateCompanyInfoSave = (editedCompanyInfo) => {
+    setIsEditingPrivateCompanyInfo(false);
     setPrivateCompanyInfo(editedCompanyInfo);
-    enableScroll();
-  };
-
-  const disableScroll = () => {
-    document.body.style.overflow = "hidden";
-  };
-
-  const enableScroll = () => {
-    document.body.style.overflow = "auto";
   };
 
   const handleEditCancel = () => {
     setIsEditingPrivateCompanyInfo(false);
-    enableScroll();
   };
 
   useEffect(() => {
@@ -135,10 +124,12 @@ function KurumsalProfil({ avatarSrc = "url_profil_avatar", name, school }) {
         setAllPosts(response.data);
       })
       .catch((error) => {
-        console.log("there is an error with getting the posts in bireyselporfil " + error.massage);
+        console.log(
+          "there is an error with getting the posts in bireyselporfil " +
+            error.massage
+        );
       });
   }, []);
-
 
   function handleRendering() {
     return (
@@ -166,42 +157,35 @@ function KurumsalProfil({ avatarSrc = "url_profil_avatar", name, school }) {
             </div>
           </ProfileWrapper>
 
-          <BlurredBackgroundWrapper isShown={isEditingPrivateCompanyInfo}>
-            <FirmaBilgileri
-              companyInfo={privateCompanyInfo}
-              onEditClick={handleEditPrivateCompanyInfoClick}
-            />
-
-            {isEditingPrivateCompanyInfo && (
-              <div className="popup-container">
-                <EditFirmaBilgileri
-                  initialData={isEditingPrivateCompanyInfo}
-                  onClose={handleEditCancel}
-                  onSave={handleEditPrivateCompanyInfoSave}
-                />
-              </div>
-            )}
-          </BlurredBackgroundWrapper>
+          <FirmaBilgileri
+            companyInfo={privateCompanyInfo}
+            onEditClick={handleEditPrivateCompanyInfoClick}
+          />
+          <EditFirmaBilgileri
+            initialData={privateCompanyInfo}
+            onClose={handleEditCancel}
+            onSave={handleEditPrivateCompanyInfoSave}
+            isOpen={isEditingPrivateCompanyInfo}
+          />
         </Grid>
         <Grid className="right-side" item xs={6}>
-        <NewPost url={"/posts"} userId={1} />
-            <br />
-            <Paper
-              className="allPosts"
-              style={{
-                maxHeight: 600,
-                width: "100%",
-                elevation: "0",
-                overflow: "auto",
-                backgroundColor: "white",
-                alignContent: "center",
-
-              }}
-            >
-              {allPosts.map((post, index) => (
-                <GonderiCard  key={index} userPosts={post} />
-              ))}
-            </Paper>
+          <NewPost url={"/posts"} userId={1} />
+          <br />
+          <Paper
+            className="allPosts"
+            style={{
+              maxHeight: 600,
+              width: "100%",
+              elevation: "0",
+              overflow: "auto",
+              backgroundColor: "white",
+              alignContent: "center",
+            }}
+          >
+            {allPosts.map((post, index) => (
+              <GonderiCard key={index} userPosts={post} />
+            ))}
+          </Paper>
         </Grid>
       </>
     );

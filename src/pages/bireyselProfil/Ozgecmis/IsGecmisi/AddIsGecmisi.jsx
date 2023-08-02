@@ -2,7 +2,14 @@ import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
 
-import { Button, DialogActions, DialogContent, DialogTitle } from "@mui/material";
+import {
+  Button,
+  Checkbox,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  FormControlLabel,
+} from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 const PostInputWrapper = styled(TextField)({
@@ -20,7 +27,14 @@ const EqualWidthButton = styled(Button)({
   margin: "0 5px", // Optional: Add some margin between the buttons
 });
 
-const EditEgitimGecmisi = ({ onClose, onSave, initialData, isOpen }) => {
+const Calender = styled('div')({
+  flex: "auto",
+  flexDirection: "row"
+  
+});
+
+const AddIsGecmisi = ({ onClose, onSave, initialData, isOpen }) => {
+  const [isCurrentlyWorking, setIsCurrentlyWorking] = useState(false);
   const [editedData, setEditedData] = useState({ ...initialData });
 
   const handleChange = (event) => {
@@ -30,29 +44,54 @@ const EditEgitimGecmisi = ({ onClose, onSave, initialData, isOpen }) => {
 
   return (
     <Dialog open={isOpen} className="popup-container">
-      <DialogTitle>Eğitim Geçmişi Düzenle</DialogTitle>
+      <DialogTitle>İş Geçmişi Ekle</DialogTitle>
       <DialogContent>
         <PostInputWrapper
-          name="graduate"
-          label="Lisans"
+          name="companyName"
+          label="Şirket Adı"
           variant="outlined"
-          value={editedData.graduate}
+          value={editedData.companyName}
           onChange={handleChange}
         />
         <PostInputWrapper
-          name="year"
-          label="Sınıf"
+          name="workPosition"
+          label="Pozisyon"
           variant="outlined"
-          value={editedData.year}
+          value={editedData.workPosition}
           onChange={handleChange}
         />
-        <PostInputWrapper
-          name="department"
-          label="Bölüm Adı"
-          variant="outlined"
-          value={editedData.department}
-          onChange={handleChange}
-        />
+
+        <Calender>
+          <PostInputWrapper
+            name="startDate"
+            type="date"
+            variant="outlined"
+            value={editedData.startDate}
+            onChange={handleChange}
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                style={{ paddingLeft: 10 }}
+                name="isCurrentlyWorking"
+                checked={isCurrentlyWorking}
+                onChange={() => {
+                  setIsCurrentlyWorking(!isCurrentlyWorking);
+                }}
+              />
+            }
+            label="Hala çalışıyorum"
+          />
+          {!isCurrentlyWorking && (
+            <PostInputWrapper
+              name="endDate"
+              type="date"
+              variant="outlined"
+              value={editedData.endDate}
+              onChange={handleChange}
+            />
+          )}
+        </Calender>
         <PostInputWrapper
           name="faculty"
           label="Fakulte"
@@ -61,17 +100,17 @@ const EditEgitimGecmisi = ({ onClose, onSave, initialData, isOpen }) => {
           onChange={handleChange}
         />
         <PostInputWrapper
-          name="eduStatus"
-          label="Eğitim Durumu"
+          name="personnelNumber"
+          label="Personel Numarası"
           variant="outlined"
-          value={editedData.eduStatus}
+          value={editedData.personnelNumber}
           onChange={handleChange}
         />
         <PostInputWrapper
-          name="gpa"
-          label="Ortalama"
+          name="confirmationLetter"
+          label="Onay Mektubu"
           variant="outlined"
-          value={editedData.gpa}
+          value={editedData.confirmationLetter}
           onChange={handleChange}
         />
       </DialogContent>
@@ -91,4 +130,4 @@ const EditEgitimGecmisi = ({ onClose, onSave, initialData, isOpen }) => {
   );
 };
 
-export default EditEgitimGecmisi;
+export default AddIsGecmisi;
