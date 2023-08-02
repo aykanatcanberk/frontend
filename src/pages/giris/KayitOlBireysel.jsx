@@ -17,6 +17,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
 import FormControl from "@mui/material/FormControl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { InputAdornment } from "@mui/material";
 import {
   faCheck,
   faTimes,
@@ -25,6 +26,8 @@ import {
 import axios from "../../api/axios";
 import { styled } from "styled-components";
 import "./KayıtOlBireysel.css";
+import { Tooltip } from "@mui/material";
+import HelpIcon from "@mui/icons-material/Help";
 
 const Alert = forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -55,8 +58,27 @@ const center = {
 };
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{2,23}$/;
-const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+// const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/; // Daha güçlü şifre için bunu kullanın
+const PWD_REGEX = /^.{6,}$/;
 const REGISTER_URL = "/register";
+
+const PasswordRequirementsTooltip = () => {
+  return (
+    <Tooltip
+      title={
+        <Typography>
+          Password must meet the following requirements:
+          <ul>
+            <li>At least 6 characters long</li>
+            <li>...</li> {/* Add more requirements */}
+          </ul>
+        </Typography>
+      }
+    >
+      <HelpIcon />
+    </Tooltip>
+  );
+};
 
 export default function Register() {
   const [open, setOpen] = useState(false);
@@ -91,6 +113,10 @@ export default function Register() {
 
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
+
+  const [popoverAnchor, setPopoverAnchor] = useState(null);
+
+  const [passwordFocused, setPasswordFocused] = useState(false);
 
   useEffect(() => {
     userNameRef.current.focus();
@@ -145,8 +171,7 @@ export default function Register() {
         setErrMsg("Registration Failed");
       }
       errRef.current.focus();
-    }
-    finally{
+    } finally {
       navigate("/bireysel-profil");
     }
   };
@@ -264,22 +289,6 @@ export default function Register() {
                                 validUserName || !userName ? "hide" : "invalid"
                               }
                             />
-
-                            {/* <TextField
-                              id="uidnote"
-                              className={
-                                userNameFocus && userName && !validUserName
-                                  ? "instructions"
-                                  : "offscreen"
-                              }
-                            >
-                              <FontAwesomeIcon icon={faInfoCircle} />
-                              4 to 24 characters.
-                              <br />
-                              Must begin with a letter.
-                              <br />
-                              Letters, numbers, underscores, hyphens allowed.
-                            </TextField> */}
                           </Box>
                         </FormControl>
                         <FormControl variant="standard">
@@ -377,9 +386,21 @@ export default function Register() {
                             onChange={(e) => setPwd(e.target.value)}
                             value={pwd}
                             required
-                            onFocus={() => setPwdFocus(true)}
-                            onBlur={() => setPwdFocus(false)}
+                            onFocus={(e) => {
+                              setPwdFocus(true);
+                            }}
+                            onBlur={() => {
+                              setPwdFocus(false);
+                            }}
+                            InputProps={{
+                              endAdornment: (
+                                <InputAdornment position="end">
+                                  <PasswordRequirementsTooltip />
+                                </InputAdornment>
+                              ),
+                            }}
                           />
+
                           <FontAwesomeIcon
                             icon={faCheck}
                             className={validPwd ? "valid" : "hide"}
