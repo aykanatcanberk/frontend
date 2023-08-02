@@ -153,31 +153,31 @@ function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {
   }, []);
 
   const initialPrivateInfo = {
-    userName: "John",
-    userSurname: "Doe",
-    eMail: "john.doe@example.com",
-    birthDate: "10/10/10",
-    city: "İstanbul",
-    cellNumber: "123-456-7890",
+    userName: "",
+    userSurname: "",
+    eMail: "",
+    birthDate: "",
+    city: "",
+    cellNumber: "",
   };
 
   const initialEduBackground = {
-    graduate: "**",
-    year: "3",
-    department: "comp engineering",
-    faculty: "engineering",
-    eduStatus: "?",
-    gpa: "3.13",
+    graduate: "",
+    year: "",
+    department: "",
+    faculty: "",
+    eduStatus: "",
+    gpa: "",
   };
 
   const initialWorkBackground = {
-    companyName: "**",
-    workPosition: "3",
-    startDate: "comp engineering",
+    companyName: "",
+    workPosition: "",
+    startDate: "",
     endDate: "",
-    personnelNumber: "engineering",
-    confirmationLetter: "?",
-    confirmationState: "notConfirmed",
+    personnelNumber: "",
+    confirmationLetter: "",
+    confirmationState: "",
   };
 
   const [privateInfo, setPrivateInfo] = useState(initialPrivateInfo);
@@ -287,7 +287,7 @@ function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {
       return (
         <>
           <div>
-          <ProfileWrapper>
+            <ProfileWrapper>
               <AvatarWrapper src={avatarSrc} alt="Profil Avatarı" />
               <div>
                 <Typography
@@ -415,8 +415,8 @@ function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {
                 />
               </Grid>
 
-              <Grid className="right-side" item xs={6}>
-                <CardWrapperForTitles elevation={4}>
+              <Grid className="right-side" item xs={6} >
+                <CardWrapperForTitles elevation={4} style={{ marginLeft: 15}}>
                   <Typography
                     variant="subtitle1"
                     style={{

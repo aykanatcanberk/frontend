@@ -78,14 +78,14 @@ function KurumsalProfil({ avatarSrc = "url_profil_avatar", name, school }) {
   const [posts, setPosts] = useState([]);
 
   const initialPrivateCompanyInfo = {
-    companySector: "John",
-    companyType: "Doe",
-    employeeCount: "john.doe@example.com",
-    foundedIn: "10/10/10",
-    location: "Istanbul",
-    areaOfExpertise: "İstanbul",
-    webSite: "123-456-7890",
-    phoneNum: "123-456-7890",
+    companySector: "",
+    companyType: "",
+    employeeCount: "",
+    foundedIn: "",
+    location: "",
+    areaOfExpertise: "",
+    webSite: "",
+    phoneNum: "",
   };
 
   const [privateCompanyInfo, setPrivateCompanyInfo] = useState(
