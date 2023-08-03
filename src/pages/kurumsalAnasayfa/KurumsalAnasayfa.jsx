@@ -30,9 +30,7 @@ const App = () => {
       >
         {/* profil kısmı */}
         <div className="firmaContainer">
-          {db["my-info-firma"].map((firma) => (
-            <ProfilCard profilcard={firma} />
-          ))}
+            <ProfilCard />
         </div>
       </Grid>
 
