@@ -817,19 +817,17 @@
       "advertName": "Yazılım Geliştirme Uzmanı",
       "companyId": 1,
       "companyName": "Aselsan",
-      "advertDate": "14.06.2023",
+      "advertDate": "28.07.2023",
       "jobType": "İş İlanı",
       "desc": "Daha önce Java kullanmış en az 2 yıl tecrübeli, lisans diplomalı yazılım geliştirme uzmanı arıyoruz",
       "jobStyle": [
-        "Yüz Yüze",
-        "Uzaktan"
+        "Yüz Yüze"
       ],
       "jobTime": [
         "Tam Zamanlı"
       ],
       "major": [
-        "Bilgisayar Mühendisliği",
-        "Makine Mühendisliği"
+        "Bilgisayar Mühendisliği"
       ]
     },
     {
@@ -837,23 +835,22 @@
       "advertName": "Python Yazılım Geliştirme Uzmanı",
       "companyId": 2,
       "companyName": "Havelsan",
-      "advertDate": "14.06.2023",
+      "advertDate": "30.07.2023",
       "jobType": "Staj İlanı",
       "desc": "Daha önce Java kullanmış en az 2 yıl tecrübeli, lisans diplomalı yazılım geliştirme uzmanı arıyoruz",
       "jobStyle": [
-        "Yüz Yüze",
-        "Hibrit"
+        "Yüz Yüze"
       ],
       "jobTime": [
         "Yarı Zamanlı"
       ],
       "major": [
-        "Bilgisayar Mühendisliği",
-        "Endüstri Mühendisliği"
+        "Bilgisayar Mühendisliği"
       ]
     },
     {
       "advertName": "C# Yazılım Geliştirme Uzmanı",
+      "companyName": "Havelsan",
       "desc": "Lisans mezunu ve sektörde en az 2 yıl deneyimi olan tercihen C# alanında çalışmış yeni iş arkadaşı aramaktayız.",
       "jobStyle": [
         "Yüz Yüze"
@@ -869,6 +866,63 @@
       ],
       "advertDate": "01.08.2023",
       "id": 3
+    },
+    {
+      "advertName": "İş Geliştirme Stajyeri",
+      "desc": "Üniversitelerin endüstri mühendisliği bölümlerinde okuyan, tercihen 4.sınıf öğrencisi stajyer arıyoruz.",
+      "companyName": "Roketsan",
+      "jobStyle": [
+        "Yüz Yüze"
+      ],
+      "jobTime": [
+        "Tam Zamanlı"
+      ],
+      "jobType": [
+        "Staj İlanı"
+      ],
+      "major": [
+        "Endüstri Mühendisliği"
+      ],
+      "advertDate": "03.08.2023",
+      "id": 4
+    },
+    {
+      "advertName": "Veritabanı Uzmanı",
+      "desc": "Yazılım sektöründe en az 4 yıl deneyimli, mevcut SQL dillerine hâkim çalışma arkadaşları arıyoruz.",
+      "companyName": "TUSAŞ",
+      "jobStyle": [
+        "Hibrit"
+      ],
+      "jobTime": [
+        "Serbest Zamanlı"
+      ],
+      "jobType": [
+        "İş İlanı"
+      ],
+      "major": [
+        "Bilgisayar Mühendisliği"
+      ],
+      "advertDate": "04.08.2023",
+      "id": 5
+    },
+    {
+      "advertName": "Gömülü Yazılım Geliştirme Mühendisi",
+      "desc": "C/C++ programlama konusunda en az 2 yıl deneyim sahibi iş arkadaşı arıyoruz. ",
+      "companyName": "Roketsan",
+      "jobStyle": [
+        "Yüz Yüze"
+      ],
+      "jobTime": [
+        "Tam Zamanlı"
+      ],
+      "jobType": [
+        "İş İlanı"
+      ],
+      "major": [
+        "Elektrik-Elektronik Mühendisliği"
+      ],
+      "advertDate": "04.08.2023",
+      "id": 6
     }
   ],
   "appliedAdverts": [
