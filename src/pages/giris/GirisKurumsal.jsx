@@ -9,12 +9,14 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { useState, forwardRef } from "react";
-import Snackbar from "@mui/material/Snackbar";
+// import Snackbar from "@mui/material/Snackbar";
 import Stack from "@mui/material/Stack";
 import MuiAlert from "@mui/material/Alert";
 import Slide from "@mui/material/Slide";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Import the CSS
 
 const Alert = forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -58,18 +60,34 @@ export default function Login() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     axios
-      .post(`https://localhost:7029/api/Auth/login`, { email, password })
+      .post(`http://localhost:5071/api/Auth/loginCompany`, { email, password })
       .then((res) => {
+        toast.success("GİRİŞ İŞLEMİ BAŞARILI DEĞİL.", {
+          onClose: () => {
+            // Redirect to the desired page
+            navigate("/");
+          },
+          autoClose: 500,
+        });
         console.log(res);
         localStorage.setItem("token", res.data.token);
         const token = localStorage.getItem("token");
-        if (res.data.control === true) {
+        if (res.data.login === true) {
           axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-          axios.post(`https://localhost:7029/api/Login/logincontrol`);
+          axios.post(`http://localhost:5071/api/Login/logincontrol`);
           navigate("/kurumsal-profil");
         } else {
           navigate("/kurumsal-anasayfa");
         }
+      })
+      .catch((err) => {
+        toast.success("GİRİŞ İŞLEMİ BAŞARILI DEĞİL.", {
+          onClose: () => {
+            // Redirect to the desired page
+            navigate("/");
+          },
+          autoClose: 500,
+        });
       });
   };
 
@@ -86,7 +104,8 @@ export default function Login() {
 
   return (
     <>
-      <Snackbar
+      <ToastContainer />
+      {/* <Snackbar
         open={open}
         autoHideDuration={3000}
         onClose={handleClose}
@@ -96,7 +115,7 @@ export default function Login() {
         <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
           Hata! E-posta ve şifre alanı boş bırakılamaz.
         </Alert>
-      </Snackbar>
+      </Snackbar> */}
       <div>
         <Box sx={boxstyle}>
           <Grid container>

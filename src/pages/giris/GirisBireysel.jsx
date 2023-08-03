@@ -8,20 +8,17 @@ import Container from "@mui/material/Container";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import { useState, forwardRef, useEffect } from "react";
+import { useState, forwardRef } from "react";
 import Snackbar from "@mui/material/Snackbar";
 import Stack from "@mui/material/Stack";
 import MuiAlert from "@mui/material/Alert";
 import Slide from "@mui/material/Slide";
 import { useNavigate } from "react-router-dom";
-import { stringify } from "json5";
-import { connect } from "react-redux";
-import { useRadioGroup } from "@mui/material";
-import { fetchUsers } from "../../redux/users/userActions";
-import { getUserByEmail } from "../../services/userServices.jsx";
 import { login1 } from "../../services/loginService";
 import axios from "axios";
 import { ResetTvSharp } from "@mui/icons-material";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Import the CSS
 const Alert = forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
@@ -50,7 +47,7 @@ const center = {
   left: "37%",
 };
 
-function Login({ usersData, fetchUsers }) {
+export default function Login() {
   const [open, setOpen] = useState(false);
   const [remember, setRemember] = useState(false);
   const [email, setUsername] = useState("");
@@ -62,68 +59,39 @@ function Login({ usersData, fetchUsers }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setOpen(true);
-    const data = new FormData(event.currentTarget);
-    // login1({ email, password })
-    //   .then((response) => {
-    //     localStorage.setItem("token", response.data);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+    
     axios
-      .post(`https://localhost:7029/api/Auth/login`, { email, password })
+      .post(`http://localhost:5071/api/Auth/loginPerson`, { email, password })
       .then((res) => {
+        toast.success("GİRİŞ İŞLEMİ BAŞARILI OLDU.", {
+          onClose: () => {
+            // Redirect to the desired page
+            navigate("/");
+          },
+          autoClose: 500,
+        });
         console.log(res);
         localStorage.setItem("token", res.data.token);
         const token = localStorage.getItem("token")
-        if(res.data.control === true){
+        if(res.data.login === true){
           axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
-          axios.post(`https://localhost:7029/api/Login/logincontrol`)
+          axios.post(`http://localhost:5071/api/Login/logincontrol`)
           navigate("/bireysel-profil");
         }else{
           navigate("/bireysel-anasayfa");
         }
         
+      }).catch((err) => {
+        setPassword("");
+        toast.success("GİRİŞ İŞLEMİ BAŞARILI DEĞİL.", {
+          onClose: () => {
+            // Redirect to the desired page
+            navigate("/");
+          },
+          autoClose: 500,
+        });
       });
   };
-
-  // const ProceedLogin = () => {
-  //   if (validate()) {
-  //     getUserByEmail(tryAccount.eMail)
-  //       .then((user) => {
-  //         if (user[0].password === tryAccount.password) {
-  //           console.log("Success");
-  //           sessionStorage.setItem("eMail", tryAccount.eMail);
-  //           sessionStorage.setItem("userrole", user.role);
-  //           console.log("go to the main page!");
-  //           navigate("/bireysel-anasayfa");
-  //         } else {
-  //           console.error("Please Enter valid credentials");
-  //         }
-  //       })
-  //       .catch((err) => {
-  //         console.error("Login Failed due to :" + err.message);
-  //       });
-  //   }
-  // };
-  
-  // const validate = () => {
-  //   let result = true;
-  //   if (tryAccount.eMail === "" || tryAccount.eMail === null) {
-  //     result = false;
-  //     <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-  //       Hata! E-posta alanı boş bırakılamaz.
-  //     </Alert>;
-  //   }
-  //   if (tryAccount.password === "" || tryAccount.password === null) {
-  //     result = false;
-  //     <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-  //       Hata! Şifre alanı boş bırakılamaz.
-  //     </Alert>;
-  //   }
-  //   return result;
-  // };
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -196,16 +164,9 @@ function Login({ usersData, fetchUsers }) {
                             value={email}
                             onChange={(e) => setUsername(e.target.value)}
                             fullWidth
-                            id="eMail"
+                            id="email"
                             label="E-posta"
-                            name="eMail"
-                            value={tryAccount.eMail}
-                            onChange={(e) => {
-                              setTryAccount({
-                                ...tryAccount,
-                                eMail: e.target.value,
-                              });
-                            }}
+                            name="email"
                           />
                         </Grid>
                         <Grid item xs={12} sx={{ ml: "3em", mr: "3em" }}>
@@ -218,13 +179,6 @@ function Login({ usersData, fetchUsers }) {
                             label="Şifre"
                             type="password"
                             id="şifre"
-                            value={tryAccount.password}
-                            onChange={(e) => {
-                              setTryAccount({
-                                ...tryAccount,
-                                password: e.target.value,
-                              });
-                            }}
                           />
                         </Grid>
                         <Grid item xs={12} sx={{ ml: "3em", mr: "3em" }}>
@@ -292,17 +246,3 @@ function Login({ usersData, fetchUsers }) {
     </>
   );
 }
-
-const mapStateToProps = (state) => {
-  return {
-    usersData: state.userrrrr,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchUsers: () => dispatch(fetchUsers()),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);

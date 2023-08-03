@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { useState, forwardRef, useRef, useEffect } from "react";
-import Snackbar from "@mui/material/Snackbar";
+// import Snackbar from "@mui/material/Snackbar";
 import Stack from "@mui/material/Stack";
 import MuiAlert from "@mui/material/Alert";
 import Slide from "@mui/material/Slide";
@@ -64,7 +64,7 @@ const USER_REGEX = /^.{1,22}$/; // şirket ismi her şey olabilsin ?
 // const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/; // Daha güçlü şifre için bunu kullanın
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PWD_REGEX = /^.{6,}$/;
-const REGISTER_URL = "/register";
+const REGISTER_URL = "http://localhost:5071/api/Auth/registerCompany";
 
 const PasswordRequirementsTooltip = () => {
   return (
@@ -103,24 +103,24 @@ const PasswordRequirementsTooltip = () => {
 //   );
 // };
 
-const NamedRequirementsTooltip = () => {
-  return (
-    <Tooltip
-      title={
-        <Typography>
-          Password must meet the following requirements:
-          <ul>
-            <li>At least 2 characters long</li>
-            <li>Must start with a capital letter</li>
-            <li>...</li> {/* Add more requirements */}
-          </ul>
-        </Typography>
-      }
-    >
-      <HelpIcon />
-    </Tooltip>
-  );
-};
+// const NamedRequirementsTooltip = () => {
+//   return (
+//     <Tooltip
+//       title={
+//         <Typography>
+//           Password must meet the following requirements:
+//           <ul>
+//             <li>At least 2 characters long</li>
+//             <li>Must start with a capital letter</li>
+//             <li>...</li> {/* Add more requirements */}
+//           </ul>
+//         </Typography>
+//       }
+//     >
+//       <HelpIcon />
+//     </Tooltip>
+//   );
+// };
 
 export default function Register() {
   const [open, setOpen] = useState(false);
@@ -181,79 +181,68 @@ export default function Register() {
     }
     try {
       // burası backend'e olmadan çalışmaz
-      const response = await axios.post(
-        REGISTER_URL,
-        JSON.stringify({ userName: companyName, userEmail: companyEmail, pwd }),
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-        }
-      );
-      // response backend olunca bir işe yarıyor
-      // console.log(response?.data);
-      // console.log(response?.accessToken);
-      // console.log(JSON.stringify(response));
-      setSuccess(true);
-      //clear state and controlled inputs
-      //need value attrib on inputs for this
-      setCompanyName("");
-      setUserEmail("");
-      setPwd("");
-      setMatchPwd("");
-    } catch (err) {
-      if (!err?.response) {
-        setErrMsg("No Server Response");
-      } else if (err.response?.status === 409) {
-        setErrMsg("Username Taken");
-      } else {
-        setErrMsg("Registration Failed");
-      }
-      // errRef.current.focus();
-      setSuccess(false);
-    } finally {
-      if (success) {
+      const userDto = {
+        email: companyEmail,
+        password: pwd,
+      };
+      const companyDto = {
+        name: companyName,
+      };
+
+      const data = {
+        userDto: userDto,
+        companyDto: companyDto,
+      };
+
+      await axios.post(REGISTER_URL, data).then((response) => {
+        // response backend olunca bir işe yarıyor
+        console.log(response?.data);
+        console.log(response?.accessToken);
+        console.log(JSON.stringify(response));
+        setSuccess(true);
+        //clear state and controlled inputs
+        //need value attrib on inputs for this
+        setCompanyName("");
+        setUserEmail("");
+        setPwd("");
+        setMatchPwd("");
+
         toast.success("KAYIT OLMA İŞLEMİ BAŞARILI OLDU.", {
           onClose: () => {
             // Redirect to the desired page
             navigate("/");
           },
+          autoClose: 500,
         });
+      });
+    } catch (err) {
+      if (!err?.response) {
+        setErrMsg("No Server Response");
+        console.log(err);
+      } else if (err.response?.status === 409) {
+        setErrMsg("Username Taken");
+        console.log(err);
       } else {
-        toast.error("ERROR! KAYIT OLMA İŞLEMİ BAŞARILI DEĞİL.", {
-          onClose: () => {
-            // Redirect to the desired page
-            navigate("/");
-          },
-        });
+        setErrMsg("Registration Failed");
+        console.log(err);
       }
+      // errRef.current.focus();
+      setSuccess(false);
+
+      toast.error("ERROR! KAYIT OLMA İŞLEMİ BAŞARILI DEĞİL.", {
+        onClose: () => {
+          // Redirect to the desired page
+          navigate("/");
+        },
+        autoClose: 500,
+      });
     }
   };
-
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    setOpen(false);
-  };
-
-  function TransitionLeft(props) {
-    return <Slide {...props} direction="left" />;
-  }
 
   return (
     <>
       <ToastContainer />
-      <Snackbar
-        open={open}
-        autoHideDuration={3000}
-        onClose={handleClose}
-        TransitionComponent={TransitionLeft}
-        anchorOrigin={{ vertical, horizontal }}
-      >
-        {/* <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-          Hata! E-posta ve şifre alanı boş bırakılamaz.
-        </Alert> */}
-      </Snackbar>
+
       <div>
         <Box sx={boxstyle}>
           <Grid container>
@@ -347,7 +336,9 @@ export default function Register() {
                               icon={faTimes}
                               color="white"
                               className={
-                                validCompanyName || !companyName ? "hide" : "invalid"
+                                validCompanyName || !companyName
+                                  ? "hide"
+                                  : "invalid"
                               }
                             />
                           </Box>

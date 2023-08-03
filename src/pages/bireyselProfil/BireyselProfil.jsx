@@ -247,7 +247,7 @@ function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {
   };
 
   const handleEditEduBackgroundSave = (editedEduBackground) => {
-    // updateUserEduBackgroundInformation(editedEduBackground, 1);
+    updateUserEduBackgroundInformation(editedEduBackground, 1);
 
     setEduBackground(editedEduBackground);
     setIsEditingEduBackground(false);

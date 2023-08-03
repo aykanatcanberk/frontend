@@ -48,6 +48,7 @@ export const getUserPrivateInformationById = async (id) => {
 };
 
 export const getUserWorkBackgroundById = async (id) => {
+  // `http://localhost:5071/api/Auth/loginPerson`
   const user = await axios.get(`${BASE_URL}/users/${id}`);
  
   return user.data.userWorkBackground;

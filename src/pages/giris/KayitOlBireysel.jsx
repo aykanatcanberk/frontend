@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { useState, forwardRef, useRef, useEffect } from "react";
-import Snackbar from "@mui/material/Snackbar";
+// import Snackbar from "@mui/material/Snackbar";
 import Stack from "@mui/material/Stack";
 import MuiAlert from "@mui/material/Alert";
 import Slide from "@mui/material/Slide";
@@ -64,7 +64,7 @@ const USER_REGEX = /^[A-Z][A-Za-zÇçĞğİıÖöŞşÜü]{1,22}$/;
 // const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/; // Daha güçlü şifre için bunu kullanın
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PWD_REGEX = /^.{6,}$/;
-const REGISTER_URL = "https://localhost:5071/api/Auth/registerPerson";
+const REGISTER_URL = "http://localhost:5071/api/Auth/registerPerson";
 
 const PasswordRequirementsTooltip = () => {
   return (
@@ -123,7 +123,6 @@ const NamedRequirementsTooltip = () => {
 };
 
 export default function Register() {
-
   const [open, setOpen] = useState(false);
   const vertical = "top";
   const horizontal = "right";
@@ -156,7 +155,6 @@ export default function Register() {
 
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
-
 
   useEffect(() => {
     userNameRef.current.focus();
@@ -191,40 +189,48 @@ export default function Register() {
       // burası backend'e olmadan çalışmaz
       const userDto = {
         email: userEmail,
-        password: pwd
-      }
+        password: pwd,
+      };
       const personDto = {
         name: userName,
-        surname: userSurname
-      }
+        surname: userSurname,
+      };
 
       const data = {
-        userDto : userDto,
-        personDto: personDto
-      }
-      
-      const response = await axios.post(
-        REGISTER_URL,
-        // JSON.stringify({ userDto, personDto }),
-        data,
-        
-        // {
-        //   headers: { "Content-Type": "application/json" },
-        //   withCredentials: true,
-        // }
-      );
-      // response backend olunca bir işe yarıyor
-      console.log(response?.data);
-      console.log(response?.accessToken);
-      console.log(JSON.stringify(response));
-      setSuccess(true);
-      //clear state and controlled inputs
-      //need value attrib on inputs for this
-      setUserName("");
-      setUserSurname("");
-      setUserEmail("");
-      setPwd("");
-      setMatchPwd("");
+        userDto: userDto,
+        personDto: personDto,
+      };
+
+      await axios
+        .post(
+          REGISTER_URL,
+          data
+          // {
+          //   headers: { "Content-Type": "application/json" },
+          //   withCredentials: true,
+          // }
+        )
+        .then((response) => {
+          // response backend olunca bir işe yarıyor
+          console.log(response?.data);
+          console.log(response?.accessToken);
+          console.log(JSON.stringify(response));
+          setSuccess(true);
+          //clear state and controlled inputs
+          //need value attrib on inputs for this
+          setUserName("");
+          setUserSurname("");
+          setUserEmail("");
+          setPwd("");
+          setMatchPwd("");
+
+          toast.success("KAYIT OLMA İŞLEMİ BAŞARILI OLDU.", {
+            onClose: () => {
+              // Redirect to the desired page
+              navigate("/");
+            },
+          },500);
+        });
     } catch (err) {
       if (!err?.response) {
         setErrMsg("No Server Response");
@@ -238,23 +244,14 @@ export default function Register() {
       }
       // errRef.current.focus();
       setSuccess(false);
-    } finally {
-      if (success) {
-        toast.success("KAYIT OLMA İŞLEMİ BAŞARILI OLDU.", {
-          onClose: () => {
-            // Redirect to the desired page
-            navigate("/");
-          },
-        });
-      } else {
-        toast.error("ERROR! KAYIT OLMA İŞLEMİ BAŞARILI DEĞİL.", {
-          onClose: () => {
-            // Redirect to the desired page
-            navigate("/");
-          },
-        });
-      }
-    }
+
+      toast.error("ERROR! KAYIT OLMA İŞLEMİ BAŞARILI DEĞİL.", {
+        onClose: () => {
+          // Redirect to the desired page
+          navigate("/");
+        },
+      });
+    } 
   };
 
   const handleClose = (event, reason) => {
@@ -271,17 +268,17 @@ export default function Register() {
   return (
     <>
       <ToastContainer />
-      <Snackbar
+      {/* <Snackbar
         open={open}
         autoHideDuration={3000}
         onClose={handleClose}
         TransitionComponent={TransitionLeft}
         anchorOrigin={{ vertical, horizontal }}
       >
-        {/* <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+        <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
           Hata! E-posta ve şifre alanı boş bırakılamaz.
-        </Alert> */}
-      </Snackbar>
+        </Alert>
+      </Snackbar> */}
       <div>
         <Box sx={boxstyle}>
           <Grid container>
@@ -458,19 +455,17 @@ export default function Register() {
                             // Burada belki girilen e-postanın var olup olmadığı araştırılabilir.
                           />
                           <FontAwesomeIcon
-                              icon={faCheck}
-                              color="white"
-                              className={validEmail ? "valid" : "hide"}
-                            />
-                            <FontAwesomeIcon
-                              icon={faTimes}
-                              color="white"
-                              className={
-                                validEmail || !userEmail
-                                  ? "hide"
-                                  : "invalid"
-                              }
-                            />
+                            icon={faCheck}
+                            color="white"
+                            className={validEmail ? "valid" : "hide"}
+                          />
+                          <FontAwesomeIcon
+                            icon={faTimes}
+                            color="white"
+                            className={
+                              validEmail || !userEmail ? "hide" : "invalid"
+                            }
+                          />
                         </Box>
                         <Box
                           sx={{
