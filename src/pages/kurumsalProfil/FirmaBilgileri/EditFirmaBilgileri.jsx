@@ -30,21 +30,21 @@ const EditFirmaBilgileri = ({ onClose, onSave, initialData, isOpen }) => {
       <DialogContent>
         <PostInputWrapper
           name="companySector"
-          label="Company Sector"
+          label="Firma Sektörü"
           variant="outlined"
           value={editedData.companySector}
           onChange={handleChange}
         />
         <PostInputWrapper
           name="companyType"
-          label="Company Type"
+          label="Firma Tipi"
           variant="outlined"
           value={editedData.companyType}
           onChange={handleChange}
         />
         <PostInputWrapper
           name="employeeCount"
-          label="employeeCount"
+          label="Çalışan Sayısı"
           variant="outlined"
           value={editedData.employeeCount}
           onChange={handleChange}
@@ -58,28 +58,28 @@ const EditFirmaBilgileri = ({ onClose, onSave, initialData, isOpen }) => {
         />
         <PostInputWrapper
           name="location"
-          label="Şehir"
+          label="Firma Konumu"
           variant="outlined"
           value={editedData.location}
           onChange={handleChange}
         />
         <PostInputWrapper
           name="areaOfExpertise"
-          label="Cep Numarası"
+          label="Firma Uzmanlık Alanı"
           variant="outlined"
           value={editedData.areaOfExpertise}
           onChange={handleChange}
         />
         <PostInputWrapper
           name="webSite"
-          label="webSite"
+          label="Firma Web Sitesi"
           variant="outlined"
           value={editedData.webSite}
           onChange={handleChange}
         />
         <PostInputWrapper
           name="phoneNum"
-          label="phoneNum"
+          label="Firma Telefonu"
           variant="outlined"
           value={editedData.phoneNum}
           onChange={handleChange}

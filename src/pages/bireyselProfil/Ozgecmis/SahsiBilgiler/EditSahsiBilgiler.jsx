@@ -53,7 +53,7 @@ const EditSahsiBilgiler = ({ onClose, onSave, initialData, isOpen }) => {
         />
         <PostInputWrapper
           name="email"
-          label="Email"
+          label="E-posta Adresi"
           variant="outlined"
           value={editedData.email}
           onChange={handleChange}
@@ -68,14 +68,14 @@ const EditSahsiBilgiler = ({ onClose, onSave, initialData, isOpen }) => {
         />
         <PostInputWrapper
           name="city"
-          label="Şehir"
+          label="Yaşadığı Şehir"
           variant="outlined"
           value={editedData.city}
           onChange={handleChange}
         />
         <PostInputWrapper
           name="cellNumber"
-          label="Cep Numarası"
+          label="Cep Telefonu"
           variant="outlined"
           value={editedData.cellNumber}
           onChange={handleChange}
