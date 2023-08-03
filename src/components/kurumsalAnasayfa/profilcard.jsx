@@ -70,7 +70,7 @@ function ProfilCard({ profilcard }) {
         sx={{ marginTop: "15x", marginBottom: "15px" }}
       >
         <PeopleIcon sx={{ marginLeft: "10px", marginRight: "5px" }} />
-        {profilcard.employeeCount}
+        {profilcard.totalStaff}
       </Typography>
       <Typography
         variant="body1"
@@ -79,7 +79,7 @@ function ProfilCard({ profilcard }) {
         sx={{ marginTop: "15px", marginBottom: "15px" }}
       >
         <CalendarMonthIcon sx={{ marginLeft: "10px", marginRight: "5px" }} />
-        {profilcard.founded}
+        {profilcard.fDate}
       </Typography>
     </CardWrapper>
   );

@@ -19,18 +19,18 @@ const PageWrapper = styled(Grid)({
 
 
 const App = () => {
-  // const [posts,setPosts]=useState([]);
-  // useEffect(()=>{
-  //   const token="eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYXNlbHNhbkBhc2Vsc2FuLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkNvbXBhbnkiLCJleHAiOjE2OTEwODA3MTF9.LKxDw5Y7lhTlzwk6dxlLmmyNArOR_ffC0-Dt3fsGr98";
-  //   axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
-  //   axios.get(`http://localhost:5071/Post/AllPosts`)
-  //   .then((response)=>{
-  //     setPosts(response.data)
-  //   })
-  //   .catch((err)=>{
-  //     console.log("Error");
-  //   })
-  // });
+  const [posts,setPosts]=useState([]);
+  useEffect(()=>{
+    const token="eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYXNlbHNhbkBhc2Vsc2FuLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkNvbXBhbnkiLCJleHAiOjE2OTExODY3NzN9.mVavcH9RKIrGQpTE7IAJFlzVrX90n6RzYanAFHq_jQ8";
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
+    axios.get(`http://localhost:5071/Post/AllPosts`)
+    .then((response)=>{
+      setPosts(response.data)
+    })
+    .catch((err)=>{
+      console.log("Error");
+    })
+  });
 
   const [postData,setPostData]=useState([]);
   useEffect(() => {
@@ -82,7 +82,7 @@ const App = () => {
         {/* gönderi oluşturma kısmı */}
         <Gonderiolustur />
         <div className="firmaContainer">
-          {postData.map((postcard) => (
+          {posts.map((postcard) => (
             <Gonderi key={postcard.id} postcard={postcard} />
           ))}
         </div>
