@@ -55,12 +55,12 @@ function Login() {
     event.preventDefault();
 
     axios
-      .post(`https://localhost:7029/api/Auth/login`, { email, password })
+      .post(`https://localhost:7029/api/Auth/loginPerson`, { email, password })
       .then((res) => {
         console.log(res);
         localStorage.setItem("token", res.data.token);
         const token = localStorage.getItem("token");
-        if (res.data.control === true) {
+        if (res.data.login === true) {
           axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
           axios.post(`https://localhost:7029/api/Login/logincontrol`);
           navigate("/bireysel-profil");
