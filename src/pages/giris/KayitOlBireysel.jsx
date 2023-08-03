@@ -62,7 +62,6 @@ const center = {
 
 const USER_REGEX = /^[A-zÇŞĞÜİÖçşğüıö][A-z0-9-_ÇŞĞÜİÖçşğüıö]{2,23}$/;
 //const USER_REGEX = /^[A-z][A-z0-9-_]{2,23}$/;
-
 // const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/; // Daha güçlü şifre için bunu kullanın
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PWD_REGEX = /^.{6,}$/;
@@ -105,24 +104,24 @@ const PasswordRequirementsTooltip = () => {
 //   );
 // };
 
-const NamedRequirementsTooltip = () => {
-  return (
-    <Tooltip
-      title={
-        <Typography>
-          Password must meet the following requirements:
-          <ul>
-            <li>At least 2 characters long</li>
-            <li>Must start with a capital letter</li>
-            <li>...</li> {/* Add more requirements */}
-          </ul>
-        </Typography>
-      }
-    >
-      <HelpIcon />
-    </Tooltip>
-  );
-};
+// const NamedRequirementsTooltip = () => {
+//   return (
+//     <Tooltip
+//       title={
+//         <Typography>
+//           Name must meet the following requirements:
+//           <ul>
+//             <li>At least 2 characters long</li>
+//             <li>Must start with a capital letter</li>
+//             <li>...</li> {/* Add more requirements */}
+//           </ul>
+//         </Typography>
+//       }
+//     >
+//       <HelpIcon />
+//     </Tooltip>
+//   );
+// };
 
 export default function Register() {
   const [open, setOpen] = useState(false);
@@ -325,7 +324,7 @@ export default function Register() {
                     <Box
                       component="form"
                       noValidate
-                      onSubmit={handleSubmit}
+                      // onSubmit={handleSubmit}
                       sx={{ mt: 2 }}
                     >
                       <Box
@@ -359,9 +358,7 @@ export default function Register() {
                               onBlur={() => setUserNameFocus(false)}
                               InputProps={{
                                 endAdornment: (
-                                  <InputAdornment position="end">
-                                    <PasswordRequirementsTooltip />
-                                  </InputAdornment>
+                                  <InputAdornment position="end"></InputAdornment>
                                 ),
                               }}
                             />
@@ -404,9 +401,7 @@ export default function Register() {
                               onBlur={() => setUserSurnameFocus(false)}
                               InputProps={{
                                 endAdornment: (
-                                  <InputAdornment position="end">
-                                    <NamedRequirementsTooltip />
-                                  </InputAdornment>
+                                  <InputAdornment position="end"></InputAdornment>
                                 ),
                               }}
                             />

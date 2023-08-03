@@ -8,20 +8,18 @@ import Container from "@mui/material/Container";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import { useState, forwardRef } from "react";
+import { useState } from "react";
 import Snackbar from "@mui/material/Snackbar";
 import Stack from "@mui/material/Stack";
-import MuiAlert from "@mui/material/Alert";
 import Slide from "@mui/material/Slide";
 import { useNavigate } from "react-router-dom";
-import { login1 } from "../../services/loginService";
 import axios from "axios";
 import { ResetTvSharp } from "@mui/icons-material";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Import the CSS
-const Alert = forwardRef(function Alert(props, ref) {
-  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
+import { fetchUsers } from "../../redux/users/userActions";
+import { connect } from "react-redux";
+
 
 const darkTheme = createTheme({
   palette: {
@@ -47,14 +45,11 @@ const center = {
   left: "37%",
 };
 
-export default function Login() {
-  const [open, setOpen] = useState(false);
+function Login() {
   const [remember, setRemember] = useState(false);
   const [email, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const vertical = "top";
-  const horizontal = "right";
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -93,30 +88,10 @@ export default function Login() {
       });
   };
 
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    setOpen(false);
-  };
-
-  function TransitionLeft(props) {
-    return <Slide {...props} direction="left" />;
-  }
+ 
 
   return (
-    <>
-      <Snackbar
-        open={open}
-        autoHideDuration={3000}
-        onClose={handleClose}
-        TransitionComponent={TransitionLeft}
-        anchorOrigin={{ vertical, horizontal }}
-      >
-        <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-          Hata! E-posta ve şifre alanı boş bırakılamaz.
-        </Alert>
-      </Snackbar>
+    <>      
       <div>
         <Box sx={boxstyle}>
           <Grid container>
@@ -167,6 +142,7 @@ export default function Login() {
                             id="email"
                             label="E-posta"
                             name="email"
+                            
                           />
                         </Grid>
                         <Grid item xs={12} sx={{ ml: "3em", mr: "3em" }}>
@@ -179,6 +155,7 @@ export default function Login() {
                             label="Şifre"
                             type="password"
                             id="şifre"
+                            
                           />
                         </Grid>
                         <Grid item xs={12} sx={{ ml: "3em", mr: "3em" }}>
@@ -246,3 +223,17 @@ export default function Login() {
     </>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    usersData: state.userrrrr,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchUsers: () => dispatch(fetchUsers()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
