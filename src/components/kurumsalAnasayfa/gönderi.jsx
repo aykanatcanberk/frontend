@@ -73,7 +73,7 @@ function Gonderi({ postcard }) {
           fontWeight: "normal",
         }}
       >
-        {postcard.postdesc}
+        {postcard.content}
       </Typography>
       <ButtonsWrapper>
         <LikeButton />

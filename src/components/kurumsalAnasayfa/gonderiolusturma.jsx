@@ -44,7 +44,7 @@ const GreenButton = styled(Button)({
 function Gonderiolustur() {
   const PostData = {
     companyname: "",
-    postdesc: "",
+    content: "",
   };
 
   const handleInputChange = (event) => {
@@ -58,7 +58,7 @@ function Gonderiolustur() {
 
   const handleSubmit = () => {
     const newPost = {
-      postdesc: postData.postdesc,
+      content: postData.content,
       companydate: new Date().toLocaleDateString(),
     };
 
@@ -89,8 +89,8 @@ function Gonderiolustur() {
         variant="outlined"
         multiline
         rows={4}
-        name="postdesc"
-        value={postData.postdesc}
+        name="content"
+        value={postData.content}
         onChange={handleInputChange}
       />
       <ButtonsWrapper>
