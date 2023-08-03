@@ -16,5 +16,12 @@ export function getCompany() {
 }
 
 export function getUserPosts() {
-  return axios.get("http://localhost:3000/user-Posts");
+  const url = "http://localhost:5071/Post/AllPosts";
+
+  const headers = {
+    accept: "text/plain",
+    Authorization: `Bearer ${jwtToken}`,
+  };
+
+  return axios.get(url, { headers });
 }

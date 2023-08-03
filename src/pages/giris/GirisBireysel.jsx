@@ -8,21 +8,14 @@ import Container from "@mui/material/Container";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import { useState, forwardRef, useEffect } from "react";
-import Snackbar from "@mui/material/Snackbar";
+import { useState } from "react";
 import Stack from "@mui/material/Stack";
-import MuiAlert from "@mui/material/Alert";
-import Slide from "@mui/material/Slide";
 import { useNavigate } from "react-router-dom";
-import { stringify } from "json5";
-import { connect } from "react-redux";
-import { useRadioGroup } from "@mui/material";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Import the CSS
 import { fetchUsers } from "../../redux/users/userActions";
-import { getUserByEmail } from "../../services/userServices.jsx";
-
-const Alert = forwardRef(function Alert(props, ref) {
-  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
+import { connect } from "react-redux";
 
 const darkTheme = createTheme({
   palette: {
@@ -48,90 +41,52 @@ const center = {
   left: "37%",
 };
 
-function Login({ usersData, fetchUsers }) {
-  const [open, setOpen] = useState(false);
+function Login() {
   const [remember, setRemember] = useState(false);
+  const [email, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-  useEffect(() => {
-    fetchUsers("http://localhost:3000/users");
-  }, []);
-
-  const initialAccount = {
-    eMail: "",
-    password: "",
-    userType: "-",
-  };
-
-  const [tryAccount, setTryAccount] = useState(initialAccount);
-
-  const vertical = "top";
-  const horizontal = "right";
   const navigate = useNavigate();
 
-  // const handleSubmit = async (event) => {
-  //   setOpen(true);
-  //   event.preventDefault();
-  //   ProceedLogin();
-  //   // const data = new FormData(event.currentTarget);
-  // };
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-  // const ProceedLogin = () => {
-  //   if (validate()) {
-  //     getUserByEmail(tryAccount.eMail)
-  //       .then((user) => {
-  //         if (user[0].password === tryAccount.password) {
-  //           console.log("Success");
-  //           sessionStorage.setItem("eMail", tryAccount.eMail);
-  //           sessionStorage.setItem("userrole", user.role);
-  //           console.log("go to the main page!");
-  //           navigate("/bireysel-anasayfa");
-  //         } else {
-  //           console.error("Please Enter valid credentials");
-  //         }
-  //       })
-  //       .catch((err) => {
-  //         console.error("Login Failed due to :" + err.message);
-  //       });
-  //   }
-  // };
-
-  // const validate = () => {
-  //   let result = true;
-  //   if (tryAccount.eMail === "" || tryAccount.eMail === null) {
-  //     result = false;
-  //     <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-  //       Hata! E-posta alanı boş bırakılamaz.
-  //     </Alert>;
-  //   }
-  //   if (tryAccount.password === "" || tryAccount.password === null) {
-  //     result = false;
-  //     <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-  //       Hata! Şifre alanı boş bırakılamaz.
-  //     </Alert>;
-  //   }
-  //   return result;
-  // };
-
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    setOpen(false);
+    axios
+      .post(`https://localhost:7029/api/Auth/loginPerson`, { email, password })
+      .then((res) => {
+        toast.success("GİRİŞ İŞLEMİ BAŞARILI OLDU.", {
+          onClose: () => {
+            // Redirect to the desired page
+            navigate("/");
+          },
+          autoClose: 10,
+        });
+        console.log(res);
+        localStorage.setItem("token", res.data.token);
+        const token = localStorage.getItem("token");
+        if (res.data.login === true) {
+          axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+          axios.post(`https://localhost:7029/api/Login/logincontrol`);
+          navigate("/bireysel-profil");
+        } else {
+          navigate("/bireysel-anasayfa");
+        }
+      })
+      .catch((err) => {
+        setPassword("");
+        toast.success("GİRİŞ İŞLEMİ BAŞARILI DEĞİL.", {
+          onClose: () => {
+            // Redirect to the desired page
+            navigate("/");
+          },
+          autoClose: 10,
+        });
+      });
   };
-
-  function TransitionLeft(props) {
-    return <Slide {...props} direction="left" />;
-  }
 
   return (
     <>
-      <Snackbar
-        open={open}
-        autoHideDuration={3000}
-        onClose={handleClose}
-        TransitionComponent={TransitionLeft}
-        anchorOrigin={{ vertical, horizontal }}
-      ></Snackbar>
+      <ToastContainer />
       <div>
         <Box sx={boxstyle}>
           <Grid container>
@@ -169,41 +124,31 @@ function Login({ usersData, fetchUsers }) {
                     <Box
                       component="form"
                       noValidate
-                      // onSubmit={handleSubmit}
+                      onSubmit={handleSubmit}
                       sx={{ mt: 2 }}
                     >
                       <Grid container spacing={1}>
                         <Grid item xs={12} sx={{ ml: "3em", mr: "3em" }}>
                           <TextField
                             required
+                            value={email}
+                            onChange={(e) => setUsername(e.target.value)}
                             fullWidth
-                            id="eMail"
+                            id="email"
                             label="E-posta"
-                            name="eMail"
-                            value={tryAccount.eMail}
-                            onChange={(e) => {
-                              setTryAccount({
-                                ...tryAccount,
-                                eMail: e.target.value,
-                              });
-                            }}
+                            name="email"
                           />
                         </Grid>
                         <Grid item xs={12} sx={{ ml: "3em", mr: "3em" }}>
                           <TextField
                             required
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                             fullWidth
                             name="şifre"
                             label="Şifre"
                             type="password"
                             id="şifre"
-                            value={tryAccount.password}
-                            onChange={(e) => {
-                              setTryAccount({
-                                ...tryAccount,
-                                password: e.target.value,
-                              });
-                            }}
                           />
                         </Grid>
                         <Grid item xs={12} sx={{ ml: "3em", mr: "3em" }}>

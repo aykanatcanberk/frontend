@@ -8,16 +8,12 @@ import Container from "@mui/material/Container";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import { useState, forwardRef } from "react";
-import Snackbar from "@mui/material/Snackbar";
+import { useState } from "react";
 import Stack from "@mui/material/Stack";
-import MuiAlert from "@mui/material/Alert";
-import Slide from "@mui/material/Slide";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Import the CSS
 import { useNavigate } from "react-router-dom";
-
-const Alert = forwardRef(function Alert(props, ref) {
-  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
+import axios from "axios";
 
 const darkTheme = createTheme({
   palette: {
@@ -44,38 +40,49 @@ const center = {
 };
 
 export default function Login() {
-  const [open, setOpen] = useState(false);
   const [remember, setRemember] = useState(false);
-  const vertical = "top";
-  const horizontal = "right";
+  const [email, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  // const handleSubmit = async (event) => {
-  //   setOpen(true);
-  //   event.preventDefault();
-  //   const data = new FormData(event.currentTarget);
-  // };
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    setOpen(false);
+    axios
+      .post(`https://localhost:7029/api/Auth/loginCompany`, { email, password })
+      .then((res) => {
+        toast.success("GİRİŞ İŞLEMİ BAŞARILI DEĞİL.", {
+          onClose: () => {
+            // Redirect to the desired page
+            navigate("/");
+          },
+          autoClose: 10,
+        });
+        console.log(res);
+        localStorage.setItem("token", res.data.token);
+        const token = localStorage.getItem("token");
+        if (res.data.login === true) {
+          axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+          axios.post(`https://localhost:7029/api/Login/logincontrol`);
+          navigate("/kurumsal-profil");
+        } else {
+          navigate("/kurumsal-anasayfa");
+        }
+      })
+      .catch((err) => {
+        toast.success("GİRİŞ İŞLEMİ BAŞARILI DEĞİL.", {
+          onClose: () => {
+            // Redirect to the desired page
+            navigate("/");
+          },
+          autoClose: 10,
+        });
+      });
   };
-
-  function TransitionLeft(props) {
-    return <Slide {...props} direction="left" />;
-  }
 
   return (
     <>
-      <Snackbar
-        open={open}
-        autoHideDuration={3000}
-        onClose={handleClose}
-        TransitionComponent={TransitionLeft}
-        anchorOrigin={{ vertical, horizontal }}
-      ></Snackbar>
+      <ToastContainer />
       <div>
         <Box sx={boxstyle}>
           <Grid container>
@@ -112,14 +119,16 @@ export default function Login() {
                     </Box>
                     <Box
                       component="form"
+                      onSubmit={handleSubmit}
                       noValidate
-                      // onSubmit={handleSubmit}
                       sx={{ mt: 2 }}
                     >
                       <Grid container spacing={1}>
                         <Grid item xs={12} sx={{ ml: "3em", mr: "3em" }}>
                           <TextField
                             required
+                            value={email}
+                            onChange={(e) => setUsername(e.target.value)}
                             fullWidth
                             id="email"
                             label="E-posta"
@@ -132,6 +141,8 @@ export default function Login() {
                             fullWidth
                             name="şifre"
                             label="Şifre"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                             type="password"
                             id="şifre"
                           />
