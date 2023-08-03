@@ -2,6 +2,11 @@ import React, { useState, useEffect } from "react";
 import "../kurumsalOnayKutusu/kurumsal.css";
 import OnayIstegi from "../../components/onayIstegi/OnayIstegi";
 import { getWaitingForApproval } from "../../services/workHistoryService";
+import {
+  getAllWaitingForApproval,
+  deneyimOnaylama,
+  deneyimReddetme,
+} from "../../services/workHistoryService";
 
 function KurumsalOnayKutusu() {
   const [data, setData] = useState([]);

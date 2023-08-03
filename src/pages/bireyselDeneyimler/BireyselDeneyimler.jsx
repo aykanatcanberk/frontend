@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Slider from "../../components/slider/Slider";
 import "swiper/css";
@@ -8,14 +8,19 @@ import "./bireyselDeneyimler.css";
 import { EffectCoverflow, Autoplay } from "swiper/modules";
 import Deneyimlerim from "../../components/deneyimFirma/Deneyimlerim";
 import DeneyimPaylas from "../../components/deneyimFirma/DeneyimPaylas";
-import { useEffect, useState } from "react";
 import { getDeneyimler } from "../../services/deneyimService";
 import DeneyimBackground from "../../components/deneyimFirma/DeneyimBackground";
+import {
+  getDeneyimlerFromBackend,
+  getMyOwnExperiences,
+  addDeneyimToBackend,
+} from "../../services/deneyimService";
 
 export default function App() {
   const [deneyimler, setDeneyimler] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  //getting data from json-server
   useEffect(() => {
     setLoading(true);
     getDeneyimler()
@@ -28,6 +33,20 @@ export default function App() {
         setLoading(false);
       });
   }, []);
+
+  //------------------------------------for the backend------------------------------------
+  // useEffect(() => {
+  //   setLoading(true);
+  //   getDeneyimlerFromBackend()
+  //     .then((response) => {
+  //       setDeneyimler(response.data);
+  //       setLoading(false);
+  //     })
+  //     .catch((error) => {
+  //       console.log("Hata alindi " + error);
+  //       setLoading(false);
+  //     });
+  // }, []);
 
   var deneyimlerim = [
     {
