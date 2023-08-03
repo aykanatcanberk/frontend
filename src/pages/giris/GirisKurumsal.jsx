@@ -47,23 +47,23 @@ export default function Login() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    
+
     axios
-      .post(`http://localhost:5071/api/Auth/loginCompany`, { email, password })
+      .post(`https://localhost:7029/api/Auth/loginCompany`, { email, password })
       .then((res) => {
         toast.success("GİRİŞ İŞLEMİ BAŞARILI DEĞİL.", {
           onClose: () => {
             // Redirect to the desired page
             navigate("/");
           },
-          autoClose: 500,
+          autoClose: 10,
         });
         console.log(res);
         localStorage.setItem("token", res.data.token);
         const token = localStorage.getItem("token");
         if (res.data.login === true) {
           axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-          axios.post(`http://localhost:5071/api/Login/logincontrol`);
+          axios.post(`https://localhost:7029/api/Login/logincontrol`);
           navigate("/kurumsal-profil");
         } else {
           navigate("/kurumsal-anasayfa");
@@ -75,7 +75,7 @@ export default function Login() {
             // Redirect to the desired page
             navigate("/");
           },
-          autoClose: 500,
+          autoClose: 10,
         });
       });
   };

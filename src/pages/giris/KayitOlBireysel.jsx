@@ -8,8 +8,6 @@ import Container from "@mui/material/Container";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { useState, forwardRef, useRef, useEffect } from "react";
 import Stack from "@mui/material/Stack";
-import MuiAlert from "@mui/material/Alert";
-import Slide from "@mui/material/Slide";
 import { useNavigate } from "react-router-dom";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import EmailIcon from "@mui/icons-material/Email";
@@ -17,20 +15,14 @@ import LockIcon from "@mui/icons-material/Lock";
 import FormControl from "@mui/material/FormControl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { InputAdornment } from "@mui/material";
-import {
-  faCheck,
-  faTimes,
-  faInfoCircle,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 import axios from "../../api/axios";
-import { styled } from "styled-components";
 import "./KayıtOlBireysel.css";
 import { Tooltip } from "@mui/material";
 import HelpIcon from "@mui/icons-material/Help";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Import the CSS
-
 
 const darkTheme = createTheme({
   palette: {
@@ -61,7 +53,7 @@ const USER_REGEX = /^[A-zÇŞĞÜİÖçşğüıö][A-z0-9-_ÇŞĞÜİÖçşğü�
 // const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/; // Daha güçlü şifre için bunu kullanın
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PWD_REGEX = /^.{6,}$/;
-const REGISTER_URL = "http://localhost:5071/api/Auth/registerPerson";
+const REGISTER_URL = "https://localhost:7029/api/Auth/registerPerson";
 
 const PasswordRequirementsTooltip = () => {
   return (
@@ -80,44 +72,6 @@ const PasswordRequirementsTooltip = () => {
     </Tooltip>
   );
 };
-
-// const EmailRequirementsTooltip = () => {
-//   return (
-//     <Tooltip
-//       title={
-//         <Typography>
-//           Password must meet the following requirements:
-//           <ul>
-//             <li>At least 2 characters long</li>
-//             <li>Must start with a capital letter</li>
-//             <li>...</li> {/* Add more requirements */}
-//           </ul>
-//         </Typography>
-//       }
-//     >
-//       <HelpIcon />
-//     </Tooltip>
-//   );
-// };
-
-// const NamedRequirementsTooltip = () => {
-//   return (
-//     <Tooltip
-//       title={
-//         <Typography>
-//           Name must meet the following requirements:
-//           <ul>
-//             <li>At least 2 characters long</li>
-//             <li>Must start with a capital letter</li>
-//             <li>...</li> {/* Add more requirements */}
-//           </ul>
-//         </Typography>
-//       }
-//     >
-//       <HelpIcon />
-//     </Tooltip>
-//   );
-// };
 
 export default function Register() {
   const navigate = useNavigate();
@@ -219,7 +173,8 @@ export default function Register() {
               // Redirect to the desired page
               navigate("/");
             },
-          },500);
+            autoClose: 10,
+          });
         });
     } catch (err) {
       if (!err?.response) {
@@ -239,14 +194,15 @@ export default function Register() {
           // Redirect to the desired page
           navigate("/");
         },
+        autoClose: 10,
       });
-    } 
+    }
   };
 
   return (
     <>
       <ToastContainer />
-      
+
       <div>
         <Box sx={boxstyle}>
           <Grid container>
