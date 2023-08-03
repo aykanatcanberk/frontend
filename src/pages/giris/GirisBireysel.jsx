@@ -9,17 +9,13 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { useState } from "react";
-import Snackbar from "@mui/material/Snackbar";
 import Stack from "@mui/material/Stack";
-import Slide from "@mui/material/Slide";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { ResetTvSharp } from "@mui/icons-material";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Import the CSS
 import { fetchUsers } from "../../redux/users/userActions";
 import { connect } from "react-redux";
-
 
 const darkTheme = createTheme({
   palette: {
@@ -54,7 +50,7 @@ function Login() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    
+
     axios
       .post(`http://localhost:5071/api/Auth/loginPerson`, { email, password })
       .then((res) => {
@@ -67,16 +63,16 @@ function Login() {
         });
         console.log(res);
         localStorage.setItem("token", res.data.token);
-        const token = localStorage.getItem("token")
-        if(res.data.login === true){
-          axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
-          axios.post(`http://localhost:5071/api/Login/logincontrol`)
+        const token = localStorage.getItem("token");
+        if (res.data.login === true) {
+          axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+          axios.post(`http://localhost:5071/api/Login/logincontrol`);
           navigate("/bireysel-profil");
-        }else{
+        } else {
           navigate("/bireysel-anasayfa");
         }
-        
-      }).catch((err) => {
+      })
+      .catch((err) => {
         setPassword("");
         toast.success("GİRİŞ İŞLEMİ BAŞARILI DEĞİL.", {
           onClose: () => {
@@ -88,10 +84,9 @@ function Login() {
       });
   };
 
- 
-
   return (
-    <>      
+    <>
+      <ToastContainer />
       <div>
         <Box sx={boxstyle}>
           <Grid container>
@@ -142,7 +137,6 @@ function Login() {
                             id="email"
                             label="E-posta"
                             name="email"
-                            
                           />
                         </Grid>
                         <Grid item xs={12} sx={{ ml: "3em", mr: "3em" }}>
@@ -155,7 +149,6 @@ function Login() {
                             label="Şifre"
                             type="password"
                             id="şifre"
-                            
                           />
                         </Grid>
                         <Grid item xs={12} sx={{ ml: "3em", mr: "3em" }}>

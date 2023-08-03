@@ -7,7 +7,6 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { useState, forwardRef, useRef, useEffect } from "react";
-// import Snackbar from "@mui/material/Snackbar";
 import Stack from "@mui/material/Stack";
 import MuiAlert from "@mui/material/Alert";
 import Slide from "@mui/material/Slide";
@@ -32,9 +31,6 @@ import HelpIcon from "@mui/icons-material/Help";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Import the CSS
 
-const Alert = forwardRef(function Alert(props, ref) {
-  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
 
 const darkTheme = createTheme({
   palette: {
@@ -124,9 +120,6 @@ const PasswordRequirementsTooltip = () => {
 // };
 
 export default function Register() {
-  const [open, setOpen] = useState(false);
-  const vertical = "top";
-  const horizontal = "right";
   const navigate = useNavigate();
 
   const userNameRef = useRef();
@@ -155,7 +148,6 @@ export default function Register() {
   const [matchFocus, setMatchFocus] = useState(false);
 
   const [errMsg, setErrMsg] = useState("");
-  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     userNameRef.current.focus();
@@ -173,9 +165,7 @@ export default function Register() {
   }, [pwd, matchPwd]);
 
   const handleSubmit = async (e) => {
-    setOpen(true);
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
 
     // if button enabled with JS hack
     const v1 = USER_REGEX.test(userName);
@@ -216,7 +206,6 @@ export default function Register() {
           console.log(response?.data);
           console.log(response?.accessToken);
           console.log(JSON.stringify(response));
-          setSuccess(true);
           //clear state and controlled inputs
           //need value attrib on inputs for this
           setUserName("");
@@ -244,7 +233,6 @@ export default function Register() {
         console.log(err);
       }
       // errRef.current.focus();
-      setSuccess(false);
 
       toast.error("ERROR! KAYIT OLMA İŞLEMİ BAŞARILI DEĞİL.", {
         onClose: () => {
@@ -255,31 +243,10 @@ export default function Register() {
     } 
   };
 
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    setOpen(false);
-  };
-
-  function TransitionLeft(props) {
-    return <Slide {...props} direction="left" />;
-  }
-
   return (
     <>
       <ToastContainer />
-      {/* <Snackbar
-        open={open}
-        autoHideDuration={3000}
-        onClose={handleClose}
-        TransitionComponent={TransitionLeft}
-        anchorOrigin={{ vertical, horizontal }}
-      >
-        <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-          Hata! E-posta ve şifre alanı boş bırakılamaz.
-        </Alert>
-      </Snackbar> */}
+      
       <div>
         <Box sx={boxstyle}>
           <Grid container>
@@ -324,7 +291,7 @@ export default function Register() {
                     <Box
                       component="form"
                       noValidate
-                      // onSubmit={handleSubmit}
+                      onSubmit={handleSubmit}
                       sx={{ mt: 2 }}
                     >
                       <Box

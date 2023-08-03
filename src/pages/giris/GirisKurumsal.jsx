@@ -10,7 +10,6 @@ import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { useState } from "react";
 import Stack from "@mui/material/Stack";
-import Slide from "@mui/material/Slide";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Import the CSS
 import { useNavigate } from "react-router-dom";
@@ -48,7 +47,7 @@ export default function Login() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
+    
     axios
       .post(`http://localhost:5071/api/Auth/loginCompany`, { email, password })
       .then((res) => {

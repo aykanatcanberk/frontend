@@ -31,7 +31,6 @@ import {
   updateUserEduBackgroundInformation,
 } from "../../services/userServices";
 import AddIsGecmisi from "./Ozgecmis/IsGecmisi/AddIsGecmisi";
-import axios from "axios";
 
 const PageWrapper = styled(Grid)({
   padding: "2rem",

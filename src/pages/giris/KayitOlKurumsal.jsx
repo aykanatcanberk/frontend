@@ -6,11 +6,10 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { useState, forwardRef, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 // import Snackbar from "@mui/material/Snackbar";
 import Stack from "@mui/material/Stack";
 import MuiAlert from "@mui/material/Alert";
-import Slide from "@mui/material/Slide";
 import { useNavigate } from "react-router-dom";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import EmailIcon from "@mui/icons-material/Email";
@@ -32,9 +31,6 @@ import HelpIcon from "@mui/icons-material/Help";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Import the CSS
 
-const Alert = forwardRef(function Alert(props, ref) {
-  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
 
 const darkTheme = createTheme({
   palette: {
@@ -123,9 +119,6 @@ const PasswordRequirementsTooltip = () => {
 // };
 
 export default function Register() {
-  const [open, setOpen] = useState(false);
-  const vertical = "top";
-  const horizontal = "right";
   const navigate = useNavigate();
 
   const companyNameRef = useRef();
@@ -167,9 +160,7 @@ export default function Register() {
   }, [pwd, matchPwd]);
 
   const handleSubmit = async (e) => {
-    setOpen(true);
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
 
     // if button enabled with JS hack
     const v1 = USER_REGEX.test(companyName);
