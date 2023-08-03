@@ -9,13 +9,13 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { useState } from "react";
-import Snackbar from "@mui/material/Snackbar";
 import Stack from "@mui/material/Stack";
-import Slide from "@mui/material/Slide";
 import { useNavigate } from "react-router-dom";
-import { connect } from "react-redux";
-import { fetchUsers } from "../../redux/users/userActions";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Import the CSS
+import { fetchUsers } from "../../redux/users/userActions";
+import { connect } from "react-redux";
 
 const darkTheme = createTheme({
   palette: {
@@ -42,54 +42,51 @@ const center = {
 };
 
 function Login() {
-  const [open, setOpen] = useState(false);
   const [remember, setRemember] = useState(false);
   const [email, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const vertical = "top";
-  const horizontal = "right";
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     axios
-      .post(`https://localhost:7029/api/Auth/loginPerson`, { email, password })
+      .post(`http://localhost:5071/api/Auth/loginPerson`, { email, password })
       .then((res) => {
+        toast.success("GİRİŞ İŞLEMİ BAŞARILI OLDU.", {
+          onClose: () => {
+            // Redirect to the desired page
+            navigate("/");
+          },
+          autoClose: 500,
+        });
         console.log(res);
         localStorage.setItem("token", res.data.token);
         const token = localStorage.getItem("token");
         if (res.data.login === true) {
           axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-          axios.post(`https://localhost:7029/api/Login/logincontrol`);
+          axios.post(`http://localhost:5071/api/Login/logincontrol`);
           navigate("/bireysel-profil");
         } else {
           navigate("/bireysel-anasayfa");
         }
+      })
+      .catch((err) => {
+        setPassword("");
+        toast.success("GİRİŞ İŞLEMİ BAŞARILI DEĞİL.", {
+          onClose: () => {
+            // Redirect to the desired page
+            navigate("/");
+          },
+          autoClose: 500,
+        });
       });
   };
 
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    setOpen(false);
-  };
-
-  function TransitionLeft(props) {
-    return <Slide {...props} direction="left" />;
-  }
-
   return (
     <>
-      <Snackbar
-        open={open}
-        autoHideDuration={3000}
-        onClose={handleClose}
-        TransitionComponent={TransitionLeft}
-        anchorOrigin={{ vertical, horizontal }}
-      ></Snackbar>
+      <ToastContainer />
       <div>
         <Box sx={boxstyle}>
           <Grid container>
@@ -134,24 +131,24 @@ function Login() {
                         <Grid item xs={12} sx={{ ml: "3em", mr: "3em" }}>
                           <TextField
                             required
+                            value={email}
+                            onChange={(e) => setUsername(e.target.value)}
                             fullWidth
                             id="email"
                             label="E-posta"
                             name="email"
-                            value={email}
-                            onChange={(e) => setUsername(e.target.value)}
                           />
                         </Grid>
                         <Grid item xs={12} sx={{ ml: "3em", mr: "3em" }}>
                           <TextField
                             required
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                             fullWidth
                             name="şifre"
                             label="Şifre"
                             type="password"
                             id="şifre"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
                           />
                         </Grid>
                         <Grid item xs={12} sx={{ ml: "3em", mr: "3em" }}>

@@ -7,7 +7,6 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { useState, forwardRef, useRef, useEffect } from "react";
-import Snackbar from "@mui/material/Snackbar";
 import Stack from "@mui/material/Stack";
 import MuiAlert from "@mui/material/Alert";
 import Slide from "@mui/material/Slide";
@@ -32,9 +31,6 @@ import HelpIcon from "@mui/icons-material/Help";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Import the CSS
 
-const Alert = forwardRef(function Alert(props, ref) {
-  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
 
 const darkTheme = createTheme({
   palette: {
@@ -65,7 +61,7 @@ const USER_REGEX = /^[A-zÇŞĞÜİÖçşğüıö][A-z0-9-_ÇŞĞÜİÖçşğü�
 // const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/; // Daha güçlü şifre için bunu kullanın
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PWD_REGEX = /^.{6,}$/;
-const REGISTER_URL = "/register";
+const REGISTER_URL = "http://localhost:5071/api/Auth/registerPerson";
 
 const PasswordRequirementsTooltip = () => {
   return (
@@ -124,9 +120,6 @@ const PasswordRequirementsTooltip = () => {
 // };
 
 export default function Register() {
-  const [open, setOpen] = useState(false);
-  const vertical = "top";
-  const horizontal = "right";
   const navigate = useNavigate();
 
   const userNameRef = useRef();
@@ -155,7 +148,6 @@ export default function Register() {
   const [matchFocus, setMatchFocus] = useState(false);
 
   const [errMsg, setErrMsg] = useState("");
-  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     userNameRef.current.focus();
@@ -173,9 +165,7 @@ export default function Register() {
   }, [pwd, matchPwd]);
 
   const handleSubmit = async (e) => {
-    setOpen(true);
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
 
     // if button enabled with JS hack
     const v1 = USER_REGEX.test(userName);
@@ -188,80 +178,75 @@ export default function Register() {
     }
     try {
       // burası backend'e olmadan çalışmaz
-      const response = await axios.post(
-        REGISTER_URL,
-        JSON.stringify({ userName, userSurname, userEmail, pwd }),
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-        }
-      );
-      // response backend olunca bir işe yarıyor
-      // console.log(response?.data);
-      // console.log(response?.accessToken);
-      // console.log(JSON.stringify(response));
-      setSuccess(true);
-      //clear state and controlled inputs
-      //need value attrib on inputs for this
-      setUserName("");
-      setUserSurname("");
-      setUserEmail("");
-      setPwd("");
-      setMatchPwd("");
+      const userDto = {
+        email: userEmail,
+        password: pwd,
+      };
+      const personDto = {
+        name: userName,
+        surname: userSurname,
+      };
+
+      const data = {
+        userDto: userDto,
+        personDto: personDto,
+      };
+
+      await axios
+        .post(
+          REGISTER_URL,
+          data
+          // {
+          //   headers: { "Content-Type": "application/json" },
+          //   withCredentials: true,
+          // }
+        )
+        .then((response) => {
+          // response backend olunca bir işe yarıyor
+          console.log(response?.data);
+          console.log(response?.accessToken);
+          console.log(JSON.stringify(response));
+          //clear state and controlled inputs
+          //need value attrib on inputs for this
+          setUserName("");
+          setUserSurname("");
+          setUserEmail("");
+          setPwd("");
+          setMatchPwd("");
+
+          toast.success("KAYIT OLMA İŞLEMİ BAŞARILI OLDU.", {
+            onClose: () => {
+              // Redirect to the desired page
+              navigate("/");
+            },
+          },500);
+        });
     } catch (err) {
       if (!err?.response) {
         setErrMsg("No Server Response");
+        console.log(err);
       } else if (err.response?.status === 409) {
         setErrMsg("Username Taken");
+        console.log(err);
       } else {
         setErrMsg("Registration Failed");
+        console.log(err);
       }
       // errRef.current.focus();
-      setSuccess(false);
-    } finally {
-      if (success) {
-        toast.success("KAYIT OLMA İŞLEMİ BAŞARILI OLDU.", {
-          onClose: () => {
-            // Redirect to the desired page
-            navigate("/");
-          },
-        });
-      } else {
-        toast.error("ERROR! KAYIT OLMA İŞLEMİ BAŞARILI DEĞİL.", {
-          onClose: () => {
-            // Redirect to the desired page
-            navigate("/");
-          },
-        });
-      }
-    }
-  };
 
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    setOpen(false);
+      toast.error("ERROR! KAYIT OLMA İŞLEMİ BAŞARILI DEĞİL.", {
+        onClose: () => {
+          // Redirect to the desired page
+          navigate("/");
+        },
+      });
+    } 
   };
-
-  function TransitionLeft(props) {
-    return <Slide {...props} direction="left" />;
-  }
 
   return (
     <>
       <ToastContainer />
-      <Snackbar
-        open={open}
-        autoHideDuration={3000}
-        onClose={handleClose}
-        TransitionComponent={TransitionLeft}
-        anchorOrigin={{ vertical, horizontal }}
-      >
-        {/* <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-          Hata! E-posta ve şifre alanı boş bırakılamaz.
-        </Alert> */}
-      </Snackbar>
+      
       <div>
         <Box sx={boxstyle}>
           <Grid container>
@@ -306,7 +291,7 @@ export default function Register() {
                     <Box
                       component="form"
                       noValidate
-                      // onSubmit={handleSubmit}
+                      onSubmit={handleSubmit}
                       sx={{ mt: 2 }}
                     >
                       <Box
