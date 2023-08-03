@@ -8,21 +8,14 @@ import Container from "@mui/material/Container";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import { useState, forwardRef, useEffect } from "react";
+import { useState } from "react";
 import Snackbar from "@mui/material/Snackbar";
 import Stack from "@mui/material/Stack";
-import MuiAlert from "@mui/material/Alert";
 import Slide from "@mui/material/Slide";
 import { useNavigate } from "react-router-dom";
-import { stringify } from "json5";
 import { connect } from "react-redux";
-import { useRadioGroup } from "@mui/material";
 import { fetchUsers } from "../../redux/users/userActions";
-import { getUserByEmail } from "../../services/userServices.jsx";
-
-const Alert = forwardRef(function Alert(props, ref) {
-  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
+import axios from "axios";
 
 const darkTheme = createTheme({
   palette: {
@@ -48,69 +41,34 @@ const center = {
   left: "37%",
 };
 
-function Login({ usersData, fetchUsers }) {
+function Login() {
   const [open, setOpen] = useState(false);
   const [remember, setRemember] = useState(false);
-
-  useEffect(() => {
-    fetchUsers("http://localhost:3000/users");
-  }, []);
-
-  const initialAccount = {
-    eMail: "",
-    password: "",
-    userType: "-",
-  };
-
-  const [tryAccount, setTryAccount] = useState(initialAccount);
+  const [email, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const vertical = "top";
   const horizontal = "right";
   const navigate = useNavigate();
 
-  // const handleSubmit = async (event) => {
-  //   setOpen(true);
-  //   event.preventDefault();
-  //   ProceedLogin();
-  //   // const data = new FormData(event.currentTarget);
-  // };
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-  // const ProceedLogin = () => {
-  //   if (validate()) {
-  //     getUserByEmail(tryAccount.eMail)
-  //       .then((user) => {
-  //         if (user[0].password === tryAccount.password) {
-  //           console.log("Success");
-  //           sessionStorage.setItem("eMail", tryAccount.eMail);
-  //           sessionStorage.setItem("userrole", user.role);
-  //           console.log("go to the main page!");
-  //           navigate("/bireysel-anasayfa");
-  //         } else {
-  //           console.error("Please Enter valid credentials");
-  //         }
-  //       })
-  //       .catch((err) => {
-  //         console.error("Login Failed due to :" + err.message);
-  //       });
-  //   }
-  // };
-
-  // const validate = () => {
-  //   let result = true;
-  //   if (tryAccount.eMail === "" || tryAccount.eMail === null) {
-  //     result = false;
-  //     <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-  //       Hata! E-posta alanı boş bırakılamaz.
-  //     </Alert>;
-  //   }
-  //   if (tryAccount.password === "" || tryAccount.password === null) {
-  //     result = false;
-  //     <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-  //       Hata! Şifre alanı boş bırakılamaz.
-  //     </Alert>;
-  //   }
-  //   return result;
-  // };
+    axios
+      .post(`https://localhost:7029/api/Auth/loginPerson`, { email, password })
+      .then((res) => {
+        console.log(res);
+        localStorage.setItem("token", res.data.token);
+        const token = localStorage.getItem("token");
+        if (res.data.login === true) {
+          axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+          axios.post(`https://localhost:7029/api/Login/logincontrol`);
+          navigate("/bireysel-profil");
+        } else {
+          navigate("/bireysel-anasayfa");
+        }
+      });
+  };
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -169,7 +127,7 @@ function Login({ usersData, fetchUsers }) {
                     <Box
                       component="form"
                       noValidate
-                      // onSubmit={handleSubmit}
+                      onSubmit={handleSubmit}
                       sx={{ mt: 2 }}
                     >
                       <Grid container spacing={1}>
@@ -177,16 +135,11 @@ function Login({ usersData, fetchUsers }) {
                           <TextField
                             required
                             fullWidth
-                            id="eMail"
+                            id="email"
                             label="E-posta"
-                            name="eMail"
-                            value={tryAccount.eMail}
-                            onChange={(e) => {
-                              setTryAccount({
-                                ...tryAccount,
-                                eMail: e.target.value,
-                              });
-                            }}
+                            name="email"
+                            value={email}
+                            onChange={(e) => setUsername(e.target.value)}
                           />
                         </Grid>
                         <Grid item xs={12} sx={{ ml: "3em", mr: "3em" }}>
@@ -197,13 +150,8 @@ function Login({ usersData, fetchUsers }) {
                             label="Şifre"
                             type="password"
                             id="şifre"
-                            value={tryAccount.password}
-                            onChange={(e) => {
-                              setTryAccount({
-                                ...tryAccount,
-                                password: e.target.value,
-                              });
-                            }}
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                           />
                         </Grid>
                         <Grid item xs={12} sx={{ ml: "3em", mr: "3em" }}>
