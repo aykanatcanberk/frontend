@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import Avatar from "@mui/material/Avatar";
 import BusinessIcon from "@mui/icons-material/Business";
 import { blue } from "@mui/material/colors";
@@ -23,12 +24,12 @@ import { addAdvert } from "../../services/advertService";
 
 function KurumsalIlanlar() {
   const FormData = {
-    ilan_adi: "",
-    firma_adı:"",
-    çalışma_şekli: [],
-    çalışma_tercihi: [],
-    ilan_tipi: [],
-    bölüm: [],
+    advertName: "",
+    companyName: "",
+    jobStyle: [],
+    jobTime: [],
+    jobType: [],
+    major: [],
     desc: "",
   };
   const handleInputChange = (event) => {
@@ -53,16 +54,55 @@ function KurumsalIlanlar() {
       });
     }
   };
+ /* const fetchCompanyAdverts = () => {
+    axios.get("https://localhost:7029/api/Advert/api/Advert/companypage")
+      .then((response) => {
+        console.log("Company Advertisements:", response.data);
+        setCompanyAdvertisements(response.data);
+      })
+      .
+      })
+     
+catch((error) => {
+        console.error("Error fetching company advertisements:", error);
+      });
+  };
+
+  useEffect(() => {
+    fetchCompanyAdverts();
+  }, []);
 
   const handleSubmit = () => {
     const newAdvert = {
-      ilan_adi: formData.ilan_adi,
+      advertName: formData.advertName,
       desc: formData.desc,
-      çalışma_şekli: formData.çalışma_şekli,
-      çalışma_tercihi: formData.çalışma_tercihi,
-      ilan_tipi: formData.ilan_tipi,
-      bölüm: formData.bölüm,
-      ilan_date: new Date().toLocaleDateString(),
+      jobStyle: formData.jobStyle,
+      jobTime: formData.jobTime,
+      jobType: formData.jobType,
+      major: formData.major,
+      advertDate: new Date().toLocaleDateString(),
+    };
+  
+    axios.post("https://localhost:7029/api/Advert", newAdvert) 
+      .then((response) => {
+        console.log("İlan başarıyla eklendi:", response.data);
+      })
+      .catch((error) => {
+        console.error("İlan eklenirken bir hata oluştu:", error);
+      });
+  
+    setFormData(FormData);
+  };*/
+
+  const handleSubmit = () => {
+    const newAdvert = {
+      advertName: formData.advertName,
+      desc: formData.desc,
+      jobStyle: formData.jobStyle,
+      jobTime: formData.jobTime,
+      jobType: formData.jobType,
+      major: formData.major,
+      advertDate: new Date().toLocaleDateString(),
     };
 
     addAdvert(newAdvert)
@@ -137,8 +177,8 @@ function KurumsalIlanlar() {
             <Typography level="h1" fontSize="xl">
               İlan Adı
               <Input
-                name="ilan_adi"
-                value={formData.ilan_adi}
+                name="advertName"
+                value={formData.advertName}
                 onChange={handleInputChange}
               />
             </Typography>
@@ -154,25 +194,25 @@ function KurumsalIlanlar() {
                 <FormLabel>Çalışma Şekli</FormLabel>
                 <Checkbox
                   label="Yüz Yüze"
-                  name="çalışma_şekli"
+                  name="jobStyle"
                   value="Yüz Yüze"
-                  checked={formData.çalışma_şekli.includes("Yüz Yüze")}
+                  checked={formData.jobStyle.includes("Yüz Yüze")}
                   onChange={handleCheckboxChange}
                   sx={{ gridColumn: "1/-1", my: 1 }}
                 />
                 <Checkbox
                   label="Uzaktan"
-                  name="çalışma_şekli"
+                  name="jobStyle"
                   value="Uzaktan"
-                  checked={formData.çalışma_şekli.includes("Uzaktan")}
+                  checked={formData.jobStyle.includes("Uzaktan")}
                   onChange={handleCheckboxChange}
                   sx={{ gridColumn: "1/-1", my: 1 }}
                 />
                 <Checkbox
                   label="Hibrit"
-                  name="çalışma_şekli"
+                  name="jobStyle"
                   value="Hibrit"
-                  checked={formData.çalışma_şekli.includes("Hibrit")}
+                  checked={formData.jobStyle.includes("Hibrit")}
                   onChange={handleCheckboxChange}
                   sx={{ gridColumn: "1/-1", my: 1 }}
                 />
@@ -181,33 +221,33 @@ function KurumsalIlanlar() {
                 <FormLabel>Çalışma Tercihi</FormLabel>
                 <Checkbox
                   label="Tam Zamanlı"
-                  name="çalışma_tercihi"
+                  name="jobTime"
                   value="Tam Zamanlı"
-                  checked={formData.çalışma_tercihi.includes("Tam Zamanlı")}
+                  checked={formData.jobTime.includes("Tam Zamanlı")}
                   onChange={handleCheckboxChange}
                   sx={{ gridColumn: "1/-1", my: 1 }}
                 />
                 <Checkbox
                   label="Yarı Zamanlı"
-                  name="çalışma_tercihi"
+                  name="jobTime"
                   value="Yarı Zamanlı"
-                  checked={formData.çalışma_tercihi.includes("Yarı Zamanlı")}
+                  checked={formData.jobTime.includes("Yarı Zamanlı")}
                   onChange={handleCheckboxChange}
                   sx={{ gridColumn: "1/-1", my: 1 }}
                 />
                 <Checkbox
                   label="Proje Bazlı"
-                  name="çalışma_tercihi"
+                  name="jobTime"
                   value="Proje Bazlı"
-                  checked={formData.çalışma_tercihi.includes("Proje Bazlı")}
+                  checked={formData.jobTime.includes("Proje Bazlı")}
                   onChange={handleCheckboxChange}
                   sx={{ gridColumn: "1/-1", my: 1 }}
                 />
                 <Checkbox
                   label="Serbest Zamanlı"
-                  name="çalışma_tercihi"
+                  name="jobTime"
                   value="Serbest Zamanlı"
-                  checked={formData.çalışma_tercihi.includes("Serbest Zamanlı")}
+                  checked={formData.jobTime.includes("Serbest Zamanlı")}
                   onChange={handleCheckboxChange}
                   sx={{ gridColumn: "1/-1", my: 1 }}
                 />
@@ -216,17 +256,17 @@ function KurumsalIlanlar() {
                 <FormLabel>İlan Tipi</FormLabel>
                 <Checkbox
                   label="Staj İlanı"
-                  name="ilan_tipi"
+                  name="jobType"
                   value="Staj İlanı"
-                  checked={formData.ilan_tipi.includes("Staj İlanı")}
+                  checked={formData.jobType.includes("Staj İlanı")}
                   onChange={handleCheckboxChange}
                   sx={{ gridColumn: "1/-1", my: 1 }}
                 />
                 <Checkbox
                   label="İş İlanı"
-                  name="ilan_tipi"
+                  name="jobType"
                   value="İş İlanı"
-                  checked={formData.ilan_tipi.includes("İş İlanı")}
+                  checked={formData.jobType.includes("İş İlanı")}
                   onChange={handleCheckboxChange}
                   sx={{ gridColumn: "1/-1", my: 1 }}
                 />
@@ -235,17 +275,17 @@ function KurumsalIlanlar() {
                 <FormLabel>Bölüm</FormLabel>
                 <Checkbox
                   label="Bilgisayar Mühendisliği"
-                  name="bölüm"
+                  name="major"
                   value="Bilgisayar Mühendisliği"
-                  checked={formData.bölüm.includes("Bilgisayar Mühendisliği")}
+                  checked={formData.major.includes("Bilgisayar Mühendisliği")}
                   onChange={handleCheckboxChange}
                   sx={{ gridColumn: "1/-1", my: 1 }}
                 />
                 <Checkbox
                   label="Elektrik-Elektronik Mühendisliği"
-                  name="bölüm"
+                  name="major"
                   value="Elektrik-Elektronik Mühendisliği"
-                  checked={formData.bölüm.includes(
+                  checked={formData.major.includes(
                     "Elektrik-Elektronik Mühendisliği"
                   )}
                   onChange={handleCheckboxChange}
@@ -253,17 +293,17 @@ function KurumsalIlanlar() {
                 />
                 <Checkbox
                   label="Endüstri Mühendisliği"
-                  name="bölüm"
+                  name="major"
                   value="Endüstri Mühendisliği"
-                  checked={formData.bölüm.includes("Endüstri Mühendisliği")}
+                  checked={formData.major.includes("Endüstri Mühendisliği")}
                   onChange={handleCheckboxChange}
                   sx={{ gridColumn: "1/-1", my: 1 }}
                 />
                 <Checkbox
                   label="Makine Mühendisliği"
-                  name="bölüm"
+                  name="major"
                   value="Makine Mühendisliği"
-                  checked={formData.bölüm.includes("Makine Mühendisliği")}
+                  checked={formData.major.includes("Makine Mühendisliği")}
                   onChange={handleCheckboxChange}
                   sx={{ gridColumn: "1/-1", my: 1 }}
                 />
@@ -323,5 +363,4 @@ function KurumsalIlanlar() {
     </>
   );
 }
-
 export default KurumsalIlanlar;
