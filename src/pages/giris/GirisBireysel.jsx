@@ -19,7 +19,9 @@ import { connect } from "react-redux";
 import { useRadioGroup } from "@mui/material";
 import { fetchUsers } from "../../redux/users/userActions";
 import { getUserByEmail } from "../../services/userServices.jsx";
-
+import { login1 } from "../../services/loginService";
+import axios from "axios";
+import { ResetTvSharp } from "@mui/icons-material";
 const Alert = forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
@@ -51,28 +53,39 @@ const center = {
 function Login({ usersData, fetchUsers }) {
   const [open, setOpen] = useState(false);
   const [remember, setRemember] = useState(false);
-
-  useEffect(() => {
-    fetchUsers("http://localhost:3000/users");
-  }, []);
-
-  const initialAccount = {
-    eMail: "",
-    password: "",
-    userType: "-",
-  };
-
-  const [tryAccount, setTryAccount] = useState(initialAccount);
+  const [email, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const vertical = "top";
   const horizontal = "right";
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
-    setOpen(true);
     event.preventDefault();
-    // ProceedLogin();
-    // const data = new FormData(event.currentTarget);
+    setOpen(true);
+    const data = new FormData(event.currentTarget);
+    // login1({ email, password })
+    //   .then((response) => {
+    //     localStorage.setItem("token", response.data);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+    axios
+      .post(`https://localhost:7029/api/Auth/login`, { email, password })
+      .then((res) => {
+        console.log(res);
+        localStorage.setItem("token", res.data.token);
+        const token = localStorage.getItem("token")
+        if(res.data.control === true){
+          axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
+          axios.post(`https://localhost:7029/api/Login/logincontrol`)
+          navigate("/bireysel-profil");
+        }else{
+          navigate("/bireysel-anasayfa");
+        }
+        
+      });
   };
 
   // const ProceedLogin = () => {
@@ -180,6 +193,8 @@ function Login({ usersData, fetchUsers }) {
                         <Grid item xs={12} sx={{ ml: "3em", mr: "3em" }}>
                           <TextField
                             required
+                            value={email}
+                            onChange={(e) => setUsername(e.target.value)}
                             fullWidth
                             id="eMail"
                             label="E-posta"
@@ -196,6 +211,8 @@ function Login({ usersData, fetchUsers }) {
                         <Grid item xs={12} sx={{ ml: "3em", mr: "3em" }}>
                           <TextField
                             required
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                             fullWidth
                             name="şifre"
                             label="Şifre"
