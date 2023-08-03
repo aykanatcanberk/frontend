@@ -131,7 +131,8 @@ function PageChangeButtons({ sharedPostsActive, setSharedPostsActive }) {
   );
 }
 
-function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {
+function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {  
+
   const [sharedPostsActive, setSharedPostsActive] = useState(true);
 
   const [expReviewsSelf, setExpReviewsSelf] = useState([]);
@@ -245,7 +246,7 @@ function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {
   };
 
   const handleEditEduBackgroundSave = (editedEduBackground) => {
-    // updateUserEduBackgroundInformation(editedEduBackground, 1);
+    updateUserEduBackgroundInformation(editedEduBackground, 1);
 
     setEduBackground(editedEduBackground);
     setIsEditingEduBackground(false);
