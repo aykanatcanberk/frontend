@@ -30,6 +30,7 @@ function ProfilComp() {
     getUserEduInfo()
       .then((response) => {
         const eduinfo = response.data;
+        console.log(eduinfo);
         setCompanyDataList(eduinfo);
       })
       .catch(() => {
@@ -75,7 +76,7 @@ function ProfilComp() {
             textAlign: "center",
           }}
         >
-          {eduinf.departmentName}
+          {eduinf.length > 0 ? eduinf[0].departmentName : eduinf.departmentName}
         </Typography>
       </Grid>
     </CardWrapper>

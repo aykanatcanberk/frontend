@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Grid } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import ProfilCard from "../../components/kurumsalAnasayfa/profilcard";
 import Gonderi from "../../components/kurumsalAnasayfa/gönderi";
 import Gonderiolustur from "../../components/kurumsalAnasayfa/gonderiolusturma";
-import db from "../../data/db.json";
 import Populerkonular from "../../components/kurumsalAnasayfa/populerkonular";
+import { getUserPosts } from "../../services/userService";
+import NotFoundError from "../../routes/NotFoundError";
 
 const PageWrapper = styled(Grid)({
   padding: "2rem",
@@ -16,6 +17,19 @@ const PageWrapper = styled(Grid)({
 });
 
 const App = () => {
+  const [userPosts, setCompanyDataList] = useState([]);
+
+  useEffect(() => {
+    getUserPosts()
+      .then((response) => {
+        const info = response.data;
+        console.log(info);
+        setCompanyDataList(info);
+      })
+      .catch(() => {
+        return <NotFoundError props={"Böyle bir company bilgisi mevcut değil."} />;
+      });
+  }, []);
   return (
     <PageWrapper container spacing={3} justifyContent="left">
       <Grid
@@ -47,7 +61,7 @@ const App = () => {
         {/* gönderi oluşturma kısmı */}
         <Gonderiolustur />
         <div className="firmaContainer">
-          {db["kurumsal-anasayfa"].map((postcard) => (
+          {userPosts.map((postcard) => (
             <Gonderi key={postcard.id} postcard={postcard} />
           ))}
         </div>
