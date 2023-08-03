@@ -84,7 +84,7 @@ function kurumsalIlanLayout({ advert }) {
                     fontWeight="bold"
                     color="text.secondary"
                   >
-                    {advert.ilan_adi}
+                    {advert.advertName}
                   </Typography>
                 }
                 subheader={
@@ -97,7 +97,7 @@ function kurumsalIlanLayout({ advert }) {
                       color="text.secondary"
                       marginTop={0.8}
                     >
-                      {advert.ilan_date}
+                      {advert.advertDate}
                     </Typography>
                     <BusinessCenterIcon
                       sx={{ fontSize: 14, marginLeft: 2, marginTop: 0.8 }}
@@ -107,7 +107,7 @@ function kurumsalIlanLayout({ advert }) {
                       color="text.secondary"
                       marginTop={0.8}
                     >
-                      {advert.ilan_tipi}
+                      {advert.jobType}
                     </Typography>
                   </Box>
                 }
@@ -130,7 +130,7 @@ function kurumsalIlanLayout({ advert }) {
                   marginLeft={0.5}
                   color="text.secondary"
                 >
-                  {advert.çalışma_şekli}
+                  {advert.jobStyle}
                 </Typography>
                 <LocalAtmIcon
                   sx={{ fontSize: 14, marginLeft: 4, marginTop: 0.8 }}
@@ -141,7 +141,7 @@ function kurumsalIlanLayout({ advert }) {
                   marginLeft={0.5}
                   color="text.secondary"
                 >
-                  {advert.çalışma_tercihi}
+                  {advert.jobTime}
                 </Typography>
                 <EngineeringIcon
                   sx={{ fontSize: 14, marginLeft: 4, marginTop: 0.8 }}
@@ -153,7 +153,7 @@ function kurumsalIlanLayout({ advert }) {
                   marginBottom={2}
                   color="text.secondary"
                 >
-                  {advert.bölüm}
+                  {advert.major}
                 </Typography>
               </Box>
             </Card>

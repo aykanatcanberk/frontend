@@ -14,6 +14,7 @@ function Deneyimlerim(props) {
       }}
     >
       {props.props.map((deneyim, i) => (
+        // <p>hello</p>
         <Slider key={deneyim.id} item={deneyim} />
       ))}
     </Paper>

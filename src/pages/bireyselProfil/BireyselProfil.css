@@ -1,0 +1,29 @@
+/* App.css */
+.bireyselProfil {
+  display: flex; /* or use 'grid' here if you prefer CSS Grid */
+  height: auto; /* Set the container height to cover the full viewport height */
+}
+
+.left-side {
+  flex: 1; /* or 'grid-column: 1' if using CSS Grid; this will make the left side take up available space */
+  background-color: white; /* Just a placeholder background color for the left side */
+  overflow: hidden; /* Hide any content that overflows (optional, but recommended) */
+  position: sticky;
+}
+
+.right-side {
+  flex: 1; /* or 'grid-column: 2' if using CSS Grid; this will make the right side take up available space */
+  background-color: rgb(255, 255, 255); /* Just a placeholder background color for the right side */
+  overflow-y: scroll; /* Enable vertical scrolling for the right side */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.right-side::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.right-side {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}

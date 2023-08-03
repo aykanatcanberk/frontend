@@ -31,45 +31,57 @@ const RoundButton = styled(Button)({
 function GonderiCard({ userPosts }) {
   return (
     <PostCardWrapper>
-      <Grid container alignItems="center">
-        <Grid item xs={2} sm={2} md={2}>
-          <Avatar src="url_profil_avatar" alt="Profil Avatarı" />
-        </Grid>
-        <Grid item xs={10} sm={10} md={10}>
+          <Grid container alignItems="center">
+            <Grid item xs={2} sm={2} md={2}>
+              <Avatar src="url_profil_avatar" alt="Profil Avatarı" />
+            </Grid>
+            <Grid item xs={10} sm={10} md={10}>
+              <Typography
+                variant="subtitle1"
+                style={{
+                  fontFamily: "Arial",
+                  fontSize: "14px",
+                  fontWeight: "bold",
+                }}
+              >
+            {userPosts.name}
+              </Typography>
+              <Typography
+                variant="subtitle2"
+                style={{
+                  fontFamily: "Arial",
+                  fontSize: "12px",
+                  fontWeight: "normal",
+                  color: "textSecondary",
+                }}
+              >
+                {userPosts.postDate}
+              </Typography>
+            </Grid>
+          </Grid>
           <Typography
-            variant="subtitle1"
+            variant="body1"
             style={{
               fontFamily: "Arial",
               fontSize: "14px",
-              fontWeight: "bold",
+              fontWeight: "normal",
             }}
           >
-            {userPosts.first_name} <span /> {userPosts.last_name}
+            {userPosts.content}
           </Typography>
           <Typography
-            variant="subtitle2"
+            variant="body2"
             style={{
               fontFamily: "Arial",
               fontSize: "12px",
               fontWeight: "normal",
               color: "textSecondary",
+              textAlign: "end",
             }}
           >
-            {userPosts.post_date}
+            10 Beğeni
           </Typography>
-        </Grid>
-      </Grid>
-      <Typography
-        variant="body1"
-        style={{
-          fontFamily: "Arial",
-          fontSize: "14px",
-          fontWeight: "normal",
-        }}
-      >
-        {userPosts.comments}
-      </Typography>
-      <ButtonsWrapper>
+          <ButtonsWrapper>
         <LikeButton />
         <TextField
           label="Yorum yaz..."
@@ -81,8 +93,8 @@ function GonderiCard({ userPosts }) {
         />
         <PaylasButton />
       </ButtonsWrapper>
-    </PostCardWrapper>
-  );
+        </PostCardWrapper>
+  )
 }
 
 export default GonderiCard;

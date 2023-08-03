@@ -81,6 +81,7 @@ catch((error) => {
       jobType: formData.jobType,
       major: formData.major,
       advertDate: new Date().toLocaleDateString(),
+<<<<<<< HEAD
     };
   
     axios.post("https://localhost:7029/api/Advert", newAdvert) 
@@ -103,6 +104,8 @@ catch((error) => {
       jobType: formData.jobType,
       major: formData.major,
       advertDate: new Date().toLocaleDateString(),
+=======
+>>>>>>> 4d2c4848f78e25def89ed5e8718da48969848d82
     };
 
     addAdvert(newAdvert)
