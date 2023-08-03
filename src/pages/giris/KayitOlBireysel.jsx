@@ -64,7 +64,7 @@ const USER_REGEX = /^[A-Z][A-Za-zÇçĞğİıÖöŞşÜü]{1,22}$/;
 // const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/; // Daha güçlü şifre için bunu kullanın
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PWD_REGEX = /^.{6,}$/;
-const REGISTER_URL = "/register";
+const REGISTER_URL = "https://localhost:5071/api/Auth/registerPerson";
 
 const PasswordRequirementsTooltip = () => {
   return (
@@ -123,6 +123,7 @@ const NamedRequirementsTooltip = () => {
 };
 
 export default function Register() {
+
   const [open, setOpen] = useState(false);
   const vertical = "top";
   const horizontal = "right";
@@ -188,18 +189,34 @@ export default function Register() {
     }
     try {
       // burası backend'e olmadan çalışmaz
+      const userDto = {
+        email: userEmail,
+        password: pwd
+      }
+      const personDto = {
+        name: userName,
+        surname: userSurname
+      }
+
+      const data = {
+        userDto : userDto,
+        personDto: personDto
+      }
+      
       const response = await axios.post(
         REGISTER_URL,
-        JSON.stringify({ userName, userSurname, userEmail, pwd }),
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-        }
+        // JSON.stringify({ userDto, personDto }),
+        data,
+        
+        // {
+        //   headers: { "Content-Type": "application/json" },
+        //   withCredentials: true,
+        // }
       );
       // response backend olunca bir işe yarıyor
-      // console.log(response?.data);
-      // console.log(response?.accessToken);
-      // console.log(JSON.stringify(response));
+      console.log(response?.data);
+      console.log(response?.accessToken);
+      console.log(JSON.stringify(response));
       setSuccess(true);
       //clear state and controlled inputs
       //need value attrib on inputs for this
@@ -211,10 +228,13 @@ export default function Register() {
     } catch (err) {
       if (!err?.response) {
         setErrMsg("No Server Response");
+        console.log(err);
       } else if (err.response?.status === 409) {
         setErrMsg("Username Taken");
+        console.log(err);
       } else {
         setErrMsg("Registration Failed");
+        console.log(err);
       }
       // errRef.current.focus();
       setSuccess(false);

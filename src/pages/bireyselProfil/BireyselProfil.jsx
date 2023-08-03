@@ -31,6 +31,7 @@ import {
   updateUserEduBackgroundInformation,
 } from "../../services/userServices";
 import AddIsGecmisi from "./Ozgecmis/IsGecmisi/AddIsGecmisi";
+import axios from "axios";
 
 const PageWrapper = styled(Grid)({
   padding: "2rem",
@@ -131,7 +132,8 @@ function PageChangeButtons({ sharedPostsActive, setSharedPostsActive }) {
   );
 }
 
-function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {
+function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {  
+
   const [sharedPostsActive, setSharedPostsActive] = useState(true);
 
   const [expReviewsSelf, setExpReviewsSelf] = useState([]);

@@ -71,46 +71,46 @@ function Login({ usersData, fetchUsers }) {
   const handleSubmit = async (event) => {
     setOpen(true);
     event.preventDefault();
-    ProceedLogin();
+    // ProceedLogin();
     // const data = new FormData(event.currentTarget);
   };
 
-  const ProceedLogin = () => {
-    if (validate()) {
-      getUserByEmail(tryAccount.eMail)
-        .then((user) => {
-          if (user[0].password === tryAccount.password) {
-            console.log("Success");
-            sessionStorage.setItem("eMail", tryAccount.eMail);
-            sessionStorage.setItem("userrole", user.role);
-            console.log("go to the main page!");
-            navigate("/bireysel-anasayfa");
-          } else {
-            console.error("Please Enter valid credentials");
-          }
-        })
-        .catch((err) => {
-          console.error("Login Failed due to :" + err.message);
-        });
-    }
-  };
+  // const ProceedLogin = () => {
+  //   if (validate()) {
+  //     getUserByEmail(tryAccount.eMail)
+  //       .then((user) => {
+  //         if (user[0].password === tryAccount.password) {
+  //           console.log("Success");
+  //           sessionStorage.setItem("eMail", tryAccount.eMail);
+  //           sessionStorage.setItem("userrole", user.role);
+  //           console.log("go to the main page!");
+  //           navigate("/bireysel-anasayfa");
+  //         } else {
+  //           console.error("Please Enter valid credentials");
+  //         }
+  //       })
+  //       .catch((err) => {
+  //         console.error("Login Failed due to :" + err.message);
+  //       });
+  //   }
+  // };
   
-  const validate = () => {
-    let result = true;
-    if (tryAccount.eMail === "" || tryAccount.eMail === null) {
-      result = false;
-      <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-        Hata! E-posta alanı boş bırakılamaz.
-      </Alert>;
-    }
-    if (tryAccount.password === "" || tryAccount.password === null) {
-      result = false;
-      <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-        Hata! Şifre alanı boş bırakılamaz.
-      </Alert>;
-    }
-    return result;
-  };
+  // const validate = () => {
+  //   let result = true;
+  //   if (tryAccount.eMail === "" || tryAccount.eMail === null) {
+  //     result = false;
+  //     <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+  //       Hata! E-posta alanı boş bırakılamaz.
+  //     </Alert>;
+  //   }
+  //   if (tryAccount.password === "" || tryAccount.password === null) {
+  //     result = false;
+  //     <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+  //       Hata! Şifre alanı boş bırakılamaz.
+  //     </Alert>;
+  //   }
+  //   return result;
+  // };
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
