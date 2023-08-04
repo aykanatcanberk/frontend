@@ -76,7 +76,7 @@ function ProfilComp() {
             textAlign: "center",
           }}
         >
-          {eduinf.length > 0 ? eduinf[0].departmentName : eduinf.departmentName}
+          Student
         </Typography>
       </Grid>
     </CardWrapper>

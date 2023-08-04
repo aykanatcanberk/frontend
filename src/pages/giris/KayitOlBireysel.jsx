@@ -53,7 +53,7 @@ const USER_REGEX = /^[A-zÇŞĞÜİÖçşğüıö][A-z0-9-_ÇŞĞÜİÖçşğü�
 // const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/; // Daha güçlü şifre için bunu kullanın
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PWD_REGEX = /^.{6,}$/;
-const REGISTER_URL = "https://localhost:7029/api/Auth/registerPerson";
+const REGISTER_URL = "http://localhost:5071/api/Auth/registerPerson";
 
 const PasswordRequirementsTooltip = () => {
   return (

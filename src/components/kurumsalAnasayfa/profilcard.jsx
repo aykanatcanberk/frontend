@@ -30,6 +30,7 @@ function ProfilCard() {
     getCompanyInfo()
       .then((response) => {
         const info = response.data;
+        console.log(info)
         setCompanyDataList(info);
       })
       .catch(() => {
