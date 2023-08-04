@@ -5,9 +5,8 @@ import ProfilCard from "../../components/kurumsalAnasayfa/profilcard";
 import Gonderi from "../../components/kurumsalAnasayfa/gönderi";
 import Gonderiolustur from "../../components/kurumsalAnasayfa/gonderiolusturma";
 import Populerkonular from "../../components/kurumsalAnasayfa/populerkonular";
-import axios from 'axios';
+import axios from "axios";
 import NotFoundError from "../../routes/NotFoundError";
-
 
 const PageWrapper = styled(Grid)({
   padding: "2rem",
@@ -17,39 +16,36 @@ const PageWrapper = styled(Grid)({
   width: "100%",
 });
 
-
 const App = () => {
-
-  const [posts,setPosts]=useState([]);
-  useEffect(()=>{
-    const token="eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYXNlbHNhbkBhc2Vsc2FuLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkNvbXBhbnkiLCJleHAiOjE2OTExODY3NzN9.mVavcH9RKIrGQpTE7IAJFlzVrX90n6RzYanAFHq_jQ8";
-    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
-    axios.get(`http://localhost:5071/Post/AllPosts`)
-    .then((response)=>{
-      setPosts(response.data)
-    })
-    .catch((err)=>{
-      console.log("Error");
-    })
+  const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    axios
+      .get(`https://localhost:7029/Post/AllPosts`)
+      .then((response) => {
+        setPosts(response.data);
+      })
+      .catch((err) => {
+        console.log("Error");
+      });
   });
 
-  const [postData,setPostData]=useState([]);
+  const [postData, setPostData] = useState([]);
   useEffect(() => {
-  
-    const token = "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYXNlbHNhbkBhc2Vsc2FuLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkNvbXBhbnkiLCJleHAiOjE2OTExMjg5NDV9.6w_aKtarXBVOFADBsJtrhrhekedG-VCNJ_AXexQF5TM";
+    const token = localStorage.getItem("token");
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-
-    axios.post('http://localhost:5071/Post',{postData})
+    axios
+      .post("http://localhost:7029/Post", { postData })
       .then((response) => {
-       
-        setPostData(response.data)
+        setPostData(response.data);
         console.log("Post başarılı.");
       })
       .catch((error) => {
         // Post işlemi sırasında bir hata oluştuğunda yapılacak işlemler
         console.error("Post hatası:", error);
       });
-    },[]);
+  }, []);
   // const [userPosts, setCompanyDataList] = useState([]);
 
   // useEffect(() => {
@@ -76,7 +72,7 @@ const App = () => {
       >
         {/* profil kısmı */}
         <div className="firmaContainer">
-            <ProfilCard />
+          <ProfilCard />
         </div>
       </Grid>
 
@@ -93,9 +89,7 @@ const App = () => {
         {/* gönderi oluşturma kısmı */}
         <Gonderiolustur />
         <div className="firmaContainer">
-
           {posts.map((postcard) => (
-
             <Gonderi key={postcard.id} postcard={postcard} />
           ))}
         </div>
