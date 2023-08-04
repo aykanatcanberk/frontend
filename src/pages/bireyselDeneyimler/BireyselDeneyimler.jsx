@@ -33,21 +33,21 @@ export default function App() {
     }
   }, [navigate]);
   //getting data from json-server
-  // useEffect(() => {
-  //   setLoading(true);
-  //   getDeneyimler()
-  //     .then((response) => {
-  //       setDeneyimler(response.data);
-  //       setLoading(false);
-  //     })
-  //     .catch((error) => {
-  //       console.log("Hata alindi " + error);
-  //       setLoading(false);
-  //     });
-  // }, []);
+   useEffect(() => {
+     setLoading(true);
+     getDeneyimler()
+       .then((response) => {
+         setDeneyimler(response.data);
+         setLoading(false);
+       })
+      .catch((error) => {
+         console.log("Hata alindi " + error);
+         setLoading(false);
+       });
+   }, []);
 
   //------------------------------------for the backend------------------------------------
-  useEffect(() => {
+/*   useEffect(() => {
     setLoading(true);
     getDeneyimlerFromBackend()
       .then((response) => {
@@ -58,7 +58,7 @@ export default function App() {
         console.log("Hata alindi " + error);
         setLoading(false);
       });
-  }, []);
+  }, []); */
 
   var deneyimlerim = [
     {

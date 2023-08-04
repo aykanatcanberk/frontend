@@ -37,7 +37,7 @@ export default function ComplexGrid() {
 useEffect(()=>{
   const token=localStorage.getItem("token");
   axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
-  axios.get(`https://localhost:7029/api/Get_AllCompnay/get all company`).then((response)=>{
+  axios.get(`http://localhost:5071/api/Get_AllCompnay/get all company`).then((response)=>{
     setFirmalar(response.data)
   }).catch((err)=>{
     console.log("Error");
