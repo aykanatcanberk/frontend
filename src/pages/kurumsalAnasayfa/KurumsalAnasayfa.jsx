@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Grid } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import ProfilCard from "../../components/kurumsalAnasayfa/profilcard";
 import Gonderi from "../../components/kurumsalAnasayfa/gönderi";
 import Gonderiolustur from "../../components/kurumsalAnasayfa/gonderiolusturma";
-import db from "../../data/db.json";
 import Populerkonular from "../../components/kurumsalAnasayfa/populerkonular";
 import axios from 'axios';
-import  { useState,useEffect} from "react";
+import NotFoundError from "../../routes/NotFoundError";
+
 
 const PageWrapper = styled(Grid)({
   padding: "2rem",
@@ -19,6 +19,7 @@ const PageWrapper = styled(Grid)({
 
 
 const App = () => {
+
   const [posts,setPosts]=useState([]);
   useEffect(()=>{
     const token="eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYXNlbHNhbkBhc2Vsc2FuLmNvbSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkNvbXBhbnkiLCJleHAiOjE2OTExODY3NzN9.mVavcH9RKIrGQpTE7IAJFlzVrX90n6RzYanAFHq_jQ8";
@@ -48,7 +49,19 @@ const App = () => {
         // Post işlemi sırasında bir hata oluştuğunda yapılacak işlemler
         console.error("Post hatası:", error);
       });
-  }, []);
+    },[]);
+  // const [userPosts, setCompanyDataList] = useState([]);
+
+  // useEffect(() => {
+  //   getUserPosts()
+  //     .then((response) => {
+  //       const info = response.data;
+  //       console.log(info);
+  //       setCompanyDataList(info);
+  //     })
+  //     .catch(() => {
+  //       return <NotFoundError props={"Böyle bir company bilgisi mevcut değil."} />;
+
   return (
     <PageWrapper container spacing={3} justifyContent="left">
       <Grid
@@ -63,9 +76,7 @@ const App = () => {
       >
         {/* profil kısmı */}
         <div className="firmaContainer">
-          {db["my-info-firma"].map((firma) => (
-            <ProfilCard profilcard={firma} />
-          ))}
+            <ProfilCard />
         </div>
       </Grid>
 
@@ -82,7 +93,9 @@ const App = () => {
         {/* gönderi oluşturma kısmı */}
         <Gonderiolustur />
         <div className="firmaContainer">
+
           {posts.map((postcard) => (
+
             <Gonderi key={postcard.id} postcard={postcard} />
           ))}
         </div>

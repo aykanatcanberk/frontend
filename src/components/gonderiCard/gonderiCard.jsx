@@ -6,7 +6,6 @@ import { Grid, Paper, Typography } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
 import LikeButton from "../likeButton/LikeButton";
 import PaylasButton from "../paylasButton/PaylasButton";
 
@@ -23,12 +22,9 @@ const PostCardWrapper = styled(Paper)({
   borderRadius: "20px",
   marginLeft: "0px",
 });
-const RoundButton = styled(Button)({
-  borderRadius: "20px",
-  padding: "5px 10px",
-});
 
-function GonderiCard({ userPosts }) {
+function GonderiCard({userPosts}) {
+  
   return (
     <PostCardWrapper>
           <Grid container alignItems="center">
@@ -44,7 +40,7 @@ function GonderiCard({ userPosts }) {
                   fontWeight: "bold",
                 }}
               >
-            {userPosts.first_name} <span /> {userPosts.last_name}
+            {userPosts.name}
               </Typography>
               <Typography
                 variant="subtitle2"
@@ -55,7 +51,7 @@ function GonderiCard({ userPosts }) {
                   color: "textSecondary",
                 }}
               >
-                {userPosts.post_date}
+                {userPosts.postDate}
               </Typography>
             </Grid>
           </Grid>
@@ -67,7 +63,7 @@ function GonderiCard({ userPosts }) {
               fontWeight: "normal",
             }}
           >
-            {userPosts.comments}
+            {userPosts.content}
           </Typography>
           <Typography
             variant="body2"
