@@ -7,7 +7,6 @@ import {
   CardWrapperForTitles,
   CardWrapperLeftAligned,
   RoundButton,
-  ButtonsWrapper
 } from "../../CustomStyledComponents";
 
 import {
@@ -19,6 +18,12 @@ import {
   FormControlLabel,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
+
+const ButtonsWrapper = styled("div")({
+  display: "flex",
+  justifyContent: "space-between",
+  marginTop: "10px",
+});
 
 const EqualWidthButton = styled(Button)({
   flex: 1, // Make the buttons share the available space equally
@@ -35,14 +40,12 @@ const PostInputWrapper = styled(TextField)({
   marginLeft: "2.5%",
 });
 
-const Calender = styled('div')({
+const Calender = styled("div")({
   flex: "auto",
-  flexDirection: "row"
-  
+  flexDirection: "row",
 });
 
-function IsGecmisi({ workBackground, onEditClick }) {
-  
+function IsGecmisi({ workBackground, companyName, approvalState}) {
   const [isEditingWorkBackground, setIsEditingWorkBackground] = useState(false);
   const [workBackgroundData, setWorkBackgroundData] = useState({});
 
@@ -55,12 +58,29 @@ function IsGecmisi({ workBackground, onEditClick }) {
   };
 
   const handleEditWorkBackgroundSave = (editedWorkBackground) => {
-     // updateUserEduBackgroundInformation(editedEduBackground, 1);
+    // updateUserEduBackgroundInformation(editedEduBackground, 1);
 
     setWorkBackgroundData(editedWorkBackground);
     setIsEditingWorkBackground(false);
   };
 
+  const getColor = (approvalState) => {
+    if(approvalState === "b"){
+      return "grey";
+    }
+    else if (approvalState === "r"){
+      return "red";
+    }
+    else if (approvalState === "o"){
+      return "green";
+    }
+    else {
+      return "grey";
+    }
+    let color = approvalState === "b" ? "grey" : approvalState === "o" ? "green" : "red";
+    console.log("color: " + color);
+    return approvalState === "b" ? "grey" : approvalState === "o" ? "green" : "red";
+  }
 
   return (
     <>
@@ -88,7 +108,7 @@ function IsGecmisi({ workBackground, onEditClick }) {
                   alignSelf: "left",
                 }}
               >
-                {workBackground.companyName}
+                {companyName}
               </Typography>
               <br />
 
@@ -101,7 +121,7 @@ function IsGecmisi({ workBackground, onEditClick }) {
                   alignSelf: "left",
                 }}
               >
-                Pozisyon
+                Şirket Adı
               </Typography>
               <Typography
                 variant="subtitle1"
@@ -112,9 +132,11 @@ function IsGecmisi({ workBackground, onEditClick }) {
                   alignSelf: "left",
                 }}
               >
-                {workBackground.workPosition}
+                {workBackground.departmentName}
               </Typography>
               <br />
+
+              
 
               <Typography
                 variant="subtitle1"
@@ -137,7 +159,7 @@ function IsGecmisi({ workBackground, onEditClick }) {
                     alignSelf: "left",
                   }}
                 >
-                  {workBackground.startDate}
+                  {workBackground.start}
                 </Typography>
                 <Typography
                   variant="subtitle1"
@@ -148,36 +170,11 @@ function IsGecmisi({ workBackground, onEditClick }) {
                     alignSelf: "left",
                   }}
                 >
-                  {workBackground.endDate}
+                  {workBackground.end}
                 </Typography>
               </>
 
               <br />
-
-              <Typography
-                variant="subtitle1"
-                style={{
-                  fontFamily: "Arial",
-                  fontSize: "15px",
-                  fontWeight: "bold",
-                  alignSelf: "left",
-                }}
-              >
-                Açıklama
-              </Typography>
-              <Typography
-                variant="subtitle1"
-                style={{
-                  fontFamily: "Arial",
-                  fontSize: "14px",
-                  fontWeight: "light",
-                  alignSelf: "left",
-                }}
-              >
-                {workBackground.shortDescription}
-              </Typography>
-              <br />
-
               <Typography
                 variant="subtitle1"
                 style={{
@@ -198,7 +195,7 @@ function IsGecmisi({ workBackground, onEditClick }) {
                   alignSelf: "left",
                 }}
               >
-                {workBackground.personnelNumber}
+                {workBackground.employeeID}
               </Typography>
               <br />
 
@@ -222,7 +219,7 @@ function IsGecmisi({ workBackground, onEditClick }) {
                   alignSelf: "left",
                 }}
               >
-                {workBackground.confirmationLetter}
+                {workBackground.appLetter}
               </Typography>
               <br />
 
@@ -233,29 +230,34 @@ function IsGecmisi({ workBackground, onEditClick }) {
             <RoundButton
               type="submit"
               variant="contained"
-              color="primary"
+              color={
+                approvalState === "b" ? "default" : // Use "default" instead of "grey"
+                approvalState === "o" ? "primary" : // Use "primary" instead of "green"
+                "secondary"
+              }
               size="small"
             >
-              Onaya Gönder
+              {approvalState === "b" ? "Bekliyor" : approvalState === "o" ? "Onaylandı" : "Reddedildi"}
             </RoundButton>
             <RoundButton
+              type="submit"
               variant="contained"
               color="primary"
               size="small"
-              onClick={handleEditWorkBackgroundClick}
+              // onClick={() => } // DO THE SEND APPROVAL HERE PLEASE
             >
-              DÜZENLE
+              Onaya Gönder
             </RoundButton>
           </ButtonsWrapper>
         </CardWrapperLeftAligned>
       </CardWrapper>
 
       <EditIsGecmisi
-              initialData={workBackground}
-              onClose={handleEditCancel}
-              onSave={handleEditWorkBackgroundSave}
-              isOpen={isEditingWorkBackground}
-            /> 
+        initialData={workBackground}
+        onClose={handleEditCancel}
+        onSave={handleEditWorkBackgroundSave}
+        isOpen={isEditingWorkBackground}
+      />
     </>
   );
 }

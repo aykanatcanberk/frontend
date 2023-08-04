@@ -49,9 +49,9 @@ export default function Login() {
     event.preventDefault();
     
     axios
-      .post(`http://localhost:5071/api/Auth/loginCompany`, { email, password })
+      .post(`${process.env.REACT_APP_BACKEND_URL}/api/Auth/loginCompany`, { email, password })
       .then((res) => {
-        toast.success("GİRİŞ İŞLEMİ BAŞARILI DEĞİL.", {
+        toast.success("GİRİŞ İŞLEMİ BAŞARILI.", {
           onClose: () => {
             // Redirect to the desired page
             navigate("/");
@@ -63,14 +63,14 @@ export default function Login() {
         const token = localStorage.getItem("token");
         if (res.data.login === true) {
           axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-          axios.post(`http://localhost:5071/api/Login/logincontrol`);
+          axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/Login/logincontrol`);
           navigate("/kurumsal-profil");
         } else {
           navigate("/kurumsal-anasayfa");
         }
       })
       .catch((err) => {
-        toast.success("GİRİŞ İŞLEMİ BAŞARILI DEĞİL.", {
+        toast.error("GİRİŞ İŞLEMİ BAŞARILI DEĞİL.", {
           onClose: () => {
             // Redirect to the desired page
             navigate("/");

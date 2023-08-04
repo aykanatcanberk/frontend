@@ -31,7 +31,6 @@ import HelpIcon from "@mui/icons-material/Help";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Import the CSS
 
-
 const darkTheme = createTheme({
   palette: {
     mode: "dark",
@@ -79,44 +78,6 @@ const PasswordRequirementsTooltip = () => {
     </Tooltip>
   );
 };
-
-// const EmailRequirementsTooltip = () => {
-//   return (
-//     <Tooltip
-//       title={
-//         <Typography>
-//           Password must meet the following requirements:
-//           <ul>
-//             <li>At least 2 characters long</li>
-//             <li>Must start with a capital letter</li>
-//             <li>...</li> {/* Add more requirements */}
-//           </ul>
-//         </Typography>
-//       }
-//     >
-//       <HelpIcon />
-//     </Tooltip>
-//   );
-// };
-
-// const NamedRequirementsTooltip = () => {
-//   return (
-//     <Tooltip
-//       title={
-//         <Typography>
-//           Password must meet the following requirements:
-//           <ul>
-//             <li>At least 2 characters long</li>
-//             <li>Must start with a capital letter</li>
-//             <li>...</li> {/* Add more requirements */}
-//           </ul>
-//         </Typography>
-//       }
-//     >
-//       <HelpIcon />
-//     </Tooltip>
-//   );
-// };
 
 export default function Register() {
   const navigate = useNavigate();
@@ -278,7 +239,7 @@ export default function Register() {
                     <Box
                       component="form"
                       noValidate
-                      // onSubmit={handleSubmit}
+                      onSubmit={handleSubmit}
                       sx={{ mt: 2 }}
                     >
                       <Box

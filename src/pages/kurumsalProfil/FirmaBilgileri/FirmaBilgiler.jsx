@@ -50,7 +50,7 @@ function FirmaBilgileri({ companyInfo, onEditClick }) {
                 alignSelf: "left",
               }}
             >
-              {companyInfo.companySector}
+              {companyInfo.category}
             </Typography>
             <br />
 
@@ -74,7 +74,7 @@ function FirmaBilgileri({ companyInfo, onEditClick }) {
                 alignSelf: "left",
               }}
             >
-              {companyInfo.companyType}
+              {companyInfo.type}
             </Typography>
             <br />
 
@@ -98,7 +98,7 @@ function FirmaBilgileri({ companyInfo, onEditClick }) {
                 alignSelf: "left",
               }}
             >
-              {companyInfo.employeeCount}
+              {companyInfo.totalStaff}
             </Typography>
             <br />
 
@@ -122,7 +122,7 @@ function FirmaBilgileri({ companyInfo, onEditClick }) {
                 alignSelf: "left",
               }}
             >
-              {companyInfo.foundedIn}
+              {companyInfo.fDate}
             </Typography>
             <br />
 
@@ -170,7 +170,7 @@ function FirmaBilgileri({ companyInfo, onEditClick }) {
                 alignSelf: "left",
               }}
             >
-              {companyInfo.areaOfExpertise}
+              {companyInfo.prof}
             </Typography>
             <br />
 
@@ -194,7 +194,7 @@ function FirmaBilgileri({ companyInfo, onEditClick }) {
                 alignSelf: "left",
               }}
             >
-              {companyInfo.webSite}
+              {companyInfo.website}
             </Typography>
             <br />
 
@@ -218,10 +218,32 @@ function FirmaBilgileri({ companyInfo, onEditClick }) {
                 alignSelf: "left",
               }}
             >
-              {companyInfo.phoneNum}
+              {companyInfo.phone}
+            </Typography>
+
+            <Typography
+              variant="subtitle1"
+              style={{
+                fontFamily: "Arial",
+                fontSize: "15px",
+                fontWeight: "bold",
+                alignSelf: "left",
+              }}
+            >
+              Firma Tasviri
+            </Typography>
+            <Typography
+              variant="subtitle1"
+              style={{
+                fontFamily: "Arial",
+                fontSize: "14px",
+                fontWeight: "light",
+                alignSelf: "left",
+              }}
+            >
+              {companyInfo.description}
             </Typography>
             <br />
-
           </Grid>
         </Grid>
         <ButtonsWrapper>
@@ -230,7 +252,7 @@ function FirmaBilgileri({ companyInfo, onEditClick }) {
             color="primary"
             size="small"
             onClick={onEditClick}
-            style={{ marginLeft: "80%"}}
+            style={{ marginLeft: "80%" }}
           >
             DÜZENLE
           </RoundButton>

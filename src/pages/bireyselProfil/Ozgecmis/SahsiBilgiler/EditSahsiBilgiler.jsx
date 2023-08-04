@@ -38,17 +38,17 @@ const EditSahsiBilgiler = ({ onClose, onSave, initialData, isOpen }) => {
       <DialogTitle>Şahsi Bilgileri Düzenle</DialogTitle>
       <DialogContent>
         <PostInputWrapper
-          name="userName"
+          name="name"
           label="Ad"
           variant="outlined"
-          value={editedData.userName}
+          value={editedData.name}
           onChange={handleChange}
         />
         <PostInputWrapper
-          name="userSurname"
+          name="surname"
           label="Soyad"
           variant="outlined"
-          value={editedData.userSurname}
+          value={editedData.surname}
           onChange={handleChange}
         />
         <PostInputWrapper
@@ -59,24 +59,24 @@ const EditSahsiBilgiler = ({ onClose, onSave, initialData, isOpen }) => {
           onChange={handleChange}
         />
         <PostInputWrapper
-          name="birthDate"
+          name="birthday"
           type="date"
           variant="outlined"
-          value={editedData.birthDate}
+          value={editedData.birthday}
           onChange={handleChange}
         />
         <PostInputWrapper
-          name="city"
+          name="location"
           label="Yaşadığı Şehir"
           variant="outlined"
-          value={editedData.city}
+          value={editedData.location}
           onChange={handleChange}
         />
         <PostInputWrapper
-          name="cellNumber"
+          name="phone"
           label="Cep Telefonu"
           variant="outlined"
-          value={editedData.cellNumber}
+          value={editedData.phone}
           onChange={handleChange}
         />
       </DialogContent>

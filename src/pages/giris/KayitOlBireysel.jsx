@@ -31,7 +31,6 @@ import HelpIcon from "@mui/icons-material/Help";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Import the CSS
 
-
 const darkTheme = createTheme({
   palette: {
     mode: "dark",
@@ -56,7 +55,7 @@ const center = {
   left: "30%",
 };
 
-const USER_REGEX = /^[A-zÇŞĞÜİÖçşğüıö][A-z0-9-_ÇŞĞÜİÖçşğüıö]{2,23}$/;
+const USER_REGEX = /^[A-Za-zÇŞĞÜİÖçşğüıö][A-Za-z0-9-_ÇŞĞÜİÖçşğüıö]{1,23}$/;
 //const USER_REGEX = /^[A-z][A-z0-9-_]{2,23}$/;
 // const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/; // Daha güçlü şifre için bunu kullanın
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -219,7 +218,8 @@ export default function Register() {
               // Redirect to the desired page
               navigate("/");
             },
-          },500);
+            autoClose: 500,
+          });
         });
     } catch (err) {
       if (!err?.response) {
@@ -239,14 +239,15 @@ export default function Register() {
           // Redirect to the desired page
           navigate("/");
         },
+        autoClose: 500,
       });
-    } 
+    }
   };
 
   return (
     <>
       <ToastContainer />
-      
+
       <div>
         <Box sx={boxstyle}>
           <Grid container>

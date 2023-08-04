@@ -11,3 +11,29 @@ export const getAllCompanies = async () => {
     return {}; // Return an empty object in case of an error
   }
 };
+
+export function getCompanyProfile() {
+  const url = `${process.env.REACT_APP_BACKEND_URL}/api/Company`;
+  const jwtToken = localStorage.getItem("token");
+  
+  const headers = {
+    accept: "text/plain",
+    Authorization: `Bearer ${jwtToken}`,
+  };
+
+  return axios.get(url, { headers });
+}
+
+export function updateCompanyProfileInformation(profileInfo) {
+  const url = `${process.env.REACT_APP_BACKEND_URL}/api/Company`;
+
+  const jwtToken = localStorage.getItem("token");
+  axios.defaults.headers.common["Authorization"] = `Bearer ${jwtToken}`;
+  
+  // const headers = {
+  //   accept: "text/plain",
+  //   Authorization: `Bearer ${jwtToken}`,
+  // };  
+
+  return axios.put(url, profileInfo);
+}

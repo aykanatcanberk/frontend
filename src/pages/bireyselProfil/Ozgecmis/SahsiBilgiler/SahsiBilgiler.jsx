@@ -50,7 +50,7 @@ function SahsiBilgiler({ sahsiBilgiler, onEditClick }) {
                 alignSelf: "left",
               }}
             >
-              {sahsiBilgiler.userName}
+              {sahsiBilgiler.name}
             </Typography>
             <br />
 
@@ -98,7 +98,7 @@ function SahsiBilgiler({ sahsiBilgiler, onEditClick }) {
                 alignSelf: "left",
               }}
             >
-              {sahsiBilgiler.email}
+              {sahsiBilgiler.eMail}
             </Typography>
             <br />
 
@@ -122,7 +122,7 @@ function SahsiBilgiler({ sahsiBilgiler, onEditClick }) {
                 alignSelf: "left",
               }}
             >
-              {sahsiBilgiler.birthDate}
+              {sahsiBilgiler.birthday}
             </Typography>
             <br />
 
@@ -146,7 +146,7 @@ function SahsiBilgiler({ sahsiBilgiler, onEditClick }) {
                 alignSelf: "left",
               }}
             >
-              {sahsiBilgiler.city}
+              {sahsiBilgiler.location}
             </Typography>
             <br />
 
@@ -170,7 +170,7 @@ function SahsiBilgiler({ sahsiBilgiler, onEditClick }) {
                 alignSelf: "left",
               }}
             >
-              {sahsiBilgiler.cellNumber}
+              {sahsiBilgiler.phone}
             </Typography>
             <br />
 
