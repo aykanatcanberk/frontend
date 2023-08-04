@@ -1,12 +1,13 @@
 /* Author: Hasan Basri BİLGE
 Last Update: 26.07.2023 */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Paper, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Divider from '@mui/material/Divider';
+import addPost from '../../services/postService';
 
 
 const SharePostCardWrapper = styled(Paper)({
@@ -43,6 +44,21 @@ const GreenButton = styled(Button)({
 });
 
 function GonderiYap() {
+  const [postText, setPostText] = useState(""); // State to hold the text of the post
+
+  const handlePostShare = () => {
+    // Call the addPost function with the post text
+    addPost({ content: postText })
+      .then((response) => {
+        console.log("Post shared successfully!");
+        // Clear the post text after sharing
+        setPostText("");
+      })
+      .catch((error) => {
+        console.error("Error sharing post:", error);
+        // Handle error if needed
+      });
+  };
   return (
     <SharePostCardWrapper>
       <Typography
@@ -61,9 +77,11 @@ function GonderiYap() {
         variant="outlined"
         multiline
         rows={4}
+        value={postText} // Bind the input value to the state
+        onChange={(e) => setPostText(e.target.value)} // Update the state on input change
       />
       <ButtonsWrapper>
-        <GreenButton variant="contained" color="primary" sx={{ height: "30px", width: "auto" }}>
+        <GreenButton variant="contained" color="primary" onClick={handlePostShare}>
           Paylaş
         </GreenButton>
       </ButtonsWrapper>

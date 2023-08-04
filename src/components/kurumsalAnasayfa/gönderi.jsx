@@ -48,7 +48,7 @@ function Gonderi({ postcard }) {
               marginLeft: "3px",
             }}
           >
-            {postcard.companyname}
+            {postcard.name}
           </Typography>
 
           <Typography
@@ -60,7 +60,7 @@ function Gonderi({ postcard }) {
               color: "textSecondary",
             }}
           >
-            {postcard.companydate}
+            {postcard.postDate}
           </Typography>
         </Grid>
       </Grid>
@@ -73,7 +73,7 @@ function Gonderi({ postcard }) {
           fontWeight: "normal",
         }}
       >
-        {postcard.postdesc}
+        {postcard.content}
       </Typography>
       <ButtonsWrapper>
         <LikeButton />

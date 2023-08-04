@@ -57,7 +57,7 @@ function TakipEdilenFirmalar() {
           <Card elevation={0} style={{ borderRadius: "50%" }}>
             <CardActionArea onClick={handleClick} href="/bireysel-firma/3">
               {/* Karta eklemek istediğiniz içerik burada olacak */}
-              <SmallAvatarWrapper src={roketsanlogo} alt="Roketsan" />
+              <SmallAvatarWrapper src={tusas} alt="Tusas" />
               <CardContent>
                 <Typography
                   style={{
@@ -66,7 +66,7 @@ function TakipEdilenFirmalar() {
                     fontWeight: "normal",
                   }}
                 >
-                  Roketsan
+                  Tusaş
                 </Typography>
               </CardContent>
             </CardActionArea>
@@ -114,7 +114,7 @@ function TakipEdilenFirmalar() {
           <Card elevation={0} style={{ borderRadius: "50%" }}>
             <CardActionArea onClick={handleClick} href="/bireysel-firma/5">
               {/* Karta eklemek istediğiniz içerik burada olacak */}
-              <SmallAvatarWrapper src={tusas} alt="TUSAŞ" />
+              <SmallAvatarWrapper src={roketsanlogo} alt="Roketsan" />
               <CardContent>
                 <Typography
                   style={{
@@ -123,7 +123,7 @@ function TakipEdilenFirmalar() {
                     fontWeight: "normal",
                   }}
                 >
-                  TUSAŞ
+                  Roketsan
                 </Typography>
               </CardContent>
             </CardActionArea>

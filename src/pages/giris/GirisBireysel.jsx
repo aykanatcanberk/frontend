@@ -59,12 +59,13 @@ function Login() {
             // Redirect to the desired page
             navigate("/");
           },
-          autoClose: 500,
+          autoClose: 10,
         });
         console.log(res);
         localStorage.setItem("token", res.data.token);
+        localStorage.setItem("userType", "user");
         const token = localStorage.getItem("token");
-        if (res.data.login === true) {
+        if (res.data.control === true) {
           axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
           axios.post(`http://localhost:5071/api/Login/logincontrol`);
           navigate("/bireysel-profil");
@@ -74,12 +75,12 @@ function Login() {
       })
       .catch((err) => {
         setPassword("");
-        toast.success("GİRİŞ İŞLEMİ BAŞARILI DEĞİL.", {
+        toast.error("GİRİŞ İŞLEMİ BAŞARILI DEĞİL.", {
           onClose: () => {
             // Redirect to the desired page
             navigate("/");
           },
-          autoClose: 500,
+          autoClose: 10,
         });
       });
   };

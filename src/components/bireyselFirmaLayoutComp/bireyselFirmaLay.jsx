@@ -99,11 +99,11 @@ function ProfileCardComp({ companyData, item }) {
       case 2:
         return HAVELSAN;
       case 3:
-        return ROKETSAN;
+        return TUSAS;
       case 4:
         return TREgitim;
       case 5:
-        return TUSAS;
+        return ROKETSAN;
       default:
         return null;
     }

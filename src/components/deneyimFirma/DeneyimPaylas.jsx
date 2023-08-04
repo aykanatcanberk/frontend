@@ -4,7 +4,7 @@ import SendIcon from "@mui/icons-material/Send";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import LoadingButton from "@mui/lab/LoadingButton";
-import { addDeneyim } from "../../services/deneyimService";
+import { addDeneyim, addDeneyimToBackend } from "../../services/deneyimService";
 
 function DeneyimPaylas() {
   const [deneyimBaslik, setDeneyimBaslik] = useState("");
@@ -19,13 +19,23 @@ function DeneyimPaylas() {
   const handleAddDeneyim = () => {
     setLoading(true);
     const newDeneyim = {
-      name: "Dinny Micah",
       title: deneyimBaslik,
-      companyName: firma,
       description: deneyimIcerik,
     };
 
-    addDeneyim(newDeneyim)
+    // addDeneyim(newDeneyim)
+    //   .then(() => {
+    //     console.log("Deneyim eklendi");
+    //     setDeneyimBaslik("");
+    //     setFirma("");
+    //     setDeneyimIcerik("");
+    //     setLoading(false);
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error adding data:", error);
+    //     setLoading(false);
+    //   });
+    addDeneyimToBackend(firma, newDeneyim)
       .then(() => {
         console.log("Deneyim eklendi");
         setDeneyimBaslik("");

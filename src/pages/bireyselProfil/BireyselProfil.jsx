@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Grid, Paper, Typography, IconButton } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import { styled } from "@mui/material/styles";
@@ -106,6 +107,21 @@ const EqualWidthButton = styled(Button)({
 });
 
 function PageChangeButtons({ sharedPostsActive, setSharedPostsActive }) {
+  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const haveToken = localStorage.getItem("token");
+    const isUser = localStorage.getItem("userType");
+    if (!haveToken || isUser === "company") {
+      navigate("/");
+    } else {
+      setIsLoading(false);
+    }
+  }, [navigate]);
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
   return (
     <>
       <CardWrapper elevation={0}>

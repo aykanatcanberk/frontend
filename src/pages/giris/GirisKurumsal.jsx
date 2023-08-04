@@ -47,7 +47,7 @@ export default function Login() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    
+
     axios
       .post(`${process.env.REACT_APP_BACKEND_URL}/api/Auth/loginCompany`, { email, password })
       .then((res) => {
@@ -56,12 +56,13 @@ export default function Login() {
             // Redirect to the desired page
             navigate("/");
           },
-          autoClose: 500,
+          autoClose: 10,
         });
         console.log(res);
         localStorage.setItem("token", res.data.token);
+        localStorage.setItem("userType", "company");
         const token = localStorage.getItem("token");
-        if (res.data.login === true) {
+        if (res.data.control === true) {
           axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
           axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/Login/logincontrol`);
           navigate("/kurumsal-profil");
@@ -75,7 +76,7 @@ export default function Login() {
             // Redirect to the desired page
             navigate("/");
           },
-          autoClose: 500,
+          autoClose: 10,
         });
       });
   };

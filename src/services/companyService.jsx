@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const jwtToken = localStorage.getItem("token")
+
 export const getAllCompanies = async () => {
   try {
     const response = await axios.get(
@@ -36,4 +38,15 @@ export function updateCompanyProfileInformation(profileInfo) {
   // };  
 
   return axios.put(url, profileInfo);
+}
+
+export function getCompanyInfo() {
+  const url = "http://localhost:5071/api/Company";
+
+  const headers = {
+    accept: "text/plain",
+    Authorization: `Bearer ${jwtToken}`,
+  };
+
+  return axios.get(url, { headers });
 }

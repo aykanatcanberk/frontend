@@ -164,7 +164,7 @@ export default function Register() {
             // Redirect to the desired page
             navigate("/");
           },
-          autoClose: 500,
+          autoClose: 10,
         });
       });
     } catch (err) {
@@ -179,14 +179,13 @@ export default function Register() {
         console.log(err);
       }
       // errRef.current.focus();
-      setSuccess(false);
 
       toast.error("ERROR! KAYIT OLMA İŞLEMİ BAŞARILI DEĞİL.", {
         onClose: () => {
           // Redirect to the desired page
           navigate("/");
         },
-        autoClose: 500,
+        autoClose: 100,
       });
     }
   };
@@ -251,16 +250,21 @@ export default function Register() {
                         <FormControl variant="standard">
                           <Box
                             sx={{
-                              width: 465,
+                              width: 435,
                               ml: "2em",
                               display: "flex",
                               alignItems: "flex-end",
                             }}
                           >
                             <AccountCircle
-                              sx={{ color: "action.active", mr: 1, my: 0.5 }}
+                              sx={{
+                                color: "action.active",
+                                mr: 1,
+                                my: 0.5,
+                              }}
                             />
                             <TextField
+                              fullWidth
                               id="ad"
                               label="Şirket İsmi"
                               variant="standard"

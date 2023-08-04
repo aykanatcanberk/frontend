@@ -17,6 +17,7 @@ const FirmaKartvizit = ({ companycard }) => {
     marginLeft: "10px",
     border: "1px solid #ccc",
   };
+
   const linkUrl = `/bireysel-firma/${companycard.id}`;
   return (
     <div className="firmaKartvizit">
@@ -33,11 +34,11 @@ const FirmaKartvizit = ({ companycard }) => {
 
           <Typography variant="body1" fontSize={"14px"} color="text.secondary">
             <CalendarMonthIcon sx={{ marginLeft: "5px" }} />
-            {companycard.founded}
+            {companycard.fDate}
             <LocationSearchingIcon sx={{ marginLeft: "10px" }} />
             {companycard.location}
             <PeopleIcon sx={{ marginLeft: "10px" }} />
-            {companycard.employeeCount}
+            {companycard.totalStaff}
           </Typography>
           <Typography sx={{ marginLeft: "270px" }}>
             <Link to={linkUrl}>

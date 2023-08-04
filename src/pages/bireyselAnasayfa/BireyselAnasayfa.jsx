@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Grid } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import GonderiCard from "../../components/gonderiCard/gonderiCard";
@@ -7,9 +8,9 @@ import ProfilComp from "../../components/bryselAsayfaProfilComp/profilComp";
 import TakipEdilenFirmalar from "../../components/tkpEdilenFirmalar/TakipEdilenFirmalar";
 import IlgılıIlanlar from "../../components/ilgiliIlanlar/IlgılıIlanlar";
 import PopulerIcerikler from "../../components/populerIcerikler/PopulerIcerikler";
-import { getAllPosts } from "../../services/postServices";
 import { getUserPosts } from "../../services/userService";
 import axios from "axios";
+import NotFoundError from "../../routes/NotFoundError";
 const PageWrapper = styled(Grid)({
   padding: "2rem",
   margin: "0 auto",
@@ -19,27 +20,32 @@ const PageWrapper = styled(Grid)({
 });
 
 const BireyselAnasayfa = () => {
-  const [gorunenVeriler, setGorunenVeriler] = useState([]);
-  const itemsPerPage = 10;
-  const batchSize = 5;
-  const [pageNumber, setPageNumber] = useState(1);
+  const [userPosts, setCompanyDataList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
+  useEffect(() => {
+    const haveToken = localStorage.getItem("token");
+    const isUser = localStorage.getItem("userType");
+
+    if (!haveToken || isUser === "company") {
+      navigate("/");
+    } else {
+      setIsLoading(false);
+    }
+  }, [navigate]);
 
   useEffect(() => {
-    console.log("Component mounted");
-    loadInitialData();
-
-    const handleScroll = () => {
-      const { scrollTop, clientHeight, scrollHeight } =
-        document.documentElement;
-      if (scrollTop + clientHeight >= scrollHeight - 200) {
-        // Load more data here
-        loadMoreData();
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    getUserPosts()
+      .then((response) => {
+        const info = response.data;
+        console.log(info);
+        setCompanyDataList(info);
+      })
+      .catch(() => {
+        return (
+          <NotFoundError props={"Böyle bir company bilgisi mevcut değil."} />
+        );
+      });
   }, []);
 
   useEffect(() => {
@@ -65,35 +71,9 @@ const BireyselAnasayfa = () => {
     fetchData();
   }, []);
 
-  const loadInitialData = () => {
-    getUserPosts(1, itemsPerPage)
-      .then((response) => {
-        console.log("Data fetched:", response.data);
-        const data = response.data;
-        if (data && Array.isArray(data)) {
-          setGorunenVeriler(data);
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  };
-
-  const loadMoreData = () => {
-    const nextPage = pageNumber + 1;
-    getUserPosts(nextPage, batchSize)
-      .then((response) => {
-        console.log("More data fetched:", response.data);
-        const data = response.data;
-        if (data && Array.isArray(data)) {
-          setGorunenVeriler((prevData) => [...prevData, ...data]);
-          setPageNumber(nextPage);
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching more data:", error);
-      });
-  };
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <PageWrapper container spacing={3} justifyContent="center">
@@ -123,7 +103,7 @@ const BireyselAnasayfa = () => {
       >
         {/* İkinci Kolon */}
         <GonderiYap />
-        {gorunenVeriler.map((veri, index) => (
+        {userPosts.map((veri, index) => (
           <GonderiCard key={index} userPosts={veri} />
         ))}
       </Grid>
