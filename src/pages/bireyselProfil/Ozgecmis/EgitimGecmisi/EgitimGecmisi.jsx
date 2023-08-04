@@ -8,7 +8,7 @@ import {
   ButtonsWrapper,
 } from "../../CustomStyledComponents";
 
-function EgitimGecmisi({ eduBackground, onEditClick }) {
+function EgitimGecmisi({ eduBackground, onEditClick }) { 
   return (
     <CardWrapper elevation={0}>
       <Grid container alignItems="left">
@@ -39,7 +39,7 @@ function EgitimGecmisi({ eduBackground, onEditClick }) {
                 alignSelf: "left",
               }}
             >
-              Lisans
+              Öğrenim Seviyesi
             </Typography>
             <Typography
               variant="subtitle1"
@@ -50,7 +50,33 @@ function EgitimGecmisi({ eduBackground, onEditClick }) {
                 alignSelf: "left",
               }}
             >
-              {eduBackground.graduate}
+              {eduBackground.schoolType}
+            </Typography>
+            <br />
+            
+            <br />
+
+            <Typography
+              variant="subtitle1"
+              style={{
+                fontFamily: "Arial",
+                fontSize: "15px",
+                fontWeight: "bold",
+                alignSelf: "left",
+              }}
+            >
+              Okul
+            </Typography>
+            <Typography
+              variant="subtitle1"
+              style={{
+                fontFamily: "Arial",
+                fontSize: "14px",
+                fontWeight: "light",
+                alignSelf: "left",
+              }}
+            >
+              {eduBackground.schoolName}
             </Typography>
             <br />
 
@@ -63,7 +89,7 @@ function EgitimGecmisi({ eduBackground, onEditClick }) {
                 alignSelf: "left",
               }}
             >
-              Sınıf
+              Bölüm
             </Typography>
             <Typography
               variant="subtitle1"
@@ -74,55 +100,7 @@ function EgitimGecmisi({ eduBackground, onEditClick }) {
                 alignSelf: "left",
               }}
             >
-              {eduBackground.year}
-            </Typography>
-            <br />
-
-            <Typography
-              variant="subtitle1"
-              style={{
-                fontFamily: "Arial",
-                fontSize: "15px",
-                fontWeight: "bold",
-                alignSelf: "left",
-              }}
-            >
-              Bölüm Adı
-            </Typography>
-            <Typography
-              variant="subtitle1"
-              style={{
-                fontFamily: "Arial",
-                fontSize: "14px",
-                fontWeight: "light",
-                alignSelf: "left",
-              }}
-            >
-              {eduBackground.department}
-            </Typography>
-            <br />
-
-            <Typography
-              variant="subtitle1"
-              style={{
-                fontFamily: "Arial",
-                fontSize: "15px",
-                fontWeight: "bold",
-                alignSelf: "left",
-              }}
-            >
-              Fakülte
-            </Typography>
-            <Typography
-              variant="subtitle1"
-              style={{
-                fontFamily: "Arial",
-                fontSize: "14px",
-                fontWeight: "light",
-                alignSelf: "left",
-              }}
-            >
-              {eduBackground.faculty}
+              {eduBackground.departmentName}
             </Typography>
             <br />
 
@@ -170,7 +148,7 @@ function EgitimGecmisi({ eduBackground, onEditClick }) {
                 alignSelf: "left",
               }}
             >
-              {eduBackground.gpa}
+              {eduBackground.avg}
             </Typography>
             <br />
 

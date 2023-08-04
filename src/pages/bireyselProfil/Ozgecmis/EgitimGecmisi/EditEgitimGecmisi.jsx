@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
 
-import { Button, DialogActions, DialogContent, DialogTitle } from "@mui/material";
+import {
+  Button,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+} from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 const PostInputWrapper = styled(TextField)({
@@ -33,31 +38,24 @@ const EditEgitimGecmisi = ({ onClose, onSave, initialData, isOpen }) => {
       <DialogTitle>Eğitim Geçmişi Düzenle</DialogTitle>
       <DialogContent>
         <PostInputWrapper
-          name="graduate"
-          label="Lisans"
+          name="schoolType"
+          label="Öğretim Seviyesi"
           variant="outlined"
-          value={editedData.graduate}
+          value={editedData.schoolType}
           onChange={handleChange}
         />
         <PostInputWrapper
-          name="year"
-          label="Sınıf"
+          name="schoolName"
+          label="Okul"
           variant="outlined"
-          value={editedData.year}
+          value={editedData.schoolName}
           onChange={handleChange}
         />
         <PostInputWrapper
-          name="department"
+          name="departmentName"
           label="Bölüm Adı"
           variant="outlined"
-          value={editedData.department}
-          onChange={handleChange}
-        />
-        <PostInputWrapper
-          name="faculty"
-          label="Fakulte"
-          variant="outlined"
-          value={editedData.faculty}
+          value={editedData.departmentName}
           onChange={handleChange}
         />
         <PostInputWrapper
@@ -68,10 +66,10 @@ const EditEgitimGecmisi = ({ onClose, onSave, initialData, isOpen }) => {
           onChange={handleChange}
         />
         <PostInputWrapper
-          name="gpa"
+          name="avg"
           label="Ortalama"
           variant="outlined"
-          value={editedData.gpa}
+          value={editedData.avg}
           onChange={handleChange}
         />
       </DialogContent>

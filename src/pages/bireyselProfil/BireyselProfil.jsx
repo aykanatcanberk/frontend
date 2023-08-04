@@ -8,10 +8,7 @@ import Button from "@mui/material/Button";
 import DeneyimYorumu from "./DeneyimYorumu";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import "./BireyselProfil.css";
-import {
-  getAllExperienceReviews,
-  getSelfExperiences,
-} from "../../services/expReviewServices";
+
 import NewPost from "./NewPost";
 
 import EgitimGecmisi from "./Ozgecmis/EgitimGecmisi/EgitimGecmisi";
@@ -24,14 +21,20 @@ import UserAllPostsSlider from "./UserAllPostsSlider";
 import { getAllPosts } from "../../services/postServices";
 import SinglePost from "./SinglePost";
 import GonderiCard from "../../components/gonderiCard/gonderiCard";
+
+import AddIsGecmisi from "./Ozgecmis/IsGecmisi/AddIsGecmisi";
 import {
-  getUserById,
-  getUserPrivateInformationById,
-  getUserWorkBackgroundById,
+  createUserWorkBackground,
+  getAllUserWorkBackground,
+  getUserEduBackProfile,
+  getUserProfile,
   updatePrivateInformation,
   updateUserEduBackgroundInformation,
-} from "../../services/userServices";
-import AddIsGecmisi from "./Ozgecmis/IsGecmisi/AddIsGecmisi";
+} from "../../services/userService";
+import {
+  getCompanyIdByNameDictioanry,
+  getPersonApproval,
+} from "../../services/workHistoryService";
 
 const PageWrapper = styled(Grid)({
   padding: "2rem",
@@ -152,85 +155,27 @@ function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {
 
   const [expReviewsSelf, setExpReviewsSelf] = useState([]);
 
-  const [userWorkBackground, setUserWorkBackground] = useState([]);
-
-  useEffect(() => {
-    getUserWorkBackgroundById(1)
-      .then((response) => {
-        setUserWorkBackground(userWorkBackground.data);
-        console.log(userWorkBackground);
-      })
-      .catch((error) => {
-        console.log(
-          "there is an error with getting the posts in bireyselporfil " +
-            error.massage
-        );
-      });
-  }, []);
-
+  /// ------------------------------------------------
+  /// ------------ EDUCATIONAL BACKGROUND ------------
+  /// ------------------------------------------------
   const initialPrivateInfo = {
-    userName: "",
-    userSurname: "",
-    eMail: "",
-    birthDate: "",
-    city: "",
-    cellNumber: "",
-  };
-
-  const initialEduBackground = {
-    graduate: "",
-    year: "",
-    department: "",
-    faculty: "",
-    eduStatus: "",
-    gpa: "",
-  };
-
-  const initialWorkBackground = {
-    companyName: "",
-    workPosition: "",
-    startDate: "",
-    endDate: "",
-    personnelNumber: "",
-    confirmationLetter: "",
-    confirmationState: "",
+    name: "**",
+    surname: "**",
+    email: "**",
+    birthday: "**",
+    location: "**",
+    phone: "**",
   };
 
   const [privateInfo, setPrivateInfo] = useState(initialPrivateInfo);
   const [isEditingPrivateInfo, setIsEditingPrivateInfo] = useState(false);
-
-  const [eduBackground, setEduBackground] = useState(initialEduBackground);
-  const [isEditingEduBackground, setIsEditingEduBackground] = useState(false);
-
-  const [workBackground, setWorkBackground] = useState(initialWorkBackground);
-  const [isEditingWorkBackground, setIsEditingWorkBackground] = useState(false);
-
-  const [editWorkBackgroundIndex, setEditWorkBackgroundIndex] = useState(-1);
-
-  const [isAddingNewWorkBackground, setIsAddingNewWorkBackground] =
-    useState(false);
-
-  const [userInfo, setUserInfo] = useState({});
-
   useEffect(() => {
-    getUserById(1)
+    getUserProfile()
       .then((res) => {
-        setUserInfo(res);
-        const info = {
-          userName: res.userName,
-          surname: res.userSurname,
-          email: res.eMail,
-          birthDate: res.userPrivateInfo.birthDate,
-          city: res.userPrivateInfo.city,
-          cellNumber: res.userPrivateInfo.cellNumber,
-        };
-        handleEditPrivateInfoSave(info);
+        setPrivateInfo(res.data);
       })
-      .catch((error) => {
-        console.log(
-          "there is an error with getting the posts in bireyselporfil " +
-            error.massage
-        );
+      .catch((err) => {
+        setPrivateInfo(initialPrivateInfo);
       });
   }, []);
 
@@ -238,49 +183,136 @@ function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {
     setIsEditingPrivateInfo(true);
   };
 
+  const handleEditPrivateInfoSave = (editedSahsiInfo) => {
+    updatePrivateInformation(editedSahsiInfo);
+
+    setPrivateInfo(editedSahsiInfo);
+    setIsEditingPrivateInfo(false);
+  };
+  /// ------------------------------------------------
+  /// ------------------------------------------------
+  /// ------------------------------------------------
+
+  /// ------------------------------------------------
+  /// ------------ EDUCATIONAL BACKGROUND ------------
+  /// ------------------------------------------------
+  const initialEduBackground = {
+    schoolType: "**",
+    schoolName: "*",
+    departmentName: "**",
+    eduStatus: "**",
+    avg: "**",
+  };
+
+  const [eduBackground, setEduBackground] = useState(initialEduBackground);
+  const [isEditingEduBackground, setIsEditingEduBackground] = useState(false);
+  useEffect(() => {
+    getUserEduBackProfile()
+      .then((res) => {
+        setEduBackground(res.data);
+      })
+      .catch((err) => {
+        setEduBackground(initialEduBackground);
+      });
+  }, []);
+
   const handleEditEduBackgroundClick = () => {
     setIsEditingEduBackground(true);
   };
 
-  const handleEditWorkBackgroundClick = () => {
-    setIsEditingWorkBackground(true);
+  const handleEditEduBackgroundSave = (editedEduBackground) => {
+    updateUserEduBackgroundInformation(editedEduBackground);
+
+    setEduBackground(editedEduBackground);
+    setIsEditingEduBackground(false);
   };
+  /// ------------------------------------------------
+  /// ------------------------------------------------
+  /// ------------------------------------------------
+
+  /// ------------------------------------------------
+  /// --------------- WORK BACKGROUND ----------------
+  /// ------------------------------------------------
+
+  const [companyDic, setCompanyDic] = useState([]);
+
+  useEffect(() => {
+    getCompanyIdByNameDictioanry()
+      .then((res) => {
+        setCompanyDic(res);
+      })
+      .catch((err) => {
+        console.log("error!, couldnt fetch the company dictioanry " + err);
+      });
+  }, []);
+
+  // const initialWorkBackground = {
+  //   companyName: "**",
+  //   departmentName: "**",
+  //   start: "**",
+  //   end: "**",
+  //   employeeID: "**",
+  //   appLetter: "**",
+  // };
+
+  const [allWorkBackgrounds, setAllWorkBackgrounds] = useState([]);
+  const [allWorkBackgroundApprovals, setAllWorkBackgroundApprovals] = useState(
+    []
+  );
+
+  const [isAddingNewWorkBackground, setIsAddingNewWorkBackground] =
+    useState(false);
 
   const handleAddWorkBackgroundClick = () => {
     setIsAddingNewWorkBackground(true);
   };
 
-  const handleEditPrivateInfoSave = (editedSahsiInfo) => {
-    updatePrivateInformation(
-      { ...userInfo, userEduBackground: editedSahsiInfo },
-      1
-    );
+  useEffect(() => {
+    getAllUserWorkBackground()
+      .then((res) => {
+        console.log(res.data);
+        setAllWorkBackgrounds(res.data);
+      })
+      .catch((err) => {
+        setAllWorkBackgrounds([]);
+      });
+  }, []);
 
-    setPrivateInfo(editedSahsiInfo);
-    setIsEditingPrivateInfo(false);
-  };
+  useEffect(() => {});
 
-  const handleEditEduBackgroundSave = (editedEduBackground) => {
-    updateUserEduBackgroundInformation(editedEduBackground, 1);
+  useEffect(() => {
+    let approval = allWorkBackgrounds.map((workBG) => {
+      getPersonApproval(workBG.id)
+        .then((res) => {
+          console.log("approval status: " + res.data);
+          return res.data;
+        })
+        .catch(() => {
+          return "g";
+        });
+    });
 
-    setEduBackground(editedEduBackground);
-    setIsEditingEduBackground(false);
-  };
+  }, [allWorkBackgrounds]);
 
-  const handleEditWorkBackgroundSave = (editedWorkBackground) => {
-    setWorkBackground(editedWorkBackground);
-    setIsEditingWorkBackground(false);
-  };
+    
+  console.log(allWorkBackgrounds);
+  // setAllWorkBackgroundApprovals({
+  //   ...allWorkBackgroundApprovals,
+  //   approval,
+  // });
 
-  const handleAddWorkBackgroundSave = (editedWorkBackground) => {
-    // setWorkBackground(editedWorkBackground);
+  const handleAddWorkBackgroundSave = (newBG, company) => {
+    createUserWorkBackground(newBG, company.id);
     setIsAddingNewWorkBackground(false);
   };
+
+  /// ------------------------------------------------
+  /// ------------------------------------------------
+  /// ------------------------------------------------
 
   const handleEditCancel = () => {
     setIsEditingPrivateInfo(false);
     setIsEditingEduBackground(false);
-    setIsEditingWorkBackground(false);
     setIsAddingNewWorkBackground(false);
   };
 
@@ -469,38 +501,27 @@ function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {
                   }}
                   elevation={0}
                 >
-                  <IsGecmisi
-                    workBackground={workBackground}
-                    onEditClick={handleEditWorkBackgroundClick}
-                    style={{ marginLeft: 400 }}
-                  />
-
-                  <IsGecmisi
-                    workBackground={workBackground}
-                    onEditClick={handleEditWorkBackgroundClick}
-                  />
-
-                  <IsGecmisi
-                    workBackground={workBackground}
-                    onEditClick={handleEditWorkBackgroundClick}
-                  />
-
-                  <IsGecmisi
-                    workBackground={workBackground}
-                    onEditClick={handleEditWorkBackgroundClick}
-                  />
-
-                  <IsGecmisi
-                    workBackground={workBackground}
-                    onEditClick={handleEditWorkBackgroundClick}
-                  />
+                  {allWorkBackgrounds.map((workBG) => (
+                    <IsGecmisi
+                      workBackground={workBG}
+                      approvalState={getPersonApproval(workBG.id)
+                        .then((res) => {
+                          console.log("res: " + res.data);
+                          return res.data;
+                        })
+                        .catch(() => {
+                          return "g";
+                        })}
+                    />
+                  ))}
                 </Paper>
 
                 <AddIsGecmisi
                   initialData={{}}
                   onClose={handleEditCancel}
-                  onSave={handleAddWorkBackgroundClick}
+                  onSave={handleAddWorkBackgroundSave}
                   isOpen={isAddingNewWorkBackground}
+                  companyDic={companyDic}
                 />
 
                 {/* <EditIsGecmisi
@@ -530,143 +551,3 @@ function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {
 }
 
 export default BireyselProfil;
-
-{
-  /* <Grid className="left-side" item xs={6}>
-<ProfileWrapper>
-  <AvatarWrapper src={avatarSrc} alt="Profil Avatarı" />
-  <div>
-    <Typography
-      variant="h6"
-      style={{
-        fontFamily: "Arial",
-        fontSize: "14px",
-        fontWeight: "normal",
-      }}
-    >
-      User Name
-    </Typography>
-    <Typography
-      variant="h6"
-      style={{
-        fontFamily: "Arial",
-        fontSize: "14px",
-        fontWeight: "normal",
-      }}
-    >
-      Department
-    </Typography>
-  </div>
-</ProfileWrapper>
-
-<PageChangeButtons
-  sharedPostsActive={sharedPostsActive}
-  setSharedPostsActive={setSharedPostsActive}
-/>
-
-<SahsiBilgiler
-  sahsiBilgiler={privateInfo}
-  onEditClick={handleEditPrivateInfoClick}
-/>
-
-<EditSahsiBilgiler
-  initialData={privateInfo}
-  onClose={handleEditCancel}
-  onSave={handleEditPrivateInfoSave}
-  isOpen={isEditingPrivateInfo}
-/>
-
-<EgitimGecmisi
-  eduBackground={eduBackground}
-  onEditClick={handleEditEduBackgroundClick}
-/>
-<EditEgitimGecmisi
-  initialData={eduBackground}
-  onClose={handleEditCancel}
-  onSave={handleEditEduBackgroundSave}
-  isOpen={isEditingEduBackground}
-/>
-</Grid>
-
-<Grid className="right-side" item xs={6}>
-<CardWrapperForTitles elevation={4}>
-  <Typography
-    variant="subtitle1"
-    style={{
-      fontFamily: "Arial",
-      fontSize: "18px",
-      fontWeight: "bold",
-      alignSelf: "left",
-      flex: "auto",
-    }}
-  >
-    İş Geçmişi
-  </Typography>
-</CardWrapperForTitles>
-
-<IconButton
-  color="primary"
-  aria-label="add new work experience"
-  size="large"
-  onClick={handleAddWorkBackgroundClick}
->
-  <AddCircleIcon backgroundColor="#47e632" />
-</IconButton>
-
-<Paper
-  className="allPosts"
-  style={{
-    maxHeight: 600,
-    width: "100%",
-    elevation: "0",
-    overflow: "auto",
-    backgroundColor: "white",
-    alignContent: "center",
-  }}
-  elevation={0}
->
-  <IsGecmisi
-    workBackground={workBackground}
-    onEditClick={handleEditWorkBackgroundClick}
-  />
-
-  <IsGecmisi
-    workBackground={workBackground}
-    onEditClick={handleEditWorkBackgroundClick}
-  />
-
-  <IsGecmisi
-    workBackground={workBackground}
-    onEditClick={handleEditWorkBackgroundClick}
-  />
-
-  <IsGecmisi
-    workBackground={workBackground}
-    onEditClick={handleEditWorkBackgroundClick}
-  />
-
-  <IsGecmisi
-    workBackground={workBackground}
-    onEditClick={handleEditWorkBackgroundClick}
-  />
-</Paper>
-
-<AddIsGecmisi
-  initialData={{}}
-  onClose={handleEditCancel}
-  onSave={handleAddWorkBackgroundClick}
-  isOpen={isAddingNewWorkBackground}
-/>
-
-
-</Grid> */
-}
-
-{
-  /* <EditIsGecmisi
-  initialData={isAddingNewWorkBackground ? workBackground : {}}
-  onClose={handleEditCancel}
-  onSave={handleEditWorkBackgroundSave}
-  isOpen={isEditingWorkBackground}
-/> */
-}

@@ -3,13 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { Grid, Paper, Typography } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import { styled } from "@mui/material/styles";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
 import { getAllPosts } from "../../services/postServices";
 import FirmaBilgileri from "./FirmaBilgileri/FirmaBilgiler";
 import EditFirmaBilgileri from "./FirmaBilgileri/EditFirmaBilgileri";
 import NewPost from "../bireyselProfil/NewPost";
 import GonderiCard from "../../components/gonderiCard/gonderiCard";
+import { getCompanyProfile, updateCompanyProfileInformation } from "../../services/companyService";
 
 const PageWrapper = styled(Grid)({
   padding: "2rem",
@@ -29,50 +28,11 @@ const ProfileWrapper = styled(Paper)({
   position: "sticky",
 });
 
-const CardWrapper = styled(Paper)({
-  padding: "1rem",
-  textAlign: "center",
-  marginBottom: "10px",
-  borderRadius: "3px",
-});
-
-const CardWrapperForTitles = styled(Paper)({
-  padding: "1rem",
-  textAlign: "center",
-  marginBottom: "10px",
-  borderRadius: "3px",
-  display: "inline-block",
-});
-
 const AvatarWrapper = styled(Avatar)({
   width: "100px",
   height: "100px",
   margin: "auto",
   borderRadius: "50%",
-});
-
-const SharePostCardWrapper = styled(Paper)({
-  padding: "1rem",
-  height: "auto",
-  textAlign: "center",
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "space-between",
-  borderRadius: "20px",
-});
-
-const PostInputWrapper = styled(TextField)({
-  margin: "10px 0",
-  borderRadius: "10px",
-  "& .MuiOutlinedInput-root": {
-    borderRadius: "10px",
-  },
-});
-
-const ButtonsWrapper = styled("div")({
-  display: "flex",
-  justifyContent: "space-between",
-  marginTop: "10px",
 });
 
 function KurumsalProfil({ avatarSrc = "url_profil_avatar", name, school }) {
@@ -90,14 +50,16 @@ function KurumsalProfil({ avatarSrc = "url_profil_avatar", name, school }) {
     }
   }, [navigate]);
   const initialPrivateCompanyInfo = {
-    companySector: "",
-    companyType: "",
-    employeeCount: "",
-    foundedIn: "",
-    location: "",
-    areaOfExpertise: "",
-    webSite: "",
-    phoneNum: "",
+    name: "*",
+    category: "*",
+    type: "*",
+    totalStaff: "*",
+    fDate: "*",
+    location: "*",
+    prof: "*",
+    website: "*",
+    phone: "*",
+    description: "",
   };
 
   const [privateCompanyInfo, setPrivateCompanyInfo] = useState(
@@ -106,11 +68,23 @@ function KurumsalProfil({ avatarSrc = "url_profil_avatar", name, school }) {
   const [isEditingPrivateCompanyInfo, setIsEditingPrivateCompanyInfo] =
     useState(false);
 
+  useEffect(() => {
+    getCompanyProfile()
+      .then((res) => {
+        setPrivateCompanyInfo(res.data);
+      })
+      .catch((err) => {
+        setPrivateCompanyInfo(initialPrivateCompanyInfo);
+      });
+  }, []);
+
   const handleEditPrivateCompanyInfoClick = () => {
     setIsEditingPrivateCompanyInfo(true);
   };
 
   const handleEditPrivateCompanyInfoSave = (editedCompanyInfo) => {
+    updateCompanyProfileInformation(editedCompanyInfo)    
+
     setIsEditingPrivateCompanyInfo(false);
     setPrivateCompanyInfo(editedCompanyInfo);
   };
@@ -118,16 +92,6 @@ function KurumsalProfil({ avatarSrc = "url_profil_avatar", name, school }) {
   const handleEditCancel = () => {
     setIsEditingPrivateCompanyInfo(false);
   };
-
-  useEffect(() => {
-    getAllPosts()
-      .then((posts) => {
-        setPosts(posts);
-      })
-      .catch((err) => {
-        console.error("Coulnt fetch the all posts data due to :" + err.message);
-      });
-  }, []);
 
   const [allPosts, setAllPosts] = useState([]);
   useEffect(() => {

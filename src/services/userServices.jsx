@@ -41,6 +41,7 @@ export const getUserByName = async (userName) => {
   }
 };
 
+
 export const getUserPrivateInformationById = async (id) => {
   const user = await axios.get(`${BASE_URL}/users/${id}`);
  
@@ -54,13 +55,6 @@ export const getUserWorkBackgroundById = async (id) => {
   return user.data.userWorkBackground;
 };
 
-export const updatePrivateInformation = async (newPrivateInfo, id) => {
-  return axios.put(`${BASE_URL}/users/${id}/`, newPrivateInfo);
-};
-
-export const updateUserEduBackgroundInformation = async (newEduInfo, id) => {
-  return axios.put(`${BASE_URL}/userEduBackground/${id}`, newEduInfo);
-};
 
 
 // // NOT RECOMENDED, AS THERE CAN BE MORE THAN 1 USER WITH THE SAME NAME

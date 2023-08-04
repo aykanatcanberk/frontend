@@ -29,31 +29,31 @@ const EditFirmaBilgileri = ({ onClose, onSave, initialData, isOpen }) => {
       <DialogTitle>Firma Bilgilerini Düzenle</DialogTitle>
       <DialogContent>
         <PostInputWrapper
-          name="companySector"
+          name="category"
           label="Firma Sektörü"
           variant="outlined"
-          value={editedData.companySector}
+          value={editedData.category}
           onChange={handleChange}
         />
         <PostInputWrapper
-          name="companyType"
+          name="type"
           label="Firma Tipi"
           variant="outlined"
-          value={editedData.companyType}
+          value={editedData.type}
           onChange={handleChange}
         />
         <PostInputWrapper
-          name="employeeCount"
+          name="totalStaff"
           label="Çalışan Sayısı"
           variant="outlined"
-          value={editedData.employeeCount}
+          value={editedData.totalStaff}
           onChange={handleChange}
         />
         <PostInputWrapper
-          name="foundedIn"
+          name="fDate"
           type="date"
           variant="outlined"
-          value={editedData.foundedIn}
+          value={editedData.fDate}
           onChange={handleChange}
         />
         <PostInputWrapper
@@ -64,24 +64,31 @@ const EditFirmaBilgileri = ({ onClose, onSave, initialData, isOpen }) => {
           onChange={handleChange}
         />
         <PostInputWrapper
-          name="areaOfExpertise"
+          name="prof"
           label="Firma Uzmanlık Alanı"
           variant="outlined"
-          value={editedData.areaOfExpertise}
+          value={editedData.prof}
           onChange={handleChange}
         />
         <PostInputWrapper
-          name="webSite"
+          name="website"
           label="Firma Web Sitesi"
           variant="outlined"
-          value={editedData.webSite}
+          value={editedData.website}
           onChange={handleChange}
         />
         <PostInputWrapper
-          name="phoneNum"
+          name="phone"
           label="Firma Telefonu"
           variant="outlined"
-          value={editedData.phoneNum}
+          value={editedData.phone}
+          onChange={handleChange}
+        />
+        <PostInputWrapper
+          name="description"
+          label="Firma Telefonu"
+          variant="outlined"
+          value={editedData.description}
           onChange={handleChange}
         />
       </DialogContent>
