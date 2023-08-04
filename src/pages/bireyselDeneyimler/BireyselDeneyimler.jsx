@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Slider from "../../components/slider/Slider";
+import { useNavigate } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
@@ -19,7 +20,18 @@ import {
 export default function App() {
   const [deneyimler, setDeneyimler] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    const haveToken = localStorage.getItem("token");
+    const isUser = localStorage.getItem("userType");
+    if (!haveToken || isUser === "company") {
+      navigate("/");
+    } else {
+      setIsLoading(false);
+    }
+  }, [navigate]);
   //getting data from json-server
   // useEffect(() => {
   //   setLoading(true);
@@ -52,75 +64,78 @@ export default function App() {
     {
       title: "Mukemmel bir deneyimdi!!!",
       description: `Staj döneminde öğrendiklerimden bazıları şunlardır:
-      - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
-      - Veritabanı yönetimi tasarımı konusunda temel bilgi.`,
+        - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
+        - Veritabanı yönetimi tasarımı konusunda temel bilgi.`,
       companyName: "Aselsan",
     },
     {
       title: "Mukemmel bir deneyimdi!!!",
       description: `Staj döneminde öğrendiklerimden bazıları şunlardır:
-      - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
-      - Yazılım geliştirme süreçlerine uyum sağlama.`,
+        - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
+        - Yazılım geliştirme süreçlerine uyum sağlama.`,
       companyName: "Aselsan",
     },
     {
       title: "Mukemmel bir deneyimdi!!!",
       description: `Staj döneminde öğrendiklerimden bazıları şunlardır:
-      - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
-      - Veritabanı yönetimi tasarımı konusunda temel bilgi.`,
+        - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
+        - Veritabanı yönetimi tasarımı konusunda temel bilgi.`,
       companyName: "Aselsan",
     },
     {
       title: "Mukemmel bir deneyimdi!!!",
       description: `Staj döneminde öğrendiklerimden bazıları şunlardır:
-      - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
-      - Yazılım geliştirme süreçlerine uyum sağlama.`,
+        - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
+        - Yazılım geliştirme süreçlerine uyum sağlama.`,
       companyName: "Aselsan",
     },
     {
       title: "Mukemmel bir deneyimdi!!!",
       description: `Staj döneminde öğrendiklerimden bazıları şunlardır:
-      - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
-      - Veritabanı yönetimi tasarımı konusunda temel bilgi.`,
+        - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
+        - Veritabanı yönetimi tasarımı konusunda temel bilgi.`,
       companyName: "Aselsan",
     },
     {
       title: "Mukemmel bir deneyimdi!!!",
       description: `Staj döneminde öğrendiklerimden bazıları şunlardır:
-      - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
-      - Yazılım geliştirme süreçlerine uyum sağlama.`,
+        - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
+        - Yazılım geliştirme süreçlerine uyum sağlama.`,
       companyName: "Aselsan",
     },
     {
       title: "Mukemmel bir deneyimdi!!!",
       description: `Staj döneminde öğrendiklerimden bazıları şunlardır:
-      - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
-      - Veritabanı yönetimi tasarımı konusunda temel bilgi.`,
+        - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
+        - Veritabanı yönetimi tasarımı konusunda temel bilgi.`,
       companyName: "Aselsan",
     },
     {
       title: "Mukemmel bir deneyimdi!!!",
       description: `Staj döneminde öğrendiklerimden bazıları şunlardır:
-      - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
-      - Yazılım geliştirme süreçlerine uyum sağlama.`,
+        - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
+        - Yazılım geliştirme süreçlerine uyum sağlama.`,
       companyName: "Aselsan",
     },
     {
       title: "Mukemmel bir deneyimdi!!!",
       description: `Staj döneminde öğrendiklerimden bazıları şunlardır:
-      - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
-      - Veritabanı yönetimi tasarımı konusunda temel bilgi.`,
+        - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
+        - Veritabanı yönetimi tasarımı konusunda temel bilgi.`,
       companyName: "Aselsan",
     },
     {
       title: "Mukemmel bir deneyimdi!!!",
       description: `Staj döneminde öğrendiklerimden bazıları şunlardır:
-      - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
-      - Yazılım geliştirme süreçlerine uyum sağlama.`,
+        - Python ve JavaScript gibi dillerde kod yazma yetkinliği.
+        - Yazılım geliştirme süreçlerine uyum sağlama.`,
       companyName: "Aselsan",
     },
   ];
 
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
   return (
     <div className="bireyselDeneyimler">
       <DeneyimBackground />

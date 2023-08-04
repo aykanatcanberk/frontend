@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Grid } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import ProfilCard from "../../components/kurumsalAnasayfa/profilcard";
@@ -16,6 +17,21 @@ const PageWrapper = styled(Grid)({
 });
 
 const App = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const haveToken = localStorage.getItem("token");
+    const isUser = localStorage.getItem("userType");
+    if (!haveToken || isUser === "user") {
+      navigate("/");
+    } else {
+      setIsLoading(false);
+    }
+  }, [navigate]);
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
   return (
     <PageWrapper container spacing={3} justifyContent="left">
       <Grid

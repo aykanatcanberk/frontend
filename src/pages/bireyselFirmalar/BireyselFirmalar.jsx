@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import FirmaKartvizit from "../../components/firmaKartvizit/FirmaKartvizit";
 import { Container } from "@mui/material";
 import "./BireyselFirmalar.css";
@@ -7,7 +8,18 @@ import SearchBar from "../../components/searchBar/searchBar";
 
 export default function ComplexGrid() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    const haveToken = localStorage.getItem("token");
+    const isUser = localStorage.getItem("userType");
+    if (!haveToken || isUser === "company") {
+      navigate("/");
+    } else {
+      setIsLoading(false);
+    }
+  }, [navigate]);
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -17,6 +29,9 @@ export default function ComplexGrid() {
     company.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
   return (
     <>
       <Container maxWidth="md" sx={{ mt: 8 }}>

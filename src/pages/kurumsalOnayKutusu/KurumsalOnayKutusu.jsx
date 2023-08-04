@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "../kurumsalOnayKutusu/kurumsal.css";
 import OnayIstegi from "../../components/onayIstegi/OnayIstegi";
 import { getWaitingForApproval } from "../../services/workHistoryService";
@@ -11,6 +12,18 @@ import {
 function KurumsalOnayKutusu() {
   const [data, setData] = useState([]);
   const [guncelle, setGuncelle] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const haveToken = localStorage.getItem("token");
+    const isUser = localStorage.getItem("userType");
+    if (!haveToken || isUser === "user") {
+      navigate("/");
+    } else {
+      setIsLoading(false);
+    }
+  }, [navigate]);
 
   const handleGuncelle = () => {
     setGuncelle(!guncelle);
@@ -36,6 +49,9 @@ function KurumsalOnayKutusu() {
       });
   }, [guncelle]);
 
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
   return (
     <div className="kurumsal">
       {data?.map((kisi) => (
