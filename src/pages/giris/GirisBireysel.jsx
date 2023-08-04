@@ -63,6 +63,7 @@ function Login() {
         });
         console.log(res);
         localStorage.setItem("token", res.data.token);
+        localStorage.setItem("userType", "user");
         const token = localStorage.getItem("token");
         if (res.data.control === true) {
           axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
