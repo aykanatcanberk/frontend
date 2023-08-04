@@ -61,7 +61,7 @@ export default function Login() {
         console.log(res);
         localStorage.setItem("token", res.data.token);
         const token = localStorage.getItem("token");
-        if (res.data.login === true) {
+        if (res.data.control === true) {
           axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
           axios.post(`http://localhost:5071/api/Login/logincontrol`);
           navigate("/kurumsal-profil");
@@ -70,7 +70,7 @@ export default function Login() {
         }
       })
       .catch((err) => {
-        toast.success("GİRİŞ İŞLEMİ BAŞARILI DEĞİL.", {
+        toast.error("GİRİŞ İŞLEMİ BAŞARILI DEĞİL.", {
           onClose: () => {
             // Redirect to the desired page
             navigate("/");

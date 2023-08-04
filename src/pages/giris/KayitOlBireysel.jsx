@@ -48,7 +48,7 @@ const center = {
   left: "30%",
 };
 
-const USER_REGEX = /^[A-zÇŞĞÜİÖçşğüıö][A-z0-9-_ÇŞĞÜİÖçşğüıö]{2,23}$/;
+const USER_REGEX = /^[A-zÇŞĞÜİÖçşğüıö][A-z0-9-_ÇŞĞÜİÖçşğüıö]{1,23}$/;
 //const USER_REGEX = /^[A-z][A-z0-9-_]{2,23}$/;
 // const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/; // Daha güçlü şifre için bunu kullanın
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

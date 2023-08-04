@@ -74,7 +74,7 @@ function Login() {
       })
       .catch((err) => {
         setPassword("");
-        toast.success("GİRİŞ İŞLEMİ BAŞARILI DEĞİL.", {
+        toast.error("GİRİŞ İŞLEMİ BAŞARILI DEĞİL.", {
           onClose: () => {
             // Redirect to the desired page
             navigate("/");

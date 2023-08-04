@@ -1,13 +1,17 @@
+
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+
 import FirmaKartvizit from "../../components/firmaKartvizit/FirmaKartvizit";
 import { Container } from "@mui/material";
 import "./BireyselFirmalar.css";
-import db from "../../data/db.json";
 import SearchBar from "../../components/searchBar/searchBar";
-
+import axios from 'axios';
 export default function ComplexGrid() {
   const [searchTerm, setSearchTerm] = useState("");
+
+  const [firmalar,setFirmalar]=useState([]);
+
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
@@ -20,18 +24,31 @@ export default function ComplexGrid() {
       setIsLoading(false);
     }
   }, [navigate]);
+
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
   // "searchTerm" kullanarak firmaları filtreleyin
-  const filteredCompanies = db["info-firma"].filter((company) =>
+  const filteredCompanies = firmalar.filter((company) =>
     company.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+useEffect(()=>{
+  const token=localStorage.getItem("token");
+  axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
+  axios.get(`https://localhost:7029/api/Get_AllCompnay/get all company`).then((response)=>{
+    setFirmalar(response.data)
+  }).catch((err)=>{
+    console.log("Error");
+  })
+});
+
 
   if (isLoading) {
     return <div>Loading...</div>;
   }
+
   return (
     <>
       <Container maxWidth="md" sx={{ mt: 8 }}>

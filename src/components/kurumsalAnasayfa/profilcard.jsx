@@ -1,5 +1,5 @@
-import React from "react";
-import { Grid, Paper, Typography } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Paper, Typography } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import { styled } from "@mui/material/styles";
 import kurumsalpp from "../assets/firmaprofillogo.png";
@@ -7,6 +7,8 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import LocationSearchingIcon from "@mui/icons-material/LocationSearching";
 import PeopleIcon from "@mui/icons-material/People";
 import ClassIcon from "@mui/icons-material/Class";
+import { getCompanyInfo } from "../../services/companyService";
+import NotFoundError from "../../routes/NotFoundError";
 const CardWrapper = styled(Paper)({
   padding: "40px",
   textAlign: "center",
@@ -21,7 +23,21 @@ const AvatarWrapper = styled(Avatar)({
   borderRadius: "50%",
 });
 
-function ProfilCard({ profilcard }) {
+function ProfilCard() {
+  const [profilcard, setCompanyDataList] = useState([]);
+
+  useEffect(() => {
+    getCompanyInfo()
+      .then((response) => {
+        const info = response.data;
+        console.log(info)
+        setCompanyDataList(info);
+      })
+      .catch(() => {
+        return <NotFoundError props={"Böyle bir company bilgisi mevcut değil."} />;
+      });
+  }, []);
+
   return (
     <CardWrapper>
       <AvatarWrapper src={kurumsalpp} alt="Profil Avatarı" />
@@ -70,7 +86,7 @@ function ProfilCard({ profilcard }) {
         sx={{ marginTop: "15x", marginBottom: "15px" }}
       >
         <PeopleIcon sx={{ marginLeft: "10px", marginRight: "5px" }} />
-        {profilcard.employeeCount}
+        {profilcard.totalStaff}
       </Typography>
       <Typography
         variant="body1"
@@ -79,7 +95,7 @@ function ProfilCard({ profilcard }) {
         sx={{ marginTop: "15px", marginBottom: "15px" }}
       >
         <CalendarMonthIcon sx={{ marginLeft: "10px", marginRight: "5px" }} />
-        {profilcard.founded}
+        {profilcard.fDate}
       </Typography>
     </CardWrapper>
   );

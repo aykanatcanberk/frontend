@@ -59,7 +59,7 @@ const USER_REGEX = /^.{1,22}$/; // şirket ismi her şey olabilsin ?
 // const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/; // Daha güçlü şifre için bunu kullanın
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PWD_REGEX = /^.{6,}$/;
-const REGISTER_URL = "https://localhost:7029/api/Auth/registerCompany";
+const REGISTER_URL = "http://localhost:5071/api/Auth/registerCompany";
 
 const PasswordRequirementsTooltip = () => {
   return (

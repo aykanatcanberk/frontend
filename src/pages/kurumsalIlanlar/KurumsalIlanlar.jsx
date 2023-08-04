@@ -1,3 +1,6 @@
+
+import axios from "axios";
+
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
@@ -66,6 +69,46 @@ function KurumsalIlanlar() {
       });
     }
   };
+ /* const fetchCompanyAdverts = () => {
+    axios.get("https://localhost:7029/api/Advert/api/Advert/companypage")
+      .then((response) => {
+        console.log("Company Advertisements:", response.data);
+        setCompanyAdvertisements(response.data);
+      })
+      .
+      })
+     
+catch((error) => {
+        console.error("Error fetching company advertisements:", error);
+      });
+  };
+
+  useEffect(() => {
+    fetchCompanyAdverts();
+  }, []);
+
+  const handleSubmit = () => {
+    const newAdvert = {
+      advertName: formData.advertName,
+      desc: formData.desc,
+      jobStyle: formData.jobStyle,
+      jobTime: formData.jobTime,
+      jobType: formData.jobType,
+      major: formData.major,
+      advertDate: new Date().toLocaleDateString(),
+
+    };
+  
+    axios.post("https://localhost:7029/api/Advert", newAdvert) 
+      .then((response) => {
+        console.log("İlan başarıyla eklendi:", response.data);
+      })
+      .catch((error) => {
+        console.error("İlan eklenirken bir hata oluştu:", error);
+      });
+  
+    setFormData(FormData);
+  };*/
 
   const handleSubmit = () => {
     const newAdvert = {
@@ -339,5 +382,4 @@ function KurumsalIlanlar() {
     </>
   );
 }
-
 export default KurumsalIlanlar;

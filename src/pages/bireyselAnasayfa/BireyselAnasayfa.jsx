@@ -21,6 +21,10 @@ const PageWrapper = styled(Grid)({
 
 const BireyselAnasayfa = () => {
   const [userPosts, setCompanyDataList] = useState([]);
+
+
+  useEffect(() => {
+
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
@@ -35,6 +39,7 @@ const BireyselAnasayfa = () => {
   }, [navigate]);
 
   useEffect(() => {
+
     getUserPosts()
       .then((response) => {
         const info = response.data;
@@ -42,9 +47,8 @@ const BireyselAnasayfa = () => {
         setCompanyDataList(info);
       })
       .catch(() => {
-        return (
-          <NotFoundError props={"Böyle bir company bilgisi mevcut değil."} />
-        );
+        return <NotFoundError props={"Böyle bir company bilgisi mevcut değil."} />;
+
       });
   }, []);
 
@@ -70,9 +74,11 @@ const BireyselAnasayfa = () => {
     // Call the function
     fetchData();
   }, []);
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
+
 
   return (
     <PageWrapper container spacing={3} justifyContent="center">
