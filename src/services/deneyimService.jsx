@@ -17,6 +17,11 @@ export const getDeneyimlerFromBackend = () => {
   axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
   return axios.get("http://localhost:5071/api/Person/karışık");
 };
+export const getAllCompanies = () => {
+  const token = localStorage.getItem("token");
+  axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  return axios.get("http://localhost:5071/api/Get_AllCompnay/get all company");
+};
 
 export const getMyOwnExperiences = () => {
   const token = localStorage.getItem("token");
@@ -25,11 +30,11 @@ export const getMyOwnExperiences = () => {
 };
 
 //new deneyim only have 2 properties: title and description ======>>>> { "title": "string", "description": "string" }
-export const addDeneyimToBackend = (companyId, backWorkId, newDeneyim) => {
+export const addDeneyimToBackend = (companyId, newDeneyim) => {
   const token = localStorage.getItem("token");
   axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
   return axios.post(
-    `http://localhost:5071/api/Person/CompanyId,BackWorkId?companyId=${companyId}&backWorkId=${backWorkId}`,
+    `http://localhost:5071/api/Person/CompanyId,BackWorkId?companyId=${companyId}&backWorkId=${1}`,
     newDeneyim
   );
 };

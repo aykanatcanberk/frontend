@@ -21,23 +21,9 @@ export default function App() {
   const [loading, setLoading] = useState(false);
 
   //getting data from json-server
-  useEffect(() => {
-    setLoading(true);
-    getDeneyimler()
-      .then((response) => {
-        setDeneyimler(response.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.log("Hata alindi " + error);
-        setLoading(false);
-      });
-  }, []);
-
-  //------------------------------------for the backend------------------------------------
   // useEffect(() => {
   //   setLoading(true);
-  //   getDeneyimlerFromBackend()
+  //   getDeneyimler()
   //     .then((response) => {
   //       setDeneyimler(response.data);
   //       setLoading(false);
@@ -47,6 +33,20 @@ export default function App() {
   //       setLoading(false);
   //     });
   // }, []);
+
+  //------------------------------------for the backend------------------------------------
+  useEffect(() => {
+    setLoading(true);
+    getDeneyimlerFromBackend()
+      .then((response) => {
+        setDeneyimler(response.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log("Hata alindi " + error);
+        setLoading(false);
+      });
+  }, []);
 
   var deneyimlerim = [
     {

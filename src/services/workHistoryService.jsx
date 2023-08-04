@@ -18,7 +18,7 @@ export const getWaitingForApproval = () => {
 export const getAllWaitingForApproval = () => {
   const token = localStorage.getItem("token");
   axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-  return axios.get(`http://localhost:5071/api//ListApp`);
+  return axios.get(`http://localhost:5071/api/ListApp`);
 };
 //this is for the backend
 export const deneyimOnaylama = (id) => {

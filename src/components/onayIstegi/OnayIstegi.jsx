@@ -6,10 +6,33 @@ import Typography from "@mui/material/Typography";
 import DoneIcon from "@mui/icons-material/Done";
 import ClearIcon from "@mui/icons-material/Clear";
 import { setWorkApproval } from "../../services/workHistoryService";
+import {
+  deneyimOnaylama,
+  deneyimReddetme,
+} from "../../services/workHistoryService";
 
 const OnayIstegi = ({ props, guncelle }) => {
-  const handleApproval = (id, status) => {
-    setWorkApproval(id, status)
+  // const handleApproval = (id, status) => {
+  //   setWorkApproval(id, status)
+  //     .then((response) => {
+  //       guncelle();
+  //     })
+  //     .catch((error) => {
+  //       console.log("Hata alindi " + error);
+  //     });
+  // };
+
+  const handleApproval = (id) => {
+    deneyimOnaylama(id)
+      .then((response) => {
+        guncelle();
+      })
+      .catch((error) => {
+        console.log("Hata alindi " + error);
+      });
+  };
+  const handleReject = (id) => {
+    deneyimReddetme(id)
       .then((response) => {
         guncelle();
       })
@@ -44,14 +67,14 @@ const OnayIstegi = ({ props, guncelle }) => {
         {/* Buton yerine direk icon koyulabilir */}
 
         <Button
-          onClick={() => handleApproval(props?.id, 1)}
+          onClick={() => handleApproval(props?.id)}
           sx={{ color: "green" }}
           size="small"
         >
           <DoneIcon />
         </Button>
         <Button
-          onClick={() => handleApproval(props?.id, 2)}
+          onClick={() => handleReject(props?.id)}
           sx={{ color: "red" }}
           size="small"
         >

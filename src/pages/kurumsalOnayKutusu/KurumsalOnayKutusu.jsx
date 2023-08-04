@@ -16,8 +16,18 @@ function KurumsalOnayKutusu() {
     setGuncelle(!guncelle);
   };
 
+  // useEffect(() => {
+  //   getWaitingForApproval()
+  //     .then((response) => {
+  //       setData(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.log("Hata alindi " + error);
+  //     });
+  // }, [guncelle]);
+
   useEffect(() => {
-    getWaitingForApproval()
+    getAllWaitingForApproval()
       .then((response) => {
         setData(response.data);
       })

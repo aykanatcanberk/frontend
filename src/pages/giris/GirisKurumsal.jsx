@@ -49,7 +49,7 @@ export default function Login() {
     event.preventDefault();
 
     axios
-      .post(`https://localhost:7029/api/Auth/loginCompany`, { email, password })
+      .post(`http://localhost:5071/api/Auth/loginCompany`, { email, password })
       .then((res) => {
         toast.success("GİRİŞ İŞLEMİ BAŞARILI DEĞİL.", {
           onClose: () => {
@@ -63,7 +63,7 @@ export default function Login() {
         const token = localStorage.getItem("token");
         if (res.data.login === true) {
           axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-          axios.post(`https://localhost:7029/api/Login/logincontrol`);
+          axios.post(`http://localhost:5071/api/Login/logincontrol`);
           navigate("/kurumsal-profil");
         } else {
           navigate("/kurumsal-anasayfa");

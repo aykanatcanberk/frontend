@@ -52,7 +52,7 @@ function Login() {
     event.preventDefault();
 
     axios
-      .post(`https://localhost:7029/api/Auth/loginPerson`, { email, password })
+      .post(`http://localhost:5071/api/Auth/loginPerson`, { email, password })
       .then((res) => {
         toast.success("GİRİŞ İŞLEMİ BAŞARILI OLDU.", {
           onClose: () => {
@@ -64,9 +64,9 @@ function Login() {
         console.log(res);
         localStorage.setItem("token", res.data.token);
         const token = localStorage.getItem("token");
-        if (res.data.login === true) {
+        if (res.data.control === true) {
           axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-          axios.post(`https://localhost:7029/api/Login/logincontrol`);
+          axios.post(`http://localhost:5071/api/Login/logincontrol`);
           navigate("/bireysel-profil");
         } else {
           navigate("/bireysel-anasayfa");
