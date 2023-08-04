@@ -13,3 +13,32 @@ export const getWaitingForApproval = () => {
     params: { approvalStatus: 0 },
   });
 };
+//------------------------------------for the backend------------------------------------
+//this is for the backend
+export const getAllWaitingForApproval = () => {
+  const token = localStorage.getItem("token");
+  axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  return axios.get(`http://localhost:5071/api/ListApp`);
+};
+//this is for the backend
+export const deneyimOnaylama = (id) => {
+  const token = localStorage.getItem("token");
+  axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  return axios.post(
+    `http://localhost:5071/api/ListApp/deneyim onaylama,${id}`,
+    {
+      id,
+    }
+  );
+};
+//this is for the backend
+export const deneyimReddetme = (id) => {
+  const token = localStorage.getItem("token");
+  axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  return axios.post(
+    `http://localhost:5071/api/ListApp/deneyim reddetme,${id}`,
+    {
+      id,
+    }
+  );
+};

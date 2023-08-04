@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Grid } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import GonderiCard from "../../components/gonderiCard/gonderiCard";
@@ -21,7 +22,24 @@ const PageWrapper = styled(Grid)({
 const BireyselAnasayfa = () => {
   const [userPosts, setCompanyDataList] = useState([]);
 
+
   useEffect(() => {
+
+  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const haveToken = localStorage.getItem("token");
+    const isUser = localStorage.getItem("userType");
+    if (!haveToken || isUser === "company") {
+      navigate("/");
+    } else {
+      setIsLoading(false);
+    }
+  }, [navigate]);
+
+  useEffect(() => {
+
     getUserPosts()
       .then((response) => {
         const info = response.data;
@@ -30,6 +48,7 @@ const BireyselAnasayfa = () => {
       })
       .catch(() => {
         return <NotFoundError props={"Böyle bir company bilgisi mevcut değil."} />;
+
       });
   }, []);
 
@@ -55,6 +74,11 @@ const BireyselAnasayfa = () => {
     // Call the function
     fetchData();
   }, []);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
 
   return (
     <PageWrapper container spacing={3} justifyContent="center">

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Grid, Paper, Typography } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import { styled } from "@mui/material/styles";
@@ -76,7 +77,18 @@ const ButtonsWrapper = styled("div")({
 
 function KurumsalProfil({ avatarSrc = "url_profil_avatar", name, school }) {
   const [posts, setPosts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    const haveToken = localStorage.getItem("token");
+    const isUser = localStorage.getItem("userType");
+    if (!haveToken || isUser === "user") {
+      navigate("/");
+    } else {
+      setIsLoading(false);
+    }
+  }, [navigate]);
   const initialPrivateCompanyInfo = {
     companySector: "",
     companyType: "",
@@ -188,6 +200,9 @@ function KurumsalProfil({ avatarSrc = "url_profil_avatar", name, school }) {
         </div>
       </>
     );
+  }
+  if (isLoading) {
+    return <div>Loading...</div>;
   }
 
   return (

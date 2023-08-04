@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Grid, Paper, Typography, IconButton } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import { styled } from "@mui/material/styles";
@@ -103,6 +104,21 @@ const EqualWidthButton = styled(Button)({
 });
 
 function PageChangeButtons({ sharedPostsActive, setSharedPostsActive }) {
+  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const haveToken = localStorage.getItem("token");
+    const isUser = localStorage.getItem("userType");
+    if (!haveToken || isUser === "company") {
+      navigate("/");
+    } else {
+      setIsLoading(false);
+    }
+  }, [navigate]);
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
   return (
     <>
       <CardWrapper elevation={0}>
@@ -131,8 +147,7 @@ function PageChangeButtons({ sharedPostsActive, setSharedPostsActive }) {
   );
 }
 
-function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {  
-
+function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {
   const [sharedPostsActive, setSharedPostsActive] = useState(true);
 
   const [expReviewsSelf, setExpReviewsSelf] = useState([]);
@@ -416,8 +431,8 @@ function BireyselProfil({ avatarSrc = "url_profil_avatar", name, school }) {
                 />
               </Grid>
 
-              <Grid className="right-side" item xs={6} >
-                <CardWrapperForTitles elevation={4} style={{ marginLeft: 15}}>
+              <Grid className="right-side" item xs={6}>
+                <CardWrapperForTitles elevation={4} style={{ marginLeft: 15 }}>
                   <Typography
                     variant="subtitle1"
                     style={{

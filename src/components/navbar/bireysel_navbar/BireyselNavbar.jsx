@@ -11,10 +11,16 @@ function Navbar() {
     setOpenMenu(!openMenu);
   };
 
+  const handleLogOut = () => {
+    localStorage.clear();
+  };
+
   return (
     <div className="navbar">
       <div className="leftSide">
-      <Link to="/bireysel-anasayfa"><img src={Logo} alt="" /></Link>
+        <Link to="/bireysel-anasayfa">
+          <img src={Logo} alt="" />
+        </Link>
       </div>
       <div className={`rightSide ${openMenu ? "showMenu" : "hideMenu"}`}>
         <Link to="/bireysel-anasayfa">Anasayfa</Link>
@@ -22,6 +28,9 @@ function Navbar() {
         <Link to="/bireysel-firmalar">Firmalar</Link>
         <Link to="/bireysel-deneyimler">Deneyimler</Link>
         <Link to="/bireysel-profil">Profilim</Link>
+        <Link onClick={handleLogOut} to="/">
+          Çıkış Yap
+        </Link>
       </div>
       <button className="menuButton" onClick={toggleMenu}>
         <ReorderIcon />

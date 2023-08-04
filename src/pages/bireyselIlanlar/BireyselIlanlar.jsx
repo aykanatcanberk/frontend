@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
@@ -34,6 +35,18 @@ function BireyselIlanlar() {
   const [selectedBolumler, setSelectedBolumler] = useState([]);
   const [selectedCalismaSekli, setSelectedCalismaSekli] = useState([]);
   const [selectedCalismaTercihi, setSelectedCalismaTercihi] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const haveToken = localStorage.getItem("token");
+    const isUser = localStorage.getItem("userType");
+    if (!haveToken || isUser === "company") {
+      navigate("/");
+    } else {
+      setIsLoading(false);
+    }
+  }, [navigate]);
 
   useEffect(() => {
     getAdverts()
@@ -111,6 +124,9 @@ function BireyselIlanlar() {
     );
   });
 
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
   return (
     <Grid container justifyContent="left">
       <Grid item xs={10} lg={3}>

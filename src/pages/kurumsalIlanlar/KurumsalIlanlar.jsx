@@ -1,5 +1,8 @@
-import React, { useState } from "react";
+
 import axios from "axios";
+
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import BusinessIcon from "@mui/icons-material/Business";
 import { blue } from "@mui/material/colors";
@@ -23,6 +26,18 @@ import db from "../../data/db.json";
 import { addAdvert } from "../../services/advertService";
 
 function KurumsalIlanlar() {
+  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const haveToken = localStorage.getItem("token");
+    const isUser = localStorage.getItem("userType");
+    if (!haveToken || isUser === "user") {
+      navigate("/");
+    } else {
+      setIsLoading(false);
+    }
+  }, [navigate]);
   const FormData = {
     advertName: "",
     companyName: "",
@@ -81,7 +96,7 @@ catch((error) => {
       jobType: formData.jobType,
       major: formData.major,
       advertDate: new Date().toLocaleDateString(),
-<<<<<<< HEAD
+
     };
   
     axios.post("https://localhost:7029/api/Advert", newAdvert) 
@@ -115,6 +130,9 @@ catch((error) => {
       });
     setFormData(FormData);
   };
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
   return (
     <>
       <Grid
