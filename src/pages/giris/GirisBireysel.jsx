@@ -16,7 +16,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Import the CSS
 import { fetchUsers } from "../../redux/users/userActions";
 import { connect } from "react-redux";
-
+import VideoAnimations from "../../components/videoAnimation/VideoAnimations";
 const darkTheme = createTheme({
   palette: {
     mode: "dark",
@@ -87,6 +87,7 @@ function Login() {
 
   return (
     <>
+      <VideoAnimations />
       <ToastContainer />
       <div>
         <Box sx={boxstyle}>

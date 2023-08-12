@@ -27,7 +27,7 @@ import { styled } from "styled-components";
 import "./KayıtOlBireysel.css";
 import { Tooltip } from "@mui/material";
 import HelpIcon from "@mui/icons-material/Help";
-
+import VideoAnimations from "../../components/videoAnimation/VideoAnimations";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Import the CSS
 
@@ -192,6 +192,7 @@ export default function Register() {
 
   return (
     <>
+      <VideoAnimations />
       <ToastContainer />
 
       <div>

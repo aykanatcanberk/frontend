@@ -14,7 +14,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Import the CSS
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
+import VideoAnimations from "../../components/videoAnimation/VideoAnimations";
 const darkTheme = createTheme({
   palette: {
     mode: "dark",
@@ -83,6 +83,7 @@ export default function Login() {
 
   return (
     <>
+      <VideoAnimations />
       <ToastContainer />
       <div>
         <Box sx={boxstyle}>
